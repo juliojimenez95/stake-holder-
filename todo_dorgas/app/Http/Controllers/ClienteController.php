@@ -15,6 +15,8 @@ use App\Models\ContactoModel;
 use App\Models\RepresentanteLegalModel;
 use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
+use App\Models\InformacionBancariaModel;
+
 
 
 
@@ -62,7 +64,16 @@ class ClienteController extends Controller
 
     public function informacionb()
     {
-        return view("cliente.informacion_bancaria");
+        $bancos=["BANCO DE BOGOTA","BANCO DE POPULAR","BANCO DE ITAU","BANCOLOMBIA","CITIBANK",
+        "BANCO GNB SUDAMERIS","BANCO BBVA COLOMBIA S.A.","SCOTIABANK COLPATRIA","BANCO DE OCCIDENTE",
+        "BANCO CAJA SOCIAL","BANCO AGRARIO","BANCO DAVIVIENDA","BANCO AV VILLAS","BANCAMIA S.A.",
+        "BANCO PICHINCHA S.A.","BANCOOMEVA S.A.","BANCO DE BOGOTA","BANCO FALABELLA","BANCO FINANDINA S.A. BIC",
+        "BANCO SANTANDER COLOMBIA","BANCO COOPERATIVO COOPCENTRAL","BANCO SERFINANZA","LULO BANK","DALE",
+        "RAPPIPAY DAVIDPLATA","CFA COOPERATIVA FINANCIERA","COTRAFA","COOFINEP COOPERATIVA FINANCIERA",
+        "CONFIAR COOPERATIVA FINANCIERA","BANCO UNION antes GIROS","COLTEFINANCIERA","NEQUI","DAVIPLATA",
+        "BANCO CREDIFINANCIERA","IRIS","MOVII S.A."];
+        $cuentas=["AHORROS","CORRIENTE"];
+        return view("cliente.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas]);
     }
 
     public function pagare()
@@ -445,7 +456,52 @@ class ClienteController extends Controller
             }
     }
 
+    public function storeInformacionb(Request $request)
+    {
 
+           $request->validate(
+            [
+                'email'=>'required|email',
+                'Activo'=>'required',
+                'Pasivo'=>'required',
+                'Patrimonio'=>'required',
+                'IngresosTotales'=>'required',
+                'CantidadPersonas'=>'required' ,
+            ],
+            [
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'Activo.required' => 'El activo es requerido',
+                'Pasivo.required' => 'El pasivo es requerido',
+                'Patrimonio.required' => 'El patrimonio es requerido',
+                'IngresosTotales.required' => 'Los ingresos totales son requeridos',
+                'CantidadPersonas.required' => 'Cantidad de personas es requerido',
+
+            ]
+            );
+           try {
+                $Informacionb = new InformacionBancariaModel();
+
+                $Informacionb->Banco = $request->Banco;
+                $Informacionb->TipoCuenta = $request->TipoCuenta;
+                $Informacionb->Cuenta = $request->Cuenta;
+                $Informacionb->Ciudad = $request->Ciudad;
+                $Informacionb->Departamento = $request->grupo5;
+                $Informacionb->Pais = $request->estampillas;
+                $Informacionb->Cliente_id = $request->id_cliente;
+
+            if ($Informacionb->save()) {
+
+            }
+
+
+            return redirect('');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
     public function crearPj()
     {
         $tipos=['Sociedades Limitadas – LTDA.','Sociedades Anónimas – S.A.','Sociedad en Comandita – & Cía.',

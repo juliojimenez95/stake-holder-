@@ -11,6 +11,13 @@ use App\Models\actividad_economicaModel;
 use App\Models\ClienteModel;
 use App\Models\Cliente_DomicilioModel;
 use App\Models\DomicilioModel;
+use App\Models\ContactoModel;
+use App\Models\RepresentanteLegalModel;
+use App\Models\InformacionTributariaModel;
+use App\Models\InformacionFinancieraModel;
+
+
+
 
 
 
@@ -27,7 +34,7 @@ class ClienteController extends Controller
     {
         return view("cliente.identificacion");
     }
-    
+
     public function conocimiento()
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
@@ -94,9 +101,9 @@ class ClienteController extends Controller
     public function storepn(Request $request)
     {
 
-        
-        
-            
+
+
+
            $request->validate(
             [
                 'tipo_d'=> 'required',
@@ -127,7 +134,7 @@ class ClienteController extends Controller
                 $cliente = new ClienteModel();
 
             $cliente->DV = 0;
-        
+
             //nombres
             $cliente->Nombre =$request->Nombre;
             $cliente->Nombre1=" ";
@@ -171,7 +178,7 @@ class ClienteController extends Controller
             //$cliente->GranContribuyente=$request->nombre1;
             $cliente->Sexo=" ";
             $cliente->Contacto="";
-            
+
             $cliente->Medio=" ";
             if ($cliente->save()) {
                 $cliente2 = ClienteModel::where('Nit', $request->nit)->first();
@@ -187,23 +194,23 @@ class ClienteController extends Controller
                     'Pais' => "COLOMBIA",
                     'CodigoPostal' => 0,
                     'Enabled' => 1,
-    
+
                     //'Domicilio' => $request->complemento3
                     //documento tipo y verificacion
-    
+
                     ]);
                     $cliente_domicilio = new Cliente_DomicilioModel();
-    
+
                     $cliente_domicilio->Telefono = $request->telefono;
                     $cliente_domicilio->ID_Cliente = $cliente2->ID;
-    
+
                     $cliente_domicilio->save();
-                
+
 
 
             }
 
-            
+
             return redirect('');
 
             //return redirect('/actividad/');
@@ -211,9 +218,9 @@ class ClienteController extends Controller
                 throw $th;
             }
 
-            
 
-        
+
+
     }
 
     public function contacto()
@@ -222,6 +229,223 @@ class ClienteController extends Controller
         return view("cliente.contacto",["tipos"=>$tipos]);
     }
 
+    public function storecontactopn(Request $request)
+    {
+           $request->validate(
+            [
+                'Nombre'=> 'required',
+                'apellido'=> 'required',
+                'apellido2'=> 'required|numeric',
+                'tipo_d'=> 'required',
+                'n_docuemnto'=>'required',
+                'email'=>'required|email',
+                'telefono'=>'required',
+                'cargo'=>'required'
+
+            ],
+            [
+                'Nombre.required' => 'El nombre  es requerido',
+                'apellido.required' => 'El apellido  es requerido',
+                'apellido2.required' => 'El apellido  es requerido',
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'n_docuemnto.required' => 'El documento de identidad es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'telefono.required' => 'El telefono es requerido',
+                'cargo.required' => 'El cargo es requerido',
+
+            ]
+            );
+           try {
+                $contacto = new ContactoModel();
+
+                $contacto->Nombre1 = $request->Nombre;
+                $contacto->Nombre2 = $request->Nombre2;
+                $contacto->Apellido1 = $request->apellido;
+                $contacto->Apellido2 = $request->apellido2;
+                $contacto->TipoNit = $request->tipo_d;
+                $contacto->Nit = $request->n_docuemnto;
+                $contacto->Telefono = $request->telefono;
+                $contacto->Cargo = $request->cargo;
+                $contacto->Email = $request->email;
+                $contacto->Cliente_id = $request->id_cliente;
+
+            if ($contacto->save()) {
+
+            }
+
+
+            return redirect('');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function storeRepresentante(Request $request)
+    {
+           $request->validate(
+            [
+                'p_nombre'=> 'required',
+                'p_apellido'=> 'required',
+                'apellido2'=> 'required|numeric',
+                'tipo_d'=> 'required',
+                'documento'=>'required',
+                'email'=>'required|email',
+                'telefono'=>'required',
+                'cargo'=>'required'
+
+            ],
+            [
+                'p_nombre.required' => 'El nombre  es requerido',
+                'p_apellido.required' => 'El apellido  es requerido',
+                's_apellido.required' => 'El apellido  es requerido',
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'documento.required' => 'El documento de identidad es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'telefono.required' => 'El telefono es requerido',
+                'cargo.required' => 'El cargo es requerido',
+
+            ]
+            );
+           try {
+                $Representante = new RepresentanteLegalModel();
+
+
+                $Representante->Nombre1 = $request->Nombre;
+                $Representante->Nombre2 = $request->Nombre2;
+                $Representante->Apellido1 = $request->apellido;
+                $Representante->Apellido2 = $request->apellido2;
+                $Representante->TipoNit = $request->tipo_d;
+                $Representante->Nit = $request->n_docuemnto;
+                $Representante->Telefono = $request->telefono;
+                $Representante->Cargo = $request->cargo;
+                $Representante->Email = $request->email;
+                $Representante->ManejoRP = $request->grupo1;
+                $Representante->Observacion1 = $request->Observacion."";
+                $Representante->EjercidoPPOP = $request->grupo2;
+                $Representante->Observacion2 = $request->Observacion2."";
+                $Representante->EjercidoPPOP = $request->grupo3;
+                $Representante->Observacion3 = $request->Observacion3."";
+                $Representante->Reconocimiento = $request->grupo4;
+                $Representante->Observacion4 = $request->Observacion4."";
+                $Representante->VincuPExpuesta = $request->grupo5;
+                $Representante->Observacion5 = $request->Observacion5."";
+                $Representante->ObligacionTE = $request->grupo6;
+                $Representante->Observacion6 = $request->Observacion6."";
+                $Representante->OrganizacionI = $request->grupo7;
+                $Representante->Observacion7 = $request->Observacion7."";
+
+
+                $Representante->Cliente_id = $request->id_cliente;
+
+            if ($Representante->save()) {
+
+            }
+
+
+            return redirect('');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function storeInformaciont(Request $request)
+    {
+           $request->validate(
+            [
+                'email'=>'required|email',
+            ],
+            [
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+
+            ]
+            );
+           try {
+                $Informaciont = new InformacionTributariaModel();
+
+                $Informaciont->ResponsableImpuesto = $request->grupo1;
+                $Informaciont->SujetoRetencion = $request->grupo2;
+                $Informaciont->Declarar = $request->grupo3;
+                $Informaciont->RST = $request->grupo4;
+                $Informaciont->Estampillas = $request->grupo5;
+                $Informaciont->Observacion1 = $request->estampillas;
+                $Informaciont->GContribuyente = $request->grupo6;
+                $Informaciont->AutorretenedorF = $request->grupo7;
+                $Informaciont->AutorretenedorICA = $request->grupo8;
+                $Informaciont->Email = $request->email;
+                $Informaciont->Cliente_id = $request->id_cliente;
+
+            if ($Informaciont->save()) {
+
+            }
+
+
+            return redirect('');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function storeInformacionf(Request $request)
+    {
+
+           $request->validate(
+            [
+                'email'=>'required|email',
+                'Activo'=>'required',
+                'Pasivo'=>'required',
+                'Patrimonio'=>'required',
+                'IngresosTotales'=>'required',
+                'CantidadPersonas'=>'required' ,
+            ],
+            [
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'Activo.required' => 'El activo es requerido',
+                'Pasivo.required' => 'El pasivo es requerido',
+                'Patrimonio.required' => 'El patrimonio es requerido',
+                'IngresosTotales.required' => 'Los ingresos totales son requeridos',
+                'CantidadPersonas.required' => 'Cantidad de personas es requerido',
+
+            ]
+            );
+           try {
+                $Informacionf = new InformacionFinancieraModel();
+
+                $Informacionf->ResponsableImpuesto = $request->grupo1;
+                $Informacionf->SujetoRetencion = $request->grupo2;
+                $Informacionf->Declarar = $request->grupo3;
+                $Informacionf->RST = $request->grupo4;
+                $Informacionf->Estampillas = $request->grupo5;
+                $Informacionf->Observacion1 = $request->estampillas;
+                $Informacionf->GContribuyente = $request->grupo6;
+                $Informacionf->AutorretenedorF = $request->grupo7;
+                $Informacionf->AutorretenedorICA = $request->grupo8;
+                $Informacionf->Email = $request->email;
+                $Informacionf->Cliente_id = $request->id_cliente;
+
+            if ($Informacionf->save()) {
+
+            }
+
+
+            return redirect('');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+
     public function crearPj()
     {
         $tipos=['Sociedades Limitadas – LTDA.','Sociedades Anónimas – S.A.','Sociedad en Comandita – & Cía.',
@@ -229,7 +453,7 @@ class ClienteController extends Controller
         'Sociedad por Acciones Simplificada – S.A.S.','Sociedad Colectiva.'];
         $empresas=['Microempresas','Pequeña empresa','Mediana empresa','Grande empresa'];
         return view("cliente.registro_pj",["empresas"=>$empresas,"tipos"=>$tipos]);
-    } 
+    }
     public function index()
     {
         //

@@ -25,13 +25,14 @@
                     <h3 class=" datos">Datos personales</h3>
                    <strong> <h2 class=" my-3 persona">Persona</h2></strong>
                    <strong>  <h2 class=" natural ">Juridica</h2> </strong> <br> <br>
-                  <hr class="underline2"> 
+                  <hr class="underline2">
                 </div>
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('clientes.storecontactopn') }}" method="POST">
+                            @csrf
                             <div class="row mb-6">
 
                                 <div class="col-md-6 col-sm-12">
@@ -62,11 +63,11 @@
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <label for="apellido" class="form-label"><strong>Segundo apellido </strong></label>
-                                    <input type="text" class="form-control input_custom" id="apellido" name="apellido" value="{{old('apellido')}}"
+                                    <label for="apellido2" class="form-label"><strong>Segundo apellido </strong></label>
+                                    <input type="text" class="form-control input_custom" id="apellido2" name="apellido2" value="{{old('apellido2')}}"
                                         placeholder="Segundo apellido ">
-                                    @if ($errors->has('apellido'))
-                                        <p class="text-danger">{{ $errors->first('apellido') }}</p>
+                                    @if ($errors->has('apellido2'))
+                                        <p class="text-danger">{{ $errors->first('apellido2') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -85,7 +86,7 @@
                                         <p class="text-danger">{{ $errors->first('tipo_d') }}</p>
                                     @endif
                                 </div>
-                                
+
                                 <div class="col-md-6 col-sm-12">
                                     <label for="n_docuemnto" class="form-label"><strong>Numero documento</strong></label>
                                     <input type="n_docuemnto" class="form-control input_custom" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
@@ -129,7 +130,7 @@
                                 <button type="submit" class="btn btn-primary estilo_boton">Registrar</button>
                             </div>
                             </center>
-                        
+
                         </form>
                     </div>
                 </div>

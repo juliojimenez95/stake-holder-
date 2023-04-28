@@ -18,12 +18,13 @@
           <hr class="underline">
         </div>
       </div>
-    </div> 
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="card bg-light mt-4">
           <div class="card-body">
-          <form action="">
+          <form action="{{ route('clientes.storeInformacionf') }}" method="POST">
+            @csrf
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -33,7 +34,7 @@
                   </div>
                 </div>
               </div>
-              <br> 
+              <br>
               <div class="form-group">
                 <div class="row">
                     <div class="col text-center">
@@ -46,8 +47,11 @@
                       <div class="col text-center">
                         <p class="mr-2">Activo </p>
                       </div>
-                    
-                      <input type="text" class="form-control col-5" id="campo8" name="campo8">
+
+                      <input type="text" class="form-control col-5" id="Activo" name="Activo">
+                      @if ($errors->has('Activo'))
+                         <p class="text-danger">{{ $errors->first('Activo') }}</p>
+                      @endif
                 </div>
               </div>
               <div class="form-group">
@@ -55,8 +59,11 @@
                 <div class="col text-center">
                         <p class="mr-2">Pasivo </p>
                       </div>
-                    
-                      <input type="text" class="form-control col-5" id="campo8" name="campo8">
+
+                      <input type="text" class="form-control col-5" id="Pasivo" name="Pasivo">
+                      @if ($errors->has('Pasivo'))
+                         <p class="text-danger">{{ $errors->first('Pasivo') }}</p>
+                      @endif
                 </div>
               </div>
               <div class="form-group">
@@ -64,10 +71,14 @@
                 <div class="col text-center">
                         <p class="mr-2">Patrimonio </p>
                       </div>
-                    
-                      <input type="text" class="form-control col-5" id="campo8" name="campo8">
+
+                      <input type="text" class="form-control col-5" id="Patrimonio" name="Patrimonio">
+                      @if ($errors->has('Patrimonio'))
+                         <p class="text-danger">{{ $errors->first('Patrimonio') }}</p>
+                      @endif
                 </div>
               </div>
+
             </div>
             <div class="col-md-4">
               <div class="form-group">
@@ -77,7 +88,7 @@
                   </div>
                 </div>
               </div>
-              <br> 
+              <br>
               <div class="form-group">
                 <div class="row">
                     <div class="col text-center">
@@ -87,61 +98,48 @@
               </div>
               <div class="form-group ">
                 <div class="row">
-                      
-                <div class="col text-center" style="position: a;">
-                      <input type="text" class="form-control col-5 text-center" id="campo8" name="campo8">
-                      </div>
+
+                <div class="col text-center" >
+                      <input type="text" class="form-control col-5 text-center" id="IngresosTotales" name="IngresosTotales">
+                      @if ($errors->has('IngresosTotales'))
+                        <p class="text-danger">{{ $errors->first('IngresosTotales') }}</p>
+                      @endif
+                    </div>
                 </div>
               </div>
-              
+
             </div>
-            
+
             <div class="col-md-4">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col text-center">
-                    <span class="mr-2">Activo y pasivo total a 31 <br> de diciembre del año anterior. </span>
-                  </div>
-                </div>
-              </div>
-              <br> 
-              <div class="form-group">
-                <div class="row">
+                <div class="form-group">
+                  <div class="row">
                     <div class="col text-center">
-                      <span class="mr-2">Respuesta </span>
+                      <span class="mr-2">Cantidad personal vinculado<br> directo por la empresa a 31<br>de diciembre del año anterior.</span>
                     </div>
                   </div>
-              </div>
-              <div class="form-group">
-                <div class="row">
+                </div>
+                <br>
+                <div class="form-group">
+                  <div class="row">
                       <div class="col text-center">
-                        <p class="mr-2">Activo </p>
+                        <span class="mr-2">Respuesta </span>
                       </div>
-                    
-                      <input type="text" class="form-control col-5" id="campo8" name="campo8">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                <div class="col text-center">
-                        <p class="mr-2">Pasivo </p>
-                      </div>
-                    
-                      <input type="text" class="form-control col-5" id="campo8" name="campo8">
+                <div class="form-group ">
+                  <div class="row">
+
+                  <div class="col text-center" style="position: a;">
+                        <input type="text" class="form-control col-5 text-center" id="CantidadPersonas" name="CantidadPersonas">
+                        @if ($errors->has('CantidadPersonas'))
+                            <p class="text-danger">{{ $errors->first('CantidadPersonas') }}</p>
+                        @endif
+                    </div>
+                  </div>
                 </div>
+
               </div>
-              <div class="form-group">
-                <div class="row">
-                <div class="col text-center">
-                        <p class="mr-2">Patrimonio </p>
-                      </div>
-                    
-                      <input type="text" class="form-control col-5" id="campo8" name="campo8">
-                </div>
-              </div>
-            </div>
-            
-          </div>
+
 
 
          </div>

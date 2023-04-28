@@ -17,14 +17,14 @@
             </div>
         </div>
         </div>
-        
+
         <div class="row d-flex ">
                 <div class="col-12 col-lg-6 " style="background-color: #004492; height: 300px; color: white;">
                     <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                
+
                     <strong> <h2 class=" my-3 persona">Actividad</h2></strong>
                     <strong>  <h2 class=" natural ">Economica</h2> </strong> <br> <br>
-                    <hr class="underline2"> 
+                    <hr class="underline2">
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 " style="background-color: #007bff; height: 300px; color: white;">
@@ -44,7 +44,7 @@
                                 <button type="submit" class="btn btn-primary estilo_boton">Continuar</button>
                             </div>
                     </center>
-                </form>   
+                </form>
              </div>
             </div>
         </div>
@@ -53,7 +53,8 @@
       <div class="col-md-12">
         <div class="card bg-light mt-4">
           <div class="card-body">
-          <form action="">
+          <form action="{{ route('clientes.storeRepresentante') }}" method="POST">
+            @csrf
           <div class="row">
             <div class="col-md-12">
              <div class="row">
@@ -92,9 +93,9 @@
                 </div>
 
              </div>
-              
+
             </div>
-            
+
 
             <div class="col-md-12">
              <div class="row">
@@ -123,12 +124,12 @@
                             <p class="text-danger">{{ $errors->first('cargo') }}</p>
                         @endif
                 </div>
-             </div> 
+             </div>
             </div>
             <div class="col-md-12" style="margin-bottom: 20px;">
              <div class="row">
                 <div class="col-md-3 col-sm-12">
-                    
+
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <label for="documento" class="form-label"><strong>Correo electrónico</strong></label>
@@ -147,7 +148,7 @@
                             <p class="text-danger">{{ $errors->first('cargo') }}</p>
                         @endif
                 </div>
-             </div> 
+             </div>
             </div>
            <div class="container">
             <div class="row">
@@ -158,31 +159,31 @@
                           <span class="mr-2">¿Por su cargo o actividad maneja o a manejado recursos públicos? </span>
                         </div>
                         <div>
-                          <label class="mr-2" >Si <input type="radio" name="grupo3" value="Si"></label>
-                          <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
-                          <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <label class="mr-2" >Si <input type="radio" name="grupo1" value="Si"></label>
+                          <label class="mr-2" >No <input type="radio" name="grupo1" value="No"></label>
+                          <label class="mr-2" >N/A <input type="radio" name="grupo1" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion" id="Observacion">
                         </div>
-                        
+
 
                   </div>
                 </div>
              </div>
             <div class="col-md-12">
               <div class="form-group ">
-                  <div style="display: flex; justify-content: space-between;"> 
+                  <div style="display: flex; justify-content: space-between;">
                         <div class="">
                           <span class="mr-2">¿Por su cargo o actividad ejerce o ha ejercido algún grado de poder <br> político o público? </span>
                         </div>
                         <div>
-                          <label class="mr-2" >Si <input type="radio" name="grupo3" value="Si"></label>
-                          <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
-                          <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <label class="mr-2" >Si <input type="radio" name="grupo2" value="Si"></label>
+                          <label class="mr-2" >No <input type="radio" name="grupo2" value="No"></label>
+                          <label class="mr-2" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion2" id="Observacion2">
                         </div>
-                        
+
 
                   </div>
               </div>
@@ -198,15 +199,15 @@
                           <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
                           <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion3" id="Observacion3">
                         </div>
-                        
+
 
                   </div>
               </div>
 
              </div>
-             
+
              <div class="col-md-12">
              <div class="form-group ">
                   <div style="display: flex; justify-content: space-between;">
@@ -214,13 +215,13 @@
                           <span class="mr-2">¿Existe algún vinculo entre usted y una persona considerada públicamente expuesta?</span>
                         </div>
                         <div>
-                          <label class="mr-2" >Si <input type="radio" name="grupo3" value="Si"></label>
-                          <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
-                          <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <label class="mr-2" >Si <input type="radio" name="grupo4" value="Si"></label>
+                          <label class="mr-2" >No <input type="radio" name="grupo4" value="No"></label>
+                          <label class="mr-2" >N/A <input type="radio" name="grupo4" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion4" id="Observacion4">
                         </div>
-                        
+
 
                   </div>
               </div>
@@ -233,13 +234,13 @@
                           <span class="mr-2">¿Es usted sujeto de obligaciones tributarias en otro país o grupo de países?</span>
                         </div>
                         <div>
-                          <label class="mr-2" >Si <input type="radio" name="grupo3" value="Si"></label>
-                          <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
-                          <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <label class="mr-2" >Si <input type="radio" name="grupo5" value="Si"></label>
+                          <label class="mr-2" >No <input type="radio" name="grupo5" value="No"></label>
+                          <label class="mr-2" >N/A <input type="radio" name="grupo5" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion5" id=" Observacion5">
                         </div>
-                        
+
 
                   </div>
               </div>
@@ -253,13 +254,13 @@
                           <span class="mr-2">¿Ejerce o ha ejercido funciones directivas en una organización internacional <br> tales como ONG, ONU, UNICEF, etc.? </span>
                         </div>
                         <div>
-                          <label class="mr-2" >Si <input type="radio" name="grupo3" value="Si"></label>
-                          <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
-                          <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <label class="mr-2" >Si <input type="radio" name="grupo6" value="Si"></label>
+                          <label class="mr-2" >No <input type="radio" name="grupo6" value="No"></label>
+                          <label class="mr-2" >N/A <input type="radio" name="grupo6" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion6" id="Observacion6">
                         </div>
-                        
+
 
                   </div>
               </div>
@@ -268,29 +269,29 @@
 
              <div class="col-md-12">
              <div class="form-group ">
-                  <div style="display: flex; justify-content: space-between;"> 
+                  <div style="display: flex; justify-content: space-between;">
                         <div class="">
                           <span class="mr-2">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, <br> SIPLAFT, SARLAFT o equivalentes? </span>
                         </div>
                         <div>
-                          <label class="mr-2" >Si <input type="radio" name="grupo3" value="Si"></label>
-                          <label class="mr-2" >No <input type="radio" name="grupo3" value="No"></label>
-                          <label class="mr-2" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <label class="mr-2" >Si <input type="radio" name="grupo7" value="Si"></label>
+                          <label class="mr-2" >No <input type="radio" name="grupo7" value="No"></label>
+                          <label class="mr-2" >N/A <input type="radio" name="grupo7" value="N/A"></label>
                           <span class="mr-2">Observaciones</span>
-                          <input type="text" name="" id="">
+                          <input type="text" name="Observacion7" id="Observacion7">
                         </div>
-                        
+
 
                   </div>
               </div>
 
               </div>
-              
+
              </div>
             </div><!--Final row-->
-  
-            
-          </div> 
+
+
+          </div>
 
 
          </div>

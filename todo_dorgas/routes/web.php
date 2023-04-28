@@ -35,6 +35,11 @@ Route::get('/declaracion', [ClienteController::class, 'declaracion'])->name('cli
 Route::get('/conocimiento', [ClienteController::class, 'conocimiento'])->name('cliente.conocimiento');
  //storage
 Route::post('/cliente/storepn', [ClienteController::class, 'storepn'])->name('clientes.storepn');
+Route::post('/cliente/storeRepresentante', [ClienteController::class,'storeRepresentante'])->name('clientes.storeRepresentante');
+Route::post('/cliente/storeInformaciont', [ClienteController::class,'storeInformaciont'])->name('clientes.storeInformaciont');
+Route::post('/cliente/storeInformacionf', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');
+Route::post('/cliente/storecontactopn', [ClienteController::class, 'storecontactopn'])->name('clientes.storecontactopn');
+
 
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');
 

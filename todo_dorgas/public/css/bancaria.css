@@ -1,0 +1,97 @@
+.btn_1{
+    background-color: #004492;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 18px;
+    border-color:#004492 ;
+}
+
+.title-ent {
+    color: #004492;
+    font-weight: 500 !important;
+}
+
+.title-ent span {
+    color: red;
+    font-weight: bold;
+}
+
+.div-filled {
+    background-color: rgb(233, 232, 232);
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.div-filled {
+    background-color: rgb(233, 232, 232);
+    width: 100%;
+    height: 30px;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+}
+
+.inside p {
+    margin-bottom: 0px;
+}
+
+.input_custom {
+    background-color: rgb(233, 232, 232);
+}
+
+.label_custom {
+    color: #004492;
+    font-weight: 500;
+}
+
+.label_custom span {
+    color: red;
+}
+
+.select_custom {
+    background-color: rgb(233, 232, 232);
+    appearance: none; /* Deshabilitar el estilo nativo del select */
+    color: #004492; /* Establecer el color del texto */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='blue' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
+    background-repeat: no-repeat; /* Evitar que se repita la imagen */
+    background-position: right center; /* Establecer la posición de la imagen de fondo */
+    padding-right: 20px; /* Añadir espacio para la imagen de fondo */
+    border: none; /* Eliminar el borde */
+    outline: none; /* Eliminar el contorno al seleccionar */
+}
+
+.btn_continuar {
+    background-color: #004492;
+    border-color: #004492;
+    margin-right: 10px;
+}
+
+.div_continuar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.h1_tit {
+    color: #004492!important;
+}
+
+.select_cus {
+    color: #004492;
+    border: none;
+    overflow-y: hidden;
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+}

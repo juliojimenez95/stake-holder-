@@ -23,14 +23,13 @@ Route::get('/', function () {
 Route::get('/cliente/identificacion', [ClienteController::class, 'identificacion'])->name('cliente.identificacion');
 Route::get('/cliente/pn/', [ClienteController::class, 'crearPn'])->name('cliente.pn');
 Route::get('/cliente/pj', [ClienteController::class, 'crearPj'])->name('cliente.pj');
-Route::get('/cliente/contacto', [ClienteController::class, 'contacto'])->name('cliente.contacto');
-Route::get('/cliente/informacion', [ClienteController::class, 'informacion'])->name('cliente.informacion');
-Route::get('/cliente/informaciont', [ClienteController::class, 'informaciont'])->name('cliente.informaciont');
-Route::get('/cliente/informaciont', [ClienteController::class, 'informaciont'])->name('cliente.informaciont');
-Route::get('/cliente/informacionf', [ClienteController::class, 'informacionf'])->name('cliente.informacionf');
-Route::get('/cliente/informacionb', [ClienteController::class, 'informacionb'])->name('cliente.informacionb');
+Route::get('/cliente/contacto/{id}', [ClienteController::class, 'contacto'])->name('cliente.contacto');
+Route::get('/cliente/informacion/{id}', [ClienteController::class, 'informacion'])->name('cliente.informacion');
+Route::get('/cliente/informaciont/{id}', [ClienteController::class, 'informaciont'])->name('cliente.informaciont');
+Route::get('/cliente/informacionf/{id}', [ClienteController::class, 'informacionf'])->name('cliente.informacionf');
+Route::get('/cliente/informacionb/{id}', [ClienteController::class, 'informacionb'])->name('cliente.informacionb');
 Route::get('/actividad/{id}', [ClienteController::class, 'actividad'])->name('cliente.actividad');
-Route::get('/pagare', [ClienteController::class, 'pagare'])->name('cliente.pagare');
+Route::get('/pagare/{id}', [ClienteController::class, 'pagare'])->name('cliente.pagare');
 Route::get('/declaracion', [ClienteController::class, 'declaracion'])->name('cliente.declaracion');
 Route::get('/conocimiento', [ClienteController::class, 'conocimiento'])->name('cliente.conocimiento');
 Route::get('/cliente/socios_accionistas', [ClienteController::class, 'socios_accionistas'])->name('clientes.socios_accionistas');
@@ -38,10 +37,10 @@ Route::get('/cliente/documentos_anexos', [ClienteController::class, 'documentos_
 
  //storage
 Route::post('/cliente/storepn', [ClienteController::class, 'storepn'])->name('clientes.storepn');
-Route::post('/cliente/storeRepresentante', [ClienteController::class,'storeRepresentante'])->name('clientes.storeRepresentante');
+Route::post('/cliente/storeRepresentante/{id}', [ClienteController::class,'storeRepresentante'])->name('clientes.storeRepresentante');
 Route::post('/cliente/storeInformaciont', [ClienteController::class,'storeInformaciont'])->name('clientes.storeInformaciont');
-Route::post('/cliente/storeInformacionf', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');
-Route::post('/cliente/storecontactopn', [ClienteController::class, 'storecontactopn'])->name('clientes.storecontactopn');
+Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');
+Route::post('/cliente/storecontactopn/{id}', [ClienteController::class, 'storecontactopn'])->name('clientes.storecontactopn');
 
 
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');

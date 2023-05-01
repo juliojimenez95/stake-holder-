@@ -51,16 +51,16 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="card bg-light mt-4">
+        <div class="card formulario2 bg-light mt-4">
           <div class="card-body">
-          <form action="{{ route('clientes.storeRepresentante') }}" method="POST">
+          <form action="{{ route('clientes.storeRepresentante',$id) }}" method="POST">
             @csrf
           <div class="row">
             <div class="col-md-12">
              <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <label for="p_nombre" class="form-label"><strong>Primer Nombre</strong></label>
-                        <input type="number" class="form-control input_custom" id="p_nombre" name="p_nombre" value="{{old('p_nombre')}}"
+                        <input type="text" class="form-control input_custom" id="p_nombre" name="p_nombre" value="{{old('p_nombre')}}"
                             placeholder="Primer Nombre">
                         @if ($errors->has('p_nombre'))
                             <p class="text-danger">{{ $errors->first('p_nombre') }}</p>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <label for="s_nombre" class="form-label"><strong>Segundo Nombre</strong></label>
-                        <input type="number" class="form-control input_custom" id="s_nombre" name="s_nombre" value="{{old('s_nombre')}}"
+                        <input type="text" class="form-control input_custom" id="s_nombre" name="s_nombre" value="{{old('s_nombre')}}"
                             placeholder="Segundo Nombre">
                         @if ($errors->has('s_nombre'))
                             <p class="text-danger">{{ $errors->first('s_nombre') }}</p>
@@ -77,7 +77,7 @@
 
                 <div class="col-md-3 col-sm-12">
                     <label for="p_apellido" class="form-label"><strong>Primer Apellido</strong></label>
-                        <input type="number" class="form-control input_custom" id="p_apellido" name="p_apellido" value="{{old('p_apellido')}}"
+                        <input type="text" class="form-control input_custom" id="p_apellido" name="p_apellido" value="{{old('p_apellido')}}"
                             placeholder="Primer Apellido">
                         @if ($errors->has('p_apellido'))
                             <p class="text-danger">{{ $errors->first('p_apellido') }}</p>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <label for="s_apellido" class="form-label"><strong>Segundo Apellido</strong></label>
-                        <input type="number" class="form-control input_custom" id="s_apellido" name="s_apellido" value="{{old('s_apellido')}}"
+                        <input type="text" class="form-control input_custom" id="s_apellido" name="s_apellido" value="{{old('s_apellido')}}"
                             placeholder="Segundo Apellido">
                         @if ($errors->has('s_apellido'))
                             <p class="text-danger">{{ $errors->first('s_apellido') }}</p>
@@ -101,7 +101,7 @@
              <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <label for="tipo_d" class="form-label"><strong>Tipo de documento</strong></label>
-                        <input type="number" class="form-control input_custom" id="tipo_d" name="tipo_d" value="{{old('tipo_d')}}"
+                        <input type="text" class="form-control input_custom" id="tipo_d" name="tipo_d" value="{{old('tipo_d')}}"
                             placeholder="Numero documento">
                         @if ($errors->has('tipo_d'))
                             <p class="text-danger">{{ $errors->first('tipo_d') }}</p>
@@ -118,8 +118,8 @@
 
                 <div class="col-md-3 col-sm-12">
                     <label for="cargo" class="form-label"><strong>Cargo</strong></label>
-                        <input type="number" class="form-control input_custom" id="cargo" name="cargo" value="{{old('cargo')}}"
-                            placeholder="Numero documento">
+                        <input type="text" class="form-control input_custom" id="cargo" name="cargo" value="{{old('cargo')}}"
+                            placeholder="cargo">
                         @if ($errors->has('cargo'))
                             <p class="text-danger">{{ $errors->first('cargo') }}</p>
                         @endif
@@ -133,19 +133,19 @@
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <label for="documento" class="form-label"><strong>Correo electrónico</strong></label>
-                        <input type="number" class="form-control input_custom" id="documento" name="documento" value="{{old('documento')}}"
+                        <input type="email" class="form-control input_custom" id="email" name="email" value="{{old('email')}}"
                             placeholder="Correo electrónico">
-                        @if ($errors->has('documento'))
-                            <p class="text-danger">{{ $errors->first('documento') }}</p>
+                        @if ($errors->has('email'))
+                            <p class="text-danger">{{ $errors->first('email') }}</p>
                         @endif
                 </div>
 
                 <div class="col-md-3 col-sm-12">
                     <label for="cargo" class="form-label"><strong>Teléfono</strong></label>
-                        <input type="number" class="form-control input_custom" id="cargo" name="cargo" value="{{old('cargo')}}"
+                        <input type="number" class="form-control input_custom" id="telefono" name="telefono" value="{{old('telefono')}}"
                             placeholder="Teléfono">
-                        @if ($errors->has('cargo'))
-                            <p class="text-danger">{{ $errors->first('cargo') }}</p>
+                        @if ($errors->has('telefono'))
+                            <p class="text-danger">{{ $errors->first('telefono') }}</p>
                         @endif
                 </div>
              </div>

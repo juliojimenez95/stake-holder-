@@ -33,10 +33,11 @@
                     <br><br>
                     <h3>Informacion</h3>
                     <h3>Tributaria</h3>
-                    
+                    <a href="{{ route('cliente.informaciont',$id) }}">
                     <button class="btn btn-primary mt-3">vista</button>
+                    </a>
                     <br><br>
-                    
+
                   </div>
                 </div>
               </div>
@@ -49,8 +50,9 @@
                     <br><br>
                     <h3>Informacion</h3>
                     <h3>Financiera</h3>
-                    
-                    <button class="btn btn-primary mt-3">vista</button>
+                    <a href="{{ route('cliente.informacionf',$id) }}">
+                        <button class="btn btn-primary mt-3">vista</button>
+                    </a>
                     <br><br>
                   </div>
                 </div>
@@ -64,10 +66,12 @@
                     <br><br>
                     <h3>Pagare</h3>
                     <p>¿aplicacion  para venta de credito? </p>
-                    
-                    <button class="btn btn-primary mt-3">vista</button>
+
+                    <a href="{{ route('cliente.pagare',$id) }}">
+                        <button class="btn btn-primary mt-3">vista</button>
+                    </a>
                     <br><br>
-                    
+
                   </div>
                 </div>
               </div>
@@ -80,8 +84,10 @@
                     <br><br>
                     <h3>Informacion</h3>
                     <h3>Bancaria</h3>
-                    
-                    <button class="btn btn-primary mt-3">vista</button>
+
+                    <a href="{{ route('cliente.informacionb',$id) }}">
+                        <button class="btn btn-primary mt-3">vista</button>
+                    </a>
                     <br><br>
                   </div>
                 </div>

@@ -61,18 +61,19 @@ class ClienteController extends Controller
         return view("cliente.declaracion");
     }
 
-    public function informacion()
+    public function informacion($id)
     {
-        return view("cliente.informacion");
+        return view("cliente.informacion",['id'=>$id]);
     }
     public function informaciont()
     {
         return view("cliente.informacion_tributaria");
     }
 
-    public function informacionf()
+    public function informacionf($id)
     {
-        return view("cliente.informacion_financiera");
+
+        return view("cliente.informacion_financiera",['id'=>$id]);
     }
 
     public function informacionb()
@@ -94,10 +95,10 @@ class ClienteController extends Controller
         return view("cliente.pagare");
     }
 
-    public function actividad()
+    public function actividad($id)
     {
         $actividades = actividad_economicaModel::get();
-      return view("cliente.actividad_economica",["actividades"=>$actividades]);
+      return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id]);
     }
     public function listarMunicipios()
     {
@@ -125,9 +126,6 @@ class ClienteController extends Controller
 
     public function storepn(Request $request)
     {
-
-
-
 
            $request->validate(
             [
@@ -266,26 +264,24 @@ class ClienteController extends Controller
 
     }
 
-    public function contacto()
+    public function contacto($id)
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
-        return view("cliente.contacto",["tipos"=>$tipos]);
+        return view("cliente.contacto",["tipos"=>$tipos,'id'=>$id]);
     }
 
-    public function storecontactopn(Request $request)
+    public function storecontactopn(Request $request,$id)
     {
            $request->validate(
             [
                 'Nombre'=> 'required',
                 'apellido'=> 'required',
-                'apellido2'=> 'required|numeric',
+                'apellido2'=> 'required',
                 'tipo_d'=> 'required',
                 'n_docuemnto'=>'required',
                 'email'=>'required|email',
                 'telefono'=>'required',
                 'cargo'=>'required',
-                'actividad'=>'required',
-                'password'=>'required|min:8|confirmed'
 
             ],
             [
@@ -298,14 +294,6 @@ class ClienteController extends Controller
                 'email.email' => 'El correo debe ser real ej. example@example.com',
                 'telefono.required' => 'El telefono es requerido',
                 'cargo.required' => 'El cargo es requerido',
-                'actividad.required' => 'La actividad economica es requerida',
-                'password.required' => 'La contraseña es requerida',
-                'password.min' => 'La contraseña debe tener minimo 8 caracteres ',
-                'password.confirmed' => 'La contraseña debe ser confirmada',
-
-
-
-
             ]
             );
            try {
@@ -320,14 +308,14 @@ class ClienteController extends Controller
                 $contacto->Telefono = $request->telefono;
                 $contacto->Cargo = $request->cargo;
                 $contacto->Email = $request->email;
-                $contacto->Cliente_id = $request->id_cliente;
+                $contacto->Cliente_id = $id;
 
             if ($contacto->save()) {
 
             }
 
 
-            return redirect('');
+            return redirect('/cliente/informacionf/'.$id);
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -335,15 +323,15 @@ class ClienteController extends Controller
             }
     }
 
-    public function storeRepresentante(Request $request)
+    public function storeRepresentante(Request $request,$id)
     {
-           $request->validate(
+      /*     $request->validate(
             [
                 'p_nombre'=> 'required',
                 'p_apellido'=> 'required',
-                'apellido2'=> 'required|numeric',
+                's_apellido'=> 'required',
                 'tipo_d'=> 'required',
-                'documento'=>'required',
+                'documento'=>'required|numeric',
                 'email'=>'required|email',
                 'telefono'=>'required',
                 'cargo'=>'required'
@@ -361,17 +349,17 @@ class ClienteController extends Controller
                 'cargo.required' => 'El cargo es requerido',
 
             ]
-            );
+            );*/
            try {
                 $Representante = new RepresentanteLegalModel();
 
 
-                $Representante->Nombre1 = $request->Nombre;
-                $Representante->Nombre2 = $request->Nombre2;
-                $Representante->Apellido1 = $request->apellido;
-                $Representante->Apellido2 = $request->apellido2;
+                $Representante->Nombre1 = $request->p_nombre;
+                $Representante->Nombre2 = $request->s_nombre;
+                $Representante->Apellido1 = $request->p_nombre;
+                $Representante->Apellido2 = $request->s_apellido;
                 $Representante->TipoNit = $request->tipo_d;
-                $Representante->Nit = $request->n_docuemnto;
+                $Representante->Nit = $request->documento;
                 $Representante->Telefono = $request->telefono;
                 $Representante->Cargo = $request->cargo;
                 $Representante->Email = $request->email;
@@ -379,26 +367,24 @@ class ClienteController extends Controller
                 $Representante->Observacion1 = $request->Observacion."";
                 $Representante->EjercidoPPOP = $request->grupo2;
                 $Representante->Observacion2 = $request->Observacion2."";
-                $Representante->EjercidoPPOP = $request->grupo3;
+                $Representante->Reconocimiento = $request->grupo3;
                 $Representante->Observacion3 = $request->Observacion3."";
-                $Representante->Reconocimiento = $request->grupo4;
+                $Representante->VincuPExpuesta = $request->grupo4;
                 $Representante->Observacion4 = $request->Observacion4."";
-                $Representante->VincuPExpuesta = $request->grupo5;
+                $Representante->ObligacionTE = $request->grupo5;
                 $Representante->Observacion5 = $request->Observacion5."";
-                $Representante->ObligacionTE = $request->grupo6;
+                $Representante->OrganizacionI = $request->grupo6;
                 $Representante->Observacion6 = $request->Observacion6."";
-                $Representante->OrganizacionI = $request->grupo7;
+                $Representante->ObligacionP = $request->grupo7;
                 $Representante->Observacion7 = $request->Observacion7."";
 
 
-                $Representante->Cliente_id = $request->id_cliente;
+                $Representante->user_id = $id;
 
-            if ($Representante->save()) {
+                $Representante->save();
 
-            }
+                return redirect('/cliente/contacto/'.$id);
 
-
-            return redirect('');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {

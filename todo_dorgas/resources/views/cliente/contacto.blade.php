@@ -24,14 +24,14 @@
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
                     <h3 class=" datos">Datos personales</h3>
                    <strong> <h2 class=" my-3 persona">Persona</h2></strong>
-                   <strong>  <h2 class=" natural ">Juridica</h2> </strong> <br> <br>
+                   <strong>  <h2 class=" natural ">Contacto</h2> </strong> <br> <br>
                   <hr class="underline2">
                 </div>
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action="{{ route('clientes.storecontactopn') }}" method="POST">
+                        <form action="{{ route('clientes.storecontactopn',$id) }}" method="POST">
                             @csrf
                             <div class="row mb-6">
 

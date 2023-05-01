@@ -16,6 +16,10 @@ use App\Models\RepresentanteLegalModel;
 use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+
 
 
 
@@ -106,7 +110,8 @@ class ClienteController extends Controller
     public function crearPn()
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
-        return view("cliente.registro_pn",["tipos"=>$tipos]);
+        $actividades = actividad_economicaModel::get();
+        return view("cliente.registro_pn",["tipos"=>$tipos,"actividades"=>$actividades]);
     }
 
     public function storepn(Request $request)
@@ -122,10 +127,11 @@ class ClienteController extends Controller
                 'Nombre'=> 'required',
                 'departamento'=> 'required',
                 'municipio'=>'required',
-                'email'=>'required|email',
-                'telefono'=>'required',
+                'email'=>'required|email|unique:users',
+                'Telefono'=>'required|unique:DOMICILIOS',
                 'direccion'=>'required',
-                'servicio'=>'required'
+                'servicio'=>'required',
+                'actividad'=>'required'
 
             ],
             [
@@ -136,13 +142,17 @@ class ClienteController extends Controller
                 'municipio.required' => 'El municipio es requerido',
                 'email.required' => 'El correo es requerido',
                 'email.email' => 'El correo debe ser real ej. example@example.com',
-                'telefono.required' => 'El telefono es requerido',
+                'email.unique' => 'El correo ya esta  registrado',
+                'Telefono.required' => 'El telefono es requerido',
+                'Telefono.unique' => 'El telefono ya esta registrado',
                 'direccion.required' => 'La dirección es requerido',
 
             ]
             );
            try {
-                $cliente = new ClienteModel();
+
+
+            $cliente = new ClienteModel();
 
             $cliente->DV = 0;
 
@@ -185,19 +195,21 @@ class ClienteController extends Controller
             $cliente->Enabled=1;
             $cliente->Natural=1;
 
-            $cliente->ActividadEconomica=" ";
+            $cliente->ActividadEconomica=$request->actividad;
             //$cliente->GranContribuyente=$request->nombre1;
             $cliente->Sexo=" ";
             $cliente->Contacto="";
 
             $cliente->Medio=" ";
             if ($cliente->save()) {
-                $cliente2 = ClienteModel::where('Nit', $request->nit)->first();
+                $cliente2 = ClienteModel::where('Nit', $request->n_docuemnto)->first();
+
+                //return  $cliente2;
 
 
 
                 DomicilioModel::create([
-                    'Telefono' => $request->telefono,
+                    'Telefono' => $request->Telefono,
                     'Direccion' => $request->direccion,
                     'Ciudad' => $request->municipio,
                     //'ID_Ruta' => $request->ruta,
@@ -209,20 +221,31 @@ class ClienteController extends Controller
                     //'Domicilio' => $request->complemento3
                     //documento tipo y verificacion
 
+
+
                     ]);
+
                     $cliente_domicilio = new Cliente_DomicilioModel();
 
-                    $cliente_domicilio->Telefono = $request->telefono;
+                    $cliente_domicilio->Telefono = $request->Telefono;
                     $cliente_domicilio->ID_Cliente = $cliente2->ID;
 
+                    $user = User::create([
+                        'name' => $request->Nombre,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->password),
+                        'id_cliente'=> $cliente2->ID,
+                        ]);
+
                     $cliente_domicilio->save();
+
 
 
 
             }
 
 
-            return redirect('');
+            return redirect('/actividad/'.$user->id);
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -251,7 +274,9 @@ class ClienteController extends Controller
                 'n_docuemnto'=>'required',
                 'email'=>'required|email',
                 'telefono'=>'required',
-                'cargo'=>'required'
+                'cargo'=>'required',
+                'actividad'=>'required',
+                'password'=>'required|min:8|confirmed'
 
             ],
             [
@@ -264,6 +289,13 @@ class ClienteController extends Controller
                 'email.email' => 'El correo debe ser real ej. example@example.com',
                 'telefono.required' => 'El telefono es requerido',
                 'cargo.required' => 'El cargo es requerido',
+                'actividad.required' => 'La actividad economica es requerida',
+                'password.required' => 'La contraseña es requerida',
+                'password.min' => 'La contraseña debe tener minimo 8 caracteres ',
+                'password.confirmed' => 'La contraseña debe ser confirmada',
+
+
+
 
             ]
             );

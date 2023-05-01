@@ -33,15 +33,16 @@
                         <div>
                             <p class="title-ent">Nombre de la Entidad Bancaria<span>*</span></p>
                             <div class="div-filled">
-                                <div>
-                                    <select size="5" multiple class="select_cus">
-                                        <option value="opcion1">Opción 1</option>
-                                        <option value="opcion2">Opción 2</option>
-                                        <option value="opcion3">Opción 3</option>
-                                        <option value="opcion4">Opción 4</option>
-                                        <option value="opcion5">Opción 5</option>
+                                    <select class="form-select" aria-label="Default select example" name="banco">
+                                        <option value="">Porfavor seleccione un banco</option>
+                                        @foreach ($bancos as $banco)
+                                            <option value="{{ $banco }}">{{ $banco }}</option>
+                                        @endforeach
+
                                     </select>
-                                </div>
+                                    @if ($errors->has('banco'))
+                                        <p class="text-danger">{{ $errors->first('banco') }}</p>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -50,10 +51,16 @@
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta<span>*</span></p>
                                 <div class="div-filled">
-                                    <select size="2" multiple class="select_cus">
-                                        <option value="opcion1">AHORROS</option>
-                                        <option value="opcion2">CORRIENTE</option>
+                                    <select class="form-select" aria-label="Default select example" name="cuenta">
+                                        <option value="">Porfavor seleccione un tipo de cuenta</option>
+                                        @foreach ($cuentas as $cuenta)
+                                            <option value="{{ $cuenta }}">{{ $cuenta }}</option>
+                                        @endforeach
+
                                     </select>
+                                    @if ($errors->has('cuenta'))
+                                        <p class="text-danger">{{ $errors->first('cuenta') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group mb-4">
@@ -96,13 +103,16 @@
                             <p class="title-ent">Nombre de la Entidad Bancaria</p>
                             <div class="div-filled">
                                 <div>
-                                    <select size="5" multiple class="select_cus">
-                                        <option value="opcion1">Opción 1</option>
-                                        <option value="opcion2">Opción 2</option>
-                                        <option value="opcion3">Opción 3</option>
-                                        <option value="opcion4">Opción 4</option>
-                                        <option value="opcion5">Opción 5</option>
+                                    <select class="form-select" aria-label="Default select example" name="banco2">
+                                        <option value="">Porfavor seleccione un banco</option>
+                                        @foreach ($bancos as $banco)
+                                            <option value="{{ $banco }}">{{ $banco }}</option>
+                                        @endforeach
+
                                     </select>
+                                    @if ($errors->has('banco2'))
+                                        <p class="text-danger">{{ $errors->first('banco2') }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -112,10 +122,16 @@
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta<span>*</span></p>
                                 <div class="div-filled">
-                                    <select size="2" multiple class="select_cus">
-                                        <option value="opcion1">AHORROS</option>
-                                        <option value="opcion2">CORRIENTE</option>
+                                    <select class="form-select" aria-label="Default select example" name="cuenta2">
+                                        <option value="">Porfavor seleccione un tipo de cuenta</option>
+                                        @foreach ($cuentas as $cuenta)
+                                            <option value="{{ $cuenta }}">{{ $cuenta }}</option>
+                                        @endforeach
+
                                     </select>
+                                    @if ($errors->has('cuenta2'))
+                                        <p class="text-danger">{{ $errors->first('cuenta2') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group mb-4">

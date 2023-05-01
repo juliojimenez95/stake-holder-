@@ -43,7 +43,6 @@
                                     @if ($errors->has('banco'))
                                         <p class="text-danger">{{ $errors->first('banco') }}</p>
                                     @endif
-
                             </div>
                         </div>
                     </div>

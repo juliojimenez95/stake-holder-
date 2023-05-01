@@ -1,0 +1,104 @@
+.content_1 {
+    display: flex;
+    justify-content: center;
+    color: #004492;
+}
+
+.content_1 p {
+    margin-right: 10px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.content_1 span {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/*Estilo para el botón de radio*/
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  /*Estilo para el círculo del botón de radio*/
+  input[type="radio"]:before {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .content_main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .custom_input {
+    background-color: rgb(233, 232, 232);
+  }
+
+  .div_cus label{
+    color: #004492;
+  }
+
+  .div_cus span {
+    color: red;
+  }
+
+  .select_cus {
+    background-color: rgb(233, 232, 232);
+  }
+
+  .div_inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div_inside p {
+    color: #004492;
+    font-weight: 500;
+  }
+
+  .div_inside span {
+    color: #004492;
+    font-weight: 500;
+  }
+
+  .btn_crear {
+    background-color: #004492;
+    border-color: #004492;
+  }
+
+  .cont_cus {
+    display: flex;
+    justify-content: center;
+  }
+
+  .des_cus {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .img_cus {
+    width: 20%;
+  }
+  img {
+    max-width: 20%;
+  }
+
+
+  .div_con {
+    width: 80%;
+  }
+
+  .div_continuar {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .div_continuar button{
+    background-color: #004492;
+    border-color: #004492;
+  }

@@ -35,6 +35,15 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function socios_accionistas()
+    {
+        return view("cliente.socios_accionistas");
+    }
+
+    public function documentos_anexos()
+    {
+        return view("cliente.documentos_anexos");
+    }
 
      public function identificacion()
     {

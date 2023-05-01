@@ -33,6 +33,9 @@ Route::get('/actividad', [ClienteController::class, 'actividad'])->name('cliente
 Route::get('/pagare', [ClienteController::class, 'pagare'])->name('cliente.pagare');
 Route::get('/declaracion', [ClienteController::class, 'declaracion'])->name('cliente.declaracion');
 Route::get('/conocimiento', [ClienteController::class, 'conocimiento'])->name('cliente.conocimiento');
+Route::get('/cliente/socios_accionistas', [ClienteController::class, 'socios_accionistas'])->name('clientes.socios_accionistas');
+Route::get('/cliente/documentos_anexos', [ClienteController::class, 'documentos_anexos'])->name('clientes.documentos_anexos');
+
  //storage
 Route::post('/cliente/storepn', [ClienteController::class, 'storepn'])->name('clientes.storepn');
 Route::post('/cliente/storeRepresentante', [ClienteController::class,'storeRepresentante'])->name('clientes.storeRepresentante');

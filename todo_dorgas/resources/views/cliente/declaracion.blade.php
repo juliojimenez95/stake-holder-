@@ -24,12 +24,12 @@
         <div class="card text-center bg-light mt-4">
           <div class="card-body">
             <div class="row">
-            
+
               <div class="col-md-2">
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                     <div class="image3">
-                      <img src="{{ asset('images/user.png') }}" class="image-clas2" alt="">
+                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
                     </div>
                     <br>
                     <button class="btn btn-outline-primary mt-3"><strong>Conoce mas</strong></button>
@@ -47,10 +47,10 @@
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                     <div class="image3">
-                      <img src="{{ asset('images/user.png') }}" class="image-clas2" alt="">
+                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
                     </div>
                     <br>
-                
+
                     <button class="btn btn-outline-primary mt-3"><strong>Conoce mas</strong></button>
                     <br><br>
                     <p class="text-primary" >Autorización consulta y reporte en Centrales de Riesgo</p>
@@ -68,10 +68,10 @@
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                     <div class="image3">
-                      <img src="{{ asset('images/user.png') }}" class="image-clas2" alt="">
+                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
                     </div>
                     <br>
-                
+
                     <button class="btn btn-outline-primary mt-3"><strong>Conoce mas</strong></button>
                     <br><br>
                     <p class="text-primary" >Declaración de Origen de Fondos</p>
@@ -89,12 +89,12 @@
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                     <div class="image3">
-                      <img src="{{ asset('images/user.png') }}" class="image-clas2" alt="">
+                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
                     </div>
                     <br>
-                
+
                     <button class="btn btn-outline-primary mt-3"><strong>Conoce mas</strong></button>
-                    <br> 
+                    <br>
                     <p class="text-primary" >Cumplimiento, Ética en los negocios, Libre competencia,Conflicto de intereses,Medio ambiente e Integridad</p>
                     <strong class="text-primary">
                     <label >Si <input type="radio" name="grupo4" value="opcion1"></label>
@@ -108,12 +108,12 @@
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                     <div class="image3">
-                      <img src="{{ asset('images/user.png') }}" class="image-clas2" alt="">
+                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
                     </div>
                     <br>
-                
+
                     <button class="btn btn-outline-primary mt-3"><strong>Conoce mas</strong></button>
-                    <br><br> 
+                    <br><br>
                     <p class="text-primary" >Cumplimiento Normas Anticorrupción</p>
                     <strong class="text-primary">
                     <label >Si <input type="radio" name="grupo5" value="opcion1"></label>
@@ -124,9 +124,9 @@
                 </div>
               </div>
             </div>
-            
-              <button class="btn btn-primary text-center  ml-10" >FINALIZAR Y ENVIAR</button> 
-              
+
+              <button class="btn btn-primary text-center  ml-10" >FINALIZAR Y ENVIAR</button>
+
           </div>
         </div>
       </div>

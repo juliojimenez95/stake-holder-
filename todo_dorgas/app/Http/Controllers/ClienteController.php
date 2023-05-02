@@ -16,6 +16,7 @@ use App\Models\RepresentanteLegalModel;
 use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
+use App\Models\AccionistaModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,9 +36,53 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function socios_accionistas()
+    public function socios_accionistas($id)
     {
-        return view("cliente.socios_accionistas");
+        $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
+        $accionistas = AccionistaModel::where('user_id',$id)->get();
+        return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
+        "id"=>$id]);
+    }
+
+    public function storeaccionistas(Request $request,$id)
+    {
+           $request->validate(
+            [
+                'Nombre'=> 'required',
+                'tipo_d'=> 'required',
+                'participacion'=>'required',
+                'Nacionalidad'=>'required',
+
+            ],
+            [
+                'Nombre.required' => 'El nombre  es requerido',
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'participacion.required' => 'La participacion es requerida',
+                'Nacionalidad.required' => 'La nacionalidad es requerida',
+            ]
+            );
+           try {
+                $accionista = new AccionistaModel();
+
+                $accionista->Nombres = $request->Nombre;
+                $accionista->TipoNit = $request->tipo_d;
+                $accionista->Participacion = $request->participacion;
+                $accionista->Nacionalidad = $request->Nacionalidad;
+                $accionista->PEP = $request->PEP;
+                $accionista->Nit = 0;
+                $accionista->user_id = $id;
+
+            if ($accionista->save()) {
+
+            }
+
+
+            return back();
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
     }
 
     public function documentos_anexos()
@@ -392,7 +437,7 @@ class ClienteController extends Controller
             }
     }
 
-    public function storeInformaciont(Request $request)
+    public function storeInformaciont(Request $request,$id)
     {
            $request->validate(
             [
@@ -417,7 +462,7 @@ class ClienteController extends Controller
                 $Informaciont->AutorretenedorF = $request->grupo7;
                 $Informaciont->AutorretenedorICA = $request->grupo8;
                 $Informaciont->Email = $request->email;
-                $Informaciont->Cliente_id = $request->id_cliente;
+                $Informaciont->Cliente_id = $id;
 
             if ($Informaciont->save()) {
 
@@ -432,12 +477,11 @@ class ClienteController extends Controller
             }
     }
 
-    public function storeInformacionf(Request $request)
+    public function storeInformacionf(Request $request,$id)
     {
 
            $request->validate(
             [
-                'email'=>'required|email',
                 'Activo'=>'required',
                 'Pasivo'=>'required',
                 'Patrimonio'=>'required',
@@ -445,8 +489,7 @@ class ClienteController extends Controller
                 'CantidadPersonas'=>'required' ,
             ],
             [
-                'email.required' => 'El correo es requerido',
-                'email.email' => 'El correo debe ser real ej. example@example.com',
+
                 'Activo.required' => 'El activo es requerido',
                 'Pasivo.required' => 'El pasivo es requerido',
                 'Patrimonio.required' => 'El patrimonio es requerido',
@@ -458,17 +501,12 @@ class ClienteController extends Controller
            try {
                 $Informacionf = new InformacionFinancieraModel();
 
-                $Informacionf->ResponsableImpuesto = $request->grupo1;
-                $Informacionf->SujetoRetencion = $request->grupo2;
-                $Informacionf->Declarar = $request->grupo3;
-                $Informacionf->RST = $request->grupo4;
-                $Informacionf->Estampillas = $request->grupo5;
-                $Informacionf->Observacion1 = $request->estampillas;
-                $Informacionf->GContribuyente = $request->grupo6;
-                $Informacionf->AutorretenedorF = $request->grupo7;
-                $Informacionf->AutorretenedorICA = $request->grupo8;
-                $Informacionf->Email = $request->email;
-                $Informacionf->Cliente_id = $request->id_cliente;
+                $Informacionf->Activo = $request->Activo;
+                $Informacionf->Pasivo = $request->Pasivo;
+                $Informacionf->Patrimonio = $request->Patrimonio;
+                $Informacionf->IngresosTotales = $request->IngresosTotales;
+                $Informacionf->CantidadPersonas = $request->CantidadPersonas;
+                $Informacionf->Cliente_id = $id;
 
             if ($Informacionf->save()) {
 
@@ -483,7 +521,7 @@ class ClienteController extends Controller
             }
     }
 
-    public function storeInformacionb(Request $request)
+    public function storeInformacionb(Request $request,$id)
     {
 
            $request->validate(
@@ -515,7 +553,7 @@ class ClienteController extends Controller
                 $Informacionb->Ciudad = $request->Ciudad;
                 $Informacionb->Departamento = $request->grupo5;
                 $Informacionb->Pais = $request->estampillas;
-                $Informacionb->Cliente_id = $request->id_cliente;
+                $Informacionb->Cliente_id = $id;
 
             if ($Informacionb->save()) {
 

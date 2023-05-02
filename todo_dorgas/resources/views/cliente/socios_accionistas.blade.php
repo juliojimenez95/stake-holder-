@@ -34,37 +34,90 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <form action="{{ route('clientes.storeaccionistas',$id) }}" method="post">
+                    @csrf
                     <div class="content_main">
                         <div class="div_cus">
                             <label for="">Nombre y Apellidos<span>*</span> </label>
-                            <input type="text" class="form-control custom_input">
+                            <input type="text" class="form-control custom_input" name="Nombre">
+                            @if ($errors->has('Nombre'))
+                                <p class="text-danger">{{ $errors->first('Nombre') }}</p>
+                            @endif
+
                         </div>
-                        <div class="div_cus">
-                            <label for="">Tipo de documento<span>*</span> </label>
-                            <select class="select_cus form-control">
-                                <option value="">Elija una opcion</option>
+                        <div class="col-md-3 col-sm-12">
+                            <label for="tipo_d" class="form-label"><strong>Tipo documento</strong></label>
+                            <select class="form-select" aria-label="Default select example" name="tipo_d">
+                                <option value="">Tipo de documento...</option>
+                                @foreach ($tipos as $tipo)
+                                    <option value="{{ $tipo }}">{{ $tipo }}</option>
+                                @endforeach
+
                             </select>
+                            @if ($errors->has('tipo_d'))
+                                <p class="text-danger">{{ $errors->first('tipo_d') }}</p>
+                            @endif
                         </div>
                         <div class="div_cus">
                             <label for="">Participación %<span>*</span> </label>
-                            <input type="text" class="form-control custom_input">
+                            <input type="text" class="form-control custom_input" name="participacion">
+                            @if ($errors->has('participacion'))
+                                <p class="text-danger">{{ $errors->first('participacion') }}</p>
+                            @endif
                         </div>
                         <div class="div_cus">
                             <label for="">Nacionalidad<span>*</span> </label>
-                            <input type="text" class="form-control custom_input">
+                            <input type="text" class="form-control custom_input" name="Nacionalidad">
                         </div>
                         <div class="">
                             <div class="div_inside">
                                 <p>¿Es considerado PEP?<br><span>(Decreto 830 del 2021)</span></p>
-                                <div><span>Sí</span>  <input type="radio" id="red" name="color" value="red"> <span>No</span>  <input type="radio" id="" name="color" value=""></div>
+                            </div>
+
+                            <label class="mr-2" >Si <input type="radio" name="PEP" value="1"></label>
+                            <label class="mr-2" >No <input type="radio" name="PEP" value="0"></label>
+
+                          </div>
                             </div>
                         </div>
                         <div class="">
                             <button class="btn btn-primary btn_crear">Crear</button>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+
+                      <table id="miTabla" class="table">
+                        <thead>
+                          <tr>
+                              <th>Nombre</th>
+                              <th>Participacion</th>
+                              <th>Nacionalidad</th>
+                              <th>PEP</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                                  @foreach ($accionistas as $accionista)
+                                  <tr>
+                                      <td>{{ $accionista->Nombres }}</td>
+                                      <td>{{ $accionista->Participacion }}</td>
+                                      <td>{{ $accionista->Nacionalidad }}</td>
+
+                                      <td> {{ $accionista->PEP }}</td>
+                                  </tr>
+                              @endforeach
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <div class="row" style="margin-bottom: 60px;"></div>
             <div class="row">
                 <div class="col-md-12">

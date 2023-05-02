@@ -76,21 +76,22 @@ input[type="radio"] {
     justify-content: center;
   }
 
+  .cont_all {
+    width: 120px;
+  }
+
   .des_cus {
     display: flex;
     flex-direction: row;
   }
 
   .img_cus {
-    width: 20%;
-  }
-  img {
-    max-width: 20%;
+    display: flex;
+    justify-content: center;
   }
 
-
-  .div_con {
-    width: 80%;
+  .img_cus img {
+    max-width: 50%;
   }
 
   .div_continuar {
@@ -101,4 +102,56 @@ input[type="radio"] {
   .div_continuar button{
     background-color: #004492;
     border-color: #004492;
+  }
+
+  .label_cus {
+    color: #004492;
+  }
+  .label_cus span {
+    color: red;
+  }
+  .cont_cus_cus {
+    color: #004492;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .h1_tit {
+    color: #004492!important;
+  }
+
+  .btn_c {
+    display: flex;
+    justify-content: center;
+  }
+  .btn_c button {
+    background-color: #004492;
+    border-color: #004492;
+  }
+
+  .div_con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+  }
+
+  .div_con p {
+    color: #004492;
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  .div_con span {
+    color: #004492;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .tb_cus {
+    color: #004492;
+  }
+
+  .cr_cus {
+    padding-left: 15px;
   }

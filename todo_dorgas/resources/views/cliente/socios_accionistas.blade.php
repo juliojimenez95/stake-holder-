@@ -45,9 +45,9 @@
                             @endif
 
                         </div>
-                        <div class="col-md-3 col-sm-12">
-                            <label for="tipo_d" class="form-label"><strong>Tipo documento</strong></label>
-                            <select class="form-select" aria-label="Default select example" name="tipo_d">
+                        <div class="div_cus">
+                            <label for="tipo_d" class="form-label label_cus">Tipo documento<span>*</span></label>
+                            <select class="form-select form-control" aria-label="Seleccione un tipo de documento" name="tipo_d">
                                 <option value="">Tipo de documento...</option>
                                 @foreach ($tipos as $tipo)
                                     <option value="{{ $tipo }}">{{ $tipo }}</option>
@@ -69,18 +69,17 @@
                             <label for="">Nacionalidad<span>*</span> </label>
                             <input type="text" class="form-control custom_input" name="Nacionalidad">
                         </div>
-                        <div class="">
+                        <div class="cont_cus_cus">
                             <div class="div_inside">
                                 <p>¿Es considerado PEP?<br><span>(Decreto 830 del 2021)</span></p>
                             </div>
-
                             <label class="mr-2" >Si <input type="radio" name="PEP" value="1"></label>
                             <label class="mr-2" >No <input type="radio" name="PEP" value="0"></label>
 
                           </div>
                             </div>
                         </div>
-                        <div class="">
+                        <div class="mb-3 cr_cus" >
                             <button class="btn btn-primary btn_crear">Crear</button>
                         </div>
                     </div>
@@ -91,7 +90,7 @@
                 <div class="row">
                   <div class="col-md-12">
 
-                      <table id="miTabla" class="table">
+                      <table id="miTabla" class="table tb_cus">
                         <thead>
                           <tr>
                               <th>Nombre</th>
@@ -117,28 +116,31 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            <div class="row" style="margin-bottom: 60px;"></div>
-            <div class="row">
+            </div>
+            <div class="container">
+                <div class="row" style="margin-bottom: 60px;"></div>
+            </div>
+            <div class="container">
+            <div class="row mb-5">
                 <div class="col-md-12">
                     <div class="cont_cus">
                         <div class="div_con">
-                            <p>Documento Declaración de Origen de Fondosbr<br><span>Por favor descargar el D.O.F diligenciar y cargarlo nuevamente</span></p>
+                            <p>Documento Declaración de Origen de Fondos<br><span>Por favor descargar el D.O.F diligenciar y cargarlo nuevamente</span></p>
                         </div>
                         <div class="des_cus">
-                            <div>
+                            <div class="cont_all">
                                 <div class="img_cus">
                                     <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
                                 </div>
-                                <div>
+                                <div class="btn_c">
                                     <button class="btn btn-primary">DESCARGAR</button>
                                 </div>
                             </div>
-                            <div>
+                            <div class="cont_all">
                                 <div class="img_cus">
                                     <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
                                 </div>
-                                <div>
+                                <div class="btn_c">
                                     <button class="btn btn-primary">CARGAR</button>
                                 </div>
                             </div>
@@ -153,6 +155,7 @@
                         <button class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

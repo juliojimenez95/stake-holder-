@@ -1,0 +1,73 @@
+.abs_cont {
+    position: absolute;
+    right: 0;
+    top: 20%;
+}
+
+.div_father {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_fa {
+    width: 50px;
+    height: 50px;
+    color: #004492!important;
+    font-size: 30px;
+    border: 2px solid #004492;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.div_fa {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.text_fa {
+    display: flex;
+    background-color: #004492;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.cultura_img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.text_fa p{
+    color: white;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.div_select select {
+    color: #004492;
+    background-color: rgb(233, 232, 232);
+    border-color:rgb(233, 232, 232);
+    -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+}
+
+.text_link a {
+    color: #004492;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.text_link {
+    text-align: center;
+}
+
+.h1_cus {
+    color: #004492!important;
+}
+.p_cus {
+    color: #004492!important;
+    font-size: 25px;
+}

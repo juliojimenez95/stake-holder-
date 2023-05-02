@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\storeanexos;
+
 
 
 /*
@@ -42,6 +44,7 @@ Route::post('/cliente/storeInformaciont/{id}', [ClienteController::class,'storeI
 Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');
 Route::post('/cliente/storeInformacionb/{id}', [ClienteController::class,'storeInformacionb'])->name('clientes.storeInformacionb');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
+Route::post('/storeanexos/{id}', [ClienteController::class,'storeanexos'])->name('storeanexos');
 
 Route::post('/cliente/storecontactopn/{id}', [ClienteController::class, 'storecontactopn'])->name('clientes.storecontactopn');
 

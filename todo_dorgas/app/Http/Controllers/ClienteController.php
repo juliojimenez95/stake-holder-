@@ -85,9 +85,9 @@ class ClienteController extends Controller
             }
     }
 
-    public function documentos_anexos()
+    public function documentos_anexos($id)
     {
-        return view("cliente.documentos_anexos");
+        return view("cliente.documentos_anexos",['id'=>$id]);
     }
 
      public function identificacion()

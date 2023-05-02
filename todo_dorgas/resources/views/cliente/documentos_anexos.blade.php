@@ -22,7 +22,7 @@
               </div>
             </div>
         </div>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="{{ rotute('storeanexos',$id) }}" method="post" enctype="multipart/form-data">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">

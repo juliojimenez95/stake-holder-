@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/cliente/registrarse', function(){
+    return view('bienvenido');
+})->name('cliente.registrarse');
+
 Route::get('/cliente/identificacion', [ClienteController::class, 'identificacion'])->name('cliente.identificacion');
 Route::get('/cliente/pn/', [ClienteController::class, 'crearPn'])->name('cliente.pn');
 Route::get('/cliente/pj', [ClienteController::class, 'crearPj'])->name('cliente.pj');

@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/wel.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
   <div class="container-fluid">
@@ -44,26 +43,20 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}"   class=" my-4 img-fluid">
           <h1 class="text-primary h1_cus">Bienvenido</h1>
-          <hr class="underline"><p class="text-primary p_cus">Ingresar al sistema</p>
+          <hr class="underline"><p class="text-primary p_cus">Seleccione el perfil al que deseas ingresar</p>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-5 mx-auto">
-        <div class="cont_login">
-          <div class="img_fa mb-4">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="con_input">
-            <form action="">
-              <input type="text" placeholder="Usuario" class="form-control">
-              <input type="password" placeholder="Contraseña" class="form-control">
-              <button class="btn btn-primary bt_cus mb-5">Ingresar</button>
-            </form>
-            <span>¿Olvido su contraseña?</span><br>
-            <span>¿No tiene cuenta? <a href="{{route('cliente.registrarse')}}">Registrarse</a></span>
-          </div>
-        </div>
+      <div class="col-md-6" style="padding: 0!important;">
+        <a href="{{ route('cliente.identificacion') }}" class="w-100">
+        <img src="{{ asset('images/cliente.png') }}" alt="Imagen de perfil 1" class="img-responsive my-4 img-fluid w-100 ">
+        </a>
+      </div>
+      <div class="col-md-6" style="padding: 0!important;">
+        <a href="{{ route('cliente.identificacion') }}"  class="w-100">
+        <img src="{{ asset('images/proveedor.png') }}" alt="Imagen de perfil 2" class="img-responsive my-4 img-fluid w-100">
+        </a>
       </div>
     </div>
 

@@ -43,6 +43,7 @@
     color: white;
     margin-bottom: 0px;
     padding: 10px;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
 }
 
 .div_select select {
@@ -52,12 +53,14 @@
     -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .text_link a {
     color: #004492;
     font-size: 20px;
     font-weight: 600;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .text_link {
@@ -66,8 +69,12 @@
 
 .h1_cus {
     color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 55px;
+
 }
 .p_cus {
     color: #004492!important;
     font-size: 25px;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
 }

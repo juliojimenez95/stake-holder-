@@ -11,26 +11,27 @@
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
 }
 
-.cont_login h1 {
-    text-align: center;
-}
 
 .cont_login input {
     max-width: 100%;
     margin-bottom: 25px;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .con_input{
     width: 70%;
     text-align: center;
     color: #004492;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 span {
     color: #004492;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .bt_cus {
     width: 100%;
     background-color: #004492;
     border-color: #004492;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }

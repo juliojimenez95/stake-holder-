@@ -21,6 +21,8 @@
     </div>
     <div class="row ">
       <div class="col-md-12">
+        <form action="{{ route('storedeclaracion',$id) }}" method="post">
+        @csrf
         <div class="card text-center bg-light mt-4">
           <div class="card-body">
             <div class="row">
@@ -36,8 +38,8 @@
                     <br><br>
                     <p class="text-primary" >Autorización para el tratamiento de Datos Personales</p>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo1" value="opcion1"></label>
-                    <label >No <input type="radio" name="grupo1" value="opcion2"></label>
+                    <label >Si <input type="radio" name="grupo1" value="1"></label>
+                    <label >No <input type="radio" name="grupo1" value="0"></label>
                     </strong>
                     <br><br><br>
                   </div>
@@ -56,8 +58,8 @@
                     <p class="text-primary" >Autorización consulta y reporte en Centrales de Riesgo</p>
                     <br>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo2" value="opcion1"></label>
-                    <label >No <input type="radio" name="grupo2" value="opcion2"></label>
+                    <label >Si <input type="radio" name="grupo2" value="1"></label>
+                    <label >No <input type="radio" name="grupo2" value="0"></label>
                     </strong>
 
                     <br><br><br>
@@ -77,8 +79,8 @@
                     <p class="text-primary" >Declaración de Origen de Fondos</p>
                     <strong class="text-primary">
                     <br>
-                    <label >Si <input type="radio" name="grupo3" value="opcion1"></label>
-                    <label >No <input type="radio" name="grupo3" value="opcion2"></label>
+                    <label >Si <input type="radio" name="grupo3" value="1"></label>
+                    <label >No <input type="radio" name="grupo3" value="0"></label>
                     </strong>
                     <br><br><br>
 
@@ -97,8 +99,8 @@
                     <br>
                     <p class="text-primary" >Cumplimiento, Ética en los negocios, Libre competencia,Conflicto de intereses,Medio ambiente e Integridad</p>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo4" value="opcion1"></label>
-                    <label >No <input type="radio" name="grupo4" value="opcion2"></label>
+                    <label >Si <input type="radio" name="grupo4" value="1"></label>
+                    <label >No <input type="radio" name="grupo4" value="0"></label>
                     </strong>
                     <br><br><br>
                   </div>
@@ -116,8 +118,8 @@
                     <br><br>
                     <p class="text-primary" >Cumplimiento Normas Anticorrupción</p>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo5" value="opcion1"></label>
-                    <label >No <input type="radio" name="grupo5" value="opcion2"></label>
+                    <label >Si <input type="radio" name="grupo5" value="1"></label>
+                    <label >No <input type="radio" name="grupo5" value="0"></label>
                     </strong>
                     <br><br><br>
                   </div>
@@ -129,6 +131,7 @@
 
           </div>
         </div>
+    </form>
       </div>
     </div>
   </div>

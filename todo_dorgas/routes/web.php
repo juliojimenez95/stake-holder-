@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\storeanexos;
+use App\Http\Controllers\DocumentosController;
 
 
 
@@ -32,7 +32,7 @@ Route::get('/cliente/informacionf/{id}', [ClienteController::class, 'informacion
 Route::get('/cliente/informacionb/{id}', [ClienteController::class, 'informacionb'])->name('cliente.informacionb');
 Route::get('/actividad/{id}', [ClienteController::class, 'actividad'])->name('cliente.actividad');
 Route::get('/pagare/{id}', [ClienteController::class, 'pagare'])->name('cliente.pagare');
-Route::get('/declaracion', [ClienteController::class, 'declaracion'])->name('cliente.declaracion');
+Route::get('/declaracion/{id}', [ClienteController::class, 'declaracion'])->name('cliente.declaracion');
 Route::get('/conocimiento', [ClienteController::class, 'conocimiento'])->name('cliente.conocimiento');
 Route::get('/cliente/socios_accionistas/{id}', [ClienteController::class, 'socios_accionistas'])->name('clientes.socios_accionistas');
 Route::get('/cliente/documentos_anexos/{id}', [ClienteController::class, 'documentos_anexos'])->name('clientes.documentos_anexos');
@@ -44,7 +44,8 @@ Route::post('/cliente/storeInformaciont/{id}', [ClienteController::class,'storeI
 Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');
 Route::post('/cliente/storeInformacionb/{id}', [ClienteController::class,'storeInformacionb'])->name('clientes.storeInformacionb');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
-Route::post('/storeanexos/{id}', [ClienteController::class,'storeanexos'])->name('storeanexos');
+Route::post('/storeanexos/{id}', [DocumentosController::class,'storeanexos'])->name('storeanexos');
+Route::post('/storedeclaracion/{id}', [ClienteController::class,'storedeclaracion'])->name('storedeclaracion');
 
 Route::post('/cliente/storecontactopn/{id}', [ClienteController::class, 'storecontactopn'])->name('clientes.storecontactopn');
 

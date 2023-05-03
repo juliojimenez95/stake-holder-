@@ -22,7 +22,8 @@
               </div>
             </div>
         </div>
-        <form action="{{ rotute('storeanexos',$id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('storeanexos',$id) }}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">

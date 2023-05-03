@@ -17,6 +17,7 @@ use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
 use App\Models\AccionistaModel;
+use App\Models\AutorizacionModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -101,9 +102,52 @@ class ClienteController extends Controller
         return view("cliente.conocimiento",["tipos"=>$tipos]);
     }
 
-    public function declaracion()
+    public function declaracion($id)
     {
-        return view("cliente.declaracion");
+        return view("cliente.declaracion",['id'=>$id]);
+    }
+
+    public function storedeclaracion(Request $request,$id)
+    {
+         /*  $request->validate(
+            [
+                'grupo1'=> 'required',
+                'grupo2'=> 'required',
+                'grupo3'=>'required',
+                'grupo4'=>'required',
+                'grupo5'=>'required',
+
+
+            ],
+            [
+                'grupo1.required' => 'La autorizacion  es requerida',
+                'grupo2.required' => 'La autorizacion es requerida',
+                'grupo3.required' => 'La declaracion es requerida',
+                'grupo4.required' => 'La autorizacion es requerida',
+                'grupo5.required' => 'La autorizacion es requerida'
+            ]
+            );*/
+           try {
+                $autorizacion = new AutorizacionModel();
+
+                $autorizacion->Autorizacion_datos = $request->grupo1;
+                $autorizacion->Autorizacion_riesgos = $request->grupo2;
+                $autorizacion->Declaracion_fondos = $request->grupo3;
+                $autorizacion->Cumplimiento_etico = $request->grupo4;
+                $autorizacion->Cumplimiento_anticorrupcion = $request->grupo5;
+                $autorizacion->user_id = $id;
+
+            if ($autorizacion->save()) {
+
+            }
+
+
+            return back();
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
     }
 
     public function informacion($id)

@@ -20,7 +20,7 @@
               <i class="fa-solid fa-user"></i>
             </div>
           </div>
-          
+
           <div class="div_father">
             <div class="text_fa">
               <div class="cultura_img">
@@ -54,7 +54,7 @@
         </a>
       </div>
       <div class="col-md-6" style="padding: 0!important;">
-        <a href="{{ route('cliente.identificacion') }}"  class="w-100">
+        <a href="{{ route('proveedor.identificacion') }}"  class="w-100">
         <img src="{{ asset('images/proveedor.png') }}" alt="Imagen de perfil 2" class="img-responsive my-4 img-fluid w-100">
         </a>
       </div>

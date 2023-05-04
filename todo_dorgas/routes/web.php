@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DocumentosController;
+use App\Http\Controllers\ProveedorController;
+
 
 
 
@@ -27,8 +29,12 @@ Route::get('/cliente/registrarse', function(){
 })->name('cliente.registrarse');
 
 Route::get('/cliente/identificacion', [ClienteController::class, 'identificacion'])->name('cliente.identificacion');
+Route::get('/proveedor/identificacion', [ProveedorController::class, 'identificacion'])->name('proveedor.identificacion');
+
 Route::get('/cliente/pn/', [ClienteController::class, 'crearPn'])->name('cliente.pn');
 Route::get('/cliente/pj', [ClienteController::class, 'crearPj'])->name('cliente.pj');
+Route::get('/proveedor/pn', [ProveedorController::class, 'crearPn'])->name('proveedor.pn');
+Route::get('/proveedor/pj', [ProveedorController::class, 'crearPj'])->name('proveedor.pj');
 Route::get('/cliente/contacto/{id}', [ClienteController::class, 'contacto'])->name('cliente.contacto');
 Route::get('/cliente/informacion/{id}', [ClienteController::class, 'informacion'])->name('cliente.informacion');
 Route::get('/cliente/informaciont/{id}', [ClienteController::class, 'informaciont'])->name('cliente.informaciont');
@@ -55,6 +61,7 @@ Route::post('/cliente/storecontactopn/{id}', [ClienteController::class, 'storeco
 
 
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');
+Route::get('/listarpaises', [ClienteController::class, 'listarpaises'])->name('listarpaises');
 
 
 Auth::routes();

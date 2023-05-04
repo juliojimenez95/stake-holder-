@@ -37,7 +37,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('clientes.storepn') }}" method="POST">
+                        <form action=" {{ route('proveedor.pn') }}" method="POST">
                             @csrf
                             <div class="row mb-9">
 

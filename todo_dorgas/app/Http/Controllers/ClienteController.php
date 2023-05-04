@@ -16,18 +16,11 @@ use App\Models\RepresentanteLegalModel;
 use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
+use App\Models\PaisModel;
 use App\Models\AccionistaModel;
 use App\Models\AutorizacionModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
-
-
-
-
-
-
-
 
 
 class ClienteController extends Controller
@@ -196,6 +189,25 @@ class ClienteController extends Controller
             $municipios = MunicipioModel::all();
 
             return  response()->json([
+                'departamentos'=>$departamentos,
+                'municipios'=>$municipios
+            ]);
+        }catch(Exception $e) {
+            return $e->getMessage();
+
+
+        }
+    }
+
+    public function listarpaises()
+    {
+        try {
+            $pais = PaisModel::all();
+            $departamentos = DepartamentoModel::all();
+            $municipios = MunicipioModel::all();
+
+            return  response()->json([
+                'pais'=>$pais,
                 'departamentos'=>$departamentos,
                 'municipios'=>$municipios
             ]);

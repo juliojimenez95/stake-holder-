@@ -87,3 +87,8 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/descargar-pdf/{filename}', function ($filename) {
+    $pathToFile = public_path('documentos/' . $filename);
+    return response()->download($pathToFile);
+});

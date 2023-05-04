@@ -39,21 +39,21 @@
                     </div>
                     <br><br>
 
-                    <button class="btn btn-primary mt-3">Descargar</button>
+                    <button class="btn btn-primary mt-3" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">Descargar</button>
                     <br>
                     <p class="text-primary" >Descarga formato de pagaré, por favor diligenciar y firmar.</p>
                     <br>
                   </div>
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                     <div class="image3">
                       <img src="{{ asset('images/Subir-PDF.png') }}" class="image-clas2" alt="">
                     </div>
-                    <br><br> 
+                    <br><br>
 
                     <button class="btn btn-primary mt-3">Cargar</button>
 
@@ -63,13 +63,13 @@
                 </div>
               </div>
             </div>
-            
+
             <center>
             <div class="row">
               <div class="col-12 text-center">
               <p >Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento pagaré,</p>
               <p >por favor cargar un documento que lo certifique y este firmado por el representante legal.</p>
-              <button class="btn btn-primary  ml-10" style="margin-left: 80%;">continuar</button> 
+              <button class="btn btn-primary  ml-10" style="margin-left: 80%;">continuar</button>
               </div>
               </div>
             </center>
@@ -83,6 +83,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
+    <script src="{{ asset('js/descarga.js') }}"></script>
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

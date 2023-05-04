@@ -26,7 +26,7 @@
               <i class="fa-solid fa-user"></i>
             </div>
           </div>
-          
+
           <div class="div_father">
             <div class="text_fa">
               <div class="cultura_img">
@@ -38,10 +38,10 @@
 
           <div class="div_select">
             <select id="mySelect" multiple size="4">
-              <option value="option1">Políticas de Tratamiento de Datos</option>
-              <option value="option2">Políticas de Tratamiento de información</option>
-              <option value="option3">Politicas SAGRILAFT</option>
-              <option value="option3">Código de Ética y Buen Gobierno</option>
+              <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
+              <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de información</option>
+              <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Politicas SAGRILAFT</option>
+              <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Código de Ética y Buen Gobierno</option>
             </select>
           </div>
 
@@ -60,12 +60,24 @@
             <i class="fa-solid fa-user"></i>
           </div>
           <div class="con_input">
-            <form action="">
-              <input type="text" placeholder="Usuario" class="form-control">
-              <input type="password" placeholder="Contraseña" class="form-control">
+            <form method="POST" action="{{ route('login') }}" >
+                @csrf
+              <input type="text" placeholder="email" name="email"  class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+              @error('email')
+                 <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                 </span>
+                @enderror
+              <input type="password" placeholder="Contraseña"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+              @error('password')
+                 <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                 </span>
+                @enderror
               <button class="btn btn-primary bt_cus mb-5">Ingresar</button>
             </form>
-            <span>¿Olvido su contraseña?</span><br>
+            <a href="{{ route('password.request') }}">
+            <span>¿Olvido su contraseña?</span> </a><br>
             <span>¿No tiene cuenta? <a href="{{route('cliente.registrarse')}}">Registrarse</a></span>
           </div>
         </div>
@@ -86,5 +98,7 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/descarga.js') }}"></script>
+
 </body>
 </html>

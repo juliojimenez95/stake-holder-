@@ -30,6 +30,13 @@
     color: #004492;
     border-color: #004492;
     font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    position: relative;
+    top: 13px;
+    margin-bottom: 20px;
+}
+
+.color_cus_e {
+    margin-bottom: 40px!important;
 }
 
 .cus_cus {
@@ -41,4 +48,21 @@
 
 .cus_cus span {
     color: red;
+}
+
+.op_cus {
+    color: #004492;
+    font-size: 1.3rem;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+
+.op_cus input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.btn_finalizar {
+    background-color: #004492;
+    border-color: #004492;
 }

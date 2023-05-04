@@ -1,0 +1,36 @@
+.h1_cus {
+    color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
+
+}
+
+.icon_user {
+    border: 2px solid #004492;
+    border-radius: 50%;
+    color: #004492;
+    font-size: 3.5rem;
+}
+
+.txt_cus {
+    color: grey;
+    font-size: 1.3rem;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    font-weight:500;
+    position: relative;
+    top: 13px;
+}
+.txt_cus span {
+    color: red;
+}
+
+.btn_card {
+    background-color: #004492;
+    border-color: #004492;
+}
+
+.small_tt {
+    font-size: 14px;
+    color: grey;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    margin: 0px;
+}

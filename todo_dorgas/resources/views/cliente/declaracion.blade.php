@@ -39,8 +39,10 @@
                     <br><br>
                     <p class="text-primary cus_cus" >Autorización para el tratamiento de Datos Personales<span>*</span></p>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo1" value="1"></label>
-                    <label >No <input type="radio" name="grupo1" value="0"></label>
+                    <div>
+                        <label class="op_cus">Si <input type="radio" name="grupo1" value="1"></label>
+                        <label class="op_cus">No <input type="radio" name="grupo1" value="0"></label>
+                    </div>
                     </strong>
                     <br><br><br>
                   </div>
@@ -59,8 +61,8 @@
                     <p class="text-primary cus_cus" >Autorización consulta y reporte en Centrales de Riesgo<span>*</span></p>
                     <br>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo2" value="1"></label>
-                    <label >No <input type="radio" name="grupo2" value="0"></label>
+                    <label class="op_cus">Si <input type="radio" name="grupo2" value="1"></label>
+                    <label class="op_cus">No <input type="radio" name="grupo2" value="0"></label>
                     </strong>
 
                     <br><br><br>
@@ -80,8 +82,8 @@
                     <p class="text-primary cus_cus" >Declaración de Origen de Fondos<span>*</span></p>
                     <strong class="text-primary">
                     <br>
-                    <label >Si <input type="radio" name="grupo3" value="1"></label>
-                    <label >No <input type="radio" name="grupo3" value="0"></label>
+                    <label class="op_cus">Si <input type="radio" name="grupo3" value="1"></label>
+                    <label class="op_cus">No <input type="radio" name="grupo3" value="0"></label>
                     </strong>
                     <br><br><br>
 
@@ -96,12 +98,12 @@
                     </div>
                     <br>
 
-                    <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal"><strong>Conoce más</strong></a>
+                    <a class="btn btn-outline-primary mt-3 color_cus color_cus_e" data-toggle="modal" data-target="#declaracionModal"><strong>Conoce más</strong></a>
                     <br>
                     <p class="text-primary cus_cus" >Cumplimiento, Ética en los negocios, Libre competencia,Conflicto de intereses,Medio ambiente e Integridad<span>*</span></p>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo4" value="1"></label>
-                    <label >No <input type="radio" name="grupo4" value="0"></label>
+                    <label class="op_cus">Si <input type="radio" name="grupo4" value="1"></label>
+                    <label class="op_cus">No <input type="radio" name="grupo4" value="0"></label>
                     </strong>
                     <br><br><br>
                   </div>
@@ -119,8 +121,8 @@
                     <br><br>
                     <p class="text-primary cus_cus" >Cumplimiento Normas Anticorrupción<span>*</span></p>
                     <strong class="text-primary">
-                    <label >Si <input type="radio" name="grupo5" value="1"></label>
-                    <label >No <input type="radio" name="grupo5" value="0"></label>
+                    <label class="op_cus">Si <input type="radio" name="grupo5" value="1"></label>
+                    <label class="op_cus">No <input type="radio" name="grupo5" value="0"></label>
                     </strong>
                     <br><br><br>
                   </div>
@@ -128,7 +130,7 @@
               </div>
             </div>
 
-              <button class="btn btn-primary text-center  ml-10" >FINALIZAR Y ENVIAR</button>
+              <button class="btn btn-primary text-center  ml-10 btn_finalizar" >FINALIZAR Y ENVIAR</button>
 
           </div>
         </div>

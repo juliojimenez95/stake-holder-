@@ -1,0 +1,44 @@
+.sec_cus {
+    background-color: #004492;
+    color: white;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    margin-bottom: 20px;
+}
+
+.sec_cus h3 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.p_cus_c {
+    color: grey;
+    font-size: 14px;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    text-align: justify;
+}
+
+.p_tit {
+    color: #004492!important;
+}
+
+.color_cus {
+    color: #004492;
+    border-color: #004492;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+}
+
+.cus_cus {
+    color: grey!important;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+
+.cus_cus span {
+    color: red;
+}

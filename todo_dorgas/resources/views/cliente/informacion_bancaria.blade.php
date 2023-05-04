@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/bancaria.css') }}">
+
+  <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
+  <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
+  <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLW1lZGl1bS1jb25kLXJlZ3VsYXImZGF0YS8zMi9mLzE1NDEzMC9GcmFua2xpbiBHb3RoaWMgTWVkaXVtIENvbmQgUmVndWxhci50dGY" rel="stylesheet" type="text/css"/>
 </head>
 <body>
   <div class="container-fluid">
@@ -33,8 +37,8 @@
                         <div>
                             <p class="title-ent">Nombre de la Entidad Bancaria<span>*</span></p>
                             <div class="div-filled">
-                                    <select class="form-select" aria-label="Default select example" name="banco">
-                                        <option value="">Porfavor seleccione un banco</option>
+                                    <select class="form-select select_cus_b" aria-label="Seleccione un banco" name="banco" size="36" multiple>
+                                        <!--<option value="">Porfavor seleccione un banco</option>-->
                                         @foreach ($bancos as $banco)
                                             <option value="{{ $banco }}">{{ $banco }}</option>
                                         @endforeach
@@ -51,8 +55,7 @@
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta<span>*</span></p>
                                 <div class="div-filled">
-                                    <select class="form-select" aria-label="Default select example" name="cuenta">
-                                        <option value="">Porfavor seleccione un tipo de cuenta</option>
+                                    <select class="form-select select_cus_t" aria-label="Tipo de cuenta" name="cuenta" multiple size="2">
                                         @foreach ($cuentas as $cuenta)
                                             <option value="{{ $cuenta }}">{{ $cuenta }}</option>
                                         @endforeach
@@ -103,8 +106,8 @@
                             <p class="title-ent">Nombre de la Entidad Bancaria</p>
                             <div class="div-filled">
                                 <div>
-                                    <select class="form-select" aria-label="Default select example" name="banco2">
-                                        <option value="">Porfavor seleccione un banco</option>
+                                    <select class="form-select select_cus_b" aria-label="Seleccione un banco" name="banco2" multiple size="32">
+                                        <!--<option value="">Porfavor seleccione un banco</option>-->
                                         @foreach ($bancos as $banco)
                                             <option value="{{ $banco }}">{{ $banco }}</option>
                                         @endforeach
@@ -120,10 +123,10 @@
                     <div class="col-md-6">
                         <form action="">
                             <div class="mb-5">
-                                <p class="title-ent">Tipo de Cuenta<span>*</span></p>
+                                <p class="title-ent">Tipo de Cuenta</p>
                                 <div class="div-filled">
-                                    <select class="form-select" aria-label="Default select example" name="cuenta2">
-                                        <option value="">Porfavor seleccione un tipo de cuenta</option>
+                                    <select class="form-select select_cus_t" aria-label="Tipo de cuenta" name="cuenta2" multiple size="2">
+                                        <!--<option value="">Porfavor seleccione un tipo de cuenta</option>-->
                                         @foreach ($cuentas as $cuenta)
                                             <option value="{{ $cuenta }}">{{ $cuenta }}</option>
                                         @endforeach

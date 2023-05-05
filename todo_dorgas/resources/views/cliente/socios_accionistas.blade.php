@@ -144,7 +144,7 @@
                             </div>
                             <div class="cont_all">
                                 <div class="img_cus">
-                                    <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">    
+                                    <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
                                 </div>
                                 <div class="btn_c">
                                     <a class="btn btn-primary" onclick="document.getElementById('document').click()">CARGAR</a>
@@ -160,7 +160,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <button class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
+                        < href="{{ route('cliente.conocimiento',$id) }}">
+                        <button  class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
                     </div>
                 </div>
             </div>
@@ -177,7 +179,6 @@
     button.addEventListener('click', function() {
         // Obtener el archivo PDF correspondiente
         const filename = this.getAttribute('data-file');
-
         // Descargar el archivo
         window.location.href = '/descargar-pdf/' + filename;
     });</script>

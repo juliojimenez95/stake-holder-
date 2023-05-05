@@ -92,29 +92,26 @@ class ClienteController extends Controller
             [
                 'Nombre.required' => 'El nombre  es requerido',
                 'tipo_d.required' => 'Tipo de documento es requerido',
-                'participacion.required' => 'La participacion es requerida',
                 'Nacionalidad.required' => 'La nacionalidad es requerida',
             ]
             );
            try {
-                $accionista = new AccionistaModel();
+                $personaE = new personaExpuestaModel();
 
-                $accionista->Nombres = $request->Nombre;
-                $accionista->TipoNit = $request->tipo_d;
-                $accionista->Participacion = $request->participacion;
-                $accionista->Nacionalidad = $request->Nacionalidad;
-                $accionista->PEP = $request->PEP;
-                $accionista->Nit = 0;
-                $accionista->user_id = $id;
+                $personaE->Nombres = $request->Nombre;
+                $personaE->TipoNit = $request->tipo_d;
+                $personaE->Nacionalidad = $request->Nacionalidad;
+                $personaE->Cargo = $request->Cargo;
+                $personaE->PEP = 1;
+                $personaE->Nit = 0;
+                $personaE->user_id = $id;
 
-            if ($accionista->save()) {
+            if ($personaE->save()) {
 
             }
 
 
-            return back();
-
-            //return redirect('/actividad/');
+            return redirect('/declaracion/'.$id);
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -213,9 +210,13 @@ class ClienteController extends Controller
         return view("cliente.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas]);
     }
 
-    public function pagare()
+    public function pagare($id)
     {
-        return view("cliente.pagare");
+        return view("cliente.pagare",['id'=>$id]);
+    }
+    public function storePagare($id)
+    {
+        return view("cliente.pagare",['id'=>$id]);
     }
 
     public function actividad($id)
@@ -394,7 +395,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('/actividad/'.$user->id);
+            return redirect('/login');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -402,6 +403,140 @@ class ClienteController extends Controller
             }
 
 
+
+
+    }
+
+    public function storepj(Request $request)
+    {
+
+        $request->validate(
+            [
+                'tipo_d'=> 'required',
+                'n_docuemnto'=> 'required|numeric',
+                'Nombre'=> 'required',
+                'departamento'=> 'required',
+                'municipio'=>'required',
+                'email'=>'required|email|unique:users',
+                'Telefono'=>'required|unique:DOMICILIOS',
+                'direccion'=>'required',
+                'servicio'=>'required',
+                'actividad'=>'required'
+
+            ],
+            [
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'n_docuemnto.required' => 'El documento de identidad es requerido',
+                'Nombre.required' => 'El Nombre completo  es requerido',
+                'departamento.required' => 'El departamento es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'email.unique' => 'El correo ya esta  registrado',
+                'Telefono.required' => 'El telefono es requerido',
+                'Telefono.unique' => 'El telefono ya esta registrado',
+                'direccion.required' => 'La dirección es requerido',
+
+            ]
+            );
+           try {
+
+
+            $cliente = new ClienteModel();
+
+            $cliente->DV = 0;
+
+            //nombres
+            $cliente->Nombre =$request->Nombre;
+            $cliente->Nombre1=" ";
+            $cliente->Nombre2= " ";
+            $cliente->Apellido1=" ";
+            $cliente->Apellido2=" ";
+            //documento tipo y verificacion
+            $cliente->Nit=$request->n_docuemnto;
+            $cliente->Regimen="";
+            $cliente->Movil="";
+            $cliente->TipoNit=$request->tipo_d;
+            //
+            //$cliente->Regimen=$request->regimen;
+            $cliente->BirthDay=" ";
+            $cliente->BirthMonth=" ";
+            $cliente->BirthYear= " ";
+            //email e ingreso
+            $cliente->Mail=$request->email;
+            $cliente->FechaIngreso=date('Y-m-d');
+            //$cliente->Contacto=$request->nombre1;
+            $cliente->Credito=0;
+            $cliente->Referencia=$request->referencia;
+            $cliente->ReferenciaTelefono1=$request->referencia_t;
+            $cliente->ReferenciaTelefono2="";
+
+            //$cliente->ReferenciaTelefono2=$request->nombre1;
+            $cliente->Cupo=0;
+            $cliente->Plazo=0;
+            $cliente->Saldo=0;
+            $cliente->Bloqueo='1900-01-01 00:00:00';
+            $cliente->Medio=$request->medio;
+            $cliente->Observaciones='Registrado';
+            $cliente->Institucional=0;
+            $cliente->Retenedor=0;
+            //$cliente->RetenedorModo="N/A";
+            $cliente->Notificacion=0;
+            $cliente->Enabled=1;
+            $cliente->Natural=1;
+
+            $cliente->ActividadEconomica=$request->actividad;
+            //$cliente->GranContribuyente=$request->nombre1;
+            $cliente->Sexo=" ";
+            $cliente->Contacto="";
+
+            $cliente->Medio=" ";
+            if ($cliente->save()) {
+                $cliente2 = ClienteModel::where('Nit', $request->n_docuemnto)->first();
+
+                //return  $cliente2;
+
+
+
+                DomicilioModel::create([
+                    'Telefono' => $request->Telefono,
+                    'Direccion' => $request->direccion,
+                    'Ciudad' => $request->municipio,
+                    //'ID_Ruta' => $request->ruta,
+                    'Departamento' => $request->departamento,
+                    'Pais' => "COLOMBIA",
+                    'CodigoPostal' => 0,
+                    'Enabled' => 1,
+
+                    //'Domicilio' => $request->complemento3
+                    //documento tipo y verificacion
+
+                    ]);
+
+                    $cliente_domicilio = new Cliente_DomicilioModel();
+
+                    $cliente_domicilio->Telefono = $request->Telefono;
+                    $cliente_domicilio->ID_Cliente = $cliente2->ID;
+
+                    $user = User::create([
+                        'name' => $request->Nombre,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->password),
+                        'id_cliente'=> $cliente2->ID,
+                        ]);
+
+                    $cliente_domicilio->save();
+
+
+            }
+
+
+            return redirect('/login');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
 
 
     }
@@ -457,7 +592,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('/cliente/informacionf/'.$id);
+            return redirect('/cliente/socios_accionistas/'.$id);
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -526,7 +661,6 @@ class ClienteController extends Controller
 
                 return redirect('/cliente/contacto/'.$id);
 
-            //return redirect('/actividad/');
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -564,7 +698,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('');
+            return redirect('/home');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -608,7 +742,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('');
+            return redirect('/home');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -655,7 +789,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('');
+            return redirect('/home');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {

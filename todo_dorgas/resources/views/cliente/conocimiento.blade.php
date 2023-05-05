@@ -33,7 +33,6 @@
                    <strong>  <p >expuestas públicamente</p> </strong>
                    <strong>  <p >o políticamente.</p> </strong>
 
-
                     <br> <br>
                   <hr class="underline2">
                 </div>

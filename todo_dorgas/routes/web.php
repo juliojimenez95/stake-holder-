@@ -45,7 +45,7 @@ Route::get('/cliente/informacionb/{id}', [ClienteController::class, 'informacion
 Route::get('/actividad/{id}', [ClienteController::class, 'actividad'])->name('cliente.actividad');
 Route::get('/pagare/{id}', [ClienteController::class, 'pagare'])->name('cliente.pagare');
 Route::get('/declaracion/{id}', [ClienteController::class, 'declaracion'])->name('cliente.declaracion');
-Route::get('/conocimiento', [ClienteController::class, 'conocimiento'])->name('cliente.conocimiento');
+Route::get('/conocimiento/{id}', [ClienteController::class, 'conocimiento'])->name('cliente.conocimiento');
 Route::get('/cliente/socios_accionistas/{id}', [ClienteController::class, 'socios_accionistas'])->name('clientes.socios_accionistas');
 Route::get('/cliente/documentos_anexos/{id}', [ClienteController::class, 'documentos_anexos'])->name('clientes.documentos_anexos');
 
@@ -60,6 +60,7 @@ Route::post('/storeanexos/{id}', [DocumentosController::class,'storeanexos'])->n
 Route::post('/storedeclaracion/{id}', [ClienteController::class,'storedeclaracion'])->name('storedeclaracion');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/cliente/storepersonaE/{id}', [ClienteController::class, 'storepersonaE'])->name('clientes.storepersonaE');
+Route::post('/storecontactopn/{id}', [ClienteController::class,'storecontactopn'])->name('clientes.storecontactopn');
 
 
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');

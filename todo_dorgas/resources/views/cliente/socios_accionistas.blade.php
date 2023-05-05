@@ -139,15 +139,17 @@
                                     <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
                                 </div>
                                 <div class="btn_c">
-                                    <button class="btn btn-primary">DESCARGAR</button>
+                                    <a class="btn btn-primary" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">DESCARGAR</a>
                                 </div>
                             </div>
                             <div class="cont_all">
                                 <div class="img_cus">
-                                    <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
+                                    <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">    
                                 </div>
                                 <div class="btn_c">
-                                    <button class="btn btn-primary">CARGAR</button>
+                                    <a class="btn btn-primary" onclick="document.getElementById('document').click()">CARGAR</a>
+                                    <input type="file" id="document" name="document" style="display:none;">
+
                                 </div>
                             </div>
                         </div>
@@ -171,5 +173,13 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>const button = document.querySelector('#descarga');
+    button.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });</script>
 </body>
 </html>

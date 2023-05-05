@@ -39,7 +39,7 @@
                     </div>
                     <br><br>
 
-                    <button class="btn btn-primary mt-3" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">Descargar</button>
+                    <a class="btn btn-primary mt-3" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">Descargar</a>
                     <br>
                     <p class="text-primary" >Descarga formato de pagaré, por favor diligenciar y firmar.</p>
                     <br>
@@ -55,7 +55,8 @@
                     </div>
                     <br><br>
 
-                    <button class="btn btn-primary mt-3">Cargar</button>
+                    <a class="btn btn-primary mt-3" onclick="document.getElementById('document').click()">Cargar</a>
+                    <input type="file" id="document" name="document" style="display:none;">
 
                     <p class="text-primary">Cargar formato de pagaré,diligenciado y firmado, o documento de certificación.</p>
                     <br>
@@ -83,7 +84,16 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
-    <script src="{{ asset('js/descarga.js') }}"></script>
+    <script>
+    const button = document.querySelector('#descarga');
+        button.addEventListener('click', function() {
+            // Obtener el archivo PDF correspondiente
+            const filename = this.getAttribute('data-file');
+
+            // Descargar el archivo
+            window.location.href = '/descargar-pdf/' + filename;
+        });
+    </script>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

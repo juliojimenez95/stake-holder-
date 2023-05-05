@@ -35,15 +35,15 @@
 
 
                     <br> <br>
-                  <hr class="underline2"> 
+                  <hr class="underline2">
                 </div>
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('clientes.storepersonaE',$id) }}" method="POST">
+                            @csrf
                             <div class="row mb-6">
-
                                 <div class="col-md-6 col-sm-12">
                                     <label for="tipo_d" class="form-label"><strong>Seleccione tipo documento</strong></label>
                                     <select class="form-select" aria-label="Default select example" name="tipo_d">
@@ -112,7 +112,7 @@
                                 <button type="submit" class="btn btn-primary estilo_boton">continuar</button>
                             </div>
                             </center>
-                        
+
                         </form>
                     </div>
                 </div>

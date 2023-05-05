@@ -58,8 +58,8 @@ Route::post('/cliente/storeInformacionb/{id}', [ClienteController::class,'storeI
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/storeanexos/{id}', [DocumentosController::class,'storeanexos'])->name('storeanexos');
 Route::post('/storedeclaracion/{id}', [ClienteController::class,'storedeclaracion'])->name('storedeclaracion');
-
-Route::post('/cliente/storecontactopn/{id}', [ClienteController::class, 'storecontactopn'])->name('clientes.storecontactopn');
+Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
+Route::post('/cliente/storepersonaE/{id}', [ClienteController::class, 'storepersonaE'])->name('clientes.storepersonaE');
 
 
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');

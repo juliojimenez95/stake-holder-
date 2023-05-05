@@ -139,7 +139,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="actividad" class="form-label label_c"><strong>actividad que ofrece</strong></label>
+                                    <label for="actividad" class="form-label label_c"><strong>Actividad economica</strong></label>
                                     <select class="form-select select_c" aria-label="Default select example" name="actividad">
                                         <option value="{{old('actividad')}}">Seleccione una tipos...</option>
                                        @foreach ($actividades as $actividad)

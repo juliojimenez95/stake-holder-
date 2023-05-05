@@ -1,0 +1,17 @@
+.label_c {
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    font-size: 16px!important;
+}
+
+.select_c {
+    background-color:#EDF2F7!important;
+    color: grey!important;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 14px!important;
+    border: none!important;
+}
+
+.estilo_boton {
+    background-color: #004492!important;
+    border-color: #004492!important;
+}

@@ -2,6 +2,9 @@
     font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
     font-size: 16px!important;
 }
+.label_c span {
+    color: red;
+}
 
 .select_c {
     background-color:#EDF2F7!important;
@@ -15,15 +18,12 @@
     background-color: #004492!important;
     border-color: #004492!important;
 }
-.h2_cs {
-    font-family: 'Franklin Gothic Medium', arial;
-}
 
-.color-cs {
-    color: grey!important;
+.h3_tit {
     font-family: 'franklin-gothic-book-regular', sans-serif;
 }
-.color-cb {
-    color: #004492;
+
+
+.h2_tit{
     font-family: 'Franklin Gothic Medium', arial;
 }

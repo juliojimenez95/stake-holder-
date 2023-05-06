@@ -62,10 +62,8 @@ Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeac
 Route::post('/cliente/storepersonaE/{id}', [ClienteController::class, 'storepersonaE'])->name('clientes.storepersonaE');
 Route::post('/storecontactopn/{id}', [ClienteController::class,'storecontactopn'])->name('clientes.storecontactopn');
 
-
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');
 Route::get('/listarpaises', [ClienteController::class, 'listarpaises'])->name('listarpaises');
-
 
 Auth::routes();
 

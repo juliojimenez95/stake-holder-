@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="mb-3 cr_cus" >
-                            <button class="btn btn-primary btn_crear">Crear</button>
+                            <button class="btn btn-primary btn_crear">Adicionar socio o accionista</button>
                         </div>
                     </div>
                 </form>
@@ -160,7 +160,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        < href="{{ route('cliente.conocimiento',$id) }}">
+                        <a href="{{ route('cliente.conocimiento',$id) }}">
                         <button  class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                     </div>

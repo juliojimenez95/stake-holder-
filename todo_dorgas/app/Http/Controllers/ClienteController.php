@@ -127,10 +127,10 @@ class ClienteController extends Controller
         return view("cliente.identificacion");
     }
 
-    public function conocimiento()
+    public function conocimiento($id)
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
-        return view("cliente.conocimiento",["tipos"=>$tipos]);
+        return view("cliente.conocimiento",["tipos"=>$tipos,'id'=>$id]);
     }
 
     public function declaracion($id)
@@ -185,9 +185,9 @@ class ClienteController extends Controller
     {
         return view("cliente.informacion",['id'=>$id]);
     }
-    public function informaciont()
+    public function informaciont($id)
     {
-        return view("cliente.informacion_tributaria");
+        return view("cliente.informacion_tributaria",['id'=>$id]);
     }
 
     public function informacionf($id)

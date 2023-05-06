@@ -73,22 +73,22 @@
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad<span>*</span></label>
-                                <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Seleccione una opcion*</option>
+                                <select class="form-control select_custom" name="municipio" id="exampleFormControlSelect1">
+                                    <option value="">Medellin</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Departamento<span>*</span></label>
-                                <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Seleccione una opcion*</option>
+                                <select class="form-control select_custom" name="departamento" id="exampleFormControlSelect1">
+                                    <option value="">Antioquia</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">País<span>*</span></label>
-                                <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Seleccione una opcion*</option>
+                                <select class="form-control select_custom"  id="exampleFormControlSelect1">
+                                    <option value="">Colombia</option>
                                 </select>
                             </div>
 
@@ -145,21 +145,21 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad<span>*</span></label>
                                 <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Seleccione una opcion*</option>
+                                    <option value="">Medellin</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Departamento<span>*</span></label>
                                 <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Seleccione una opcion*</option>
+                                    <option value="">Antioquia*</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">País<span>*</span></label>
                                 <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Seleccione una opcion*</option>
+                                    <option value="">Colombia</option>
                                 </select>
                             </div>
                         </form>
@@ -169,7 +169,9 @@
         </div>
         <div class="mb-4">
             <div class="div_continuar">
+                <a href="{{ route('home') }}">
                 <button class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
     </div>
@@ -180,5 +182,6 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/principal.js') }}"></script>
 </body>
 </html>

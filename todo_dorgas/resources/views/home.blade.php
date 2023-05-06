@@ -106,7 +106,7 @@
                     <h2 class="txt_cus">INFORMACIÓN<span>*</span></h2>
                     <h2 class="txt_cus mb-3">PERSONAL</h2>
 
-                    <a href="{{ route('cliente.informacionb',Auth::user()->id) }}">
+                    <a href="{{ route('cliente.actividad',Auth::user()->id) }}">
                         <button class="btn btn-primary mt-3 btn_card">VISITAR</button>
                     </a>
                     <br><br>

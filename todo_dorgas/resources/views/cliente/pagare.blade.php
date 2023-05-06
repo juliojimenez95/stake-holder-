@@ -70,7 +70,9 @@
               <div class="col-12 text-center">
               <p >Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento pagaré,</p>
               <p >por favor cargar un documento que lo certifique y este firmado por el representante legal.</p>
+              <a href="{{ route('home') }}">
               <button class="btn btn-primary  ml-10" style="margin-left: 80%;">continuar</button>
+            </a>
               </div>
               </div>
             </center>

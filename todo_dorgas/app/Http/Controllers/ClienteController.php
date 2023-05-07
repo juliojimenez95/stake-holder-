@@ -222,8 +222,9 @@ class ClienteController extends Controller
 
     public function actividad($id)
     {
+        $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
         $actividades = actividad_economicaModel::get();
-      return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id]);
+      return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos]);
     }
     public function listarMunicipios()
     {

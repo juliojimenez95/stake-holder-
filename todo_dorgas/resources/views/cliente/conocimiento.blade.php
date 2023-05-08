@@ -13,6 +13,7 @@
             crossorigin="anonymous"></script>
     <!-- Agregar el enlace a la hoja de estilo del public -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/conocimiento.css') }}">
     <!-- Agregar el enlace a la hoja de estilo de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
@@ -28,13 +29,20 @@
         <div class="row d-flex ">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                   <strong> <p >Conocimiento</p></strong>
-                   <strong>  <p >intensificado personas</p> </strong>
-                   <strong>  <p >expuestas públicamente</p> </strong>
-                   <strong>  <p >o políticamente.</p> </strong>
-
-                    <br> <br>
+                   <p class="p_cvv">Conocimiento <br>
+                    intensificado personas <br>
+                    expuestas públicamente <br>
+                    o políticamente.</p>
                   <hr class="underline2">
+                  <p class="p_sm">¿Alguno de los administradores, socios, <br>
+                    accionistas, representantes legales, bróker <br>
+                    comercial o miembros de la junta directiva, <br>
+                    son personas expuestas políticamente o <br>
+                    públicamente?</p>
+                    <div class="div_rad">
+                        <span>Si</span><input type="radio"  class="span_one">
+                        <span>No</span><input type="radio">
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
@@ -42,11 +50,11 @@
                     <div class="card-body">
                         <form action="{{ route('clientes.storepersonaE',$id) }}" method="POST">
                             @csrf
-                            <div class="row mb-6">
+                            <div class="row mb-3">
                                 <div class="col-md-6 col-sm-12">
-                                    <label for="tipo_d" class="form-label"><strong>Seleccione tipo documento</strong></label>
-                                    <select class="form-select" aria-label="Default select example" name="tipo_d">
-                                        <option value="">Porfavor seleccione un tipo de documento...</option>
+                                    <label for="tipo_d" class="form-label lb_cus"><strong>Tipo de documento<span>*</span></strong></label>
+                                    <select class="form-control sl_cus" aria-label="Tipo de documento" name="tipo_d">
+                                        <option value="">Seleccione un tipo de documento...</option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                                         @endforeach
@@ -57,49 +65,49 @@
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <label for="n_docuemnto" class="form-label"><strong>Numero documento</strong></label>
-                                    <input type="n_docuemnto" class="form-control input_custom" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
+                                    <label for="n_docuemnto" class="form-label lb_cus"><strong>Número de documento<span>*</span></strong></label>
+                                    <input type="n_docuemnto" class="form-control input_custom sl_cus" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
                                         placeholder="Numero documento">
                                     @if ($errors->has('n_docuemnto'))
                                         <p class="text-danger">{{ $errors->first('n_docuemnto') }}</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb-12">
+                            <div class="row mb-3">
 
                                 <div class="col-md-12 col-sm-12">
-                                    <label for="Nombre" class="form-label"><strong>Nombres y apellidos</strong></label>
-                                    <input type="text" class="form-control input_custom" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
+                                    <label for="Nombre" class="form-label lb_cus"><strong>Nombres y Apellidos<span>*</span></strong></label>
+                                    <input type="text" class="form-control input_custom sl_cus" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
                                         placeholder=" Nombres y apellidos ">
                                     @if ($errors->has('Nombre'))
                                         <p class="text-danger">{{ $errors->first('Nombre') }}</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb-6">
+                            <div class="row mb-3">
 
                                 <div class="col-md-6 col-sm-12">
-                                    <label for="Vinculo" class="form-label"><strong>Vinculo/Relación</strong></label>
-                                    <input type="text" class="form-control " id="Vinculo" name="Vinculo" value="{{old('Vinculo')}}"
+                                    <label for="Vinculo" class="form-label lb_cus"><strong>Vinculo/Relación<span>*</span></strong></label>
+                                    <input type="text" class="form-control sl_cus" id="Vinculo" name="Vinculo" value="{{old('Vinculo')}}"
                                         placeholder=" Vinculo ">
                                     @if ($errors->has('Vinculo'))
                                         <p class="text-danger">{{ $errors->first('Vinculo') }}</p>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <label for="Cargo" class="form-label"><strong>Cargo</strong></label>
-                                    <input type="Cargo" class="form-control " id="Cargo" name="Cargo" value="{{old('Cargo')}}"
+                                    <label for="Cargo" class="form-label lb_cus"><strong>Cargo<span>*</span></strong></label>
+                                    <input type="Cargo" class="form-control sl_cus" id="Cargo" name="Cargo" value="{{old('Cargo')}}"
                                         placeholder="Cargo">
                                     @if ($errors->has('Cargo'))
                                         <p class="text-danger">{{ $errors->first('Cargo') }}</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb-6">
+                            <div class="row mb-5">
 
                                 <div class="col-md-6 col-sm-12">
-                                    <label for="Nacionalidad" class="form-label"><strong>Nacionalidad </strong></label>
-                                    <input type="text" class="form-control input_custom" id="Nacionalidad" name="Nacionalidad" value="{{old('Nacionalidad')}}"
+                                    <label for="Nacionalidad" class="form-label lb_cus"><strong>Nacionalidad<span>*</span></strong></label>
+                                    <input type="text" class="form-control input_custom sl_cus" id="Nacionalidad" name="Nacionalidad" value="{{old('Nacionalidad')}}"
                                         placeholder=" Nacionalidad ">
                                     @if ($errors->has('Nacionalidad'))
                                         <p class="text-danger">{{ $errors->first('Nacionalidad') }}</p>
@@ -108,7 +116,7 @@
                             </div>
                             <center style="margin-top:10px">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">continuar</button>
+                                <button type="submit" class="btn btn-primary estilo_boton">CONTINUAR</button>
                             </div>
                             </center>
 

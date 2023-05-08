@@ -89,7 +89,7 @@
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Departamento<span>*</span></label>
-                                <select  class="form-select select_custom" aria-label="Default select example" id="departamento" name="departamento">
+                                <select  class="form-control select_custom" aria-label="Default select example" id="departamento" name="departamento">
                                     <option  value="{{old('departamento')}}">Seleccione una departamento...</option>
 
                                     </select>
@@ -149,15 +149,6 @@
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-<<<<<<< HEAD
-                                <label for="" class="label_custom">Número de cuenta</label>
-                                <input type="text" class="form-control input_custom">
-                            </div>
-
-                            <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad</label>
-                                <select class="form-control select_custom" id="exampleFormControlSelect1">
-=======
                                 <label for="" class="label_custom">Número de cuenta<span>*</span></label>
                                 <input type="text" class="form-control input_custom"name="n_cuenta2">
                             </div>
@@ -165,34 +156,21 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad<span>*</span></label>
                                 <select class="form-control select_custom" name="municipio2" id="municipio2">
->>>>>>> a76ae491bfab1ea034dd9ef5e2737c83b1846fa8
                                     <option value="">Medellin</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-<<<<<<< HEAD
-                                <label for="" class="label_custom">Departamento</label>
-                                <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Antioquia</option>
-=======
                                 <label for="" class="label_custom">Departamento<span>*</span></label>
                                 <select class="form-control select_custom" id="departamento2" name="departamento2">
-                                    <option value="">Antioquia*</option>
->>>>>>> a76ae491bfab1ea034dd9ef5e2737c83b1846fa8
+                                    <option value="">Antioquia</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-<<<<<<< HEAD
-                                <label for="" class="label_custom">País</label>
-                                <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Colombia</option>
-=======
                                 <label for="" class="label_custom">País<span>*</span></label>
                                 <select class="form-control select_custom" name="pais2" id="pais2">
                                     <option value="Colombia">Colombia</option>
->>>>>>> a76ae491bfab1ea034dd9ef5e2737c83b1846fa8
                                 </select>
                             </div>
 

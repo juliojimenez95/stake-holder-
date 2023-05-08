@@ -79,56 +79,47 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="div_in_on mb-3">
-                            <div class="col-4">
-                              <p class="">Ingresos</p>
-                            </div>
-                            <div class="col-8">
-                                <input type="text" class="form-control col-12" id="ingresos" name="Ingresos">
-                                @if ($errors->has('Ingresos'))
-                                   <p class="text-danger">{{ $errors->first('Ingresos') }}</p>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="div_in_on mb-3">
-                            <div class="col-4">
-                              <p class="">Egresos</p>
-                            </div>
-                            <div class="col-8">
-                                <input type="text" class="form-control col-12" id="egresos" name="Egresos">
-                                @if ($errors->has('Ingresos'))
-                                   <p class="text-danger">{{ $errors->first('Egresos') }}</p>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="div_in_on mb-3">
-                            <div class="col-4">
-                              <p class="">Personal vinculado</p>
-                            </div>
-                            <div class="col-8">
-                                <input type="text" class="form-control col-12" id="vinculado" name="Vinculado">
-                                @if ($errors->has('Vinculado'))
-                                   <p class="text-danger">{{ $errors->first('Vinculado') }}</p>
-                                @endif
-                            </div>
-                        </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="div_in">
                             <p>Respuesta<span>*</span></p>
-                            <div class="div_in_on">
-                                <div class="col-12" >
-                                    <input type="text" class="form-control col-12 text-center" id="IngresosTotales" name="IngresosTotales">
-                                    @if ($errors->has('IngresosTotales'))
-                                      <p class="text-danger">{{ $errors->first('IngresosTotales') }}</p>
-                                    @endif
-                                  </div>
+                            <div class="div_in_on mb-3">
+                                <div class="col-4">
+                                  <p class="">Ingresos</p>
                                 </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control col-12" id="ingresos" name="Ingresos">
+                                    @if ($errors->has('Ingresos'))
+                                       <p class="text-danger">{{ $errors->first('Ingresos') }}</p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="div_in_on mb-3">
+                                <div class="col-4">
+                                  <p class="">Egresos</p>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control col-12" id="egresos" name="Egresos">
+                                    @if ($errors->has('Ingresos'))
+                                       <p class="text-danger">{{ $errors->first('Egresos') }}</p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="div_in_on mb-3">
+                                <div class="col-4">
+                                  <p class="">Personal vinculado</p>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control col-12" id="vinculado" name="Vinculado">
+                                    @if ($errors->has('Vinculado'))
+                                       <p class="text-danger">{{ $errors->first('Vinculado') }}</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

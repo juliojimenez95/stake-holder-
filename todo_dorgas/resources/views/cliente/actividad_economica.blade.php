@@ -23,37 +23,6 @@
             </div>
         </div>
         </div>
-
-        <div class="row d-flex ">
-                <div class="col-12 col-lg-6 " style="background-color: #004492; height: 300px; color: white;">
-                    <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                        <strong> <h2 class="persona h2_cs">Actividad</h2></strong>
-                        <strong>  <h2 class="natural h2_cs">Economica</h2> </strong> <br> <br>
-                        <hr class="underline2">
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 " style="background-color: #007bff; height: 300px; color: white;">
-                    <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                <form action="" method="post">
-                    <div class="col-md-6 col-sm-12">
-                            <label for="actividad_economica" class="form-label label_c"><strong>Seleccione su Código CIIU:</strong></label>
-                            <select class="form-control" aria-label="Default select example select_c" name="actividad_economica">
-                                <option value="{{old('actividad_economica')}}">Seleccione una tipos...</option>
-                               @foreach ($actividades as $actividad)
-                                   <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
-                               @endforeach
-                           </select>
-                    </div>
-                    <center style="margin-top:10px">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">Continuar</button>
-                            </div>
-                    </center>
-                </form>
-             </div>
-            </div>
-        </div>
-
     <div class="row">
       <div class="col-md-12">
         <div class="card formulario2 bg-light mt-4">

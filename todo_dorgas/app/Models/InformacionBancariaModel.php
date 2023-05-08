@@ -18,6 +18,12 @@ class InformacionBancariaModel extends Model
         'Ciudad' ,
         'Departamento' ,
         'Pais' ,
-        'Cliente_id'
+        'Banco2' ,
+        'TipoCuenta2' ,
+        'Cuenta2' ,
+        'Ciudad2' ,
+        'Departamento2' ,
+        'Pais2' ,
+        'user_id'
     ];
 }

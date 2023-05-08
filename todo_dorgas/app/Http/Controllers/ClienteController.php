@@ -112,6 +112,7 @@ class ClienteController extends Controller
 
 
             return redirect('/declaracion/'.$id);
+
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -173,7 +174,7 @@ class ClienteController extends Controller
             }
 
 
-            return back();
+            return redirect('/home');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -196,7 +197,7 @@ class ClienteController extends Controller
         return view("cliente.informacion_financiera",['id'=>$id]);
     }
 
-    public function informacionb()
+    public function informacionb($id)
     {
         $bancos=["BANCO DE BOGOTA","BANCO DE POPULAR","BANCO DE ITAU","BANCOLOMBIA","CITIBANK",
         "BANCO GNB SUDAMERIS","BANCO BBVA COLOMBIA S.A.","SCOTIABANK COLPATRIA","BANCO DE OCCIDENTE",
@@ -207,7 +208,7 @@ class ClienteController extends Controller
         "CONFIAR COOPERATIVA FINANCIERA","BANCO UNION antes GIROS","COLTEFINANCIERA","NEQUI","DAVIPLATA",
         "BANCO CREDIFINANCIERA","IRIS","MOVII S.A."];
         $cuentas=["AHORROS","CORRIENTE"];
-        return view("cliente.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas]);
+        return view("cliente.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas,'id'=>$id]);
     }
 
     public function pagare($id)
@@ -756,34 +757,37 @@ class ClienteController extends Controller
 
            $request->validate(
             [
-                'email'=>'required|email',
-                'Activo'=>'required',
-                'Pasivo'=>'required',
-                'Patrimonio'=>'required',
-                'IngresosTotales'=>'required',
-                'CantidadPersonas'=>'required' ,
+                'banco'=>'required',
+                'cuenta'=>'required',
+                'n_cuenta'=>'required',
+                'municipio'=>'required',
+                'departamento'=>'required',
             ],
             [
-                'email.required' => 'El correo es requerido',
-                'email.email' => 'El correo debe ser real ej. example@example.com',
-                'Activo.required' => 'El activo es requerido',
-                'Pasivo.required' => 'El pasivo es requerido',
-                'Patrimonio.required' => 'El patrimonio es requerido',
-                'IngresosTotales.required' => 'Los ingresos totales son requeridos',
-                'CantidadPersonas.required' => 'Cantidad de personas es requerido',
+                'banco.required' => 'El banco es requerido',
+                'cuenta.required' => 'La cuenta es requerida',
+                'n_cuenta.required' => 'Numero de cuenta es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'departamento.required' => 'El departamento requerido',
 
             ]
             );
            try {
                 $Informacionb = new InformacionBancariaModel();
 
-                $Informacionb->Banco = $request->Banco;
-                $Informacionb->TipoCuenta = $request->TipoCuenta;
-                $Informacionb->Cuenta = $request->Cuenta;
-                $Informacionb->Ciudad = $request->Ciudad;
-                $Informacionb->Departamento = $request->grupo5;
-                $Informacionb->Pais = $request->estampillas;
-                $Informacionb->Cliente_id = $id;
+                $Informacionb->Banco = $request->banco;
+                $Informacionb->TipoCuenta = $request->cuenta;
+                $Informacionb->Cuenta = $request->n_cuenta;
+                $Informacionb->Ciudad = $request->municipio;
+                $Informacionb->Departamento = $request->departamento;
+                $Informacionb->Pais = $request->pais;
+                $Informacionb->Banco2 = $request->banco2." ";
+                $Informacionb->TipoCuenta2 = $request->cuenta2." ";
+                $Informacionb->Cuenta2 = $request->n_cuenta2." ";
+                $Informacionb->Ciudad2 = $request->municipio2." ";
+                $Informacionb->Departamento2 = $request->departamento2." ";
+                $Informacionb->Pais2 = $request->pais2." ";
+                $Informacionb->user_id = $id;
 
             if ($Informacionb->save()) {
 

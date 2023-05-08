@@ -1,0 +1,35 @@
+.h1_tit {
+    color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.span_c {
+    color: grey;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+}
+.span_c span {
+    color: red;
+}
+
+.lb_c {
+    color: #004492;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 1.2rem;
+}
+.p_litt {
+    color: grey;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+.input_cus {
+    background-color: #E2E8F0;
+    border-color: #E2E8F0;
+    color: grey!important;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-size: 1rem;
+}
+
+.estilo_boton_cus{
+    background-color: #004492!important;
+    border-color: #004492!important;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+}

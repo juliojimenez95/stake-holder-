@@ -7,6 +7,12 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/pagare.css') }}">
+
+  <!--fuentes-->
+  <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
+  <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
+  <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLW1lZGl1bS1jb25kLXJlZ3VsYXImZGF0YS8zMi9mLzE1NDEzMC9GcmFua2xpbiBHb3RoaWMgTWVkaXVtIENvbmQgUmVndWxhci50dGY" rel="stylesheet" type="text/css"/>
 </head>
 <body>
   <div class="container-fluid">
@@ -14,7 +20,7 @@
       <div class="col-md-12">
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
-          <h1 class="text-primary">Pagare</h1>
+          <h1 class="text-primary h1_tit">Pagaré</h1>
           <hr class="underline">
         </div>
       </div>
@@ -23,25 +29,31 @@
       <div class="col-md-12">
         <div class="card text-center bg-light mt-4">
           <div class="card-body">
+                <center>
+                <div class="row">
+                  <div class="col-12 text-center">
+                  <p class="p_tx">Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento pagaré,</p>
+                  <p class="p_tx">por favor cargar un documento que lo certifique y este firmado por el representante legal.</p>
+                  </div>
+                  </div>
+                </center>
             <div class="row">
             <div class="col-md-3">
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
-
                   </div>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3">
+                  <div class="card-body body_cus">
+                    <div class="img_cusx">
                       <img src="{{ asset('images/Descargar-PDF.png') }}" class="image-clas2" alt="">
                     </div>
                     <br><br>
-
-                    <a class="btn btn-primary mt-3" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">Descargar</a>
+                    <a class="btn btn-primary mt-3 a_cus" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">DESCARGAR</a><span>*</span>
                     <br>
-                    <p class="text-primary" >Descarga formato de pagaré, por favor diligenciar y firmar.</p>
+                    <p class="text-primary p_cv">Descarga formato de pagaré, por favor diligenciar y firmar.</p>
                     <br>
                   </div>
                 </div>
@@ -49,33 +61,31 @@
 
               <div class="col-md-3">
                 <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3">
+                  <div class="card-body body_cus">
+                    <div class="img_cusx">
                       <img src="{{ asset('images/Subir-PDF.png') }}" class="image-clas2" alt="">
                     </div>
                     <br><br>
 
-                    <a class="btn btn-primary mt-3" onclick="document.getElementById('document').click()">Cargar</a>
+                    <a class="btn btn-primary mt-3 a_cus" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
                     <input type="file" id="document" name="document" style="display:none;">
 
-                    <p class="text-primary">Cargar formato de pagaré,diligenciado y firmado, o documento de certificación.</p>
+                    <p class="text-primary p_cv">Cargar formato de pagaré,diligenciado y firmado, o documento de certificación.</p>
                     <br>
                   </div>
                 </div>
               </div>
             </div>
-
             <center>
-            <div class="row">
-              <div class="col-12 text-center">
-              <p >Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento pagaré,</p>
-              <p >por favor cargar un documento que lo certifique y este firmado por el representante legal.</p>
-              <a href="{{ route('home') }}">
-              <button class="btn btn-primary  ml-10" style="margin-left: 80%;">continuar</button>
-            </a>
-              </div>
-              </div>
-            </center>
+                <div class="row">
+                  <div class="col-12 text-center">
+                  <a href="{{ route('home') }}">
+                  <button class="btn btn-primary  ml-10 btn_cx" style="margin-left: 80%;">CONTINUAR</button>
+                </a>
+                  </div>
+                  </div>
+                </center>
+
           </div>
         </div>
       </div>

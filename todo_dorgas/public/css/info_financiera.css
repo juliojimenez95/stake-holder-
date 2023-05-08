@@ -1,0 +1,32 @@
+.div_p p {
+    color: #004492;
+    font-size: 1rem;
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+
+.h1_t {
+    color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.div_in_on {
+    display: flex;
+}
+
+.div_in p span {
+    color: red;
+}
+
+.div_in p {
+    padding-left: 15px;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.estilo_boton {
+    background-color: #004492!important;
+    border-color: #004492!important;
+}
+

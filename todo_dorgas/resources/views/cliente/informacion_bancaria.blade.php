@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/bancaria.css') }}">
 
-  <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
-  <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
-  <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLW1lZGl1bS1jb25kLXJlZ3VsYXImZGF0YS8zMi9mLzE1NDEzMC9GcmFua2xpbiBHb3RoaWMgTWVkaXVtIENvbmQgUmVndWxhci50dGY" rel="stylesheet" type="text/css"/>
+    <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
+    <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
+    <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLW1lZGl1bS1jb25kLXJlZ3VsYXImZGF0YS8zMi9mLzE1NDEzMC9GcmFua2xpbiBHb3RoaWMgTWVkaXVtIENvbmQgUmVndWxhci50dGY" rel="stylesheet" type="text/css"/>
 </head>
 <body>
   <div class="container-fluid">
@@ -37,7 +37,7 @@
                         <div>
                             <p class="title-ent">Nombre de la Entidad Bancaria<span>*</span></p>
                             <div class="div-filled">
-                                    <select class="form-select select_cus_b" aria-label="Seleccione un banco" name="banco" size="36" multiple>
+                                    <select class="form-control select_cus_b" aria-label="Seleccione un banco" name="banco">
                                         <!--<option value="">Porfavor seleccione un banco</option>-->
                                         @foreach ($bancos as $banco)
                                             <option value="{{ $banco }}">{{ $banco }}</option>
@@ -106,7 +106,7 @@
                             <p class="title-ent">Nombre de la Entidad Bancaria</p>
                             <div class="div-filled">
                                 <div>
-                                    <select class="form-select select_cus_b" aria-label="Seleccione un banco" name="banco2" multiple size="32">
+                                    <select class="form-control select_cus_b" aria-label="Seleccione un banco" name="banco2">
                                         <!--<option value="">Porfavor seleccione un banco</option>-->
                                         @foreach ($bancos as $banco)
                                             <option value="{{ $banco }}">{{ $banco }}</option>
@@ -138,26 +138,26 @@
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Número de cuenta<span>*</span></label>
+                                <label for="" class="label_custom">Número de cuenta</label>
                                 <input type="text" class="form-control input_custom">
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad<span>*</span></label>
+                                <label for="" class="label_custom">Ciudad</label>
                                 <select class="form-control select_custom" id="exampleFormControlSelect1">
                                     <option value="">Medellin</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Departamento<span>*</span></label>
+                                <label for="" class="label_custom">Departamento</label>
                                 <select class="form-control select_custom" id="exampleFormControlSelect1">
-                                    <option value="">Antioquia*</option>
+                                    <option value="">Antioquia</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">País<span>*</span></label>
+                                <label for="" class="label_custom">País</label>
                                 <select class="form-control select_custom" id="exampleFormControlSelect1">
                                     <option value="">Colombia</option>
                                 </select>

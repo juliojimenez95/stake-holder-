@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DocumentosController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\AdminController;
+
 
 
 
@@ -62,6 +64,10 @@ Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeac
 Route::post('/cliente/storepersonaE/{id}', [ClienteController::class, 'storepersonaE'])->name('clientes.storepersonaE');
 Route::post('/storecontactopn/{id}', [ClienteController::class,'storecontactopn'])->name('clientes.storecontactopn');
 
+//admin
+Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
+
+//routas para alimentar municipios 
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');
 Route::get('/listarpaises', [ClienteController::class, 'listarpaises'])->name('listarpaises');
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\InformacionTributariaModel;
+use App\Models\InformacionFinancieraModel;
+use App\Models\InformacionBancariaModel;
 
 
 class AdminController extends Controller
@@ -18,6 +21,41 @@ class AdminController extends Controller
         $usuarios = User::all();
         return view("admin.index_user",['usuarios'=>$usuarios]);
     }
+
+    public function Informacionf($id)
+    {
+        $informacionf = InformacionFinancieraModel::where('user_id',$id)->first()->get();
+        return  response()->json([
+            'informacionf'=>$informacionf,
+        ]);
+    }
+
+    public function Informacionb(Request $request)
+    {
+        $informacionb = InformacionBancariaModel::where('user_id',$request->id)->first()->get();
+        return  response()->json([
+            'informacionb'=>$informacionb,
+        ]);
+    }
+
+    public function Informaciont(Request $request)
+    {
+        $informaciont = InformacionTributariaModel::where('Cliente_id',$request->id)->first();
+        return  response()->json([
+            'informaciont'=>$informaciont,
+        ]);
+    }
+
+
+    public function Informacionuser($id)
+    {
+        $user = User::where('id',$id)->first()->get();
+
+        return  response()->json([
+            'user'=>$user,
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

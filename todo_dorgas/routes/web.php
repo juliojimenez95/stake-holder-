@@ -66,8 +66,10 @@ Route::post('/storecontactopn/{id}', [ClienteController::class,'storecontactopn'
 
 //admin
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
+Route::post('/admin/Informaciont', [AdminController::class, 'Informaciont'])->name('admin.Informaciont');
 
-//routas para alimentar municipios 
+
+//routas para alimentar municipios
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');
 Route::get('/listarpaises', [ClienteController::class, 'listarpaises'])->name('listarpaises');
 

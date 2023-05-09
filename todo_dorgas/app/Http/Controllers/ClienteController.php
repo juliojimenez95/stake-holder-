@@ -111,7 +111,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('/declaracion/'.$id);
+            return redirect('/cliente/documentos_anexos/'.$id);
 
             } catch (\Throwable $th) {
                 throw $th;
@@ -716,16 +716,18 @@ class ClienteController extends Controller
                 'Activo'=>'required',
                 'Pasivo'=>'required',
                 'Patrimonio'=>'required',
-                'IngresosTotales'=>'required',
-                'CantidadPersonas'=>'required' ,
+                'Ingresos'=>'required',
+                'Egresos'=>'required',
+                'Vinculado'=>'required' ,
             ],
             [
 
                 'Activo.required' => 'El activo es requerido',
                 'Pasivo.required' => 'El pasivo es requerido',
                 'Patrimonio.required' => 'El patrimonio es requerido',
-                'IngresosTotales.required' => 'Los ingresos totales son requeridos',
-                'CantidadPersonas.required' => 'Cantidad de personas es requerido',
+                'Ingresos.required' => 'Los ingresos totales son requeridos',
+                'Egresos.required' => 'Los ingresos totales son requeridos',
+                'Vinculado.required' => 'Cantidad de personas es requerido',
 
             ]
             );
@@ -735,15 +737,14 @@ class ClienteController extends Controller
                 $Informacionf->Activo = $request->Activo;
                 $Informacionf->Pasivo = $request->Pasivo;
                 $Informacionf->Patrimonio = $request->Patrimonio;
-                $Informacionf->IngresosTotales = $request->IngresosTotales;
-                $Informacionf->CantidadPersonas = $request->CantidadPersonas;
-                $Informacionf->Cliente_id = $id;
+                $Informacionf->IngresosTotales = $request->Ingresos;
+                $Informacionf->EgresosTotales = $request->Egresos;
+                $Informacionf->CantidadPersonas = $request->Vinculado;
+                $Informacionf->user_id = $id;
 
             if ($Informacionf->save()) {
 
             }
-
-
             return redirect('/home');
 
             //return redirect('/actividad/');

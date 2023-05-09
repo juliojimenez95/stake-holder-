@@ -34,7 +34,7 @@
                     <div class="div_inside">
                         <p class="div_p">Cámara y Comercio<span>*</span></p>
                         <div class="div_img">
-                          <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
+                          <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
                           <input type="file" id="camara_comercio" name="camara_comercio" style="display:none;">
                         </div>
                       </div>

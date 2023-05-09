@@ -16,7 +16,8 @@ class InformacionFinancieraModel extends Model
         'Pasivo',
         'Patrimonio',
         'IngresosTotales',
+        'EgresosTotales',
         'CantidadPersonas' ,
-        'Cliente_id'
+        'user_id'
     ];
 }

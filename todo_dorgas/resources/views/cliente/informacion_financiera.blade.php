@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="col-8">
                                     <input type="text" class="form-control col-12" id="egresos" name="Egresos">
-                                    @if ($errors->has('Ingresos'))
+                                    @if ($errors->has('Egresos'))
                                        <p class="text-danger">{{ $errors->first('Egresos') }}</p>
                                     @endif
                                 </div>

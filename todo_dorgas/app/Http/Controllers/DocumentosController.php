@@ -141,7 +141,7 @@ class DocumentosController extends Controller
                 $Anexo->user_id = $id;
 
             if ($Anexo->save()) {
-                return redirect('/conocimiento');
+                return redirect('/declaracion/'.$id);
 
             }else{
 

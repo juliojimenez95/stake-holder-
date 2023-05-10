@@ -7,6 +7,14 @@
     margin-bottom: 20px;
   }
 
+  .underline_cus {
+    border-bottom: 2px solid #007bff;
+    width: 150px!important;
+    margin: 0 auto;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+
 
   /* Estilos para el parrafo */
   .text-primary {

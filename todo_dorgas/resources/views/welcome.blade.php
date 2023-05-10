@@ -23,8 +23,9 @@
         <div class="abs_cont">
           <div class="div_fa">
             <div class="img_fa">
-              <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-users"></i>
             </div>
+            <p class="p_img_c">Admin</p>
           </div>
 
           <div class="div_father">
@@ -39,7 +40,7 @@
           <div class="div_select">
             <select id="mySelect" multiple size="4">
               <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
-              <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de información</option>
+              <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
               <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Politicas SAGRILAFT</option>
               <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Código de Ética y Buen Gobierno</option>
             </select>
@@ -49,20 +50,23 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}"   class=" my-4 img-fluid">
           <h1 class="text-primary h1_cus">Bienvenido</h1>
-          <hr class="underline"><p class="text-primary p_cus">Ingresar al sistema</p>
+          <hr class="underline_cus"><p class="text-primary p_cus">Ingresar</p>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-md-5 mx-auto">
         <div class="cont_login">
-          <div class="img_fa mb-4">
-            <i class="fa-solid fa-user"></i>
-          </div>
+            <div class="mb-4">
+                <div class="img_fa">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <p class="p_img">Usuario</p>
+            </div>
           <div class="con_input">
             <form method="POST" action="{{ route('login') }}" >
                 @csrf
-              <input type="text" placeholder="email" name="email"  class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+              <input type="text" placeholder="Usuario/Email" name="email"  class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
               @error('email')
                  <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -74,20 +78,24 @@
                         <strong>{{ $message }}</strong>
                  </span>
                 @enderror
+                <div class=" mb-3">
+                    <div class="">
+                        <div class="">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                            <label class="form-check-label" for="remember">
+                                {{ __('Recordar contraseña') }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
               <button class="btn btn-primary bt_cus mb-5">Ingresar</button>
             </form>
-            <a href="{{ route('password.request') }}">
-            <span>¿Olvido su contraseña?</span> </a><br>
-            <span>¿No tiene cuenta? <a href="{{route('cliente.registrarse')}}">Registrarse</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text_link">
-          <a href="">Stakeholders.tododrogas.com.co</a>
+            <a href="{{ route('password.request') }}">
+            <span>¿Olvidó su contraseña?</span> </a><br>
+            <span>¿No tiene cuenta? <a href="{{route('cliente.registrarse')}}"><strong>Registrarse</strong></a></span>
+          </div>
         </div>
       </div>
     </div>

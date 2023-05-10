@@ -7,15 +7,15 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/provedor.css') }}">
 </head>
 <body>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-md-12">
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}"   class=" my-4 img-fluid">
-          <h1 class="text-primary">Identificación del proveedor</h1>
-          <hr class="underline">
+          <h1 class="text-primary h1_ttt">Identificación del proveedor</h1>
         </div>
       </div>
     </div>

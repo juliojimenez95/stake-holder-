@@ -24,3 +24,9 @@
     background-color: #004492!important;
     border-color: #004492!important;
 }
+
+.persona_c, .natural_c{
+    font-size: 70px;
+    font-weight:bolder;
+    line-height: 45px;
+}

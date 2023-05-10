@@ -35,3 +35,14 @@ span {
     border-color: #004492;
     font-family: 'franklin-gothic-book-regular', sans-serif;
 }
+
+.p_img {
+    color: #004492;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.p_img_c {
+    color: #004492;
+    font-family: 'Franklin Gothic Medium', arial;
+    margin-right: 20px;
+}

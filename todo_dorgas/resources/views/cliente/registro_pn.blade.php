@@ -36,8 +36,8 @@
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
                     <h3 class="datos h3_tit">Datos Generales</h3>
-                   <strong> <h2 class=" my-3 persona h2_tit">Persona</h2></strong>
-                   <strong>  <h2 class=" natural h2_tit">Natural</h2> </strong> <br> <br>
+                   <strong> <h2 class=" my-3 persona_c h2_tit">Persona</h2></strong>
+                   <strong>  <h2 class=" natural_c h2_tit">Natural</h2> </strong> <br> <br>
                   <hr class="underline2">
                 </div>
             </div>
@@ -81,7 +81,7 @@
                             <div class="row mb-12 mb-3">
 
                                 <div class="col-md-12 col-sm-12">
-                                    <label for="Nombre" class="form-label label_c"><strong>Nombre </strong></label>
+                                    <label for="Nombre" class="form-label label_c"><strong>Nombres y Apellidos </strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
                                         placeholder=" Nombre ">
                                     @if ($errors->has('Nombre'))
@@ -94,7 +94,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento</strong></label>
                                         <select  class="form-select select_c" aria-label="Default select example" id="departamento" name="departamento">
-                                        <option  value="{{old('departamento')}}">Seleccione una departamento...</option>
+                                        <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
 
                                         </select>
                                         @if ($errors->has('departamento'))
@@ -104,7 +104,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio</strong></label>
                                     <select class="form-select select_c" aria-label="Default select example" id="municipio" name="municipio">
-                                        <option value="{{old('municipio')}}">Seleccione una municipio...</option>
+                                        <option value="{{old('municipio')}}">Seleccione un municipio...</option>
 
                                     </select>
                                     @if ($errors->has('municipio'))
@@ -114,7 +114,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="Telefono" class="form-label label_c"><strong>Teléfono</strong></label>
                                     <input type="text" class="form-control select_c" id="Telefono" name="Telefono" value="{{old('Telefono')}}"
-                                        placeholder="Telefono">
+                                        placeholder="Teléfono">
                                     @if ($errors->has('Telefono'))
                                         <p class="text-danger">{{ $errors->first('Telefono') }}</p>
                                     @endif
@@ -125,7 +125,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="direccion" class="form-label label_c"><strong>Dirección </strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="direccion" name="direccion" value="{{old('direccion')}}"
-                                        placeholder=" Direccion ">
+                                        placeholder="Dirección">
                                     @if ($errors->has('direccion'))
                                         <p class="text-danger">{{ $errors->first('direccion') }}</p>
                                     @endif

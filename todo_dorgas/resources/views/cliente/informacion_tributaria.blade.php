@@ -37,7 +37,7 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col">
-                          <span class="mr-2 span_c">Responsable impuesto a la venta-IVA<span>*</span></span>
+                          <span class="mr-2 span_c">¿Es usted responsable del impuesto a la venta I.V.A.? <span>*</span></span>
                         </div>
 
                         <label class="mr-2 lb_c" >Si <input type="radio" name="grupo1" value="Si"></label>
@@ -50,7 +50,7 @@
                     <div class="form-group">
                       <div class="row">
                           <div class="col">
-                            <span class="mr-2 span_c">Sujeto a Retención<span>*</span></span>
+                            <span class="mr-2 span_c">¿Está usted sujeto a retención?<span>*</span></span>
                           </div>
 
                           <label class="mr-2 lb_c" >Si <input type="radio" name="grupo2" value="Si"></label>
@@ -62,7 +62,7 @@
                     <div class="form-group">
                       <div class="row">
                             <div class="col">
-                              <span class="mr-2 span_c">Obligado a Declarar Renta<span>*</span></span>
+                              <span class="mr-2 span_c">¿Está usted obligado a Declarar Renta?<span>*</span></span>
                             </div>
 
                             <label class="mr-2 lb_c" >Si <input type="radio" name="grupo3" value="Si"></label>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                       <div class="row">
                               <div class="col">
-                                <span class="mr-2 span_c">RST Régimen Simple de tributación<span>*</span></span>
+                                <span class="mr-2 span_c">¿Es usted R.S.T. Régimen Simple de Tributación?<span>*</span></span>
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo4" value="Si"></label>
@@ -86,7 +86,7 @@
                     <div class="form-group">
                       <div class="row">
                               <div class="col">
-                                <span class="mr-2 span_c">¿Aplica estampillas?<span>*</span></span>
+                                <span class="mr-2 span_c">¿Usted aplica estampillas?<span>*</span></span>
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo5" value="Si"></label>
@@ -101,8 +101,8 @@
                    <div class="form-group">
                       <div class="row">
                               <div class="col">
-                                <span class="mr-2 span_c">Gran Contribuyente<span>*</span></span>
-                                <p class="small-text p_litt">En caso afirmativo N° Resolución de Gran Contribuyente</p>
+                                <span class="mr-2 span_c">¿Es usted Gran Contribuyente?<span>*</span></span>
+                                <p class="small-text p_litt">En caso de ser afirmativo indique el N° de Resolución de Gran Contribuyente</p>
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo6" value="Si"></label>
@@ -114,8 +114,8 @@
                     <div class="form-group">
                       <div class="row">
                               <div class="col">
-                                <span class="mr-2 span_c">Autorretenedor en la Fuente<span>*</span></span>
-                                <p class="small-text p_litt">En caso afirmativo N° Resolución de Autorretenedor en la fuente</p>
+                                <span class="mr-2 span_c">¿Es usted Autorretenedor en la Fuente?<span>*</span></span>
+                                <p class="small-text p_litt">En caso afirmativo indique el N° de Resolución de Autorretenedor en la Fuente.</p>
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo7" value="Si"></label>
@@ -127,8 +127,8 @@
                     <div class="form-group">
                       <div class="row">
                               <div class="col">
-                                <span class="mr-2 span_c">Autorretenedor ICA<span>*</span></span>
-                                <p class="small-text p_litt">En caso afirmativo N° Resolución de Autorretenedor en la fuente</p>
+                                <span class="mr-2 span_c">¿Es usted Autorretenedor de ICA?<span>*</span></span>
+                                <p class="small-text p_litt">En caso afirmativo indique el N° Resolución de Autorretenedor de ICA.</p>
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo8" value="Si"></label>
@@ -143,13 +143,13 @@
 
                   <div class="col-md-6">
                       <div class="form-group">
-                          <label for="campo5" class="span_c">¿Cuáles son las estampillas?<span>*</span></label>
+                          <label for="campo5" class="span_c">¿Cuáles estampillas aplica?<span>*</span></label>
                           <input type="text" class="form-control input_cus" id="estampillas" name="estampillas">
                         </div>
                   </div>
                   <div class="col-md-6">
                       <div class="form-group">
-                          <label for="email" class="span_c">Correo de recepción de Factura Electrónica<span>*</span></label>
+                          <label for="email" class="span_c">¿Cuál es el correo de recepción para Factura Electrónica?<span>*</span></label>
                           <input type="text" class="form-control input_cus" id="email" name="email">
                           @if ($errors->has('email'))
                               <p class="text-danger">{{ $errors->first('email') }}</p>
@@ -164,7 +164,7 @@
 
                 <center style="margin-top:10px">
                    <div class="col-md-12">
-                      <button type="submit" class="btn btn-primary estilo_boton_cus">CONTINUAR</button>
+                      <button type="submit" class="btn btn-primary estilo_boton_cus">Guardar y Continuar</button>
                     </div>
                 </center>
               </form>

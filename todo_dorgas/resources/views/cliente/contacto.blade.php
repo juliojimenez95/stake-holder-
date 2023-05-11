@@ -24,8 +24,8 @@
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
                     <h3 class="datos h3_tit">Datos personales</h3>
-                   <strong> <h2 class="my-3 persona h2_tit">Persona</h2></strong>
-                   <strong>  <h2 class="natural h2_tit">Contacto</h2> </strong> <br> <br>
+                   <strong> <h2 class="my-3 persona_c h2_tit">Persona</h2></strong>
+                   <strong>  <h2 class="natural_c h2_tit">Contacto</h2> </strong> <br> <br>
                   <hr class="underline2">
                 </div>
             </div>

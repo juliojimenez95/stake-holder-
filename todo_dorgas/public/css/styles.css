@@ -127,6 +127,12 @@
     text-align:center;
     line-height: 45px;
 }
+
+.persona_c, .natural_c{
+    font-size: 70px;
+    font-weight:bolder;
+    line-height: 45px;
+}
 .alinear{
     padding-left: 60px;
 

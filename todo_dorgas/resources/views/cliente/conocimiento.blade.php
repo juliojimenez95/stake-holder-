@@ -50,6 +50,12 @@
                     <div class="card-body">
                         <form action="{{ route('clientes.storepersonaE',$id) }}" method="POST">
                             @csrf
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h4 class="h1_n">Si la respuesta es afirmativa, por favor
+                                        diligencie la siguiente sección.</h4>
+                                </div>
+                            </div>
                             <div class="row mb-3">
                                 <div class="col-md-6 col-sm-12">
                                     <label for="tipo_d" class="form-label lb_cus"><strong>Tipo de documento<span>*</span></strong></label>
@@ -116,7 +122,7 @@
                             </div>
                             <center style="margin-top:10px">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">CONTINUAR</button>
+                                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
                             </div>
                             </center>
 

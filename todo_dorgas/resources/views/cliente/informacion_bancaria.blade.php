@@ -149,26 +149,26 @@
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Número de cuenta<span>*</span></label>
+                                <label for="" class="label_custom">Número de cuenta</label>
                                 <input type="text" class="form-control input_custom"name="n_cuenta2">
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad<span>*</span></label>
+                                <label for="" class="label_custom">Ciudad</label>
                                 <select class="form-control select_custom" name="municipio2" id="municipio2">
                                     <option value="">Medellin</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Departamento<span>*</span></label>
+                                <label for="" class="label_custom">Departamento</label>
                                 <select class="form-control select_custom" id="departamento2" name="departamento2">
                                     <option value="">Antioquia</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">País<span>*</span></label>
+                                <label for="" class="label_custom">País</label>
                                 <select class="form-control select_custom" name="pais2" id="pais2">
                                     <option value="Colombia">Colombia</option>
                                 </select>
@@ -180,7 +180,7 @@
         </div>
         <div class="mb-4">
             <div class="div_continuar">
-                <button class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
+                <button class="btn btn-primary btn_continuar">Guardar y Continuar</button> <span style="color:blue; font-size: 25px;"></span>
             </div>
         </div>
     </div>

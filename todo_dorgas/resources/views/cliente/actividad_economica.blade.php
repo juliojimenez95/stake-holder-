@@ -138,7 +138,7 @@
                 </div>
              </div>
             </div>
-           <div class="container">
+        <div class="container">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group ">
@@ -289,7 +289,7 @@
                 <button type="submit" class="btn btn-primary estilo_boton">COTINUAR</button>
               </div>
           </center>
-        </form>
+            </form>
 
         </div>
       </div>

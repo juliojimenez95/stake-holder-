@@ -18,6 +18,7 @@
     <!-- Agregar el enlace a la hoja de estilo del public -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/natural.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
     <!-- Agregar el enlace a la hoja de estilo de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 
@@ -32,7 +33,7 @@
         </div>
       </div>
      </div>
-        <div class="row d-flex ">
+        <div class="row d-flex mb-5">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
                     <h3 class="datos h3_tit">Datos Generales</h3>
@@ -64,7 +65,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="n_docuemnto" class="form-label label_c"><strong>Número de documento</strong></label>
                                     <input type="number" class="form-control input_custom select_c" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
-                                        placeholder="Numero documento">
+                                        placeholder="Número de documento">
                                     @if ($errors->has('n_docuemnto'))
                                         <p class="text-danger">{{ $errors->first('n_docuemnto') }}</p>
                                     @endif
@@ -139,9 +140,9 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="actividad" class="form-label label_c"><strong>Actividad economica</strong></label>
+                                    <label for="actividad" class="form-label label_c"><strong>Actividad económica</strong></label>
                                     <select class="form-select select_c" aria-label="Default select example" name="actividad">
-                                        <option value="{{old('actividad')}}">Seleccione una tipos...</option>
+                                        <option value="{{old('actividad')}}">Seleccione su código CIIU</option>
                                        @foreach ($actividades as $actividad)
                                            <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
                                        @endforeach
@@ -173,17 +174,171 @@
 
 
                             </div>
-                            <center style="margin-top:10px">
+                            <!--<center style="margin-top:10px">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">CONTINUAR</button>
+                                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
                             </div>
-                            </center>
+                            </center>-->
 
                         </form>
                     </div>
                 </div>
 
             </div>
+        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿Por su cargo o actividad maneja o a manejado recursos públicos? </span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo1" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo1" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text" name="Observacion" id="Observacion" class="">
+                        </div>
+
+
+                  </div>
+                </div>
+                </div>
+            <div class="col-md-12 mb-3">
+              <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿Por su cargo o actividad ejerce o ha ejercido algún grado de poder <br> político o público? </span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo2" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text" name="Observacion2" id="Observacion2">
+                        </div>
+
+
+                  </div>
+              </div>
+             </div>
+              <div class="col-md-12 mb-3">
+               <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿Por su actividad u oficio goza usted de reconocimiento político o público?</span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo3" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text color-cb" name="Observacion3" id="Observacion3">
+                        </div>
+
+
+                  </div>
+              </div>
+
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿Existe algún vinculo entre usted y una persona considerada públicamente expuesta?</span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo4" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text color-cb" name="Observacion4" id="Observacion4">
+                        </div>
+
+
+                  </div>
+              </div>
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿Es usted sujeto de obligaciones tributarias en otro país o grupo de países?</span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo5" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text color-cb" name="Observacion5" id=" Observacion5">
+                        </div>
+
+
+                  </div>
+              </div>
+
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional <br> tales como ONG, ONU, UNICEF, etc.? </span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text color-cb" name="Observacion6" id="Observacion6">
+                        </div>
+
+
+                  </div>
+              </div>
+
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: space-between;">
+                        <div class="">
+                          <span class="mr-2 color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, <br> SIPLAFT, SARLAFT o equivalentes? </span>
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                          <input type="text " name="Observacion7" id="Observacion7">
+                        </div>
+
+
+                  </div>
+              </div>
+
+              </div>
+
+             </div>
+            </div><!--Final row-->
+
+
+          </div>
+
+
+         </div>
+
+            <center style="margin-top:10px">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
+                </div>
+            </center>
+            </form>
+
         </div>
     </div>
         <!-- Agregar el script de JavaScript de Bootstrap -->

@@ -53,3 +53,8 @@ input[type="radio"] {
     color: grey!important;
     font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
 }
+
+.h1_n {
+    font-family: 'Franklin Gothic Medium', arial;
+    text-align: center;
+}

@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-md-12">
                 <div class="div_p">
-                    <p>Por favor diligencie la siguiente información al 31 de diciembre del año anterior.</p>
+                    <p>Proporcione la siguiente información con corte a 31 de diciembre del año inmediatamente anterior.</p>
                 </div>
             </div>
             <div class="container">
@@ -44,7 +44,7 @@
                             <p style="padding-left: 30px;">Respuesta<span>*</span></p>
                             <div class="div_in_on mb-3">
                                   <div class="col-4">
-                                    <p class="">Activo </p>
+                                    <p class="">Activos totales</p>
                                   </div>
                                   <div class="col-8">
                                     <input type="text" class="form-control col-12" id="Activo" name="Activo">
@@ -57,7 +57,7 @@
 
                             <div class="div_in_on mb-3">
                                 <div class="col-4">
-                                  <p class="">Pasivo</p>
+                                  <p class="">Pasivos Totales</p>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" class="form-control col-12" id="Pasivo" name="Pasivo">
@@ -87,7 +87,7 @@
                             <p>Respuesta<span>*</span></p>
                             <div class="div_in_on mb-3">
                                 <div class="col-4">
-                                  <p class="">Ingresos</p>
+                                  <p class="">Pasivos Totales</p>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" class="form-control col-12" id="ingresos" name="Ingresos">
@@ -99,7 +99,7 @@
 
                             <div class="div_in_on mb-3">
                                 <div class="col-4">
-                                  <p class="">Egresos</p>
+                                  <p class="">Egresos Totales</p>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" class="form-control col-12" id="egresos" name="Egresos">
@@ -111,7 +111,7 @@
 
                             <div class="div_in_on mb-3">
                                 <div class="col-4">
-                                  <p class="">Personal vinculado</p>
+                                  <p class="">Número de personal con vinculación directa</p>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" class="form-control col-12" id="vinculado" name="Vinculado">
@@ -127,7 +127,7 @@
          </div>
           <center style="margin-top:10px">
              <div class="col-md-12">
-                <button type="submit" class="btn btn-primary estilo_boton">CONTINUAR</button>
+                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
               </div>
           </center>
         </form>

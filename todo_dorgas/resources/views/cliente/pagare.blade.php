@@ -32,8 +32,8 @@
                 <center>
                 <div class="row">
                   <div class="col-12 text-center">
-                  <p class="p_tx">Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento pagaré,</p>
-                  <p class="p_tx">por favor cargar un documento que lo certifique y este firmado por el representante legal.</p>
+                  <p class="p_tx">Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento Pagaré,</p>
+                  <p class="p_tx">por favor cargar un documento que lo certifique y este firmado por el Representante Legal.</p>
                   </div>
                   </div>
                 </center>
@@ -53,7 +53,7 @@
                     <br><br>
                     <a class="btn btn-primary mt-3 a_cus" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">DESCARGAR</a><span>*</span>
                     <br>
-                    <p class="text-primary p_cv">Descarga formato de pagaré, por favor diligenciar y firmar.</p>
+                    <p class="text-primary p_cv">Descargue el formato de Pagaré y por favor proceda a diligenciar y firmar el mismo.</p>
                     <br>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                     <a class="btn btn-primary mt-3 a_cus" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
                     <input type="file" id="document" name="document" style="display:none;">
 
-                    <p class="text-primary p_cv">Cargar formato de pagaré,diligenciado y firmado, o documento de certificación.</p>
+                    <p class="text-primary p_cv">Cargue el formato de Pagaré diligenciado y firmado o el documento de certificación.</p>
                     <br>
                   </div>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="row">
                   <div class="col-12 text-center">
                   <a href="{{ route('home') }}">
-                  <button class="btn btn-primary  ml-10 btn_cx" style="margin-left: 80%;">CONTINUAR</button>
+                  <button class="btn btn-primary  ml-10 btn_cx" style="margin-left: 80%;">Guardar y Continuar</button>
                 </a>
                   </div>
                   </div>

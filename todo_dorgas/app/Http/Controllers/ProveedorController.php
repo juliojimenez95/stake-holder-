@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\actividad_economicaModel;
 use App\Models\ProveedorModel;
+use App\Models\RepresentanteLegalModel;
 use Illuminate\Support\Facades\Hash;
-
-
-
 use App\Models\User;
 
 
@@ -115,9 +113,38 @@ class ProveedorController extends Controller
 
 
             }
+            $Representante = new RepresentanteLegalModel();
 
 
-            return redirect('/actividad/'.$user->id);
+            $Representante->Nombre1 = "N/A";
+            $Representante->Nombre2 = "N/A";
+            $Representante->Apellido1 = "N/A";
+            $Representante->Apellido2 = "N/A";
+            $Representante->TipoNit = "N/A";
+            $Representante->Nit = 0;
+            $Representante->Telefono = "N/A";
+            $Representante->Cargo = "N/A";
+            $Representante->Email = "N/A";
+            $Representante->ManejoRP = $request->grupo1;
+            $Representante->Observacion1 = $request->Observacion."";
+            $Representante->EjercidoPPOP = $request->grupo2;
+            $Representante->Observacion2 = $request->Observacion2."";
+            $Representante->Reconocimiento = $request->grupo3;
+            $Representante->Observacion3 = $request->Observacion3."";
+            $Representante->VincuPExpuesta = $request->grupo4;
+            $Representante->Observacion4 = $request->Observacion4."";
+            $Representante->ObligacionTE = $request->grupo5;
+            $Representante->Observacion5 = $request->Observacion5."";
+            $Representante->OrganizacionI = $request->grupo6;
+            $Representante->Observacion6 = $request->Observacion6."";
+            $Representante->ObligacionP = $request->grupo7;
+            $Representante->Observacion7 = $request->Observacion7."";
+
+            $Representante->user_id = $user->id;
+
+            $Representante->save();
+
+            return redirect('/conocimiento/'.$user->id);
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -221,7 +248,6 @@ class ProveedorController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'id_cliente'=> $proveedor->ID,
                         ]);
 
 

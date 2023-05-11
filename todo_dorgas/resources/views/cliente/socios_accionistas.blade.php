@@ -160,7 +160,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <a href="{{ route('cliente.conocimiento',$id) }}">
+                        <a href="{{ route('clientes.documentos_anexos',$id) }}">
                         <button  class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                     </div>

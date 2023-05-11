@@ -17,7 +17,7 @@ use App\Models\RepresentanteLegalModel;
 use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
-use App\Models\AccionistaModel;
+use App\Models\PagareModel;
 use App\Models\AnexoModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -155,5 +155,36 @@ class DocumentosController extends Controller
             } catch (\Throwable $th) {
                 throw $th;
             }
+    }
+
+    public function storepagare(Request $request,$id)
+    {
+
+        try {
+
+            $pagare = new PagareModel();
+            $name_pdf1 = '';
+            if ($request->file('document')) {
+                $pdf = $request->file('document');
+                $ext = $pdf->getClientOriginalExtension();
+                $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+            }
+            $pagare->archivo = $name_pdf1;
+            $pagare->pagare = $request->credito;
+            $pagare->user_id = $id;
+
+            if ($pagare->save()) {
+                return redirect('/home');
+
+            } else {
+
+                return back();
+            }
+
+            //return redirect('/actividad/');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

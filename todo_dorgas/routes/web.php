@@ -59,6 +59,7 @@ Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeI
 Route::post('/cliente/storeInformacionb/{id}', [ClienteController::class,'storeInformacionb'])->name('clientes.storeInformacionb');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/storeanexos/{id}', [DocumentosController::class,'storeanexos'])->name('storeanexos');
+Route::post('/storepagare/{id}', [DocumentosController::class,'storepagare'])->name('storepagare');
 Route::post('/storedeclaracion/{id}', [ClienteController::class,'storedeclaracion'])->name('storedeclaracion');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/cliente/storepersonaE/{id}', [ClienteController::class, 'storepersonaE'])->name('clientes.storepersonaE');
@@ -69,6 +70,7 @@ Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index
 Route::post('/admin/Informaciont', [AdminController::class, 'Informaciont'])->name('admin.Informaciont');
 Route::post('/admin/Informacionf', [AdminController::class, 'Informacionf'])->name('admin.Informacionf');
 Route::post('/admin/Informacionb', [AdminController::class, 'Informacionb'])->name('admin.Informacionb');
+Route::post('/admin/Informacionsocios', [AdminController::class, 'Informacionsocios'])->name('admin.Informacionsocios');
 Route::post('/admin/pagare', [AdminController::class, 'pagare'])->name('admin.pagare');
 Route::get('/users/aprobarUser/{id}', [AdminController::class, 'aprobarUser'])->name('users.aprobarUser');
 Route::get('/users/rechazarUser/{id}', [AdminController::class, 'rechazarUser'])->name('users.rechazarUser');

@@ -8,6 +8,8 @@ use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
 use App\Models\PagareModel;
+use App\Models\AccionistaModel;
+
 
 
 
@@ -89,12 +91,12 @@ class AdminController extends Controller
     }
 
 
-    public function Informacionuser($id)
+    public function Informacionsocios(Request $request)
     {
-        $user = User::where('id',$id)->first()->get();
+        $socios = AccionistaModel::where('user_id',$request->id)->get();
 
         return  response()->json([
-            'user'=>$user,
+            'socios'=>$socios,
         ]);
     }
 

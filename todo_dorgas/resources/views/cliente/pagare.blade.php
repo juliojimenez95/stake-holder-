@@ -26,6 +26,9 @@
       </div>
     </div>
     <div class="row ">
+        <form action="{{ route('storepagare',$id)}}" method="post">
+        @csrf
+
       <div class="col-md-12">
         <div class="card text-center bg-light mt-4">
           <div class="card-body">
@@ -34,6 +37,11 @@
                   <div class="col-12 text-center">
                   <p class="p_tx">Estimado cliente, sí por políticas de su compañía no está permitido la firma del documento Pagaré,</p>
                   <p class="p_tx">por favor cargar un documento que lo certifique y este firmado por el Representante Legal.</p>
+                  <p class="p_tx cus_cus" >¿Aplica para ventas a crédito?<span>*</span></p>
+                    <strong class="p_tx text-center">
+                    <label class="op_cus">Si <input type="radio" name="credito" value="1"></label>
+                    <label class="op_cus">No <input type="radio" name="credito" value="0"></label>
+                    </strong>
                   </div>
                   </div>
                 </center>
@@ -79,16 +87,18 @@
             <center>
                 <div class="row">
                   <div class="col-12 text-center">
+
                   <a href="{{ route('home') }}">
                   <button class="btn btn-primary  ml-10 btn_cx" style="margin-left: 80%;">Guardar y Continuar</button>
                 </a>
                   </div>
                   </div>
-                </center>
+            </center>
 
           </div>
         </div>
       </div>
+    </form>
     </div>
   </div>
 

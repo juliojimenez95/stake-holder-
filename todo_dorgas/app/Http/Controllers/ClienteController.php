@@ -111,7 +111,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('/cliente/documentos_anexos/'.$id);
+            return redirect('/cliente/contacto/'.$id);
 
             } catch (\Throwable $th) {
                 throw $th;
@@ -386,18 +386,46 @@ class ClienteController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'id_cliente'=> $cliente2->ID,
                         ]);
 
                     $cliente_domicilio->save();
 
 
+                $Representante = new RepresentanteLegalModel();
 
+
+                $Representante->Nombre1 = "N/A";
+                $Representante->Nombre2 = "N/A";
+                $Representante->Apellido1 = "N/A";
+                $Representante->Apellido2 = "N/A";
+                $Representante->TipoNit = "N/A";
+                $Representante->Nit = 0;
+                $Representante->Telefono = "N/A";
+                $Representante->Cargo = "N/A";
+                $Representante->Email = "N/A";
+                $Representante->ManejoRP = $request->grupo1;
+                $Representante->Observacion1 = $request->Observacion."";
+                $Representante->EjercidoPPOP = $request->grupo2;
+                $Representante->Observacion2 = $request->Observacion2."";
+                $Representante->Reconocimiento = $request->grupo3;
+                $Representante->Observacion3 = $request->Observacion3."";
+                $Representante->VincuPExpuesta = $request->grupo4;
+                $Representante->Observacion4 = $request->Observacion4."";
+                $Representante->ObligacionTE = $request->grupo5;
+                $Representante->Observacion5 = $request->Observacion5."";
+                $Representante->OrganizacionI = $request->grupo6;
+                $Representante->Observacion6 = $request->Observacion6."";
+                $Representante->ObligacionP = $request->grupo7;
+                $Representante->Observacion7 = $request->Observacion7."";
+
+                $Representante->user_id = $user->id;
+
+                $Representante->save();
 
             }
 
 
-            return redirect('/login');
+            return redirect('/conocimiento/'.$user->id);
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -533,7 +561,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('/login');
+            return redirect('/actividad/'.$user->id);
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -594,7 +622,7 @@ class ClienteController extends Controller
             }
 
 
-            return redirect('/cliente/socios_accionistas/'.$id);
+            return redirect('/home');
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -661,7 +689,7 @@ class ClienteController extends Controller
 
                 $Representante->save();
 
-                return redirect('/cliente/contacto/'.$id);
+                return redirect('/conocimiento/'.$id);
 
             } catch (\Throwable $th) {
                 throw $th;

@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\InformacionTributariaModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
+use App\Models\PagareModel;
+
 
 
 class AdminController extends Controller
@@ -22,9 +24,49 @@ class AdminController extends Controller
         return view("admin.index_user",['usuarios'=>$usuarios]);
     }
 
-    public function Informacionf($id)
+    public function aprobarUser($id)
     {
-        $informacionf = InformacionFinancieraModel::where('user_id',$id)->first()->get();
+        $user = User::find($id);
+
+        if ($user->aprovado == 0 || $user->aprovado == 2 || $user->aprovado == null) {
+            $user->aprovado = 1;
+        }else {
+            $user->aprovado = 0;
+
+        }
+        $user->save();
+
+        return back();
+    }
+
+    public function rechazarUser($id)
+    {
+        $user = User::find($id);
+
+        if ($user->aprovado == 0 || $user->aprovado == 1 || $user->aprovado == null) {
+            $user->aprovado = 2;
+        }else {
+            $user->aprovado = 0;
+
+        }
+        $user->save();
+
+        return back();
+    }
+
+    public function pagare(Request $request)
+    {
+        $pagare = PagareModel::where('user_id',$request->id)->first();
+        return  response()->json([
+            'pagare'=>$pagare,
+        ]);
+    }
+
+    public function Informacionf(Request $request)
+    {
+        $informacionf = InformacionFinancieraModel::where('user_id',$request->id)->first();
+
+
         return  response()->json([
             'informacionf'=>$informacionf,
         ]);
@@ -32,7 +74,7 @@ class AdminController extends Controller
 
     public function Informacionb(Request $request)
     {
-        $informacionb = InformacionBancariaModel::where('user_id',$request->id)->first()->get();
+        $informacionb = InformacionBancariaModel::where('user_id',$request->id)->first();
         return  response()->json([
             'informacionb'=>$informacionb,
         ]);

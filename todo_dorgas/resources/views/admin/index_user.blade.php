@@ -45,10 +45,10 @@
                               <th>Nombre</th>
                               <th>Email</th>
                               <th>¿PEP?</th>
-                              <th>rol</th>
                               <th>Acciones</th>
-
-
+                              <th>O.C</th>
+                              <th>A.F</th>
+                              <th>CEO</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -61,13 +61,11 @@
                                       @else
                                       <td>No</td>
                                       @endif
-                                      @if ( $usuario->rol == 2)
-                                      <td>Proveedor</td>
-                                      @else
-                                      <td> Cliente </td>
-                                      @endif
 
                                       <td style="color: black">
+                                        <a href="#" onclick="dataPersonal({{ 98 }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 20px; text-decoration: none;">
+                                            <i class="fa-solid fa-user"></i>
+                                        </a>
                                         <a href="#" onclick="dataTributaria({{ 98 }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 20px; text-decoration: none;">
                                                 <img src="{{ asset('images/Información-Tributaria.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
                                         </a>
@@ -82,9 +80,80 @@
                                             <img src="{{ asset('images/Información-Bancaria.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
                                         </a>
 
-                                        <a href=""  onclick="datauser({{ 98 }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                        <a href="#"  onclick="cargarSocios({{ 98 }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <i class="fa-solid fa-user"></i>
                                         </a>
+                                    </td>
+                                    <td style="color: black">
+
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser', $usuario->id) }}" method="GET">
+                                            @csrf
+                                            @method('PUT')
+                                            @if ($usuario->aprovado == 1)
+                                                <button class="btn btn-success" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            @else
+                                                <button class="btn btn-check" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            @endif
+
+                                        </form>
+
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.rechazarUser', $usuario->id) }}" method="GET">
+                                            @csrf
+                                            @method('PUT')
+                                            @if ($usuario->aprovado == 2)
+                                                <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fa-solid fa-xmark"></i>
+
+                                                </button>
+                                            @else
+                                                <button class="btn btn-check" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fa-solid fa-xmark"></i>
+
+                                                </button>
+                                            @endif
+
+                                        </form>
+                                    </td>
+                                    <td style="color: black">
+
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser', $usuario->id) }}" method="GET">
+                                            @csrf
+                                            @method('PUT')
+                                            @if ($usuario->aprovado == 1)
+                                                <button class="btn btn-success" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            @else
+                                                <button class="btn btn-check" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            @endif
+
+                                        </form>
+
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.rechazarUser', $usuario->id) }}" method="GET">
+                                            @csrf
+                                            @method('PUT')
+                                            @if ($usuario->aprovado == 2)
+                                                <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fa-solid fa-xmark"></i>
+
+                                                </button>
+                                            @else
+                                                <button class="btn btn-check" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                    <i class="fa-solid fa-xmark"></i>
+
+                                                </button>
+                                            @endif
+
+                                        </form>
+                                    </td>
+                                    <td style="color: black">
+
                                         <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser', $usuario->id) }}" method="GET">
                                             @csrf
                                             @method('PUT')
@@ -339,6 +408,40 @@
             </div>
           </div>
 
+          <!-- Contenido de la vista modal informacion Socios-->
+          <div class="modal fade" id="modalInformacionSocios" tabindex="-1" role="dialog" aria-labelledby="modalInformacionSociosLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalInformacionSociosLabel">Información Socios o Accionistas</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="tablaSocios">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Participacion</th>
+                                        <th>Nacionalidad</th>
+                                        <th>PEP</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
 
 
@@ -347,6 +450,48 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
     <script src="{{ asset('js/table.js') }}"></script>
+
+    <script>
+
+    function cargarSocios(id) {
+            $.ajaxSetup({
+            headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+            $.ajax({
+                url: '{{ route("admin.Informacionsocios") }}',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id:id,
+                    },
+                success: function(response) {
+                    var socios = response.socios;
+
+                    // Limpia la tabla
+                    $('#tablaSocios tbody').empty();
+
+                    // Llena la tabla con los datos de los socios
+                    socios.forEach(function(socio) {
+                        var row = '<tr>' +
+                            '<td>' + socio.Nombres + '</td>' +
+                            '<td>' + socio.Participacion + '</td>' +
+                            '<td>' + socio.Nacionalidad + '</td>' +
+                            '<td>' + socio.PEP + '</td>' +
+                            '</tr>';
+                        $('#tablaSocios tbody').append(row);
+
+                    });
+
+                    $("#modalInformacionSocios").modal("show");
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
 
     <script>
        function dataTributaria(id){

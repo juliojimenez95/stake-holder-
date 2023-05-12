@@ -9,8 +9,12 @@ use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
 use App\Models\PagareModel;
 use App\Models\AccionistaModel;
-
-
+use App\Models\RepresentanteLegalModel;
+use App\Models\ContactoModel;
+use App\Models\Cliente_DomicilioModel;
+use App\Models\ClienteModel;
+use App\Models\DomicilioModel;
+use App\Models\personaExpuestaModel;
 
 
 class AdminController extends Controller
@@ -94,9 +98,33 @@ class AdminController extends Controller
     public function Informacionsocios(Request $request)
     {
         $socios = AccionistaModel::where('user_id',$request->id)->get();
-
         return  response()->json([
             'socios'=>$socios,
+        ]);
+    }
+
+
+    public function InformacionP(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if ($user->rol == 1) {
+            
+            $cliente = ClienteModel::where('Mail',$user->email)->first();
+            $cliente_domicilio = Cliente_DomicilioModel::where('Mail',$user->email)->first();
+            $domicilio = DomicilioModel::where('Mail',$user->email)->first();
+
+            $contacto = ContactoModel::where('user_id',$request->id)->first();
+            $representante = RepresentanteLegalModel::where('user_id',$request->id)->first();
+            $personae = personaExpuestaModel::where('user_id',$request->id)->first();
+
+
+        }
+
+        return  response()->json([
+            'contacto'=>$contacto,
+            'representante'=>$representante,
+
         ]);
     }
 

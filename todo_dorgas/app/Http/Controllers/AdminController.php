@@ -15,6 +15,8 @@ use App\Models\Cliente_DomicilioModel;
 use App\Models\ClienteModel;
 use App\Models\DomicilioModel;
 use App\Models\personaExpuestaModel;
+use App\Models\ProveedorModel;
+
 
 
 class AdminController extends Controller
@@ -104,28 +106,67 @@ class AdminController extends Controller
     }
 
 
-    public function InformacionP(Request $request)
+    public function InformacionP($id)
     {
-        $user = User::find($request->id);
+        $user = User::find($id);
 
         if ($user->rol == 1) {
-            
+
             $cliente = ClienteModel::where('Mail',$user->email)->first();
-            $cliente_domicilio = Cliente_DomicilioModel::where('Mail',$user->email)->first();
-            $domicilio = DomicilioModel::where('Mail',$user->email)->first();
+            $cliente_domicilio = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
+            $telefono = strval($cliente_domicilio->Telefono);
+            $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
 
-            $contacto = ContactoModel::where('user_id',$request->id)->first();
-            $representante = RepresentanteLegalModel::where('user_id',$request->id)->first();
-            $personae = personaExpuestaModel::where('user_id',$request->id)->first();
+            $contacto = ContactoModel::where('Cliente_id',$id)->first();
+            $representante = RepresentanteLegalModel::where('user_id',$id)->first();
+            $personae = personaExpuestaModel::where('user_id',$id)->first();
+
+            if ($personae) {
+                return  response()->json([
+                    'cliente'=>$cliente,
+                    'domicilio'=>$domicilio,
+                    'personae'=>$personae,
+                    'contacto'=>$contacto,
+                    'representante'=>$representante,
+
+                ]);
+            }else {
+                return  response()->json([
+                    'cliente'=>$cliente,
+                    'domicilio'=>$domicilio,
+                    'contacto'=>$contacto,
+                    'representante'=>$representante,
+
+                ]);
+
+            }
 
 
+        }elseif ($user->rol == 2) {
+
+                $Proveedor = ProveedorModel::where('Mail',$user->email)->first();
+                $contacto = ContactoModel::where('user_id',$user->ID)->first();
+                $representante = RepresentanteLegalModel::where('user_id',$user->ID)->first();
+                $personae = personaExpuestaModel::where('user_id',$user->ID)->first();
+
+                if ($personae) {
+                    return  response()->json([
+                        'Proveedor'=>$Proveedor,
+                        'personae'=>$personae,
+                        'contacto'=>$contacto,
+                        'representante'=>$representante,
+
+                    ]);
+                }else {
+                    return  response()->json([
+                        'Proveedor'=>$Proveedor,
+                        'contacto'=>$contacto,
+                        'representante'=>$representante,
+
+                    ]);
+                }
         }
 
-        return  response()->json([
-            'contacto'=>$contacto,
-            'representante'=>$representante,
-
-        ]);
     }
 
 

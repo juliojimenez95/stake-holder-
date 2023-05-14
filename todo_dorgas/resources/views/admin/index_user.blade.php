@@ -442,7 +442,150 @@
             </div>
           </div>
 
+<!-- Contenido de la vista modal informacion Personal-->
+<div class="modal fade" id="modalInformacionBancaria" tabindex="-1" role="dialog" aria-labelledby="modalInformacionBancariaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalInformacionBancariaLabel">Información Personal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p id="Tipodocumento"> <strong></strong></p>
+              </div>
+              <div class="col-md-6">
+                <p id="n_documento"><strong></strong></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p id="nombres_a"> <strong></strong></p>
+              </div>
+              <div class="col-md-6">
+                <p id="Departamento_p"><strong></strong></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p id="cuidad_p"><strong></strong></p>
+              </div>
+              <div class="col-md-6">
+                <p id="telefono_p"> <strong></strong></p>
 
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                  <p id="direccion_p"> <strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="Actividad_e"><strong></strong></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 > <strong>Representante </strong></h2>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="TR"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="DR"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="NR"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                    <p id="TeR"><strong></strong></p>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="CR"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="ER"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="RC"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="Gp"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="Rp"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="Pe"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="Oi"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="Ps"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 > <strong>Contacto </strong></h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="TDC"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="NDC"> <strong></strong></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <p id="NC"><strong></strong></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="VC"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="CC"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="NC"><strong></strong></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

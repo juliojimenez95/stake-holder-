@@ -71,6 +71,7 @@ Route::post('/admin/Informaciont', [AdminController::class, 'Informaciont'])->na
 Route::post('/admin/Informacionf', [AdminController::class, 'Informacionf'])->name('admin.Informacionf');
 Route::post('/admin/Informacionb', [AdminController::class, 'Informacionb'])->name('admin.Informacionb');
 Route::post('/admin/Informacionsocios', [AdminController::class, 'Informacionsocios'])->name('admin.Informacionsocios');
+Route::get('/admin/InformacionP/{id}', [AdminController::class, 'InformacionP'])->name('admin.InformacionP');
 Route::post('/admin/pagare', [AdminController::class, 'pagare'])->name('admin.pagare');
 Route::get('/users/aprobarUser/{id}', [AdminController::class, 'aprobarUser'])->name('users.aprobarUser');
 Route::get('/users/rechazarUser/{id}', [AdminController::class, 'rechazarUser'])->name('users.rechazarUser');

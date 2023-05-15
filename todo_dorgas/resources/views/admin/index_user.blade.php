@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/socios.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
    <!-- date table -->
    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css"/>
@@ -31,7 +32,7 @@
               <div class="text-center">
                 <img src="{{ asset('images/logo_t2.png') }}" class="img-fluid">
                 <h1 class="text-primary h1_tit">Usuarios registrados</h1>
-                <hr class="underline under_S">
+                <!--<hr class="underline under_S">-->
               </div>
             </div>
         </div>
@@ -62,7 +63,7 @@
                                       <td>No</td>
                                       @endif
 
-                                      <td style="color: black">
+                                      <td style="color: black" class="td_cus">
                                         <a href="#" onclick="dataPersonal({{ 98 }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 20px; text-decoration: none;">
                                             <i class="fa-solid fa-user"></i>
                                         </a>
@@ -81,7 +82,7 @@
                                         </a>
 
                                         <a href="#"  onclick="cargarSocios({{ 98 }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
-                                            <i class="fa-solid fa-user"></i>
+                                            <i class="fa-solid fa-user-group"></i>
                                         </a>
                                     </td>
                                     <td style="color: black">
@@ -202,10 +203,10 @@
 
           <!-- Contenido de la vista modal informacion tributaria-->
           <div class="modal fade" id="modalInformacionTributaria" tabindex="-1" role="dialog" aria-labelledby="modalInformacionTributariaLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalInformacionTributariaLabel">Información Tributaria</h5>
+                  <h5 class="modal-title tit_mod" id="modalInformacionTributariaLabel">Información Tributaria</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -214,47 +215,47 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <p id='iva'> <strong></strong></p>
+                        <p id='iva' class="p_ch"> <strong></strong></p>
                       </div>
                       <div class="col-md-6">
-                        <p id='retencion'><strong></strong></p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p id="renta"> <strong></strong></p>
-                      </div>
-                      <div class="col-md-6">
-                        <p id="rst"><strong></strong></p>
+                        <p id='retencion' class="p_ch"><strong></strong></p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <p id="Aestanpillada"> <strong></strong></p>
+                        <p id="renta" class="p_ch"> <strong></strong></p>
+                      </div>
+                      <div class="col-md-6">
+                        <p id="rst" class="p_ch"><strong></strong></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p id="Aestanpillada" class="p_ch"> <strong></strong></p>
                         @if ('Si' === 'Si')
-                        <p id ="estanpilla"> <strong></strong></p>
+                        <p id ="estanpilla" class="p_ch"> <strong></strong></p>
                         @endif
                       </div>
                       <div class="col-md-6">
-                        <p id=" contribuyente"> <strong></strong></p>
+                        <p id=" contribuyente" class="p_ch"> <strong></strong></p>
 
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <p id='auCorrector'> <strong></strong></p>
+                        <p id='auCorrector' class="p_ch"> <strong></strong></p>
 
                       </div>
 
                       <div class="col-md-6">
-                        <p id="ica"> <strong></strong></p>
+                        <p id="ica" class="p_ch"> <strong></strong></p>
 
                       </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                          <p id="emailt"><strong></strong></p>
+                          <p id="emailt" class="p_ch"><strong></strong></p>
 
                         </div>
 
@@ -272,7 +273,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalInformacionFinancieraLabel">Información Financiera</h5>
+                  <h5 class="modal-title tit_mod" id="modalInformacionFinancieraLabel">Información Financiera</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -281,26 +282,26 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <p id='Activo'> <strong></strong></p>
+                        <p id='Activo' class="p_ch"> <strong></strong></p>
                       </div>
                       <div class="col-md-6">
-                        <p id="Pasivo"><strong></strong></p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p id="Patrimonio"> <strong></strong></p>
-                      </div>
-                      <div class="col-md-6">
-                        <p id="Ingresos"><strong></strong></p>
+                        <p id="Pasivo" class="p_ch"><strong></strong></p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <p id='Egresos'> <strong></strong></p>
+                        <p id="Patrimonio" class="p_ch"> <strong></strong></p>
                       </div>
                       <div class="col-md-6">
-                        <p id="p_vinculada"> <strong></strong></p>
+                        <p id="Ingresos" class="p_ch"><strong></strong></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p id='Egresos' class="p_ch"> <strong></strong></p>
+                      </div>
+                      <div class="col-md-6">
+                        <p id="p_vinculada" class="p_ch"> <strong></strong></p>
 
                       </div>
                     </div>
@@ -316,7 +317,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalInformacionPagareLabel">Pagaré</h5>
+                  <h5 class="modal-title tit_mod" id="modalInformacionPagareLabel">Pagaré</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -325,10 +326,10 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <p id="pagare"> <strong></strong></p>
+                        <p id="pagare" class="p_ch"> <strong></strong></p>
                       </div>
                       <div class="col-md-6">
-                        <p id= "documento"><strong></strong></p>
+                        <p id= "documento" class="p_ch"><strong></strong></p>
                       </div>
                     </div>
 
@@ -340,10 +341,10 @@
 
           <!-- Contenido de la vista modal informacion Bancaria-->
           <div class="modal fade" id="modalInformacionBancaria" tabindex="-1" role="dialog" aria-labelledby="modalInformacionBancariaLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalInformacionBancariaLabel">Información Bancaria</h5>
+                  <h5 class="modal-title tit_mod" id="modalInformacionBancariaLabel">Información Bancaria</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -352,52 +353,52 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <p id="banco1"> <strong></strong></p>
+                        <p id="banco1" class="p_ch"> <strong></strong></p>
                       </div>
                       <div class="col-md-6">
-                        <p id="Tipo1"><strong></strong></p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p id="n_cuenta1"> <strong></strong></p>
-                      </div>
-                      <div class="col-md-6">
-                        <p id="Cuidad1"><strong></strong></p>
+                        <p id="Tipo1" class="p_ch"><strong></strong></p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <p id="Departamento1"><strong></strong></p>
+                        <p id="n_cuenta1" class="p_ch"> <strong></strong></p>
                       </div>
                       <div class="col-md-6">
-                        <p id="pais1"> <strong></strong></p>
+                        <p id="Cuidad1" class="p_ch"><strong></strong></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p id="Departamento1" class="p_ch"><strong></strong></p>
+                      </div>
+                      <div class="col-md-6">
+                        <p id="pais1" class="p_ch"> <strong></strong></p>
 
                       </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                          <p id="banco2"> <strong></strong></p>
+                          <p id="banco2" class="p_ch"> <strong></strong></p>
                         </div>
                         <div class="col-md-6">
-                          <p id="Tipo2"><strong></strong></p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <p id="n_cuenta2"> <strong></strong></p>
-                        </div>
-                        <div class="col-md-6">
-                          <p id="Cuidad2"><strong></strong></p>
+                          <p id="Tipo2" class="p_ch"><strong></strong></p>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <p id="Departamento2"><strong></strong></p>
+                          <p id="n_cuenta2" class="p_ch"> <strong></strong></p>
                         </div>
                         <div class="col-md-6">
-                          <p id="pais2"> <strong></strong></p>
+                          <p id="Cuidad2" class="p_ch"><strong></strong></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p id="Departamento2" class="p_ch"><strong></strong></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p id="pais2" class="p_ch"> <strong></strong></p>
 
                         </div>
                       </div>
@@ -413,7 +414,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="modalInformacionSociosLabel">Información Socios o Accionistas</h5>
+                  <h5 class="modal-title tit_mod" id="modalInformacionSociosLabel">Información Socios o Accionistas</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -422,16 +423,18 @@
                   <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <table id="tablaSocios">
+                            <table id="tablaSocios" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Participacion</th>
-                                        <th>Nacionalidad</th>
-                                        <th>PEP</th>
+                                        <th class="th_cus">Nombre</th>
+                                        <th class="th_cus">Participación</th>
+                                        <th class="th_cus">Nacionalidad</th>
+                                        <th class="th_cus">PEP</th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -667,16 +670,16 @@
                 $('#emailt').empty();
 
 
-                $('#iva').append("valor de iva "+response.informaciont.ResponsableImpuesto);
-                $('#retencion').append("¿Está sujeto a retención? "+response.informaciont.SujetoRetencion);
-                $('#renta').append("¿Está obligado a declarar renta? "+response.informaciont.Declarar);
-                $('#rst').append("¿Está en el RST (Régimen Simple de Tributación)? "+response.informaciont.RST);
-                $('#Aestanpillada').append("¿Aplica estampillas? "+response.informaciont.Estampillas);
-                $('#estanpilla').append("Estampillas: "+response.informaciont.Observacion1);
-                $('#contribuyente').append("¿Es gran contribuyente? "+response.informaciont.GContribuyente);
-                $('#auCorrector').append("¿Es autorretenedor en la fuente? "+response.informaciont.AutorretenedorF);
-                $('#ica').append("Autorretenedor ICA: "+response.informaciont.AutorretenedorICA);
-                $('#emailt').append("Email"+response.informaciont.Email);
+                $('#iva').append("Responsable del impuesto a la venta IVA: "+"<span>"+response.informaciont.ResponsableImpuesto+"</span>");
+                $('#retencion').append("Está sujeto a retención: "+"<span>"+response.informaciont.SujetoRetencion+"</span>");
+                $('#renta').append("Está obligado a Declarar Renta: "+"<span>"+response.informaciont.Declarar+"</span>");
+                $('#rst').append("¿Está en el RST (Régimen Simple de Tributación)? "+"<span>"+response.informaciont.RST+"</span>");
+                $('#Aestanpillada').append("Aplica estampillas: "+"<span>"+response.informaciont.Estampillas+"</span>");
+                $('#estanpilla').append("Cuáles estampillas aplica: "+"<span>"+response.informaciont.Observacion1+"</span>");
+                $('#contribuyente').append("Es usted Gran Contribuyente: "+"<span>"+response.informaciont.GContribuyente+"</span>");
+                $('#auCorrector').append("Es usted Autorretenedor en la Fuente: "+"<span>"+response.informaciont.AutorretenedorF+"</span>");
+                $('#ica').append("Es usted Autorretenedor de ICA: "+"<span>"+response.informaciont.AutorretenedorICA+"</span>");
+                $('#emailt').append("Correo de recepción para Factura Electrónica: "+"<span>"+response.informaciont.Email+"</span>");
 
                 $("#modalInformacionTributaria").modal("show");
 
@@ -761,7 +764,7 @@
                 $('#pagare').append("¿ aplica para ventas a credito?: si");
                 }
 
-             $('#documento').append('<a class="btn btn-primary mt-3 a_cus" id="descarga" data-file="' + response.pagare.archivo + '">Descargar</a><span></span>');
+             $('#documento').append('<a class="btn btn-primary mt-3 a_cus btn_cus" id="descarga" data-file="' + response.pagare.archivo + '">Descargar</a><span></span>');
              $("#modalInformacionPagare").modal("show");
 
              const button = document.querySelector('#descarga');

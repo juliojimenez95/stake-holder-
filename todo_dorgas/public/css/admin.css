@@ -1,0 +1,36 @@
+.td_cus {
+    width: 980vw!important;
+}
+
+
+.tit_mod {
+    width: 100%;
+    color: #004492!important;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 1.5rem!important;
+}
+
+
+.p_ch {
+    color: #004492!important;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-size: 1.1rem;
+}
+
+.p_ch span {
+    color: grey!important;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.btn_cus {
+    background-color: #004492!important;
+    border-color: #004492!important;
+}
+
+.th_cus {
+    color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
+}

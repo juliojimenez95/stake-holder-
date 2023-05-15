@@ -62,6 +62,68 @@ class AdminController extends Controller
         return back();
     }
 
+    public function aprobarUser1($id)
+    {
+        $user = User::find($id);
+
+        if ($user->aprovado2 == 0 || $user->aprovado2 == 2 || $user->aprovado2 == null) {
+            $user->aprovado2 = 1;
+        }else {
+            $user->aprovado2 = 0;
+
+        }
+        $user->save();
+
+        return back();
+    }
+
+    public function rechazarUser1($id)
+    {
+        $user = User::find($id);
+
+        if ($user->aprovado2 == 0 || $user->aprovado2 == 1 || $user->aprovado2 == null) {
+            $user->aprovado2 = 2;
+        }else {
+            $user->aprovado2 = 0;
+
+        }
+        $user->save();
+
+        return back();
+    }
+
+    public function aprobarUser2($id)
+    {
+        $user = User::find($id);
+
+        if ($user->aprovado3 == 0 || $user->aprovado3 == 2 || $user->aprovado3 == null) {
+            $user->aprovado3 = 1;
+        }else {
+            $user->aprovado3 = 0;
+
+        }
+        $user->save();
+
+        return back();
+    }
+
+    public function rechazarUser2($id)
+    {
+        $user = User::find($id);
+
+        if ($user->aprovado3 == 0 || $user->aprovado3 == 1 || $user->aprovado3 == null) {
+            $user->aprovado3 = 2;
+        }else {
+            $user->aprovado3 = 0;
+
+        }
+        $user->save();
+
+        return back();
+    }
+
+
+
     public function pagare(Request $request)
     {
         $pagare = PagareModel::where('user_id',$request->id)->first();

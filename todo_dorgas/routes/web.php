@@ -75,6 +75,11 @@ Route::get('/admin/InformacionP/{id}', [AdminController::class, 'InformacionP'])
 Route::post('/admin/pagare', [AdminController::class, 'pagare'])->name('admin.pagare');
 Route::get('/users/aprobarUser/{id}', [AdminController::class, 'aprobarUser'])->name('users.aprobarUser');
 Route::get('/users/rechazarUser/{id}', [AdminController::class, 'rechazarUser'])->name('users.rechazarUser');
+Route::get('/users/aprobarUser1/{id}', [AdminController::class, 'aprobarUser1'])->name('users.aprobarUser1');
+Route::get('/users/rechazarUser1/{id}', [AdminController::class, 'rechazarUser1'])->name('users.rechazarUser1');
+Route::get('/users/aprobarUser2/{id}', [AdminController::class, 'aprobarUser2'])->name('users.aprobarUser2');
+Route::get('/users/rechazarUser2/{id}', [AdminController::class, 'rechazarUser2'])->name('users.rechazarUser2');
+
 
 //routas para alimentar municipios
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');

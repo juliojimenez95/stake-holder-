@@ -20,6 +20,10 @@
     width: 350px;
 }
 
+.image-green {
+    filter: brightness(150%) hue-rotate(120deg);
+  }
+  
 .div_img {
     width: 50px;
     height: 50px;

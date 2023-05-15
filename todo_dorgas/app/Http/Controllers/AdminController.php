@@ -168,9 +168,9 @@ class AdminController extends Controller
     }
 
 
-    public function InformacionP($id)
+    public function InformacionP(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->id);
 
         if ($user->rol == 1) {
 
@@ -179,9 +179,9 @@ class AdminController extends Controller
             $telefono = strval($cliente_domicilio->Telefono);
             $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
 
-            $contacto = ContactoModel::where('Cliente_id',$id)->first();
-            $representante = RepresentanteLegalModel::where('user_id',$id)->first();
-            $personae = personaExpuestaModel::where('user_id',$id)->first();
+            $contacto = ContactoModel::where('Cliente_id',$request->id)->first();
+            $representante = RepresentanteLegalModel::where('user_id',$request->id)->first();
+            $personae = personaExpuestaModel::where('user_id',$request->id)->first();
 
             if ($personae) {
                 return  response()->json([

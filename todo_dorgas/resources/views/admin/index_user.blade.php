@@ -121,10 +121,10 @@
                                     </td>
                                     <td style="color: black">
 
-                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser', $usuario->id) }}" method="GET">
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser1', $usuario->id) }}" method="GET">
                                             @csrf
                                             @method('PUT')
-                                            @if ($usuario->aprovado == 1)
+                                            @if ($usuario->aprovado2 == 1)
                                                 <button class="btn btn-success" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                                     <i class="fas fa-check"></i>
                                                 </button>
@@ -136,10 +136,10 @@
 
                                         </form>
 
-                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.rechazarUser', $usuario->id) }}" method="GET">
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.rechazarUser1', $usuario->id) }}" method="GET">
                                             @csrf
                                             @method('PUT')
-                                            @if ($usuario->aprovado == 2)
+                                            @if ($usuario->aprovado2 == 2)
                                                 <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                                     <i class="fa-solid fa-xmark"></i>
 
@@ -155,10 +155,10 @@
                                     </td>
                                     <td style="color: black">
 
-                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser', $usuario->id) }}" method="GET">
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.aprobarUser2', $usuario->id) }}" method="GET">
                                             @csrf
                                             @method('PUT')
-                                            @if ($usuario->aprovado == 1)
+                                            @if ($usuario->aprovado3 == 1)
                                                 <button class="btn btn-success" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                                     <i class="fas fa-check"></i>
                                                 </button>
@@ -170,10 +170,10 @@
 
                                         </form>
 
-                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.rechazarUser', $usuario->id) }}" method="GET">
+                                        <form onclick="return confirm('Esta seguro ? ')"  class="d-inline" action="{{ route('users.rechazarUser2', $usuario->id) }}" method="GET">
                                             @csrf
                                             @method('PUT')
-                                            @if ($usuario->aprovado == 2)
+                                            @if ($usuario->aprovado3 == 2)
                                                 <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                                     <i class="fa-solid fa-xmark"></i>
 
@@ -446,11 +446,11 @@
           </div>
 
 <!-- Contenido de la vista modal informacion Personal-->
-<div class="modal fade" id="modalInformacionBancaria" tabindex="-1" role="dialog" aria-labelledby="modalInformacionBancariaLabel" aria-hidden="true">
+<div class="modal fade" id="modalInformacionPersonal" tabindex="-1" role="dialog" aria-labelledby="modalInformacionPersonalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalInformacionBancariaLabel">Información Personal</h5>
+          <h5 class="modal-title" id="modalInformacionPersonalLabel">Información Personal</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -526,16 +526,16 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="RC"><strong></strong></p>
+                  <p id="Rp"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="Gp"> <strong></strong></p>
+                  <p id="Rpp"> <strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="Rp"><strong></strong></p>
+                  <p id="RRp"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
                   <p id="Pe"> <strong></strong></p>
@@ -544,10 +544,16 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="Oi"><strong></strong></p>
+                  <p id="Ot"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="Ps"> <strong></strong></p>
+                  <p id="oi"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="Os"><strong></strong></p>
                 </div>
               </div>
 
@@ -571,16 +577,16 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <p id="VC"><strong></strong></p>
+                  <p id="CC"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="CC"> <strong></strong></p>
+                  <p id="EC"> <strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="NC"><strong></strong></p>
+                  <p id="TC"><strong></strong></p>
                 </div>
               </div>
 
@@ -596,6 +602,96 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
     <script src="{{ asset('js/table.js') }}"></script>
+
+    <script>
+        function dataPersonal(id){
+         $.ajaxSetup({
+         headers: {
+                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+             },
+         });
+         $.ajax({
+
+             url: "/admin/InformacionP",
+             dataType: "json",
+             type: "POST",
+             data: {
+                 id:id,
+             },
+             success: function(response) {
+
+                let socios = response.socios;
+
+
+                 $('#Tipodocumento').empty();
+                 $('#n_documento').empty();
+                 $('#nombres_a').empty();
+                 $('#Departamento_p').empty();
+                 $('#cuidad_p').empty();
+                 $('#telefono_p').empty();
+                 $('#direccion_p').empty();
+                 $('#Actividad_e').empty();
+                 $('#TR').empty();
+                 $('#DR').empty();
+                 $('#NR').empty();
+                 $('#TeR').empty();
+                 $('#CR').empty();
+                 $('#ER').empty();
+                 $('#Rp').empty();
+                 $('#Rpp').empty();
+                 $('#RRp').empty();
+                 $('#Pe').empty();
+                 $('#Ot').empty();
+                 $('#oi').empty();
+                 $('#Os').empty();
+
+                 $('#NDC').empty();
+                 $('#NC').empty();
+                 $('#CC').empty();
+                 $('#EC').empty();
+                 $('#TC').empty();
+
+                 $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.cliente.TipoNit+"</span>");
+                 $('#n_documento').append("Numero documento: "+"<span>"+response.cliente.Nit+"</span>");
+                 $('#nombres_a').append("Nombre: "+"<span>"+response.cliente.Nombre+"</span>");
+                 $('#Departamento_p').append("Departamento: "+"<span>"+response.domicilio.Departamento+"</span>");
+                 $('#cuidad_p').append("Cuidad: "+"<span>"+response.domicilio.Ciudad+"</span>");
+                 $('#telefono_p').append("Telefono: "+"<span>"+response.domicilio.Telefono+"</span>");
+                 $('#direccion_p').append("Direccion: "+"<span>"+response.domicilio.Direccion+"</span>");
+                 $('#Actividad_e').append("Actividad economica: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
+
+                 $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
+                 $('#DR').append("Numero documento: "+"<span>"+response.representante.Nit+"</span>");
+                 $('#NR').append("Nombre: "+"<span>"+response.representante.Nombre1+"</span>");
+                 $('#TeR').append("Telefono: "+"<span>"+response.representante.Telefono+"</span>");
+                 $('#CR').append("Cargo: "+"<span>"+response.representante.Cargo+"</span>");
+                 $('#ER').append("Email: "+"<span>"+response.representante.Email+"</span>");
+                 $('#Rp').append("Manejo recursos publicos: "+"<span>"+response.representante.ManejoRP+"</span>");
+                 $('#Rpp').append("Poder político o públicos: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
+
+                 $('#RRp').append("Reconocimiento político o públicos: "+"<span>"+response.representante.Reconocimiento+"</span>");
+                 $('#Pe').append("Vinculo con la persona exxpuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
+                 $('#Ot').append("Tributa en otro pais: "+"<span>"+response.representante.ObligacionTE+"</span>");
+                 $('#oi').append("Tiene funciones en una O.I: "+"<span>"+response.representante.OrganizacionI+"</span>");
+                 $('#Os').append("Obligada a tener un programa: "+"<span>"+response.representante.ObligacionP+"</span>");
+
+                 $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
+                 $('#NDC').append("Numero de documento: "+"<span>"+response.contacto.Nit+"</span>");
+                 $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
+                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
+                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
+                 $('#TC').append("Telfono: "+"<span>"+response.contacto.Telefono+"</span>");
+
+
+                 $("#modalInformacionPersonal").modal("show");
+
+             },
+             error: function(response) {
+                 console.log(response);
+             },
+         });
+         }
+     </script>
 
     <script>
 

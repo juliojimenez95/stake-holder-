@@ -386,6 +386,7 @@ class ClienteController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
+                        'rol' => 1
                         ]);
 
                     $cliente_domicilio->save();
@@ -513,7 +514,7 @@ class ClienteController extends Controller
             //$cliente->RetenedorModo="N/A";
             $cliente->Notificacion=0;
             $cliente->Enabled=1;
-            $cliente->Natural=1;
+            $cliente->Natural=0;
 
             $cliente->ActividadEconomica=$request->actividad;
             //$cliente->GranContribuyente=$request->nombre1;
@@ -552,7 +553,7 @@ class ClienteController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'id_cliente'=> $cliente2->ID,
+                        'rol' => 1
                         ]);
 
                     $cliente_domicilio->save();

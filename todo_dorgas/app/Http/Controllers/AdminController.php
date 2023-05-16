@@ -190,6 +190,8 @@ class AdminController extends Controller
                     'personae'=>$personae,
                     'contacto'=>$contacto,
                     'representante'=>$representante,
+                    'user'=> $user
+
 
                 ]);
             }else {
@@ -198,6 +200,7 @@ class AdminController extends Controller
                     'domicilio'=>$domicilio,
                     'contacto'=>$contacto,
                     'representante'=>$representante,
+                    'user'=> $user
 
                 ]);
 
@@ -217,6 +220,7 @@ class AdminController extends Controller
                         'personae'=>$personae,
                         'contacto'=>$contacto,
                         'representante'=>$representante,
+                        'user'=> $user
 
                     ]);
                 }else {
@@ -224,6 +228,7 @@ class AdminController extends Controller
                         'Proveedor'=>$Proveedor,
                         'contacto'=>$contacto,
                         'representante'=>$representante,
+                        'user'=> $user
 
                     ]);
                 }

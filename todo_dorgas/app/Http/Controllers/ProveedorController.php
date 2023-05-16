@@ -24,7 +24,7 @@ class ProveedorController extends Controller
      {
          $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
          $actividades = actividad_economicaModel::get();
-         return view("cliente.registro_pn",["tipos"=>$tipos,"actividades"=>$actividades]);
+         return view("proveedor.registro_pn",["tipos"=>$tipos,"actividades"=>$actividades]);
      }
 
      public function storepn(Request $request)
@@ -108,7 +108,7 @@ class ProveedorController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'id_cliente'=> $proveedor->ID,
+                        'rol' => 2
                         ]);
 
 
@@ -248,6 +248,7 @@ class ProveedorController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
+                        'rol' => 2
                         ]);
 
 

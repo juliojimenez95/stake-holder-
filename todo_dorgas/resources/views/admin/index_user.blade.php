@@ -447,10 +447,10 @@
 
 <!-- Contenido de la vista modal informacion Personal-->
 <div class="modal fade" id="modalInformacionPersonal" tabindex="-1" role="dialog" aria-labelledby="modalInformacionPersonalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalInformacionPersonalLabel">Información Personal</h5>
+          <h5 class="modal-title tit_mod" id="modalInformacionPersonalLabel">Información Personal</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -459,134 +459,134 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
-                <p id="Tipodocumento"> <strong></strong></p>
+                <p id="Tipodocumento" class="p_ch"> <strong></strong></p>
               </div>
               <div class="col-md-6">
-                <p id="n_documento"><strong></strong></p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <p id="nombres_a"> <strong></strong></p>
-              </div>
-              <div class="col-md-6">
-                <p id="Departamento_p"><strong></strong></p>
+                <p id="n_documento" class="p_ch"><strong></strong></p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <p id="cuidad_p"><strong></strong></p>
+                <p id="nombres_a" class="p_ch"> <strong></strong></p>
               </div>
               <div class="col-md-6">
-                <p id="telefono_p"> <strong></strong></p>
+                <p id="Departamento_p" class="p_ch"><strong></strong></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p id="cuidad_p" class="p_ch"><strong></strong></p>
+              </div>
+              <div class="col-md-6">
+                <p id="telefono_p" class="p_ch"> <strong></strong></p>
 
               </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
-                  <p id="direccion_p"> <strong></strong></p>
+                  <p id="direccion_p" class="p_ch"> <strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="Actividad_e"><strong></strong></p>
+                  <p id="Actividad_e" class="p_ch"><strong></strong></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <h2 > <strong>Representante </strong></h2>
+                  <h5 class="tit_mod" >Representante</h5>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="TR"><strong></strong></p>
+                  <p id="TR" class="p_ch"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="DR"> <strong></strong></p>
+                  <p id="DR" class="p_ch"> <strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="NR"><strong></strong></p>
+                  <p id="NR" class="p_ch"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                    <p id="TeR"><strong></strong></p>
+                    <p id="TeR" class="p_ch"><strong></strong></p>
                   </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="CR"><strong></strong></p>
+                  <p id="CR" class="p_ch"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="ER"> <strong></strong></p>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <p id="Rp"><strong></strong></p>
-                </div>
-                <div class="col-md-6">
-                  <p id="Rpp"> <strong></strong></p>
+                  <p id="ER" class="p_ch"> <strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="RRp"><strong></strong></p>
+                  <p id="Rp" class="p_ch"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="Pe"> <strong></strong></p>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <p id="Ot"><strong></strong></p>
-                </div>
-                <div class="col-md-6">
-                  <p id="oi"> <strong></strong></p>
+                  <p id="Rpp" class="p_ch"> <strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="Os"><strong></strong></p>
+                  <p id="RRp" class="p_ch"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="Pe" class="p_ch"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="Ot" class="p_ch"><strong></strong></p>
+                </div>
+                <div class="col-md-6">
+                  <p id="oi" class="p_ch"> <strong></strong></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p id="Os" class="p_ch"><strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12">
-                  <h2 > <strong>Contacto </strong></h2>
+                  <h5 class="tit_mod">Contacto</h5>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <p id="TDC"><strong></strong></p>
+                  <p id="TDC" class="p_ch"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="NDC"> <strong></strong></p>
+                  <p id="NDC" class="p_ch"> <strong></strong></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <p id="NC"><strong></strong></p>
+                  <p id="NC" class="p_ch"><strong></strong></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <p id="CC"><strong></strong></p>
+                  <p id="CC" class="p_ch"><strong></strong></p>
                 </div>
                 <div class="col-md-6">
-                  <p id="EC"> <strong></strong></p>
+                  <p id="EC" class="p_ch"> <strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <p id="TC"><strong></strong></p>
+                  <p id="TC" class="p_ch"><strong></strong></p>
                 </div>
               </div>
 

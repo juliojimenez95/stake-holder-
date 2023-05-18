@@ -32,7 +32,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="content_1">
-                        <p>Tiene socios o accionistas con participación directa o indirecta superior a 5%?</p>
+                        <p>Tiene socios o accionistas con participación directa o indirecta superior al 5%?</p>
                         <div><span>Sí</span>  <input type="radio" id="red" name="color" value="red"> <span>No</span>  <input type="radio" id="" name="color" value=""></div>
                     </div>
 
@@ -44,7 +44,7 @@
                     @csrf
                     <div class="content_main">
                         <div class="div_cus">
-                            <label for="">Nombre y Apellidos<span>*</span> </label>
+                            <label for="">Nombres y Apellidos<span>*</span> </label>
                             <input type="text" class="form-control custom_input" name="Nombre">
                             @if ($errors->has('Nombre'))
                                 <p class="text-danger">{{ $errors->first('Nombre') }}</p>
@@ -52,7 +52,7 @@
 
                         </div>
                         <div class="div_cus">
-                            <label for="tipo_d" class="form-label label_cus">Tipo documento<span>*</span></label>
+                            <label for="tipo_d" class="form-label label_cus">Tipo de documento<span>*</span></label>
                             <select class="form-select form-control" aria-label="Seleccione un tipo de documento" name="tipo_d">
                                 <option value="">Tipo de documento...</option>
                                 @foreach ($tipos as $tipo)
@@ -157,11 +157,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="div_continuar">
                         <a href="{{ route('clientes.documentos_anexos',$id) }}">
-                        <button  class="btn btn-primary btn_continuar">CONTINUAR</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
+                        <button  class="btn btn-primary btn_continuar">Guardar y Continuar</button>
                     </a>
                     </div>
                 </div>

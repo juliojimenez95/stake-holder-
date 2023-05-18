@@ -29,6 +29,7 @@
         </div>
       </div>
     </div>
+    <div class="card bg-light" style="padding-top: 45px;">
     <div class="container">
       <form action="{{ route('clientes.storeInformacionb',$id) }}" method="POST">
             @csrf
@@ -73,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Número de cuenta<span>*</span></label>
+                                <label for="" class="label_custom">Número de Cuenta<span>*</span></label>
                                 <input type="text" class="form-control input_custom" name="n_cuenta">
                                 @if ($errors->has('n_cuenta'))
                                         <p class="text-danger">{{ $errors->first('n_cuenta') }}</p>
@@ -149,7 +150,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Número de cuenta</label>
+                                <label for="" class="label_custom">Número de Cuenta</label>
                                 <input type="text" class="form-control input_custom"name="n_cuenta2">
                             </div>
 
@@ -178,14 +179,17 @@
                 </div>
             </div>
         </div>
+
         <div class="mb-4">
             <div class="div_continuar">
                 <button class="btn btn-primary btn_continuar">Guardar y Continuar</button> <span style="color:blue; font-size: 25px;"></span>
             </div>
         </div>
-    </div>
-    </form>
+
+        </div>
+        </form>
   </div>
+</div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"

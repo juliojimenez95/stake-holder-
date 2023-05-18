@@ -50,7 +50,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="razon_s" class="form-label label_c"><strong>Razón Social<span>*</span></strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="razon_s" name="razon_s" value="{{old('razon_s')}}"
-                                        placeholder=" Razon social ">
+                                        placeholder="">
                                     @if ($errors->has('razon_s'))
                                         <p class="text-danger">{{ $errors->first('razon_s') }}</p>
                                     @endif
@@ -58,7 +58,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="nit" class="form-label label_c"><strong>N.I.T<span>*</span></strong></label>
                                     <input type="nit" class="form-control input_custom select_c" id="nit" name="nit" value="{{old('nit')}}"
-                                        placeholder="Nit">
+                                        placeholder="">
                                     @if ($errors->has('nit'))
                                         <p class="text-danger">{{ $errors->first('nit') }}</p>
                                     @endif
@@ -82,16 +82,16 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="email" class="form-label label_c"><strong>Correo electrónico<span>*</span></strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="email" name="email" value="{{old('email')}}"
-                                        placeholder=" email ">
+                                        placeholder="">
                                     @if ($errors->has('email'))
                                         <p class="text-danger">{{ $errors->first('email') }}</p>
                                     @endif
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="pagina" class="form-label label_c"><strong>Pagina web </strong></label>
+                                    <label for="pagina" class="form-label label_c"><strong>Página web </strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="pagina" name="pagina" value="{{old('pagina')}}"
-                                        placeholder=" Pagina web ">
+                                        placeholder="">
                                     @if ($errors->has('pagina'))
                                         <p class="text-danger">{{ $errors->first('pagina') }}</p>
                                     @endif
@@ -114,7 +114,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento<span>*</span></strong></label>
                                         <select  class="form-control select_c" aria-label="Seleccione una departamento" id="departamento" name="departamento">
-                                        <option  value="{{old('departamento')}}">Seleccione una departamento...</option>
+                                        <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
 
                                         </select>
                                         @if ($errors->has('departamento'))
@@ -136,7 +136,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="direccion" class="form-label label_c"><strong>Dirección<span>*</span></strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="direccion" name="direccion" value="{{old('direccion')}}"
-                                        placeholder=" Direccion ">
+                                        placeholder="">
                                     @if ($errors->has('direccion'))
                                         <p class="text-danger">{{ $errors->first('direccion') }}</p>
                                     @endif
@@ -159,9 +159,9 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="servicio" class="form-label label_c"><strong>Servicio<span>*</span></strong></label>
+                                    <label for="servicio" class="form-label label_c"><strong>Servicio</strong></label>
                                     <input type="servicio" class="form-control input_custom select_c" id="servicio" name="servicio" value="{{old('servicio')}}"
-                                        placeholder="Servicio que ofrece">
+                                        placeholder="">
                                     @if ($errors->has('servicio'))
                                         <p class="text-danger">{{ $errors->first('servicio') }}</p>
                                     @endif
@@ -170,7 +170,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
-                                        placeholder="Contraseña">
+                                        placeholder="">
                                     @if ($errors->has('password'))
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
@@ -181,7 +181,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="password" class="form-label label_c"><strong>Confirmar contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password_confirmation"
-                                    required autocomplete="new-password"  placeholder="Confirmar contraseña">
+                                    required autocomplete="new-password"  placeholder="">
                                     @if ($errors->has('password'))
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif

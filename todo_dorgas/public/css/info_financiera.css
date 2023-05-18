@@ -1,6 +1,6 @@
 .div_p p {
-    color: #004492;
-    font-size: 1rem;
+    color: grey;
+    font-size: 1.1rem;
     font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
     text-align: center;
     margin-bottom: 35px;
@@ -29,4 +29,13 @@
     background-color: #004492!important;
     border-color: #004492!important;
 }
+
+.input_cus {
+    background-color: #E2E8F0;
+    border-color: #E2E8F0;
+    color: grey!important;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-size: 1rem;
+}
+
 

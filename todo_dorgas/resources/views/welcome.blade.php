@@ -41,7 +41,7 @@
             <select id="mySelect" multiple size="4">
               <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
               <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
-              <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Politicas SAGRILAFT</option>
+              <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas SAGRILAFT</option>
               <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Código de Ética y Buen Gobierno</option>
             </select>
           </div>

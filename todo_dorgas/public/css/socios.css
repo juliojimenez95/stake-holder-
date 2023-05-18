@@ -1,7 +1,9 @@
 .content_1 {
     display: flex;
     justify-content: center;
-    color: #004492;
+    color: grey;
+    font-size: 1.1rem;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .content_1 p {
@@ -13,6 +15,7 @@
 .content_1 span {
     font-weight: 700;
     font-size: 20px;
+    color: #004492;
 }
 
 /*Estilo para el botón de radio*/
@@ -59,6 +62,8 @@ input[type="radio"] {
   .div_inside p {
     color: #004492;
     font-weight: 500;
+    font-size: 1.2rem;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
   }
 
   .div_inside span {
@@ -96,7 +101,7 @@ input[type="radio"] {
 
   .div_continuar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .div_continuar button{
@@ -114,18 +119,24 @@ input[type="radio"] {
     color: #004492;
     font-weight: 700;
     font-size: 20px;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
   }
   .h1_tit {
     color: #004492!important;
+    font-family: 'Franklin Gothic Medium', arial;
   }
 
   .btn_c {
     display: flex;
     justify-content: center;
   }
-  .btn_c button {
+  .btn_c a {
     background-color: #004492;
     border-color: #004492;
+    border-radius: 20px;
+    color: grey;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-size: 1rem;
   }
 
   .div_con {
@@ -140,12 +151,14 @@ input[type="radio"] {
     color: #004492;
     font-size: 25px;
     font-weight: 600;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
   }
 
   .div_con span {
     color: #004492;
     font-size: 16px;
     font-weight: 400;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
   }
 
   .tb_cus {

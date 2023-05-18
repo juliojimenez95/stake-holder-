@@ -73,7 +73,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <label for="n_docuemnto" class="form-label lb_cus"><strong>Número de documento<span>*</span></strong></label>
                                     <input type="n_docuemnto" class="form-control input_custom sl_cus" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
-                                        placeholder="Numero documento">
+                                        placeholder="">
                                     @if ($errors->has('n_docuemnto'))
                                         <p class="text-danger">{{ $errors->first('n_docuemnto') }}</p>
                                     @endif
@@ -84,7 +84,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <label for="Nombre" class="form-label lb_cus"><strong>Nombres y Apellidos<span>*</span></strong></label>
                                     <input type="text" class="form-control input_custom sl_cus" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
-                                        placeholder=" Nombres y apellidos ">
+                                        placeholder="">
                                     @if ($errors->has('Nombre'))
                                         <p class="text-danger">{{ $errors->first('Nombre') }}</p>
                                     @endif
@@ -95,7 +95,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <label for="Vinculo" class="form-label lb_cus"><strong>Vinculo/Relación<span>*</span></strong></label>
                                     <input type="text" class="form-control sl_cus" id="Vinculo" name="Vinculo" value="{{old('Vinculo')}}"
-                                        placeholder=" Vinculo ">
+                                        placeholder="">
                                     @if ($errors->has('Vinculo'))
                                         <p class="text-danger">{{ $errors->first('Vinculo') }}</p>
                                     @endif
@@ -103,7 +103,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <label for="Cargo" class="form-label lb_cus"><strong>Cargo<span>*</span></strong></label>
                                     <input type="Cargo" class="form-control sl_cus" id="Cargo" name="Cargo" value="{{old('Cargo')}}"
-                                        placeholder="Cargo">
+                                        placeholder="">
                                     @if ($errors->has('Cargo'))
                                         <p class="text-danger">{{ $errors->first('Cargo') }}</p>
                                     @endif
@@ -114,7 +114,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <label for="Nacionalidad" class="form-label lb_cus"><strong>Nacionalidad<span>*</span></strong></label>
                                     <input type="text" class="form-control input_custom sl_cus" id="Nacionalidad" name="Nacionalidad" value="{{old('Nacionalidad')}}"
-                                        placeholder=" Nacionalidad ">
+                                        placeholder="">
                                     @if ($errors->has('Nacionalidad'))
                                         <p class="text-danger">{{ $errors->first('Nacionalidad') }}</p>
                                     @endif

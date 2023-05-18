@@ -53,12 +53,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6" style="padding: 0!important;">
+      <div class="col-md-6" style="">
         <a href="{{ route('cliente.identificacion') }}" class="w-100">
         <img src="{{ asset('images/cliente.png') }}" alt="Imagen de perfil 1" class="img-responsive my-4 img-fluid w-100 col_cus_x">
         </a>
       </div>
-      <div class="col-md-6" style="padding: 0!important;">
+      <div class="col-md-6" style="">
         <a href="{{ route('proveedor.identificacion') }}"  class="w-100">
         <img src="{{ asset('images/proveedor.png') }}" alt="Imagen de perfil 2" class="img-responsive my-4 img-fluid w-100 col_cus_z">
         </a>

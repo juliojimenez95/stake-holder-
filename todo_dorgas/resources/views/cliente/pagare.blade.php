@@ -25,12 +25,11 @@
         </div>
       </div>
     </div>
-    <div class="row ">
-        <form action="{{ route('storepagare',$id)}}" method="post">
+    <form action="{{ route('storepagare',$id)}}" method="post">
         @csrf
 
       <div class="col-md-12">
-        <div class="card text-center bg-light mt-4">
+        <div class="card bg-light mt-4">
           <div class="card-body">
                 <center>
                 <div class="row">
@@ -68,7 +67,7 @@
               </div>
 
               <div class="col-md-3">
-                <div class="card text-center border-0 transparente" >
+                <div class="card border-0 text-center transparente">
                   <div class="card-body body_cus">
                     <div class="img_cusx">
                       <img src="{{ asset('images/Subir-PDF.png') }}" class="image-clas2" alt="">
@@ -89,7 +88,7 @@
                   <div class="col-12 text-center">
 
                   <a href="{{ route('home') }}">
-                  <button class="btn btn-primary  ml-10 btn_cx" style="margin-left: 80%;">Guardar y Continuar</button>
+                  <button class="btn btn-primary  ml-10 btn_cx">Guardar y Continuar</button>
                 </a>
                   </div>
                   </div>
@@ -99,7 +98,6 @@
         </div>
       </div>
     </form>
-    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

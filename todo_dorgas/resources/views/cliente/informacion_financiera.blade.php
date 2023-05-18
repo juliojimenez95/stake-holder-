@@ -44,10 +44,10 @@
                             <p style="padding-left: 30px;">Respuesta<span>*</span></p>
                             <div class="div_in_on mb-3">
                                   <div class="col-4">
-                                    <p class="">Activos totales</p>
+                                    <p class="">Activos Totales</p>
                                   </div>
                                   <div class="col-8">
-                                    <input type="text" class="form-control col-12" id="Activo" name="Activo">
+                                    <input type="text" class="form-control col-12 input_cus" id="Activo" name="Activo">
                                     @if ($errors->has('Activo'))
                                         <p class="text-danger">{{ $errors->first('Activo') }}</p>
                                     @endif
@@ -60,7 +60,7 @@
                                   <p class="">Pasivos Totales</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="text" class="form-control col-12" id="Pasivo" name="Pasivo">
+                                    <input type="text" class="form-control col-12 input_cus" id="Pasivo" name="Pasivo">
                                     @if ($errors->has('Pasivo'))
                                        <p class="text-danger">{{ $errors->first('Pasivo') }}</p>
                                     @endif
@@ -73,7 +73,7 @@
                               <p class="">Patrimonio</p>
                             </div>
                             <div class="col-8">
-                                <input type="text" class="form-control col-12" id="Patrimonio" name="Patrimonio">
+                                <input type="text" class="form-control col-12 input_cus" id="Patrimonio" name="Patrimonio">
                                 @if ($errors->has('Patrimonio'))
                                    <p class="text-danger">{{ $errors->first('Patrimonio') }}</p>
                                 @endif
@@ -90,7 +90,7 @@
                                   <p class="">Pasivos Totales</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="text" class="form-control col-12" id="ingresos" name="Ingresos">
+                                    <input type="text" class="form-control col-12 input_cus" id="ingresos" name="Ingresos">
                                     @if ($errors->has('Ingresos'))
                                        <p class="text-danger">{{ $errors->first('Ingresos') }}</p>
                                     @endif
@@ -102,7 +102,7 @@
                                   <p class="">Egresos Totales</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="text" class="form-control col-12" id="egresos" name="Egresos">
+                                    <input type="text" class="form-control col-12 input_cus" id="egresos" name="Egresos">
                                     @if ($errors->has('Egresos'))
                                        <p class="text-danger">{{ $errors->first('Egresos') }}</p>
                                     @endif
@@ -114,7 +114,7 @@
                                   <p class="">Número de personal con vinculación directa</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="text" class="form-control col-12" id="vinculado" name="Vinculado">
+                                    <input type="text" class="form-control col-12 input_cus" id="vinculado" name="Vinculado">
                                     @if ($errors->has('Vinculado'))
                                        <p class="text-danger">{{ $errors->first('Vinculado') }}</p>
                                     @endif

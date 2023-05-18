@@ -14,7 +14,7 @@
   <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div>
+            <div class="dv_c">
                 <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">

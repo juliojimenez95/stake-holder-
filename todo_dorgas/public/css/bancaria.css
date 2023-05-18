@@ -77,12 +77,11 @@
 .btn_continuar {
     background-color: #004492;
     border-color: #004492;
-    margin-right: 10px;
 }
 
 .div_continuar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .h1_tit {
@@ -122,4 +121,8 @@
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
     font-family: 'franklin-gothic-book-regular', sans-serif;
 
+}
+
+.card_cs {
+    background-color: blue;
 }

@@ -30,3 +30,27 @@
     font-weight:bolder;
     line-height: 45px;
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.div_pc {
+    display: flex;
+    flex-direction: column;
+    margin-right: 45px;
+}
+
+.input_cus {
+    background-color: #E2E8F0!important;
+    border-color: #E2E8F0!important;
+    color: grey!important;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-size: 1rem!important;
+}

@@ -42,10 +42,10 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                      <p id="Tipodocumento" class="p_ch"> <strong>$data->algo</strong></p>
+                                      <p id="Tipodocumento" class="p_ch"> <strong>$cliente->TipoNit</strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="n_documento" class="p_ch"><strong>kabdsbasd</strong></p>
+                                      <p id="n_documento" class="p_ch"><strong>$cliente->Nit</strong></p>
                                     </div>
                                   </div>
                                   {{--<div class="row">

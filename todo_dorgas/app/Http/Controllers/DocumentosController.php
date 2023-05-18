@@ -336,9 +336,9 @@ class DocumentosController extends Controller
     {
 
         try {
-           // $user = User::find($id);
+            $user = User::find($id);
 
-           /* $cliente = ClienteModel::where('Mail',$user->email)->first();
+            $cliente = ClienteModel::where('Mail',$user->email)->first();
             $cliente_domicilio = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
             $telefono = strval($cliente_domicilio->Telefono);
             $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
@@ -351,16 +351,19 @@ class DocumentosController extends Controller
             $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
             $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
             $pagare = PagareModel::where('user_id',$id)->first();
-            $socios = AccionistaModel::where('user_id',$id)->get(); */
+            $socios = AccionistaModel::where('user_id',$id)->get();
 
 
-
+           // return $informacionb;
             $data = [
                 'title' => 'Welcome to CodeSolutionStuff.com',
                 'date' => date('m/d/Y')
             ];
 
-            $pdf = PDF::loadView('myPDF', $data);
+            $pdf = PDF::loadView('myPDF', ['data'=>$data, 'cliente'=>$cliente,
+            'domicilio'=>$domicilio,'contacto'=>$contacto, 'representante'=>$representante,
+            'informaciont'=> $informaciont,'informacionb'=> $informacionb,'informacionf'=> $informacionf,
+            'pagare'=> $pagare,'socios'=> $socios]);
 
             return $pdf->download('codesolutionstuff.pdf');
 

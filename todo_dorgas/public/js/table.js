@@ -26,8 +26,9 @@ $(document).ready(function() {
         }
         });
 
-        $('#miTabla').DataTable(
-
-            );
+        $('#miTabla').DataTable({
+            destroy: true,
+            responsive: true,
+        });
 
 });

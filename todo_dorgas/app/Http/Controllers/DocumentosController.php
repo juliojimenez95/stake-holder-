@@ -19,10 +19,18 @@ use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
 use App\Models\PagareModel;
 use App\Models\AnexoModel;
+use App\Models\personaExpuestaModel;
+use App\Models\AccionistaModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use PDF;
+use setasign\Fpdi\Fpdi;
+use setasign\Fpdi\PdfWriter\PdfWriter;
+
+
+
 
 
 date_default_timezone_set("America/Bogota");
@@ -183,6 +191,192 @@ class DocumentosController extends Controller
             }
 
             //return redirect('/actividad/');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    public function pdf($id)
+    {
+
+        try {
+            $anexo = AnexoModel::where('user_id',$id)->first();
+
+            $file1 = public_path('documentos/' . $anexo->Camara_comercio);
+            $file2 = public_path('documentos/' . $anexo->Rut);
+            $file3 = public_path('documentos/' . $anexo->Cc_representante);
+            $file4 = public_path('documentos/' . $anexo->Estados_financieros);
+            $file5 = public_path('documentos/' . $anexo->Referencia_comercial);
+            $file6 = public_path('documentos/' . $anexo->ICA);
+            $file7 = public_path('documentos/' . $anexo->Contribuyente);
+            $file8 = public_path('documentos/' . $anexo->Autoretenedor_f);
+            $file9 = public_path('documentos/' . $anexo->Autoretenedor_ICA);
+            $file10 = public_path('documentos/' . $anexo->Brochure);
+            $file11 = public_path('documentos/' . $anexo->Certificado_bancario);
+            $file12 = public_path('documentos/' . $anexo->SG_SST);
+            $file13 = public_path('documentos/' . $anexo->SS);
+
+
+
+            // Crear un nuevo objeto Fpdi
+            $pdf = new Fpdi();
+            //agregar paginas del pdf 1
+            $pages1 = $pdf->setSourceFile($file1);
+            for ($i = 1; $i <= $pages1; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+
+            $pages2 = $pdf->setSourceFile($file2);
+            for ($i = 1; $i <= $pages2; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages3 = $pdf->setSourceFile($file3);
+            for ($i = 1; $i <= $pages3; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages4 = $pdf->setSourceFile($file4);
+            for ($i = 1; $i <= $pages4; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages5 = $pdf->setSourceFile($file5);
+            for ($i = 1; $i <= $pages5; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages6 = $pdf->setSourceFile($file6);
+            for ($i = 1; $i <= $pages6; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages7 = $pdf->setSourceFile($file7);
+            for ($i = 1; $i <= $pages7; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages8 = $pdf->setSourceFile($file8);
+            for ($i = 1; $i <= $pages8; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages9 = $pdf->setSourceFile($file9);
+            for ($i = 1; $i <= $pages9; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages10 = $pdf->setSourceFile($file10);
+            for ($i = 1; $i <= $pages10; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages11 = $pdf->setSourceFile($file11);
+            for ($i = 1; $i <= $pages11; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $pages12 = $pdf->setSourceFile($file12);
+            for ($i = 1; $i <= $pages12; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+
+            $pages13 = $pdf->setSourceFile($file13);
+            for ($i = 1; $i <= $pages13; $i++) {
+                $template = $pdf->importPage($i);
+                $pdf->AddPage();
+                $pdf->useTemplate($template);
+            }
+
+            $outputFile = 'pdf_combinado.pdf';
+            $pdf->Output('F', $outputFile);
+
+
+
+            return response()->download($outputFile, 'pdf_combinado.pdf');
+
+
+
+
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    public function unirpdf($id)
+    {
+
+        try {
+            $user = User::find($id);
+
+            $cliente = ClienteModel::where('Mail',$user->email)->first();
+            $cliente_domicilio = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
+            $telefono = strval($cliente_domicilio->Telefono);
+            $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
+
+             $contacto = ContactoModel::where('Cliente_id',$id)->first();
+            $representante = RepresentanteLegalModel::where('user_id',$id)->first();
+            $personae = personaExpuestaModel::where('user_id',$id)->first();
+
+            $informaciont = InformacionTributariaModel::where('Cliente_id',$id)->first();
+            $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
+            $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
+            $pagare = PagareModel::where('user_id',$id)->first();
+            $socios = AccionistaModel::where('user_id',$id)->get();
+
+
+           // return $informacionb;
+            $data = [
+                'title' => 'Welcome to CodeSolutionStuff.com',
+                'date' => date('m/d/Y')
+            ];
+
+            $pdf = PDF::loadView('myPDF', ['data'=>$data, 'cliente'=>$cliente,
+            'domicilio'=>$domicilio,'contacto'=>$contacto, 'representante'=>$representante,
+            'informaciont'=> $informaciont,'informacionb'=> $informacionb,'informacionf'=> $informacionf,
+            'pagare'=> $pagare,'socios'=> $socios]);
+
+            return $pdf->download('codesolutionstuff.pdf');
+
+            /*$pdf = Pdf::loadView('pdf.pdf', compact('data')  /*['cliente'=>$cliente,
+            'cliente_domicilio'=>$cliente_domicilio,'domicilio'=>$domicilio
+            'contacto'=>$contacto,'representante'=>$representante,
+            'personae'=>$personae,'user'=>$user,'informaciont'=>$informaciont,
+            'informacionb'=>$informacionb,'informacionf'=>$informacionf ,
+            'pagare'=>$pagare, 'socios'=>$socios
+             ] );
+            $pdf->setPaper('a3', 'landscape');
+            return $pdf->download('pdf.pdf');*/
+
         } catch (\Throwable $th) {
             throw $th;
         }

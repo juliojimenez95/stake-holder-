@@ -84,6 +84,13 @@
                                         <a href="#"  onclick="cargarSocios({{ 98 }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <i class="fa-solid fa-user-group"></i>
                                         </a>
+                                        <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                        </a>
+
+                                        <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                        </a>
                                     </td>
                                     <td style="color: black">
 

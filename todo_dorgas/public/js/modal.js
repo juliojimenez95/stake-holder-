@@ -72,7 +72,7 @@ function dataPersonal(id){
 
             $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
             $('#NDC').append("Numero de documento: "+"<span>"+response.contacto.Nit+"</span>");
-            $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
+            $('#NC').append("Nombre: "+"<span>"+response.contacto.Nombre1+"</span>");
             $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
             $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
             $('#TC').append("Telfono: "+"<span>"+response.contacto.Telefono+"</span>");

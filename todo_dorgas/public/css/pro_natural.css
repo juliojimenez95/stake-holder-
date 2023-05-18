@@ -1,0 +1,57 @@
+.persona_c, .natural_c{
+    font-size: 70px;
+    font-weight:bolder;
+    line-height: 45px;
+}
+
+
+.h3_tit {
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+
+
+.h2_tit{
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.label_c {
+    font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
+    font-size: 16px!important;
+}
+
+.select_c {
+    background-color:#EDF2F7!important;
+    color: grey!important;
+    font-family: 'Franklin Gothic Medium', arial;
+    font-size: 14px!important;
+    border: none!important;
+}
+
+.estilo_boton {
+    background-color: #004492!important;
+    border-color: #004492!important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.div_pc {
+    display: flex;
+    flex-direction: column;
+    margin-right: 45px;
+}
+
+.input_cus {
+    background-color: #E2E8F0!important;
+    border-color: #E2E8F0!important;
+    color: grey!important;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-size: 1rem!important;
+}

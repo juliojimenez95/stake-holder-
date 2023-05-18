@@ -191,7 +191,7 @@
 
                             <center style="margin-top:10px">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">CONTINUAR</button>
+                                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
                             </div>
                             </center>
 

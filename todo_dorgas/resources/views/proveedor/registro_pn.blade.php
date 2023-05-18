@@ -13,6 +13,8 @@
             crossorigin="anonymous"></script>
     <!-- Agregar el enlace a la hoja de estilo del public -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pro_natural.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
     <!-- Agregar el enlace a la hoja de estilo de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
@@ -25,12 +27,12 @@
         </div>
       </div>
      </div>
-        <div class="row d-flex ">
+        <div class="row d-flex mb-4">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                    <h3 class=" datos">Datos personales</h3>
-                   <strong> <h2 class=" my-3 persona">Persona</h2></strong>
-                   <strong>  <h2 class=" natural ">Natural</h2> </strong> <br> <br>
+                    <h3 class="datos h3_tit">Datos personales</h3>
+                   <strong> <h2 class=" my-3 persona_c h2_tit">Persona</h2></strong>
+                   <strong>  <h2 class=" natural_c h2_tit">Natural</h2> </strong> <br> <br>
                   <hr class="underline2">
                 </div>
             </div>
@@ -39,12 +41,12 @@
                     <div class="card-body">
                         <form action=" {{ route('proveedor.pn') }}" method="POST">
                             @csrf
-                            <div class="row mb-9">
+                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="tipo_d" class="form-label"><strong>Tipo documento</strong></label>
-                                    <select class="form-select" aria-label="Default select example" name="tipo_d">
-                                        <option value="">Porfavor seleccione un tipo de documento...</option>
+                                    <label for="tipo_d" class="form-label label_c"><strong>Tipo de documento</strong></label>
+                                    <select class="form-control select_c" aria-label="Default select example" name="tipo_d">
+                                        <option value="">Seleccione un tipo de documento...</option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                                         @endforeach
@@ -55,39 +57,39 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="n_docuemnto" class="form-label"><strong>Numero documento</strong></label>
-                                    <input type="number" class="form-control input_custom" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
-                                        placeholder="Numero documento">
+                                    <label for="n_docuemnto" class="form-label label_c"><strong>Número documento</strong></label>
+                                    <input type="number" class="form-control input_custom select_c" id="n_docuemnto" name="n_docuemnto" value="{{old('n_docuemnto')}}"
+                                        placeholder="">
                                     @if ($errors->has('n_docuemnto'))
                                         <p class="text-danger">{{ $errors->first('n_docuemnto') }}</p>
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="email" class="form-label"><strong>Correo electronico </strong></label>
-                                    <input type="text" class="form-control " id="email" name="email" value="{{old('email')}}"
-                                        placeholder=" email ">
+                                    <label for="email" class="form-label label_c"><strong>Correo electrónico </strong></label>
+                                    <input type="text" class="form-control select_c" id="email" name="email" value="{{old('email')}}"
+                                        placeholder="">
                                     @if ($errors->has('email'))
                                         <p class="text-danger">{{ $errors->first('email') }}</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb-12">
+                            <div class="row mb-3">
 
                                 <div class="col-md-12 col-sm-12">
-                                    <label for="Nombre" class="form-label"><strong>Nombre </strong></label>
-                                    <input type="text" class="form-control input_custom" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
-                                        placeholder=" Nombre ">
+                                    <label for="Nombre" class="form-label label_c"><strong>Nombres y Apellidos</strong></label>
+                                    <input type="text" class="form-control input_custom select_c" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
+                                        placeholder="">
                                     @if ($errors->has('Nombre'))
                                         <p class="text-danger">{{ $errors->first('Nombre') }}</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb-6">
+                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="departamento" class="form-label"><strong>Departamento</strong></label>
-                                        <select  class="form-select" aria-label="Default select example" id="departamento" name="departamento">
-                                        <option  value="{{old('departamento')}}">Seleccione una departamento...</option>
+                                    <label for="departamento" class="form-label label_c"><strong>Departamento</strong></label>
+                                        <select  class="form-control select_c" aria-label="Default select example" id="departamento" name="departamento">
+                                        <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
 
                                         </select>
                                         @if ($errors->has('departamento'))
@@ -95,9 +97,9 @@
                                         @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="municipio" class="form-label"><strong>Municipio</strong></label>
-                                    <select class="form-select" aria-label="Default select example" id="municipio" name="municipio">
-                                        <option value="{{old('municipio')}}">Seleccione una municipio...</option>
+                                    <label for="municipio" class="form-label label_c"><strong>Municipio</strong></label>
+                                    <select class="form-select select_c" aria-label="Default select example" id="municipio" name="municipio">
+                                        <option value="{{old('municipio')}}">Seleccione un municipio...</option>
 
                                     </select>
                                     @if ($errors->has('municipio'))
@@ -105,36 +107,36 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="Telefono" class="form-label"><strong>Telefono</strong></label>
-                                    <input type="text" class="form-control " id="Telefono" name="Telefono" value="{{old('Telefono')}}"
-                                        placeholder="Telefono">
+                                    <label for="Telefono" class="form-label label_c"><strong>Teléfono</strong></label>
+                                    <input type="text" class="form-control select_c" id="Telefono" name="Telefono" value="{{old('Telefono')}}"
+                                        placeholder="">
                                     @if ($errors->has('Telefono'))
                                         <p class="text-danger">{{ $errors->first('Telefono') }}</p>
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb-6">
+                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="direccion" class="form-label"><strong>Direccion </strong></label>
-                                    <input type="text" class="form-control input_custom" id="direccion" name="direccion" value="{{old('direccion')}}"
-                                        placeholder=" Direccion ">
+                                    <label for="direccion" class="form-label label_c"><strong>Dirección</strong></label>
+                                    <input type="text" class="form-control input_custom select_c" id="direccion" name="direccion" value="{{old('direccion')}}"
+                                        placeholder="">
                                     @if ($errors->has('direccion'))
                                         <p class="text-danger">{{ $errors->first('direccion') }}</p>
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="servicio" class="form-label"><strong>Servicio que ofrece</strong></label>
-                                    <input type="text" class="form-control input_custom" id="servicio" name="servicio" value="{{old('servicio')}}"
-                                        placeholder="Servicio que ofrece">
+                                    <label for="servicio" class="form-label label_c"><strong>Servicio que ofrece</strong></label>
+                                    <input type="text" class="form-control input_custom select_c" id="servicio" name="servicio" value="{{old('servicio')}}"
+                                        placeholder="">
                                     @if ($errors->has('servicio'))
                                         <p class="text-danger">{{ $errors->first('servicio') }}</p>
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="actividad" class="form-label"><strong>actividad que ofrece</strong></label>
-                                    <select class="form-select" aria-label="Default select example" name="actividad">
-                                        <option value="{{old('actividad')}}">Porfavor seleccione una tipos...</option>
+                                    <label for="actividad" class="form-label label_c"><strong>Actividad que ofrece</strong></label>
+                                    <select class="form-control select_c" aria-label="Default select example" name="actividad">
+                                        <option value="{{old('actividad')}}">Seleccione su código CIIU</option>
                                        @foreach ($actividades as $actividad)
                                            <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
                                        @endforeach
@@ -145,20 +147,20 @@
                                 </div>
 
                             </div>
-                            <div class="row mb-6">
+                            <div class="row mb-3">
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label"><strong>Contraseña</strong></label>
-                                    <input type="password" class="form-control input_custom" id="password" name="password"
-                                        placeholder="Contraseña">
+                                    <label for="password" class="form-label label_c"><strong>Contraseña</strong></label>
+                                    <input type="password" class="form-control input_custom select_c" id="password" name="password"
+                                        placeholder="">
                                     @if ($errors->has('password'))
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label"><strong>Confirmar contraseña</strong></label>
-                                    <input type="password" class="form-control input_custom" id="password" name="password_confirmation"
-                                    required autocomplete="new-password"  placeholder="Confirmar contraseña">
+                                    <label for="password" class="form-label label_c"><strong>Confirmar contraseña</strong></label>
+                                    <input type="password" class="form-control input_custom select_c" id="password" name="password_confirmation"
+                                    required autocomplete="new-password"  placeholder="">
                                     @if ($errors->has('password'))
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
@@ -166,17 +168,173 @@
 
 
                             </div>
-                            <center style="margin-top:10px">
+                            <!--<center style="margin-top:10px">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">Registrar</button>
+                                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
                             </div>
-                            </center>
+                            </center>-->
 
                         </form>
                     </div>
                 </div>
 
             </div>
+        </div>
+
+        <div class="card text-center bg-light" style="padding-top: 45px; padding-bottom: 45px;">
+            <div class="container">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿Por su cargo o actividad maneja o a manejado recursos públicos? </span>
+                          <input type="text" class="form-control input_cus" name="Observacion" id="Observacion">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo1" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo1" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+                </div>
+                </div>
+            <div class="col-md-12 mb-3">
+              <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿Por su cargo o actividad ejerce o ha ejercido algún grado de poder <br> político o público? </span>
+                          <input type="text" name="Observacion2" id="Observacion2" class="form-control input_cus">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo2" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+              </div>
+             </div>
+              <div class="col-md-12 mb-3">
+               <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿Por su actividad u oficio goza usted de reconocimiento político o público?</span>
+                          <input type="text color-cb" name="Observacion3" id="Observacion3" class="form-control input_cus">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo3" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+              </div>
+
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿Existe algún vinculo entre usted y una persona considerada públicamente expuesta?</span>
+                          <input type="text color-cb" name="Observacion4" id="Observacion4" class="form-control input_cus">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo4" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+              </div>
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿Es usted sujeto de obligaciones tributarias en otro país o grupo de países?</span>
+                          <input type="text color-cb" name="Observacion5" id=" Observacion5" class="form-control input_cus">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo5" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+              </div>
+
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿Ejerce o ha ejercido funciones directivas en una organización internacional <br> tales como ONG, ONU, UNICEF, etc.? </span>
+                          <input type="text color-cb" name="Observacion6" id="Observacion6" class="form-control input_cus">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+              </div>
+
+             </div>
+
+             <div class="col-md-12 mb-3">
+             <div class="form-group ">
+                  <div style="display: flex; justify-content: center;">
+                        <div class="div_pc">
+                          <span class="mr-2 color-cs mb-2">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, <br> SIPLAFT, SARLAFT o equivalentes? </span>
+                          <input type="text " name="Observacion7" id="Observacion7" class="form-control input_cus">
+                        </div>
+                        <div>
+                          <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>
+                          <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" value="No"></label>
+                          <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" value="N/A"></label>
+                          <span class="mr-2 color-cb">Observaciones</span>
+                        </div>
+
+
+                  </div>
+              </div>
+
+              </div>
+
+             </div>
+            </div><!--Final row-->
+
+
+          </div>
+
+
+         </div>
+
+            <center style="margin-top:10px">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
+            </div>
+            </center>
+            </form>
+
         </div>
     </div>
         <!-- Agregar el script de JavaScript de Bootstrap -->

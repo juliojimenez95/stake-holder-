@@ -25,7 +25,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Barryvdh\DomPDF\Facade\Pdf;
+use PDF;
 use setasign\Fpdi\Fpdi;
 use setasign\Fpdi\PdfWriter\PdfWriter;
 
@@ -316,7 +316,7 @@ class DocumentosController extends Controller
             }
 
             $outputFile = 'pdf_combinado.pdf';
-           // $pdf->Output('F', $outputFile);
+            $pdf->Output('F', $outputFile);
 
 
 
@@ -336,14 +336,14 @@ class DocumentosController extends Controller
     {
 
         try {
-            $user = User::find($id);
+           // $user = User::find($id);
 
-            $cliente = ClienteModel::where('Mail',$user->email)->first();
+           /* $cliente = ClienteModel::where('Mail',$user->email)->first();
             $cliente_domicilio = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
             $telefono = strval($cliente_domicilio->Telefono);
             $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
 
-            $contacto = ContactoModel::where('Cliente_id',$id)->first();
+             $contacto = ContactoModel::where('Cliente_id',$id)->first();
             $representante = RepresentanteLegalModel::where('user_id',$id)->first();
             $personae = personaExpuestaModel::where('user_id',$id)->first();
 
@@ -351,21 +351,28 @@ class DocumentosController extends Controller
             $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
             $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
             $pagare = PagareModel::where('user_id',$id)->first();
-            $socios = AccionistaModel::where('user_id',$id)->get();
+            $socios = AccionistaModel::where('user_id',$id)->get(); */
 
 
 
-            $data =['algo'=>'dsdfsdf'];
+            $data = [
+                'title' => 'Welcome to CodeSolutionStuff.com',
+                'date' => date('m/d/Y')
+            ];
 
-            $pdf = Pdf::loadView('pdf.pdf', ['cliente'=>$cliente,
-            'cliente_domicilio'=>$cliente_domicilio,'domicilio'=>$domicilio,
+            $pdf = PDF::loadView('myPDF', $data);
+
+            return $pdf->download('codesolutionstuff.pdf');
+
+            /*$pdf = Pdf::loadView('pdf.pdf', compact('data')  /*['cliente'=>$cliente,
+            'cliente_domicilio'=>$cliente_domicilio,'domicilio'=>$domicilio
             'contacto'=>$contacto,'representante'=>$representante,
             'personae'=>$personae,'user'=>$user,'informaciont'=>$informaciont,
             'informacionb'=>$informacionb,'informacionf'=>$informacionf ,
             'pagare'=>$pagare, 'socios'=>$socios
-             ]);
-
-            return $pdf->download('pdf.pdf');
+             ] );
+            $pdf->setPaper('a3', 'landscape');
+            return $pdf->download('pdf.pdf');*/
 
         } catch (\Throwable $th) {
             throw $th;

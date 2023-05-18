@@ -42,13 +42,13 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                      <p id="Tipodocumento" class="p_ch"> <strong>$cliente->TipoNit</strong></p>
+                                      <p id="Tipodocumento" class="p_ch"> <strong>$data->algo</strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="n_documento" class="p_ch"><strong>$cliente->Nit</strong></p>
+                                      <p id="n_documento" class="p_ch"><strong>kabdsbasd</strong></p>
                                     </div>
                                   </div>
-                                  <div class="row">
+                                  {{--<div class="row">
                                     <div class="col-md-6">
                                       <p id="nombres_a" class="p_ch"> <strong>$cliente->Nombre</strong></p>
                                     </div>
@@ -56,7 +56,7 @@
                                       <p id="Departamento_p" class="p_ch"><strong>$domicilio->Departamento</strong></p>
                                     </div>
                                   </div>
-                                  <div class="row">
+                                   <div class="row">
                                     <div class="col-md-6">
                                       <p id="cuidad_p" class="p_ch"><strong>$domicilio->Ciudad</strong></p>
                                     </div>
@@ -201,12 +201,10 @@
                               <div class="row">
                                 <div class="col-md-6">
                                   <p id='auCorrector' class="p_ch"> <strong>$informaciont->AutorretenedorF</strong></p>
-
                                 </div>
 
                                 <div class="col-md-6">
                                   <p id="ica" class="p_ch"> <strong>$informaciont->AutorretenedorICA</strong></p>
-
                                 </div>
                               </div>
 
@@ -328,7 +326,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </div>  --}}
                     </div>
                 </div>
 

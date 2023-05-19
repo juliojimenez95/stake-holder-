@@ -1,5 +1,7 @@
 $(document).ready(function() {
     $('#miTabla').DataTable({
+        destroy: true,
+        responsive: true,
         language: {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",
@@ -26,9 +28,6 @@ $(document).ready(function() {
         }
         });
 
-        $('#miTabla').DataTable({
-            destroy: true,
-            responsive: true,
-        });
+       // $('#miTabla').DataTable();
 
 });

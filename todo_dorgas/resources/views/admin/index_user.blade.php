@@ -69,17 +69,17 @@
                                             <i class="fa-solid fa-user"></i>
                                         </a>
                                         <a href="#" onclick="dataTributaria({{ 98 }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 20px; text-decoration: none;">
-                                                <img src="{{ asset('images/Información-Tributaria.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                                <img src="{{ asset('images/Información-Tributaria.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
                                         <a href="#" onclick="dataFinanciera({{ $usuario->id }})" {{-- data-toggle="modal"   data-target="#modalInformacionFinanciera"  --}} style="margin-right: 20px; text-decoration: none;">
-                                            <img src="{{ asset('images/Información-financiera.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                            <img src="{{ asset('images/Información-financiera.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
                                         <a href="#"  onclick="dataPagare({{ $usuario->id }})" {{-- data-toggle="modal" data-target="#modalInformacionPagare"  --}} style="margin-right: 20px; text-decoration: none;">
-                                            <img src="{{ asset('images/Pagaré.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                            <img src="{{ asset('images/Pagaré.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
 
                                         <a href="#"  onclick="dataBancaria({{ 98 }})"  {{--  data-toggle="modal" data-target="#modalInformacionBancariaLabel"--}}  style="margin-right: 20px; text-decoration: none;">
-                                            <img src="{{ asset('images/Información-Bancaria.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                            <img src="{{ asset('images/Información-Bancaria.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
 
                                         <a href="#"  onclick="cargarSocios({{ 98 }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
@@ -87,11 +87,11 @@
                                         </a>
 
                                         <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
-                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
 
                                         <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
-                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="60" height="40">
+                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
                                     </td>
 

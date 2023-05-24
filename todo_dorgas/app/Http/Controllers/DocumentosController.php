@@ -26,8 +26,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use PDFMerger;
 use setasign\Fpdi\Fpdi;
-use setasign\Fpdi\PdfWriter\PdfWriter;
+
 
 
 
@@ -197,7 +198,7 @@ class DocumentosController extends Controller
     }
 
 
-    public function pdf($id)
+    public function unirpdf($id)
     {
 
         try {
@@ -219,108 +220,30 @@ class DocumentosController extends Controller
 
 
 
-            // Crear un nuevo objeto Fpdi
-            $pdf = new Fpdi();
-            //agregar paginas del pdf 1
-            $pages1 = $pdf->setSourceFile($file1);
-            for ($i = 1; $i <= $pages1; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
+            $pdf = PDFMerger::init();
+            $pdf->addPDF($file1, 'all');
+            $pdf->addPDF($file2, 'all');
+            $pdf->addPDF($file3, 'all');
+            $pdf->addPDF($file4, 'all');
+            $pdf->addPDF($file5, 'all');
+            $pdf->addPDF($file6, 'all');
+            $pdf->addPDF($file7, 'all');
+            $pdf->addPDF($file8, 'all');
+            $pdf->addPDF($file9, 'all');
+            $pdf->addPDF($file10, 'all');
+            $pdf->addPDF($file11, 'all');
+            $pdf->addPDF($file12, 'all');
+            $pdf->addPDF($file13, 'all');
+
+            $pdf->merge();
+
+            $mergedFilePath = public_path('documentos/resultante.pdf');
+            $pdf->save($mergedFilePath);
 
 
-            $pages2 = $pdf->setSourceFile($file2);
-            for ($i = 1; $i <= $pages2; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
+            $pdf->Output(public_path('documentos/resultante.pdf'), 'F');
 
-            $pages3 = $pdf->setSourceFile($file3);
-            for ($i = 1; $i <= $pages3; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages4 = $pdf->setSourceFile($file4);
-            for ($i = 1; $i <= $pages4; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages5 = $pdf->setSourceFile($file5);
-            for ($i = 1; $i <= $pages5; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages6 = $pdf->setSourceFile($file6);
-            for ($i = 1; $i <= $pages6; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages7 = $pdf->setSourceFile($file7);
-            for ($i = 1; $i <= $pages7; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages8 = $pdf->setSourceFile($file8);
-            for ($i = 1; $i <= $pages8; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages9 = $pdf->setSourceFile($file9);
-            for ($i = 1; $i <= $pages9; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages10 = $pdf->setSourceFile($file10);
-            for ($i = 1; $i <= $pages10; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages11 = $pdf->setSourceFile($file11);
-            for ($i = 1; $i <= $pages11; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $pages12 = $pdf->setSourceFile($file12);
-            for ($i = 1; $i <= $pages12; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-
-            $pages13 = $pdf->setSourceFile($file13);
-            for ($i = 1; $i <= $pages13; $i++) {
-                $template = $pdf->importPage($i);
-                $pdf->AddPage();
-                $pdf->useTemplate($template);
-            }
-
-            $outputFile = 'pdf_combinado.pdf';
-            $pdf->Output('F', $outputFile);
-
-
-
-            return response()->download($outputFile, 'pdf_combinado.pdf');
+            return response()->download($mergedFilePath);
 
 
 
@@ -332,7 +255,7 @@ class DocumentosController extends Controller
     }
 
 
-    public function unirpdf($id)
+    public function pdf($id)
     {
 
         try {

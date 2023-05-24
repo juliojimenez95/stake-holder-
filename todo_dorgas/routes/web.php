@@ -79,7 +79,9 @@ Route::get('/users/aprobarUser1/{id}', [AdminController::class, 'aprobarUser1'])
 Route::get('/users/rechazarUser1/{id}', [AdminController::class, 'rechazarUser1'])->name('users.rechazarUser1');
 Route::get('/users/aprobarUser2/{id}', [AdminController::class, 'aprobarUser2'])->name('users.aprobarUser2');
 Route::get('/users/rechazarUser2/{id}', [AdminController::class, 'rechazarUser2'])->name('users.rechazarUser2');
-Route::get('/admin/pdf/{id}', [DocumentosController::class, 'unirpdf'])->name('admin.pdf');
+Route::get('/admin/pdf/{id}', [DocumentosController::class, 'pdf'])->name('admin.pdf');
+Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->name('admin.unirpdf');
+
 
 
 //routas para alimentar municipios

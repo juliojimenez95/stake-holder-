@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 
 class HomeController extends Controller
@@ -30,7 +32,8 @@ class HomeController extends Controller
         }
 
         if (Auth::user()->rol == 3 || Auth::user()->rol == 4 || Auth::user()->rol == 5) {
-            return view('admin.index_user');
+            $usuarios = User::all();
+            return view("admin.index_user",['usuarios'=>$usuarios]);
         }
 
     }

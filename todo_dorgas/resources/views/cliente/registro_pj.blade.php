@@ -14,6 +14,8 @@
     <!-- Agregar el enlace a la hoja de estilo de public -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/juridica.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/natural.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
 
     <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
     <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
@@ -31,12 +33,12 @@
         </div>
       </div>
      </div>
-        <div class="row d-flex ">
+        <div class="row d-flex mb-4">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
                     <h3 class="datos h3_tit">Datos personales</h3>
                    <strong> <h2 class="my-3 persona_c h2_tit">Persona</h2></strong>
-                   <strong>  <h2 class="natural_c h2_tit">Juridica</h2> </strong> <br> <br>
+                   <strong>  <h2 class="natural_c h2_tit">Jurídica</h2> </strong> <br> <br>
                   <hr class="underline2">
                 </div>
             </div>
@@ -200,6 +202,154 @@
                         </form>
                     </div>
                 </div>
+
+            </div>
+        </div>
+        <div class="card text-center bg-light" style="padding-top: 45px; padding-bottom: 45px;">
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-12 mb-4">
+                    <div class="form-group">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿Por su cargo o actividad maneja o a manejado recursos públicos? </span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo1" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo1" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1" value="N/A"></label>
+                              <span class="mr_5 color-cb">Observaciones</span>
+                              <input type="text" class="input_col" name="Observacion" id="Observacion">
+                            </div>
+
+
+                      </div>
+                    </div>
+                    </div>
+                <div class="col-md-12 mb-4">
+                  <div class="form-group">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿Por su cargo o actividad ejerce o ha ejercido algún grado de poder político o público? </span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo2" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" value="N/A"></label>
+                              <span class="color-cb mr_5">Observaciones</span>
+                              <input type="text" name="Observacion3" id="Observacion3" class="input_col">
+                            </div>
+                      </div>
+                  </div>
+                 </div>
+                  <div class="col-md-12 mb-4">
+                   <div class="form-group">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿Por su actividad u oficio goza usted de reconocimiento político o público?</span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo3" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                              <span class="mr_5 color-cb">Observaciones</span>
+                              <input type="text" name="Observacion2" id="Observacion2" class="input_col">
+                            </div>
+
+
+                      </div>
+                  </div>
+
+                 </div>
+
+                 <div class="col-md-12 mb-4">
+                 <div class="form-group ">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿Existe algún vinculo entre usted y una persona considerada públicamente expuesta?</span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo4" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" value="N/A"></label>
+                              <span class="mr_5 color-cb">Observaciones</span>
+                              <input type="text" name="Observacion4" id="Observacion4" class="input_col">
+                            </div>
+                      </div>
+                  </div>
+                 </div>
+
+                 <div class="col-md-12 mb-4">
+                 <div class="form-group ">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿Es usted sujeto de obligaciones tributarias en otro país o grupo de países?</span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo5" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" value="N/A"></label>
+                              <span class="mr_5 color-cb">Observaciones</span>
+                              <input type="text color-cb" name="Observacion5" id=" Observacion5" class="input_col">
+                            </div>
+
+
+                      </div>
+                  </div>
+
+                 </div>
+
+                 <div class="col-md-12 mb-4">
+                 <div class="form-group ">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales <br> como ONG, ONU, UNICEF, etc.? </span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" value="N/A"></label>
+                              <span class="mr_5 color-cb">Observaciones</span>
+                              <input type="text color-cb" name="Observacion6" id="Observacion6" class="input_col">
+                            </div>
+                      </div>
+                  </div>
+
+                 </div>
+
+                 <div class="col-md-12 mb-4">
+                 <div class="form-group">
+                      <div style="display: flex; justify-content: space-between;">
+                            <div class="">
+                              <span class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, <br> SARLAFT o equivalentes?</span>
+                            </div>
+                            <div class="">
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" value="N/A"></label>
+                              <span class="mr_5 color-cb">Observaciones</span>
+                              <input type="text color-cb" name="Observacion7" id="Observacion7" class="input_col">
+                            </div>
+                      </div>
+                  </div>
+
+                  </div>
+
+                 </div>
+                </div><!--Final row-->
+
+
+              </div>
+
+
+             </div>
+
+                <center style="margin-top:10px; margin-bottom: 30px">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
+                    </div>
+                </center>
+                </form>
 
             </div>
         </div>

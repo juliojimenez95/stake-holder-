@@ -17,6 +17,8 @@
 }
 .body_cus span {
     color: red;
+    position: relative;
+    bottom: 20px;
 }
 
 .a_cus{
@@ -26,11 +28,11 @@
     border-color: #004492!important;
     margin-top: 0px!important;
     margin-bottom: 20px;
-    color: grey!important;
+    color: white!important;
 }
 
 .p_cv {
-    color: #004492!important;
+    color: grey!important;
     font-size: 1rem;
     font-family: 'franklin-gothic-book-regular', sans-serif;
 }
@@ -38,4 +40,13 @@
 .btn_cx {
     background-color: #004492!important;
     border-color: #004492!important;
+}
+
+.color_under {
+    color: #00A6E5!important;
+    background-color: #00A6E5!important;
+}
+
+.op_cus {
+    color: #004492!important;
 }

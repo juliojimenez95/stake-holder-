@@ -48,20 +48,26 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}"   class=" my-4 img-fluid">
           <h1 class="text-primary h1_cus">Bienvenido</h1>
-          <hr class="underline"><p class="text-primary p_cus">Seleccione el perfil al que deseas ingresar</p>
+          <hr class="underline under_s"><p class="text-primary p_cus">Seleccione el perfil al que deseas ingresar</p>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6" style="">
-        <a href="{{ route('cliente.identificacion') }}" class="w-100">
-        <img src="{{ asset('images/cliente.png') }}" alt="Imagen de perfil 1" class="img-responsive my-4 img-fluid w-100 col_cus_x">
-        </a>
+      <div class="col-md-6">
+        <div class="div_cnn">
+            <a href="{{ route('cliente.identificacion') }}" class="">
+                <!--<img src="{{ asset('images/cliente.png') }}" alt="Imagen de perfil 1" class="img-responsive my-4 img-fluid w-100 col_cus_x">-->
+                    <span>Cliente</span>
+                </a>
+        </div>
       </div>
       <div class="col-md-6" style="">
-        <a href="{{ route('proveedor.identificacion') }}"  class="w-100">
-        <img src="{{ asset('images/proveedor.png') }}" alt="Imagen de perfil 2" class="img-responsive my-4 img-fluid w-100 col_cus_z">
-        </a>
+        <div class="div_cnn_x">
+            <a href="{{ route('proveedor.identificacion') }}"  class="">
+                <!--<img src="{{ asset('images/proveedor.png') }}" alt="Imagen de perfil 2" class="img-responsive my-4 img-fluid w-100 col_cus_z">-->
+                <span>Proveedor</span>
+            </a>
+        </div>
       </div>
     </div>
   </div>

@@ -21,11 +21,11 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
           <h1 class="text-primary h1_tit">Información Tributaria</h1>
-          <hr class="underline">
+          <hr class="underline under_s">
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
               <div class="card formulario2 bg-light mt-4">
@@ -38,7 +38,7 @@
                       <div class="row">
                         <div class="col">
                           <span class="mr-2 span_c">¿Es usted responsable del impuesto a la venta I.V.A.?<span>*</span></span>
-                          <input type="text" class="form-control input_cus" id="" name="">
+                          <!--<input type="text" class="form-control input_cus" id="" name="">-->
                         </div>
 
                         <label class="mr-2 lb_c" >Si <input type="radio" name="grupo1" value="Si"></label>
@@ -52,7 +52,7 @@
                       <div class="row">
                           <div class="col">
                             <span class="mr-2 span_c">¿Está usted sujeto a retención?<span>*</span></span>
-                            <input type="text" class="form-control input_cus" id="" name="">
+                            <!--<input type="text" class="form-control input_cus" id="" name="">-->
                           </div>
 
                           <label class="mr-2 lb_c" >Si <input type="radio" name="grupo2" value="Si"></label>
@@ -65,7 +65,7 @@
                       <div class="row">
                             <div class="col">
                               <span class="mr-2 span_c">¿Está usted obligado a Declarar Renta?<span>*</span></span>
-                              <input type="text" class="form-control input_cus" id="" name="">
+                              <!--<input type="text" class="form-control input_cus" id="" name="">-->
                             </div>
 
                             <label class="mr-2 lb_c" >Si <input type="radio" name="grupo3" value="Si"></label>
@@ -78,7 +78,7 @@
                       <div class="row">
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted R.S.T. Régimen Simple de Tributación?<span>*</span></span>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <!--<input type="text" class="form-control input_cus" id="" name="">-->
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo4" value="Si"></label>
@@ -91,7 +91,7 @@
                       <div class="row">
                               <div class="col">
                                 <span class="mr-2 span_c">¿Usted aplica estampillas?<span>*</span></span>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <!--<input type="text" class="form-control input_cus" id="" name="">-->
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo5" value="Si"></label>

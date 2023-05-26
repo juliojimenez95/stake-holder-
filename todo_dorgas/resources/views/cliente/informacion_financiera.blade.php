@@ -21,7 +21,7 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
           <h1 class="text-primary h1_t">Información Financiera</h1>
-          <hr class="underline">
+          <hr class="underline color_under">
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
                 <div class="row row-center">
                     <div class="col-md-6">
                         <div class="div_in">
-                            <p style="padding-left: 30px;">Respuesta<span>*</span></p>
+                            <p style="padding-left: 30px;"><span></span></p>
                             <div class="div_in_on mb-3">
                                   <div class="col-4">
                                     <p class="">Activos Totales</p>
@@ -84,10 +84,10 @@
 
                     <div class="col-md-6">
                         <div class="div_in">
-                            <p>Respuesta<span>*</span></p>
+                            <p><span></span></p>
                             <div class="div_in_on mb-3">
                                 <div class="col-4">
-                                  <p class="">Pasivos Totales</p>
+                                  <p class="">Ingresos Totales</p>
                                 </div>
                                 <div class="col-8">
                                     <input type="text" class="form-control col-12 input_cus" id="ingresos" name="Ingresos">

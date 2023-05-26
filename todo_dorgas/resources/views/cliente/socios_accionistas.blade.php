@@ -53,7 +53,7 @@
                         </div>
                         <div class="div_cus">
                             <label for="tipo_d" class="form-label label_cus">Tipo de documento<span>*</span></label>
-                            <select class="form-select form-control" aria-label="Seleccione un tipo de documento" name="tipo_d">
+                            <select class="form-control custom_input" aria-label="Seleccione un tipo de documento" name="tipo_d">
                                 <option value="">Tipo de documento...</option>
                                 @foreach ($tipos as $tipo)
                                     <option value="{{ $tipo }}">{{ $tipo }}</option>
@@ -79,9 +79,10 @@
                             <div class="div_inside">
                                 <p>¿Es considerado PEP?<br><span>(Decreto 830 del 2021)</span></p>
                             </div>
-                            <label class="mr-2" >Si <input type="radio" name="PEP" value="1"></label>
-                            <label class="mr-2" >No <input type="radio" name="PEP" value="0"></label>
-
+                            <div class="div_sn">
+                                <label class="mr-2" >Si <input type="radio" name="PEP" value="1"></label>
+                                <label class="mr-2" >No <input type="radio" name="PEP" value="0"></label>
+                            </div>
                           </div>
                             </div>
                         </div>
@@ -100,6 +101,7 @@
                         <thead>
                           <tr>
                               <th>Nombre</th>
+                              <th>Tipo de documento</th>
                               <th>Participacion</th>
                               <th>Nacionalidad</th>
                               <th>PEP</th>
@@ -139,7 +141,7 @@
                                     <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
                                 </div>
                                 <div class="btn_c">
-                                    <a class="btn btn-primary" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">DESCARGAR</a>
+                                    <a class="btn btn-primary" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">DESCARGAR</a><span>*</span>
                                 </div>
                             </div>
                             <div class="cont_all">
@@ -147,7 +149,7 @@
                                     <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
                                 </div>
                                 <div class="btn_c">
-                                    <a class="btn btn-primary" onclick="document.getElementById('document').click()">CARGAR</a>
+                                    <a class="btn btn-primary" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
                                     <input type="file" id="document" name="document" style="display:none;">
 
                                 </div>

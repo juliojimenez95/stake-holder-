@@ -22,8 +22,27 @@
 .color-cs {
     color: grey!important;
     font-family: 'franklin-gothic-book-regular', sans-serif;
+    width: 550px;
 }
 .color-cb {
     color: #004492;
     font-family: 'Franklin Gothic Medium', arial;
+    font-size: 1.1rem;
+}
+
+.mr_5{
+    margin-right: 20px;
+}
+
+.div_cm {
+    display: flex;
+}
+
+.input_col {
+    background-color: #EDF2F7!important;
+    border: 1px solid #EDF2F7!important;
+}
+
+.label_c span{
+    color: red;
 }

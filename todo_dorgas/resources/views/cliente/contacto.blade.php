@@ -36,39 +36,12 @@
                             @csrf
                             <div class="row mb-3">
 
-                                <div class="col-md-6 col-sm-12">
-                                    <label for="Nombre" class="form-label label_c"><strong>Primer Nombre<span>*</span></strong></label>
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="Nombre" class="form-label label_c"><strong>Nombres y Apellidos<span>*</span></strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="Nombre" name="Nombre" value="{{old('Nombre')}}"
                                         placeholder="">
                                     @if ($errors->has('Nombre'))
                                         <p class="text-danger">{{ $errors->first('Nombre') }}</p>
-                                    @endif
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label for="Nombre2" class="form-label label_c"><strong>Segundo Nombre</strong></label>
-                                    <input type="text" class="form-control input_custom select_c" id="Nombre2" name="Nombre2" value="{{old('Nombre2')}}"
-                                        placeholder="">
-                                    @if ($errors->has('Nombre2'))
-                                        <p class="text-danger">{{ $errors->first('Nombre2') }}</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-
-                                <div class="col-md-6 col-sm-12">
-                                    <label for="apellido" class="form-label label_c"><strong>Primer Apellido<span>*</span></strong></label>
-                                    <input type="text" class="form-control input_custom select_c" id="apellido" name="apellido" value="{{old('apellido')}}"
-                                        placeholder="">
-                                    @if ($errors->has('apellido'))
-                                        <p class="text-danger">{{ $errors->first('apellido') }}</p>
-                                    @endif
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label for="apellido2" class="form-label label_c"><strong>Segundo Apellido </strong></label>
-                                    <input type="text" class="form-control input_custom select_c" id="apellido2" name="apellido2" value="{{old('apellido2')}}"
-                                        placeholder="">
-                                    @if ($errors->has('apellido2'))
-                                        <p class="text-danger">{{ $errors->first('apellido2') }}</p>
                                     @endif
                                 </div>
                             </div>

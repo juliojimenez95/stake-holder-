@@ -11,6 +11,9 @@
     font-family: 'franklin-gothic-medium-cond-regular', sans-serif;
     font-size: 16px!important;
 }
+.label_c span {
+    color: red;
+}
 
 .select_c {
     background-color:#EDF2F7!important;
@@ -53,4 +56,8 @@ input[type="number"] {
     color: grey!important;
     font-family: 'franklin-gothic-book-regular', sans-serif;
     font-size: 1rem!important;
+}
+
+.label_c span {
+    color: red;
 }

@@ -21,7 +21,7 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
           <h1 class="text-primary h1_tit">Pagaré</h1>
-          <hr class="underline">
+          <hr class="underline color_under">
         </div>
       </div>
     </div>

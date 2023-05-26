@@ -41,7 +41,7 @@ input[type="radio"] {
   }
 
   .div_cus label{
-    color: #004492;
+    color: grey;
   }
 
   .div_cus span {
@@ -63,7 +63,7 @@ input[type="radio"] {
     color: #004492;
     font-weight: 500;
     font-size: 1.2rem;
-    font-family: 'franklin-gothic-book-regular', sans-serif;
+    font-family: 'Franklin Gothic Medium', arial;
   }
 
   .div_inside span {
@@ -83,6 +83,7 @@ input[type="radio"] {
 
   .cont_all {
     width: 120px;
+    margin-right: 20px;
   }
 
   .des_cus {
@@ -134,7 +135,7 @@ input[type="radio"] {
     background-color: #004492;
     border-color: #004492;
     border-radius: 20px;
-    color: grey;
+    color: white;
     font-family: 'franklin-gothic-book-regular', sans-serif;
     font-size: 1rem;
   }
@@ -168,3 +169,20 @@ input[type="radio"] {
   .cr_cus {
     padding-left: 15px;
   }
+
+.div_sn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.under_S {
+    color: #00A6E5!important;
+    background-color: #00A6E5!important;
+}
+
+.btn_c span {
+    color: red!important;
+    position: relative;
+    bottom: 5px;
+}

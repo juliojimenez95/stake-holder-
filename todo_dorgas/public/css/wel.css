@@ -89,3 +89,38 @@
     width: 100%;
     height: 235px!important;
 }
+
+.div_cnn {
+    background-color: #004492;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_cnn a {
+    color: white;
+    font-size: 3.5rem;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.div_cnn_x {
+    background-color: #00A6E5;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_cnn_x a {
+    color: white;
+    font-size: 3.5rem;
+    font-family: 'Franklin Gothic Medium', arial;
+}
+
+.under_s {
+    color: #00A6E5!important;
+    background-color: #00A6E5!important;
+}

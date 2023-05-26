@@ -45,7 +45,7 @@
                             <p class="title-ent">Nombre de la Entidad Bancaria<span>*</span></p>
                             <div class="div-filled">
                                     <select class="form-control select_cus_b" aria-label="Seleccione un banco" name="banco">
-                                        <!--<option value="">Porfavor seleccione un banco</option>-->
+                                        <option value="">Seleccione un banco</option>
                                         @foreach ($bancos as $banco)
                                             <option value="{{ $banco }}">{{ $banco }}</option>
                                         @endforeach
@@ -62,7 +62,8 @@
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta<span>*</span></p>
                                 <div class="div-filled">
-                                    <select class="form-select select_cus_t" aria-label="Tipo de cuenta" name="cuenta" multiple size="2">
+                                    <select class="form-control select_cus_t" aria-label="Tipo de cuenta" name="cuenta">
+                                        <option value="">Seleccione un tipo de cuenta...</option>
                                         @foreach ($cuentas as $cuenta)
                                             <option value="{{ $cuenta }}">{{ $cuenta }}</option>
                                         @endforeach
@@ -91,7 +92,7 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Departamento<span>*</span></label>
                                 <select  class="form-control select_custom" aria-label="Default select example" id="departamento" name="departamento">
-                                    <option  value="{{old('departamento')}}">Seleccione una departamento...</option>
+                                    <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
 
                                     </select>
                                     @if ($errors->has('departamento'))
@@ -120,7 +121,7 @@
                             <div class="div-filled">
                                 <div>
                                     <select class="form-control select_cus_b" aria-label="Seleccione un banco" name="banco2">
-                                        <!--<option value="">Porfavor seleccione un banco</option>-->
+                                        <option value="">Seleccione un banco</option>
                                         @foreach ($bancos as $banco)
                                             <option value="{{ $banco }}">{{ $banco }}</option>
                                         @endforeach
@@ -137,8 +138,8 @@
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta</p>
                                 <div class="div-filled">
-                                    <select class="form-select select_cus_t" aria-label="Tipo de cuenta" name="cuenta2" multiple size="2">
-                                        <!--<option value="">Porfavor seleccione un tipo de cuenta</option>-->
+                                    <select class="form-control select_cus_t" aria-label="Tipo de cuenta" name="cuenta2">
+                                        <option value="">Seleccione un tipo de cuenta</option>
                                         @foreach ($cuentas as $cuenta)
                                             <option value="{{ $cuenta }}">{{ $cuenta }}</option>
                                         @endforeach

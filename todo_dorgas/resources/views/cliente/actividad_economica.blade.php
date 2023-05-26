@@ -151,7 +151,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo1" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text" name="Observacion" id="Observacion" class="">
+                          <input type="text" name="Observacion" id="Observacion" class="input_custom select_c">
                         </div>
 
 
@@ -169,7 +169,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text" name="Observacion2" id="Observacion2">
+                          <input type="text" name="Observacion2" id="Observacion2" class="input_custom select_c">
                         </div>
 
 
@@ -187,7 +187,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text color-cb" name="Observacion3" id="Observacion3">
+                          <input type="text color-cb" name="Observacion3" id="Observacion3" class="input_custom select_c">
                         </div>
 
 
@@ -207,7 +207,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text color-cb" name="Observacion4" id="Observacion4">
+                          <input type="text color-cb" name="Observacion4" id="Observacion4" class="input_custom select_c">
                         </div>
 
 
@@ -226,7 +226,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text color-cb" name="Observacion5" id=" Observacion5">
+                          <input type="text color-cb" name="Observacion5" id=" Observacion5" class="input_custom select_c">
                         </div>
 
 
@@ -246,7 +246,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text color-cb" name="Observacion6" id="Observacion6">
+                          <input type="text color-cb" name="Observacion6" id="Observacion6" class="input_custom select_c">
                         </div>
 
 
@@ -266,7 +266,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" value="N/A"></label>
                           <span class="mr-2 color-cb">Observaciones</span>
-                          <input type="text " name="Observacion7" id="Observacion7">
+                          <input type="text " name="Observacion7" id="Observacion7" class="input_custom select_c">
                         </div>
 
 

@@ -90,7 +90,7 @@
                                             <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
 
-                                        <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                        <a href="{{ route('admin.unirpdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
                                         </a>
                                     </td>

@@ -27,6 +27,21 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dv_c">
+                    <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar sesión') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="row mb-4">
             <div class="col-md-12">
               <div class="text-center">

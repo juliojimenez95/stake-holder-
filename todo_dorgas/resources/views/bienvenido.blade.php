@@ -20,11 +20,6 @@
     <div class="row">
       <div class="col-md-12">
         <div class="abs_cont">
-          <div class="div_fa">
-            <div class="img_fa">
-              <i class="fa-solid fa-user"></i>
-            </div>
-          </div>
 
           <div class="div_father">
             <div class="text_fa">
@@ -36,7 +31,8 @@
           </div>
 
           <div class="div_select">
-            <select id="mySelect" multiple size="4">
+            <select id="mySelect">
+                <option value="option1">Seleccion una opción para descargar</option>
               <option value="option1">Políticas de Tratamiento de Datos</option>
               <option value="option2">Políticas de Tratamiento de información</option>
               <option value="option3">Politicas SAGRILAFT</option>

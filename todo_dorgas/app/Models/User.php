@@ -27,7 +27,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'aprovado',
         'aprovado2',
         'aprovado3',
-        'PEP'
+        'PEP',
+        'ManejoRP'  ,
+        'Observacion1'  ,
+        'EjercidoPPOP'  ,
+        'Observacion2'  ,
+        'Reconocimiento'  ,
+        'Observacion3'  ,
+        'VincuPExpuesta'  ,
+        'Observacion4'  ,
+        'ObligacionTE'  ,
+        'Observacion5',
+        'OrganizacionI'  ,
+        'Observacion6'  ,
+        'ObligacionP',
+        'Observacion7'  ,
 
     ];
 

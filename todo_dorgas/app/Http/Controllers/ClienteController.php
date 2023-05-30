@@ -282,7 +282,6 @@ class ClienteController extends Controller
                 'email'=>'required|email|unique:users',
                 'Telefono'=>'required|unique:DOMICILIOS',
                 'direccion'=>'required',
-                'servicio'=>'required',
                 'actividad'=>'required'
 
             ],
@@ -386,42 +385,25 @@ class ClienteController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'rol' => 1
+                        'rol' => 1,
+                        'ManejoRP'=> $request->grupo1 ,
+                        'Observacion1'=> $request->Observacion."" ,
+                        'EjercidoPPOP'=> $request->grupo2 ,
+                        'Observacion2'=> $request->Observacion2."" ,
+                        'Reconocimiento'=> $request->grupo3,
+                        'Observacion3'=> $request->Observacion3."",
+                        'VincuPExpuesta'=> $request->grupo4 ,
+                        'Observacion4'=> $request->Observacion4."" ,
+                        'ObligacionTE'=> $request->grupo5 ,
+                        'Observacion5'=> $request->Observacion5."",
+                        'OrganizacionI'=> $request->grupo6,
+                        'Observacion6'=> $request->Observacion6."" ,
+                        'ObligacionP'=> $request->grupo7,
+                        'Observacion7'=> $request->Observacion7.""
                         ]);
 
                     $cliente_domicilio->save();
 
-
-                $Representante = new RepresentanteLegalModel();
-
-
-                $Representante->Nombre1 = "N/A";
-                $Representante->Nombre2 = "N/A";
-                $Representante->Apellido1 = "N/A";
-                $Representante->Apellido2 = "N/A";
-                $Representante->TipoNit = "N/A";
-                $Representante->Nit = 0;
-                $Representante->Telefono = "N/A";
-                $Representante->Cargo = "N/A";
-                $Representante->Email = "N/A";
-                $Representante->ManejoRP = $request->grupo1;
-                $Representante->Observacion1 = $request->Observacion."";
-                $Representante->EjercidoPPOP = $request->grupo2;
-                $Representante->Observacion2 = $request->Observacion2."";
-                $Representante->Reconocimiento = $request->grupo3;
-                $Representante->Observacion3 = $request->Observacion3."";
-                $Representante->VincuPExpuesta = $request->grupo4;
-                $Representante->Observacion4 = $request->Observacion4."";
-                $Representante->ObligacionTE = $request->grupo5;
-                $Representante->Observacion5 = $request->Observacion5."";
-                $Representante->OrganizacionI = $request->grupo6;
-                $Representante->Observacion6 = $request->Observacion6."";
-                $Representante->ObligacionP = $request->grupo7;
-                $Representante->Observacion7 = $request->Observacion7."";
-
-                $Representante->user_id = $user->id;
-
-                $Representante->save();
 
             }
 
@@ -553,7 +535,21 @@ class ClienteController extends Controller
                         'name' => $request->Nombre,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'rol' => 1
+                        'rol' => 1,
+                        'ManejoRP'=> $request->grupo1 ,
+                        'Observacion1'=> $request->Observacion."" ,
+                        'EjercidoPPOP'=> $request->grupo2 ,
+                        'Observacion2'=> $request->Observacion2."" ,
+                        'Reconocimiento'=> $request->grupo3,
+                        'Observacion3'=> $request->Observacion3."",
+                        'VincuPExpuesta'=> $request->grupo4 ,
+                        'Observacion4'=> $request->Observacion4."" ,
+                        'ObligacionTE'=> $request->grupo5 ,
+                        'Observacion5'=> $request->Observacion5."",
+                        'OrganizacionI'=> $request->grupo6,
+                        'Observacion6'=> $request->Observacion6."" ,
+                        'ObligacionP'=> $request->grupo7,
+                        'Observacion7'=> $request->Observacion7.""
                         ]);
 
                     $cliente_domicilio->save();
@@ -583,8 +579,6 @@ class ClienteController extends Controller
            $request->validate(
             [
                 'Nombre'=> 'required',
-                'apellido'=> 'required',
-                'apellido2'=> 'required',
                 'tipo_d'=> 'required',
                 'n_docuemnto'=>'required',
                 'email'=>'required|email',
@@ -594,8 +588,6 @@ class ClienteController extends Controller
             ],
             [
                 'Nombre.required' => 'El nombre  es requerido',
-                'apellido.required' => 'El apellido  es requerido',
-                'apellido2.required' => 'El apellido  es requerido',
                 'tipo_d.required' => 'Tipo de documento es requerido',
                 'n_docuemnto.required' => 'El documento de identidad es requerido',
                 'email.required' => 'El correo es requerido',
@@ -608,9 +600,9 @@ class ClienteController extends Controller
                 $contacto = new ContactoModel();
 
                 $contacto->Nombre1 = $request->Nombre;
-                $contacto->Nombre2 = $request->Nombre2;
-                $contacto->Apellido1 = $request->apellido;
-                $contacto->Apellido2 = $request->apellido2;
+                $contacto->Nombre2 = "";
+                $contacto->Apellido1 = "";
+                $contacto->Apellido2 = "";
                 $contacto->TipoNit = $request->tipo_d;
                 $contacto->Nit = $request->n_docuemnto;
                 $contacto->Telefono = $request->telefono;
@@ -836,8 +828,9 @@ class ClienteController extends Controller
         $tipos=['Sociedades Limitadas – LTDA.','Sociedades Anónimas – S.A.','Sociedad en Comandita – & Cía.',
         'Sociedad en Comandita Simple – S. en C.','Sociedad en Comandita por Acciones – S.C.A.',
         'Sociedad por Acciones Simplificada – S.A.S.','Sociedad Colectiva.'];
+        $actividades = actividad_economicaModel::get();
         $empresas=['Microempresas','Pequeña empresa','Mediana empresa','Grande empresa'];
-        return view("cliente.registro_pj",["empresas"=>$empresas,"tipos"=>$tipos]);
+        return view("cliente.registro_pj",["empresas"=>$empresas,"tipos"=>$tipos,"actividades"=>$actividades]);
     }
     public function index()
     {

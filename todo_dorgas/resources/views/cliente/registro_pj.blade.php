@@ -45,7 +45,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('proveedor.pn') }}" method="POST">
+                        <form action=" {{ route('clientes.storepj') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
 
@@ -170,6 +170,22 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
+                                    <label for="actividad" class="form-label label_c"><strong>Actividad económica</strong><span>*</span></label>
+                                    <select class="form-select select_c" aria-label="Default select example" name="actividad">
+                                        <option value="{{old('actividad')}}">Seleccione su código CIIU</option>
+                                       @foreach ($actividades as $actividad)
+                                           <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
+                                       @endforeach
+                                   </select>
+                                    @if ($errors->has('actividad'))
+                                        <p class="text-danger">{{ $errors->first('actividad') }}</p>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <div class="row mb-6">
+
+                                <div class="col-md-4 col-sm-12">
                                     <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
                                         placeholder="">
@@ -177,8 +193,6 @@
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="row mb-6">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="password" class="form-label label_c"><strong>Confirmar contraseña<span>*</span></strong></label>
@@ -192,14 +206,6 @@
 
                             </div>
 
-
-                            <center style="margin-top:10px">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
-                            </div>
-                            </center>
-
-                        </form>
                     </div>
                 </div>
 

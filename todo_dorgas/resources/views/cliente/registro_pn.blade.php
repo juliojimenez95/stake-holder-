@@ -218,7 +218,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" value="N/A"></label>
                           <span class="color-cb mr_5">Observaciones</span>
-                          <input type="text" name="Observacion3" id="Observacion3" class="input_col">
+                          <input type="text" name="Observacion2" id="Observacion2" class="input_col">
                         </div>
                   </div>
               </div>
@@ -234,7 +234,7 @@
                           <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" value="No"></label>
                           <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" value="N/A"></label>
                           <span class="mr_5 color-cb">Observaciones</span>
-                          <input type="text" name="Observacion2" id="Observacion2" class="input_col">
+                          <input type="text" name="Observacion3" id="Observacion3" class="input_col">
                         </div>
 
 

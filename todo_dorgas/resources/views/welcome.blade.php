@@ -11,6 +11,17 @@
   <link rel="stylesheet" href="{{ asset('css/wel.css') }}">
   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
+  <style>
+    /* Estilo para ocultar los bordes del select y hacerlo transparente */
+    #mySelect {
+        border: none;  /* Elimina los bordes */
+        background: transparent;  /* Hace el fondo transparente */
+        outline: none;  /* Elimina el contorno al enfocar el select */
+        color: #00A6E5;
+    }
+    </style>
+
+
   <!--fuentes-->
   <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
   <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
@@ -31,21 +42,21 @@
           <div class="div_father">
             <div class="text_fa">
               <div class="cultura_img">
-                <img src="{{ asset('images/Cultura-de-Legalidad.png') }}"   class="img-fluid">
+                <img src="{{ asset('images/Cultura-de-Legalidad.png') }}"  style="height: 40px " class="img-fluid">
               </div>
-              <p>Conoce nuestra Cultura de Legalidad</p>
+              <div class="div_select">
+                <select id="mySelect">
+                    <option value="*">Conoce aquí nuestra Cultura de Legalidad</option>
+                  <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
+                  <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
+                  <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas SAGRILAFT</option>
+                  <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Código de Ética y Buen Gobierno</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="div_select">
-            <select id="mySelect">
-                <option value="*">Seleccione una opción para descargar</option>
-              <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
-              <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
-              <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas SAGRILAFT</option>
-              <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Código de Ética y Buen Gobierno</option>
-            </select>
-          </div>
+
 
         </div>
         <div class="text-center">

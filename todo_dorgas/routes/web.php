@@ -53,6 +53,7 @@ Route::get('/cliente/documentos_anexos/{id}', [ClienteController::class, 'docume
 
  //storage
 Route::post('/cliente/storepn', [ClienteController::class, 'storepn'])->name('clientes.storepn');
+Route::post('/cliente/storepj', [ClienteController::class, 'storepj'])->name('clientes.storepj');
 Route::post('/cliente/storeRepresentante/{id}', [ClienteController::class,'storeRepresentante'])->name('clientes.storeRepresentante');
 Route::post('/cliente/storeInformaciont/{id}', [ClienteController::class,'storeInformaciont'])->name('clientes.storeInformaciont');
 Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');

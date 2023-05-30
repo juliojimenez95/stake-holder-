@@ -40,8 +40,8 @@
                     son personas expuestas políticamente o <br>
                     públicamente?</p>
                     <div class="div_rad">
-                        <span>Si</span><input type="radio"  class="span_one">
-                        <span>No</span><input type="radio">
+                        <span>Si</span><input type="radio"  id="si_radio" class="span_one">
+                        <span>No</span><input type="radio" id="no_radio">
                     </div>
                 </div>
             </div>
@@ -121,8 +121,8 @@
                                 </div>
                             </div>
                             <center style="margin-top:10px">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
+                            <div  id="div_contenido" class="col-md-12">
+                                <button type="submit" id="boton_guardar" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
                             </div>
                             </center>
 
@@ -137,5 +137,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Agregar el script de JavaScript de la carpeta public -->
     <script src="{{ asset('js/principal.js') }}"></script>
+    <script>
+        // Obtener referencias a los elementos
+        var siRadio = document.getElementById('si_radio');
+        var noRadio = document.getElementById('no_radio');
+        var divContenido = document.getElementById('div_contenido');
+        var botonGuardar = document.getElementById('boton_guardar');
+
+        // Agregar un evento de cambio a los radio buttons
+        siRadio.addEventListener('change', function() {
+            if (this.checked) {
+                // Si se selecciona "Si", mostrar el contenido correspondiente
+                divContenido.innerHTML = `
+                    <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
+                `;
+            }
+        });
+
+        noRadio.addEventListener('change', function() {
+            if (this.checked) {
+                // Si se selecciona "No", mostrar el contenido correspondiente
+                divContenido.innerHTML = `
+                    <a href="{{ route('cliente.contacto',$id) }}" type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</a>
+                `;
+            }
+        });
+    </script>
 </body>
 </html>

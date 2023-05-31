@@ -14,10 +14,15 @@
   <style>
     /* Estilo para ocultar los bordes del select y hacerlo transparente */
     #mySelect {
-        border: none;  /* Elimina los bordes */
-        background: transparent;  /* Hace el fondo transparente */
-        outline: none;  /* Elimina el contorno al enfocar el select */
-        color: #00A6E5;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        border: none;
+        background: none;
+        color: white;
+        background-color: #004492!important;
+
     }
     </style>
 
@@ -45,7 +50,7 @@
                 <img src="{{ asset('images/Cultura-de-Legalidad.png') }}"  style="height: 40px " class="img-fluid">
               </div>
               <div class="div_select">
-                <select id="mySelect">
+                <select id="mySelect" class="form-control">
                     <option value="*">Conoce aquí nuestra Cultura de Legalidad</option>
                   <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
                   <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
@@ -106,7 +111,7 @@
 
             <a href="{{ route('password.request') }}">
             <span>¿Olvidó su contraseña?</span> </a><br>
-            <span>¿No tiene cuenta? <a href="{{route('cliente.registrarse')}}"><strong>Registrarse</strong></a></span>
+            <span>¿No tiene cuenta? <a href="{{route('cliente.registrarse')}}" class="reg_a"><strong>Registrarse</strong></a></span>
           </div>
         </div>
       </div>

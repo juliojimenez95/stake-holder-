@@ -100,9 +100,9 @@
                       <table id="miTabla" class="table tb_cus">
                         <thead>
                           <tr>
-                              <th>Nombre</th>
+                              <th>Nombres y Apellidos</th>
                               <th>Tipo de documento</th>
-                              <th>Participacion</th>
+                              <th>Participación %</th>
                               <th>Nacionalidad</th>
                               <th>PEP</th>
 

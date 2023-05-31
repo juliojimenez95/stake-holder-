@@ -17,7 +17,8 @@
             <div class="dv_c">
                 <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
+                                 document.getElementById('logout-form').submit();"
+                                 style="margin-top: 25px;">
                     {{ __('Cerrar sesión') }}
                 </a>
 

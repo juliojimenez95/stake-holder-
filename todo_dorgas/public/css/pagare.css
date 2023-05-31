@@ -9,6 +9,10 @@
     font-size: 1.2rem;
 }
 
+.p_tx span {
+    color: red;
+}
+
 .img_cusx{
     padding: 15px;
     background-color: white;

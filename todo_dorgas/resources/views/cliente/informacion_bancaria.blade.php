@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <div>
                             <p class="title-ent">Nombre de la Entidad Bancaria<span>*</span></p>
-                            <div class="div-filled">
+                            <div class="">
                                     <select class="form-control select_cus_b" aria-label="Seleccione un banco" name="banco">
                                         <option value="">Seleccione un banco</option>
                                         @foreach ($bancos as $banco)
@@ -61,7 +61,7 @@
 
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta<span>*</span></p>
-                                <div class="div-filled">
+                                <div class="">
                                     <select class="form-control select_cus_t" aria-label="Tipo de cuenta" name="cuenta">
                                         <option value="">Seleccione un tipo de cuenta...</option>
                                         @foreach ($cuentas as $cuenta)
@@ -118,7 +118,7 @@
                     <div class="col-md-6">
                         <div>
                             <p class="title-ent">Nombre de la Entidad Bancaria</p>
-                            <div class="div-filled">
+                            <div class="">
                                 <div>
                                     <select class="form-control select_cus_b" aria-label="Seleccione un banco" name="banco2">
                                         <option value="">Seleccione un banco</option>
@@ -137,7 +137,7 @@
                     <div class="col-md-6">
                             <div class="mb-5">
                                 <p class="title-ent">Tipo de Cuenta</p>
-                                <div class="div-filled">
+                                <div class="">
                                     <select class="form-control select_cus_t" aria-label="Tipo de cuenta" name="cuenta2">
                                         <option value="">Seleccione un tipo de cuenta</option>
                                         @foreach ($cuentas as $cuenta)

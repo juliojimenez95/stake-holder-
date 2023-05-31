@@ -31,7 +31,7 @@
           </div>
 
           <div class="div_select">
-            <select id="mySelect">
+            <select id="mySelect" class="form-control">
                 <option value="option1">Seleccion una opción para descargar</option>
               <option value="option1">Políticas de Tratamiento de Datos</option>
               <option value="option2">Políticas de Tratamiento de información</option>

@@ -63,7 +63,7 @@
                                 <p class="title-ent">Tipo de Cuenta<span>*</span></p>
                                 <div class="">
                                     <select class="form-control select_cus_t" aria-label="Tipo de cuenta" name="cuenta">
-                                        <option value="">Seleccione un tipo de cuenta...</option>
+                                        <option value="">Seleccione un tipo de cuenta</option>
                                         @foreach ($cuentas as $cuenta)
                                             <option value="{{ $cuenta }}">{{ $cuenta }}</option>
                                         @endforeach
@@ -85,7 +85,7 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad<span>*</span></label>
                                 <select class="form-control select_custom" name="municipio" id="municipio">
-                                    <option value="">seleccione un municipio</option>
+                                    <option value="">Seleccione una ciudad</option>
                                 </select>
                             </div>
 
@@ -158,7 +158,7 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad</label>
                                 <select class="form-control select_custom" name="municipio2" id="municipio2">
-                                    <option value="">Seleccione un Municipio</option>
+                                    <option value="">Seleccione una ciudad</option>
                                 </select>
                             </div>
 

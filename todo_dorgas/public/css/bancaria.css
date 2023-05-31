@@ -65,13 +65,14 @@
 .select_custom {
     background-color: rgb(233, 232, 232);
     appearance: none; /* Deshabilitar el estilo nativo del select */
-    color: #004492; /* Establecer el color del texto */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='blue' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
+    color: grey!important; /* Establecer el color del texto */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgb(0, 68, 146)' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
     background-repeat: no-repeat; /* Evitar que se repita la imagen */
     background-position: right center; /* Establecer la posición de la imagen de fondo */
     padding-right: 20px; /* Añadir espacio para la imagen de fondo */
     border: none; /* Eliminar el borde */
     outline: none; /* Eliminar el contorno al seleccionar */
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .btn_continuar {
@@ -90,20 +91,21 @@
 }
 
 .select_cus {
-    color: #004492;
+    color: grey!important;
     border: none;
     overflow-y: hidden;
     -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+    font-family: 'franklin-gothic-book-regular', sans-serif;
 }
 
 .select_cus_b {
     width: 100%;
     background-color: rgb(233, 232, 232);
     appearance: none; /* Deshabilitar el estilo nativo del select */
-    color: #004492; /* Establecer el color del texto */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='blue' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
+    color: grey!important; /* Establecer el color del texto */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgb(0, 68, 146)' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
     background-repeat: no-repeat; /* Evitar que se repita la imagen */
     background-position: right center; /* Establecer la posición de la imagen de fondo */
     padding-right: 20px; /* Añadir espacio para la imagen de fondo */
@@ -118,8 +120,8 @@
     width: 100%;
     background-color: rgb(233, 232, 232);
     appearance: none; /* Deshabilitar el estilo nativo del select */
-    color: #004492; /* Establecer el color del texto */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='blue' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
+    color: grey!important; /* Establecer el color del texto */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgb(0, 68, 146)' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
     background-repeat: no-repeat; /* Evitar que se repita la imagen */
     background-position: right center; /* Establecer la posición de la imagen de fondo */
     padding-right: 20px; /* Añadir espacio para la imagen de fondo */

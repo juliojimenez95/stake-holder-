@@ -28,6 +28,8 @@
               </div>
             </div>
         </div>
+        <div class="card bg-light mt-4">
+            <div class="card-body">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-12">
@@ -92,7 +94,7 @@
                     </div>
                 </form>
                 </div>
-            </div>
+
             <div class="container">
                 <div class="row">
                   <div class="col-md-12">
@@ -169,6 +171,9 @@
                 </div>
             </div>
             </div>
+        </div>
+    </div>
+        </div>
         </div>
     </div>
 

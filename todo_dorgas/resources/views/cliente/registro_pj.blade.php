@@ -68,7 +68,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="tipo_s" class="form-label label_c"><strong>Tipo de Sociedad<span>*</span></strong></label>
                                     <select class="form-control select_c" aria-label="Default select example" name="tipo_s">
-                                        <option value="">Seleccione un tipo de sociedad...</option>
+                                        <option value="">Seleccione un tipo de sociedad</option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                                         @endforeach
@@ -116,7 +116,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento<span>*</span></strong></label>
                                         <select  class="form-control select_c" aria-label="Seleccione una departamento" id="departamento" name="departamento">
-                                        <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
+                                        <option  value="{{old('departamento')}}">Seleccione un departamento</option>
 
                                         </select>
                                         @if ($errors->has('departamento'))
@@ -127,7 +127,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio<span>*</span></strong></label>
                                     <select class="form-control select_c" aria-label="Seleccione una municipio" id="municipio" name="municipio">
-                                        <option value="{{old('municipio')}}">Seleccione una municipio...</option>
+                                        <option value="{{old('municipio')}}">Seleccione un municipio</option>
 
                                     </select>
                                     @if ($errors->has('municipio'))
@@ -149,7 +149,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="ta_e" class="form-label label_c"><strong>Tamaño de empresa<span>*</span></strong></label>
                                     <select class="form-control select_c" aria-label="Seleccione un tipo de sociedad" name="ta_e">
-                                        <option value="">Seleccione un tipo de sociedad...</option>
+                                        <option value="">seleccione el tamaño de la empresa</option>
                                         @foreach ($empresas as $empresa)
                                             <option value="{{ $empresa }}">{{ $empresa }}</option>
                                         @endforeach
@@ -161,7 +161,7 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="servicio" class="form-label label_c"><strong>Servicio</strong></label>
+                                    <label for="servicio" class="form-label label_c"><strong>Servicio que ofrece</strong></label>
                                     <input type="servicio" class="form-control input_custom select_c" id="servicio" name="servicio" value="{{old('servicio')}}"
                                         placeholder="">
                                     @if ($errors->has('servicio'))

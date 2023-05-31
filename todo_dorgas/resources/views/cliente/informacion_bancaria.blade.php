@@ -85,14 +85,14 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad<span>*</span></label>
                                 <select class="form-control select_custom" name="municipio" id="municipio">
-                                    <option value="">Medellin</option>
+                                    <option value="">seleccione un municipio</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Departamento<span>*</span></label>
                                 <select  class="form-control select_custom" aria-label="Default select example" id="departamento" name="departamento">
-                                    <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
+                                    <option  value="{{old('departamento')}}">Seleccione un departamento</option>
 
                                     </select>
                                     @if ($errors->has('departamento'))
@@ -158,14 +158,14 @@
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Ciudad</label>
                                 <select class="form-control select_custom" name="municipio2" id="municipio2">
-                                    <option value="">Medellin</option>
+                                    <option value="">Seleccione un Municipio</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="" class="label_custom">Departamento</label>
                                 <select class="form-control select_custom" id="departamento2" name="departamento2">
-                                    <option value="">Antioquia</option>
+                                    <option value="">Seleccione un Departamento</option>
                                 </select>
                             </div>
 

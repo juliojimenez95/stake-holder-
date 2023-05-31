@@ -40,8 +40,8 @@
                     son personas expuestas políticamente o <br>
                     públicamente?</p>
                     <div class="div_rad">
-                        <span>Si</span><input type="radio"  id="si_radio" class="span_one">
-                        <span>No</span><input type="radio" id="no_radio">
+                        <span>Si</span><input type="radio" name="grupo1"  id="si_radio" class="span_one">
+                        <span>No</span><input type="radio" name="grupo1" id="no_radio">
                     </div>
                 </div>
             </div>

@@ -282,7 +282,6 @@ class ClienteController extends Controller
                 'email'=>'required|email|unique:users',
                 'Telefono'=>'required|unique:DOMICILIOS',
                 'direccion'=>'required',
-                'actividad'=>'required'
 
             ],
             [

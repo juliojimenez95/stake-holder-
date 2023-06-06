@@ -64,8 +64,8 @@
                                 </div>
                                 <div class="col-md-4 col-sm-12">
                                     <label for="tipo_s" class="form-label label_c"><strong>Tipo de Sociedad</strong><span>*</span></label>
-                                    <select class="form-control select_c" aria-label="Default select example" name="tipo_s">
-                                        <option value="">Seleccione un tipo de sociedad</option>
+                                    <select class="form-control select_custom" aria-label="Default select example" name="tipo_s">
+                                        <option value="">Seleccione un tipo</option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                                         @endforeach
@@ -98,7 +98,7 @@
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="pais" class="form-label label_c"><strong>País</strong><span>*</span></label>
-                                        <select  class="form-select select_c" aria-label="Default select example" id="pais" name="pais">
+                                        <select  class="form-control select_custom" aria-label="Default select example" id="pais" name="pais">
                                         <option  value="{{old('pais')}}">Seleccione un pais</option>
                                         </select>
                                         @if ($errors->has('pais'))
@@ -109,10 +109,10 @@
                             </div>
                             <div class="row mb-3">
 
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-md-6 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento</strong><span>*</span></label>
-                                        <select  class="form-select select_c" aria-label="Default select example" id="departamento" name="departamento">
-                                        <option  value="{{old('departamento')}}">Seleccione un departamento...</option>
+                                        <select  class="form-control select_custom" aria-label="Default select example" id="departamento" name="departamento">
+                                        <option  value="{{old('departamento')}}">Seleccione un departamento</option>
 
                                         </select>
                                         @if ($errors->has('departamento'))
@@ -120,16 +120,18 @@
                                         @endif
                                 </div>
 
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-md-6 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio</strong><span>*</span></label>
-                                    <select class="form-select select_c" aria-label="Default select example" id="municipio" name="municipio">
-                                        <option value="{{old('municipio')}}">Seleccione un municipio...</option>
+                                    <select class="form-control select_custom" aria-label="Default select example" id="municipio" name="municipio">
+                                        <option value="{{old('municipio')}}">Seleccione un municipio</option>
 
                                     </select>
                                     @if ($errors->has('municipio'))
                                         <p class="text-danger">{{ $errors->first('municipio') }}</p>
                                     @endif
                                 </div>
+                            </div>
+                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="direccion" class="form-label label_c"><strong>Dirección</strong><span>*</span></label>
@@ -139,13 +141,11 @@
                                         <p class="text-danger">{{ $errors->first('direccion') }}</p>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="ta_e" class="form-label label_c"><strong>Tamaño de la empresa</strong><span>*</span></label>
-                                    <select class="form-select select_c" aria-label="Default select example" name="ta_e">
-                                        <option value="">seleccione el tamaño de la empresa</option>
+                                    <select class="form-control select_custom" aria-label="Default select example" name="ta_e">
+                                        <option value="">Seleccione el tamaño</option>
                                         @foreach ($empresas as $empresa)
                                             <option value="{{ $empresa }}">{{ $empresa }}</option>
                                         @endforeach
@@ -157,7 +157,6 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <br>
                                     <label for="servicio" class="form-label label_c"><strong>Servicio que ofrece</strong></label>
                                     <input type="servicio" class="form-control input_custom select_c" id="servicio" name="servicio" value="{{old('servicio')}}"
                                         placeholder="">
@@ -165,9 +164,10 @@
                                         <p class="text-danger">{{ $errors->first('servicio') }}</p>
                                     @endif
                                 </div>
+                            </div>
+                            <div class="row mb-6">
 
                                 <div class="col-md-4 col-sm-12">
-                                    <br>
                                     <label for="password" class="form-label label_c"><strong>Contraseña</strong><span>*</span></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
                                         placeholder="">
@@ -175,8 +175,6 @@
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="row mb-6">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="password" class="form-label label_c"><strong>Confirmar Contraseña</strong><span>*</span></label>

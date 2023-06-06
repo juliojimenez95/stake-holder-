@@ -44,7 +44,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="p_nombre" class="form-label label_c"><strong>Primer Nombre</strong></label>
                         <input type="text" class="form-control input_custom select_c" id="p_nombre" name="p_nombre" value="{{old('p_nombre')}}"
-                            placeholder="Primer Nombre">
+                            placeholder="">
                         @if ($errors->has('p_nombre'))
                             <p class="text-danger">{{ $errors->first('p_nombre') }}</p>
                         @endif
@@ -52,7 +52,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="s_nombre" class="form-label label_c"><strong>Segundo Nombre</strong></label>
                         <input type="text" class="form-control input_custom select_c" id="s_nombre" name="s_nombre" value="{{old('s_nombre')}}"
-                            placeholder="Segundo Nombre">
+                            placeholder="">
                         @if ($errors->has('s_nombre'))
                             <p class="text-danger">{{ $errors->first('s_nombre') }}</p>
                         @endif
@@ -61,7 +61,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="p_apellido" class="form-label label_c"><strong>Primer Apellido</strong></label>
                         <input type="text" class="form-control input_custom select_c" id="p_apellido" name="p_apellido" value="{{old('p_apellido')}}"
-                            placeholder="Primer Apellido">
+                            placeholder="">
                         @if ($errors->has('p_apellido'))
                             <p class="text-danger">{{ $errors->first('p_apellido') }}</p>
                         @endif
@@ -69,7 +69,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="s_apellido" class="form-label label_c"><strong>Segundo Apellido</strong></label>
                         <input type="text" class="form-control input_custom select_c" id="s_apellido" name="s_apellido" value="{{old('s_apellido')}}"
-                            placeholder="Segundo Apellido">
+                            placeholder="">
                         @if ($errors->has('s_apellido'))
                             <p class="text-danger">{{ $errors->first('s_apellido') }}</p>
                         @endif
@@ -84,8 +84,8 @@
              <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <label for="tipo_d" class="form-label label_c"><strong>Tipo de documento</strong></label>
-                    <select class="form-control select_c" aria-label="Tipo de documento" name="tipo_d">
-                        <option value="">Seleccione un tipo de documento...</option>
+                    <select class="form-control select_custom" aria-label="Tipo de documento" name="tipo_d">
+                        <option value="">Seleccione un tipo</option>
                         @foreach ($tipos as $tipo)
                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                         @endforeach
@@ -98,7 +98,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="documento" class="form-label label_c"><strong>Número de documento</strong></label>
                         <input type="number" class="form-control input_custom select_c" id="documento" name="documento" value="{{old('documento')}}"
-                            placeholder="Numero documento">
+                            placeholder="">
                         @if ($errors->has('documento'))
                             <p class="text-danger">{{ $errors->first('documento') }}</p>
                         @endif
@@ -107,7 +107,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="cargo" class="form-label label_c"><strong>Cargo</strong></label>
                         <input type="text" class="form-control input_custom select_c" id="cargo" name="cargo" value="{{old('cargo')}}"
-                            placeholder="cargo">
+                            placeholder="">
                         @if ($errors->has('cargo'))
                             <p class="text-danger">{{ $errors->first('cargo') }}</p>
                         @endif
@@ -122,7 +122,7 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="documento" class="form-label label_c"><strong>Correo electrónico</strong></label>
                         <input type="email" class="form-control input_custom select_c" id="email" name="email" value="{{old('email')}}"
-                            placeholder="Correo electrónico">
+                            placeholder="">
                         @if ($errors->has('email'))
                             <p class="text-danger">{{ $errors->first('email') }}</p>
                         @endif
@@ -131,14 +131,14 @@
                 <div class="col-md-3 col-sm-12">
                     <label for="cargo" class="form-label label_c"><strong>Teléfono</strong></label>
                         <input type="number" class="form-control input_custom select_c" id="telefono" name="telefono" value="{{old('telefono')}}"
-                            placeholder="Teléfono">
+                            placeholder="">
                         @if ($errors->has('telefono'))
                             <p class="text-danger">{{ $errors->first('telefono') }}</p>
                         @endif
                 </div>
              </div>
             </div>
-        <div class="container">
+        <div class="container mt-4">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group ">

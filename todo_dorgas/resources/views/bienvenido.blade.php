@@ -21,7 +21,7 @@
       <div class="col-md-12">
         <div class="abs_cont">
 
-          <div class="div_father">
+          <!--<div class="div_father">
             <div class="text_fa">
               <div class="cultura_img">
                 <img src="{{ asset('images/Cultura-de-Legalidad.png') }}"   class="img-fluid">
@@ -38,7 +38,7 @@
               <option value="option3">Politicas SAGRILAFT</option>
               <option value="option3">Código de Ética y Buen Gobierno</option>
             </select>
-          </div>
+          </div>-->
 
         </div>
         <div class="text-center">

@@ -9,6 +9,11 @@ select.addEventListener('change', function() {
     window.location.href = '/descargar-pdf/' + filename;
 });
 
+select.addEventListener('click', function(){
+    const cn = document.getElementById("conoce");
+    cn.style.display = "none";
+});
+
 const button = document.querySelector('#descarga');
 button.addEventListener('click', function() {
     // Obtener el archivo PDF correspondiente

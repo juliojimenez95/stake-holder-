@@ -67,8 +67,8 @@
                                 </div>
                                 <div class="col-md-4 col-sm-12">
                                     <label for="tipo_s" class="form-label label_c"><strong>Tipo de Sociedad<span>*</span></strong></label>
-                                    <select class="form-control select_c" aria-label="Default select example" name="tipo_s">
-                                        <option value="">Seleccione un tipo de sociedad</option>
+                                    <select class="form-control select_custom" aria-label="Default select example" name="tipo_s">
+                                        <option value="">Seleccione un tipo</option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                                         @endforeach
@@ -101,7 +101,7 @@
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="pais" class="form-label label_c"><strong>País<span>*</span></strong></label>
-                                        <select  class="form-control select_c" aria-label="Seleccione pais" id="pais" name="pais">
+                                        <select  class="form-control select_custom" aria-label="Seleccione pais" id="pais" name="pais">
                                         <option  value="{{old('pais')}}">Seleccione un país</option>
 
                                         </select>
@@ -113,9 +113,9 @@
                             </div>
                             <div class="row mb-3">
 
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-md-6 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento<span>*</span></strong></label>
-                                        <select  class="form-control select_c" aria-label="Seleccione una departamento" id="departamento" name="departamento">
+                                        <select  class="form-control select_custom" aria-label="Seleccione una departamento" id="departamento" name="departamento">
                                         <option  value="{{old('departamento')}}">Seleccione un departamento</option>
 
                                         </select>
@@ -124,9 +124,9 @@
                                         @endif
                                 </div>
 
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-md-6 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio<span>*</span></strong></label>
-                                    <select class="form-control select_c" aria-label="Seleccione una municipio" id="municipio" name="municipio">
+                                    <select class="form-control select_custom" aria-label="Seleccione una municipio" id="municipio" name="municipio">
                                         <option value="{{old('municipio')}}">Seleccione un municipio</option>
 
                                     </select>
@@ -134,6 +134,8 @@
                                         <p class="text-danger">{{ $errors->first('municipio') }}</p>
                                     @endif
                                 </div>
+                            </div>
+                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="direccion" class="form-label label_c"><strong>Dirección<span>*</span></strong></label>
@@ -143,13 +145,11 @@
                                         <p class="text-danger">{{ $errors->first('direccion') }}</p>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="ta_e" class="form-label label_c"><strong>Tamaño de empresa<span>*</span></strong></label>
-                                    <select class="form-control select_c" aria-label="Seleccione un tipo de sociedad" name="ta_e">
-                                        <option value="">seleccione el tamaño de la empresa</option>
+                                    <select class="form-control select_custom" aria-label="Seleccione un tipo de sociedad" name="ta_e">
+                                        <option value="">Seleccione el tamaño</option>
                                         @foreach ($empresas as $empresa)
                                             <option value="{{ $empresa }}">{{ $empresa }}</option>
                                         @endforeach
@@ -168,6 +168,8 @@
                                         <p class="text-danger">{{ $errors->first('servicio') }}</p>
                                     @endif
                                 </div>
+                            </div>
+                            <div class="row mb-6">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="actividad" class="form-label label_c"><strong>Actividad económica</strong><span>*</span></label>
@@ -182,11 +184,7 @@
                                     @endif
                                 </div>
 
-                            </div>
-                            <div class="row mb-6">
-
                                 <div class="col-md-4 col-sm-12">
-                                    <br>
                                     <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
                                         placeholder="">

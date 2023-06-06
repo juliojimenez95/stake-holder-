@@ -51,7 +51,7 @@
               </div>
               <div class="div_select">
                 <select id="mySelect" class="form-control">
-                    <option value="*">Conoce aquí nuestra Cultura de Legalidad</option>
+                    <option value="*" id="conoce">Conoce aquí nuestra Cultura de Legalidad</option>
                   <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
                   <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
                   <option value="option3" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas SAGRILAFT</option>

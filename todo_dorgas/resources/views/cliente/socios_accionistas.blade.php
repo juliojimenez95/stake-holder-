@@ -55,8 +55,8 @@
                         </div>
                         <div class="div_cus">
                             <label for="tipo_d" class="form-label label_cus">Tipo de documento<span>*</span></label>
-                            <select class="form-control custom_input" aria-label="Seleccione un tipo de documento" name="tipo_d">
-                                <option value="">Tipo de documento...</option>
+                            <select class="form-control custom_input_s" aria-label="Seleccione un tipo de documento" name="tipo_d">
+                                <option value="">Documento</option>
                                 @foreach ($tipos as $tipo)
                                     <option value="{{ $tipo }}">{{ $tipo }}</option>
                                 @endforeach

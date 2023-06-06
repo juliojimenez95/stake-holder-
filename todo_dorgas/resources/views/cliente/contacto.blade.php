@@ -49,8 +49,8 @@
 
                                 <div class="col-md-6 col-sm-12">
                                     <label for="tipo_d" class="form-label label_c"><strong>Tipo de documento<span>*</span></strong></label>
-                                    <select class="form-select select_c" aria-label="Default select example" name="tipo_d">
-                                        <option value="">Seleccione un tipo de documento...</option>
+                                    <select class="form-control select_custom" aria-label="Default select example" name="tipo_d">
+                                        <option value="">Seleccione un tipo de documento</option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo }}">{{ $tipo }}</option>
                                         @endforeach

@@ -40,6 +40,18 @@ input[type="radio"] {
     background-color: rgb(233, 232, 232);
   }
 
+  .custom_input_s {
+    appearance: none!important; /* Deshabilitar el estilo nativo del select */
+    background-color: rgb(233, 232, 232);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='grey' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
+    background-repeat: no-repeat!important; /* Evitar que se repita la imagen */
+    background-position: right center!important; /* Establecer la posición de la imagen de fondo */
+    font-family: 'franklin-gothic-book-regular', sans-serif!important;
+    font-size: .9rem!important;
+    color: grey!important;
+    height: 38px;
+  }
+
   .div_cus label{
     color: grey;
   }
@@ -185,4 +197,19 @@ input[type="radio"] {
     color: red!important;
     position: relative;
     bottom: 5px;
+}
+
+.select_custom {
+    background-color: rgb(233, 232, 232)!important;
+    appearance: none!important; /* Deshabilitar el estilo nativo del select */
+    color: grey!important; /* Establecer el color del texto */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='grey' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Agregar una imagen de fondo personalizada */
+    background-repeat: no-repeat!important; /* Evitar que se repita la imagen */
+    background-position: right center!important; /* Establecer la posición de la imagen de fondo */
+    padding-right: 20px!important; /* Añadir espacio para la imagen de fondo */
+    border: 1px solid #ced4da !important; /* Eliminar el borde */
+    outline: none!important; /* Eliminar el contorno al seleccionar */
+    font-family: 'franklin-gothic-book-regular', sans-serif!important;
+
+    font-size: .9rem!important;
 }

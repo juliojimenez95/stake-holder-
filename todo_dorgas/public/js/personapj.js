@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     $.ajax({
     url: "/listarpaises",
@@ -13,10 +15,10 @@ $(document).ready(function(){
             localStorage.setItem('departamentos_local', JSON.stringify(departamentos_local));
             localStorage.setItem('municipios_local', JSON.stringify(municipios_local));
 
-            console.log("leiton",localStorage.getItem("pais_local"));
+           // console.log("leiton",localStorage.getItem("pais_local"));
             //console.log(localStorage.getItem("departamentos_local"));
             pais_local.forEach(element => {
-                $("#pais").append('<option value="' + element.Pais + '">' + element.Pais + '</option>')
+                $("#pais").append('<option value="' + element.ID + '">' + element.Pais + '</option>')
             });
 
     },
@@ -25,12 +27,21 @@ $(document).ready(function(){
     },
 });
 $("#pais").change(function(e){
-
+    console.log("valor pais",e.target.value);
     $("#departamento").empty();
         let munfiltro1 = JSON.parse(localStorage.getItem('departamentos_local'));
-        let result1 = munfiltro1.filter("CO" == e.target.value);
+      //  console.log("resultado 2-->",localStorage.getItem('departamentos_local'));
+       // console.log("resultado 3-->",munfiltro1);
 
-        console.log("resultado 1-->",result1);
+       let result1 = munfiltro1.filter(function(value){
+        //console.log("resultado 4-->",value);
+        return value.ID_Pais == e.target.value;
+       });
+
+       console.log("resul",result1);
+       // let result1 = munfiltro1.filter(m=>m.pais == e.target.value);
+
+       // console.log("resultado 1-->",result1);
 
         result1.forEach(element => {
             $("#departamento").append('<option value="' + element.Departamento + '">' + element.Departamento + '</option>')

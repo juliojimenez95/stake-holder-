@@ -157,6 +157,7 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
+                                    <br>
                                     <label for="servicio" class="form-label label_c"><strong>Servicio que ofrece</strong></label>
                                     <input type="servicio" class="form-control input_custom select_c" id="servicio" name="servicio" value="{{old('servicio')}}"
                                         placeholder="">
@@ -166,6 +167,7 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
+                                    <br>
                                     <label for="password" class="form-label label_c"><strong>Contraseña</strong><span>*</span></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
                                         placeholder="">
@@ -188,7 +190,6 @@
 
                             </div>
 
-                        </form>
                     </div>
                 </div>
 
@@ -335,10 +336,13 @@
                     <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
                 </div>
                 </center>
+            </form>
+
     </div>
         <!-- Agregar el script de JavaScript de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Agregar el script de JavaScript de la carpeta public -->
     <script src="{{ asset('js/principal.js') }}"></script>
+    <script src="{{ asset('js/personapj.js') }}"></script>
 </body>
 </html>

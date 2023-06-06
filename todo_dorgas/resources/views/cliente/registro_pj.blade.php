@@ -102,7 +102,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="pais" class="form-label label_c"><strong>País<span>*</span></strong></label>
                                         <select  class="form-control select_c" aria-label="Seleccione pais" id="pais" name="pais">
-                                        <option  value="{{old('pais')}}">COLOMBIA</option>
+                                        <option  value="{{old('pais')}}">Seleccione un país</option>
 
                                         </select>
                                         @if ($errors->has('pais'))
@@ -186,6 +186,7 @@
                             <div class="row mb-6">
 
                                 <div class="col-md-4 col-sm-12">
+                                    <br>
                                     <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
                                         placeholder="">
@@ -364,5 +365,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Agregar el script de JavaScript de la carpeta public -->
     <script src="{{ asset('js/principal.js') }}"></script>
+    <script src="{{ asset('js/personapj.js') }}"></script>
+
 </body>
 </html>

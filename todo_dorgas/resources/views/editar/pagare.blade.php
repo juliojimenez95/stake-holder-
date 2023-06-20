@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <form action="{{ route('storepagare',$id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('editpagare',$id)}}" method="post" enctype="multipart/form-data">
         @csrf
 
       <div class="col-md-12">

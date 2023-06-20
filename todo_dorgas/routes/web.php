@@ -88,6 +88,18 @@ Route::get('/users/rechazarUser2/{id}', [AdminController::class, 'rechazarUser2'
 Route::get('/admin/pdf/{id}', [DocumentosController::class, 'pdf'])->name('admin.pdf');
 Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->name('admin.unirpdf');
 
+//editar
+
+Route::post('/editpagare/{id}', [DocumentosController::class,'editpagare'])->name('editpagare');
+Route::post('/editfondo/{id}', [DocumentosController::class,'editfondo'])->name('editfondo');
+Route::post('/editInformaciont/{id}', [DocumentosController::class,'editInformaciont'])->name('editInformaciont');
+Route::post('/editInformacionf/{id}', [DocumentosController::class,'editInformacionf'])->name('editInformacionf');
+Route::post('/editInformacionb/{id}', [DocumentosController::class,'editInformacionb'])->name('editInformacionb');
+
+
+
+
+
 
 
 //routas para alimentar municipios

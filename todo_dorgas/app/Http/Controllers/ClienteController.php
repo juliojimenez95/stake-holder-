@@ -782,6 +782,46 @@ class ClienteController extends Controller
             }
     }
 
+    public function editInformaciont(Request $request,$id)
+    {
+           $request->validate(
+            [
+                'email'=>'required|email',
+            ],
+            [
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+
+            ]
+            );
+           try {
+                $Informaciont = new InformacionTributariaModel();
+
+                $Informaciont->ResponsableImpuesto = $request->grupo1;
+                $Informaciont->SujetoRetencion = $request->grupo2;
+                $Informaciont->Declarar = $request->grupo3;
+                $Informaciont->RST = $request->grupo4;
+                $Informaciont->Estampillas = $request->grupo5;
+                $Informaciont->Observacion1 = $request->estampillas;
+                $Informaciont->GContribuyente = $request->grupo6;
+                $Informaciont->AutorretenedorF = $request->grupo7;
+                $Informaciont->AutorretenedorICA = $request->grupo8;
+                $Informaciont->Email = $request->email;
+                $Informaciont->Cliente_id = $id;
+
+            if ($Informaciont->save()) {
+
+            }
+
+
+            return redirect('/home');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
     public function storeInformacionf(Request $request,$id)
     {
 
@@ -807,6 +847,51 @@ class ClienteController extends Controller
             );
            try {
                 $Informacionf = new InformacionFinancieraModel();
+
+                $Informacionf->Activo = $request->Activo;
+                $Informacionf->Pasivo = $request->Pasivo;
+                $Informacionf->Patrimonio = $request->Patrimonio;
+                $Informacionf->IngresosTotales = $request->Ingresos;
+                $Informacionf->EgresosTotales = $request->Egresos;
+                $Informacionf->CantidadPersonas = $request->Vinculado;
+                $Informacionf->user_id = $id;
+
+            if ($Informacionf->save()) {
+
+            }
+            return redirect('/home');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function editInformacionf(Request $request,$id)
+    {
+
+           $request->validate(
+            [
+                'Activo'=>'required',
+                'Pasivo'=>'required',
+                'Patrimonio'=>'required',
+                'Ingresos'=>'required',
+                'Egresos'=>'required',
+                'Vinculado'=>'required' ,
+            ],
+            [
+
+                'Activo.required' => 'El activo es requerido',
+                'Pasivo.required' => 'El pasivo es requerido',
+                'Patrimonio.required' => 'El patrimonio es requerido',
+                'Ingresos.required' => 'Los ingresos totales son requeridos',
+                'Egresos.required' => 'Los ingresos totales son requeridos',
+                'Vinculado.required' => 'Cantidad de personas es requerido',
+
+            ]
+            );
+           try {
+                $Informacionf =  InformacionFinancieraModel::where('id',$id);
 
                 $Informacionf->Activo = $request->Activo;
                 $Informacionf->Pasivo = $request->Pasivo;
@@ -876,6 +961,57 @@ class ClienteController extends Controller
                 throw $th;
             }
     }
+
+    public function editInformacionb(Request $request,$id)
+    {
+
+           $request->validate(
+            [
+                'banco'=>'required',
+                'cuenta'=>'required',
+                'n_cuenta'=>'required',
+                'municipio'=>'required',
+                'departamento'=>'required',
+            ],
+            [
+                'banco.required' => 'El banco es requerido',
+                'cuenta.required' => 'La cuenta es requerida',
+                'n_cuenta.required' => 'Numero de cuenta es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'departamento.required' => 'El departamento requerido',
+
+            ]
+            );
+           try {
+                $Informacionb =  InformacionBancariaModel::where('id',$id);
+
+                $Informacionb->Banco = $request->banco;
+                $Informacionb->TipoCuenta = $request->cuenta;
+                $Informacionb->Cuenta = $request->n_cuenta;
+                $Informacionb->Ciudad = $request->municipio;
+                $Informacionb->Departamento = $request->departamento;
+                $Informacionb->Pais = $request->pais;
+                $Informacionb->Banco2 = $request->banco2." ";
+                $Informacionb->TipoCuenta2 = $request->cuenta2." ";
+                $Informacionb->Cuenta2 = $request->n_cuenta2." ";
+                $Informacionb->Ciudad2 = $request->municipio2." ";
+                $Informacionb->Departamento2 = $request->departamento2." ";
+                $Informacionb->Pais2 = $request->pais2." ";
+                $Informacionb->user_id = $id;
+
+            if ($Informacionb->save()) {
+
+            }
+
+
+            return redirect('/home');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
     public function crearPj()
     {
         $tipos=['Sociedades Limitadas – LTDA.','Sociedades Anónimas – S.A.','Sociedad en Comandita – & Cía.',

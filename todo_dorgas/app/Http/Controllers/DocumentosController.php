@@ -224,12 +224,107 @@ class DocumentosController extends Controller
         }
     }
 
+
+    public function editpagare(Request $request,$id)
+    {
+        $request->validate(
+            [
+                'credito'=> 'required',
+
+            ],
+            [
+                'credito.required' => 'Documento es requerido'
+
+            ]
+            );
+
+        try {
+
+            $pagare =  PagareModel::where('id',$id)->first();
+            if ($request->credito == 1) {
+                $name_pdf1 = '';
+                if ($request->file('document')) {
+                    $pdf = $request->file('document');
+                    $ext = $pdf->getClientOriginalExtension();
+                    $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                }else{
+                    return back();
+
+                }
+                $pagare->archivo = $name_pdf1;
+                $pagare->pagare = $request->credito;
+                $pagare->user_id = $id;
+
+                if ($pagare->save()) {
+                    return redirect('/home');
+
+                } else {
+
+                    return back();
+                }
+            } else {
+                $name_pdf1 = '';
+                $pagare->archivo = $name_pdf1;
+                $pagare->pagare = $request->credito;
+                $pagare->user_id = $id;
+
+                if ($pagare->save()) {
+                    return redirect('/home');
+
+                } else {
+
+                    return back();
+                }
+            }
+
+
+            //return redirect('/actividad/');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function storefondo(Request $request,$id)
     {
 
         try {
 
             $fondos = new origenDeFondoModel();
+
+           // return $request->file('fondo');
+            $name_pdf1 = ' ';
+            if ($request->file('fondo')){
+                $pdf = $request->file('fondo');
+                $ext = $pdf->getClientOriginalExtension();
+                $name_pdf1 = 'fondo'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+            }
+
+          //  return $name_pdf1;
+            $fondos->archivo = $name_pdf1;
+            $fondos->user_id = $id;
+
+            if ($fondos->save()) {
+                return redirect('/cliente/documentos_anexos/'.$id);
+
+            } else {
+
+                return back();
+            }
+
+            //return redirect('/actividad/');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function editfondo(Request $request,$id)
+    {
+
+        try {
+
+            $fondos =  origenDeFondoModel::where('id',$id);
 
            // return $request->file('fondo');
             $name_pdf1 = ' ';

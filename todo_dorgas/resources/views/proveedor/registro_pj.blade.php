@@ -33,7 +33,7 @@
         <div class="row d-flex mb-4">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                    <h3 class=" datos h3_tit">Datos personales</h3>
+                    <h3 class=" datos h3_tit">Datos Generales</h3>
                    <strong> <h2 class=" my-3 persona_c h2_tit">Persona</h2></strong>
                    <strong>  <h2 class=" natural_c h2_tit">Jurídica</h2> </strong> <br> <br>
                   <hr class="underline2">
@@ -42,7 +42,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('proveedor.pn') }}" method="POST">
+                        <form action=" {{ route('proveedor.storepj') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
 
@@ -55,13 +55,26 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="nit" class="form-label label_c"><strong>N.I.T</strong><span>*</span></label>
-                                    <input type="nit" class="form-control input_custom select_c" id="nit" name="nit" value="{{old('nit')}}"
+                                    <label for="id" class="form-label label_c"><strong>N.I.T</strong><span>*</span></label>
+                                    <input type="id" class="form-control input_custom select_c" id="id" name="id" value="{{old('id')}}"
                                         placeholder="">
-                                    @if ($errors->has('nit'))
-                                        <p class="text-danger">{{ $errors->first('nit') }}</p>
+                                    @if ($errors->has('id'))
+                                        <p class="text-danger">{{ $errors->first('id') }}</p>
                                     @endif
                                 </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <label for="dv" class="form-label label_c"><strong>Dígito de verificación</strong><span></span></label>
+                                    <input type="text" class="form-control input_custom select_c" id="dv" name="dv" value="{{old('dv')}}"
+                                        placeholder="">
+                                    @if ($errors->has('dv'))
+                                        <p class="text-danger">{{ $errors->first('dv') }}</p>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <div class="row mb-3">
+
                                 <div class="col-md-4 col-sm-12">
                                     <label for="tipo_s" class="form-label label_c"><strong>Tipo de Sociedad</strong><span>*</span></label>
                                     <select class="form-control select_custom" aria-label="Default select example" name="tipo_s">
@@ -75,8 +88,6 @@
                                         <p class="text-danger">{{ $errors->first('tipo_s') }}</p>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="email" class="form-label label_c"><strong>Correo electrónico</strong><span>*</span></label>
@@ -96,6 +107,11 @@
                                     @endif
                                 </div>
 
+
+
+                            </div>
+                            <div class="row mb-3">
+
                                 <div class="col-md-4 col-sm-12">
                                     <label for="pais" class="form-label label_c"><strong>País</strong><span>*</span></label>
                                         <select  class="form-control select_custom" aria-label="Default select example" id="pais" name="pais">
@@ -106,10 +122,7 @@
                                         @endif
                                 </div>
 
-                            </div>
-                            <div class="row mb-3">
-
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento</strong><span>*</span></label>
                                         <select  class="form-control select_custom" aria-label="Default select example" id="departamento" name="departamento">
                                         <option  value="{{old('departamento')}}">Seleccione un departamento</option>
@@ -120,7 +133,7 @@
                                         @endif
                                 </div>
 
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio</strong><span>*</span></label>
                                     <select class="form-control select_custom" aria-label="Default select example" id="municipio" name="municipio">
                                         <option value="{{old('municipio')}}">Seleccione un municipio</option>
@@ -143,8 +156,8 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="ta_e" class="form-label label_c"><strong>Tamaño de la empresa</strong><span>*</span></label>
-                                    <select class="form-control select_custom" aria-label="Default select example" name="ta_e">
+                                    <label for="ta_e" class="form-label label_c"><strong>Tamaño de empresa<span>*</span></strong></label>
+                                    <select class="form-control select_custom" aria-label="Seleccione un tipo de sociedad" name="ta_e">
                                         <option value="">Seleccione el tamaño</option>
                                         @foreach ($empresas as $empresa)
                                             <option value="{{ $empresa }}">{{ $empresa }}</option>
@@ -168,7 +181,20 @@
                             <div class="row mb-6">
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Contraseña</strong><span>*</span></label>
+                                    <label for="actividad" class="form-label label_c"><strong>Actividad económica</strong><span>*</span></label>
+                                    <select class="form-select select_c" aria-label="Default select example" name="actividad">
+                                        <option value="{{old('actividad')}}">Seleccione su código CIIU</option>
+                                       @foreach ($actividades as $actividad)
+                                           <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
+                                       @endforeach
+                                   </select>
+                                    @if ($errors->has('actividad'))
+                                        <p class="text-danger">{{ $errors->first('actividad') }}</p>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password"
                                         placeholder="">
                                     @if ($errors->has('password'))
@@ -177,7 +203,7 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Confirmar Contraseña</strong><span>*</span></label>
+                                    <label for="password" class="form-label label_c"><strong>Confirmar contraseña<span>*</span></strong></label>
                                     <input type="password" class="form-control input_custom select_c" id="password" name="password_confirmation"
                                     required autocomplete="new-password"  placeholder="">
                                     @if ($errors->has('password'))
@@ -292,7 +318,7 @@
                  <div class="form-group ">
                       <div style="display: flex; justify-content: space-between;">
                             <div class="">
-                              <span class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales <br> como ONG, ONU, UNICEF, etc.? </span>
+                              <p class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales  como ONG, ONU, UNICEF, etc.? </p>
                             </div>
                             <div class="">
                               <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
@@ -310,7 +336,7 @@
                  <div class="form-group">
                       <div style="display: flex; justify-content: space-between;">
                             <div class="">
-                              <span class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, <br> SARLAFT o equivalentes?</span>
+                              <p class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, SARLAFT o equivalentes?</p>
                             </div>
                             <div class="">
                               <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>

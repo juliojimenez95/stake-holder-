@@ -38,7 +38,7 @@ class ProveedorController extends Controller
                 'departamento'=> 'required',
                 'municipio'=>'required',
                 'email'=>'required|email|unique:users',
-                'Telefono'=>'required|unique:DOMICILIOS',
+                'Telefono'=>'required',
                 'direccion'=>'required',
                 'actividad'=>'required'
 
@@ -64,6 +64,8 @@ class ProveedorController extends Controller
             $proveedor = new ProveedorModel();
 
             $proveedor->DV = 0;
+            $proveedor->id = $request->n_docuemnto;
+
             $proveedor->TipoID = $request->tipo_d;
 
             //nombres
@@ -147,38 +149,42 @@ class ProveedorController extends Controller
         'Sociedad en Comandita Simple – S. en C.','Sociedad en Comandita por Acciones – S.C.A.',
         'Sociedad por Acciones Simplificada – S.A.S.','Sociedad Colectiva.'];
         $empresas=['Microempresas','Pequeña empresa','Mediana empresa','Grande empresa'];
-        return view("proveedor.registro_pj",["empresas"=>$empresas,"tipos"=>$tipos]);
+        $actividades = actividad_economicaModel::get();
+        return view("proveedor.registro_pj",["empresas"=>$empresas,"tipos"=>$tipos,"actividades"=>$actividades]);
     }
 
     public function storepj(Request $request)
     {
 
-           $request->validate(
+        $request->validate(
             [
-                'tipo_d'=> 'required',
-                'n_docuemnto'=> 'required|numeric',
-                'Nombre'=> 'required',
+                'razon_s'=> 'required',
+                'id'=> 'required|unique:PROVEEDORES',
+                'ta_e'=> 'required',
+                'tipo_s'=>'required',
+                'pais'=> 'required',
                 'departamento'=> 'required',
                 'municipio'=>'required',
-                'email'=>'required|email|unique:users',
-                'Telefono'=>'required|unique:DOMICILIOS',
+                'email'=>'required|email|unique:TBL_USUARIOS_STAKE',
                 'direccion'=>'required',
-                'servicio'=>'required',
                 'actividad'=>'required'
 
             ],
             [
-                'tipo_d.required' => 'Tipo de documento es requerido',
-                'n_docuemnto.required' => 'El documento de identidad es requerido',
-                'Nombre.required' => 'El Nombre completo  es requerido',
+                'razon_s.required' => 'Tipo de rayon social es requerida',
+                'id.required' => 'El nit es requerido',
+                'id.unique' => 'El nit ya esta  registrado',
+                'ta_e.required' => 'El tamaño de la empresa es requerido',
+                'pais.required' => 'El departamento es requerido',
                 'departamento.required' => 'El departamento es requerido',
                 'municipio.required' => 'El municipio es requerido',
                 'email.required' => 'El correo es requerido',
                 'email.email' => 'El correo debe ser real ej. example@example.com',
                 'email.unique' => 'El correo ya esta  registrado',
-                'Telefono.required' => 'El telefono es requerido',
-                'Telefono.unique' => 'El telefono ya esta registrado',
                 'direccion.required' => 'La dirección es requerido',
+                'actividad.required' => 'El codigo CIUU es requerido',
+                'tipo_s.required' => 'Tipo de sociedad es requerido',
+
 
             ]
             );
@@ -186,24 +192,30 @@ class ProveedorController extends Controller
 
 
             $proveedor = new ProveedorModel();
+            if (isset($request->dv) && !empty($request->dv)) {
+                $proveedor->DV = $request->dv;
 
-            $proveedor->DV = 0;
-            $proveedor->TipoID = $request->tipo_d;
+            }else {
+                 $proveedor->DV = 0;
+            }
+            $proveedor->id = $request->id;
+
+            $proveedor->TipoID ="Nit";
 
             //nombres
             $proveedor->Mail=$request->email;
+            $proveedor->tipo_s=$request->tipo_s;
 
-            $proveedor->Nombre =$request->Nombre;
+
+            $proveedor->Nombre =$request->razon_s;
             $proveedor->Departamento=$request->departamento;
             $proveedor->Ciudad=$request->municipio;
-            $proveedor->Pais="Colombia";
+            $proveedor->Pais=$request->pais;
             $proveedor->Telefono1=$request->Telefono;
             $proveedor->Telefono2=" ";
             $proveedor->Direccion=$request->direccion;
-
-
-
-
+            $proveedor->pagina_web=$request->pagina;
+            $proveedor->tamano=$request->ta_e;
             $proveedor->Regimen="";
             $proveedor->GranContribuyente="";
             $proveedor->Movil="";
@@ -225,10 +237,12 @@ class ProveedorController extends Controller
             $proveedor->Saldo=0;
             $proveedor->Enabled=1;
 
+            //return $proveedor;
+
             if ($proveedor->save()) {
 
                     $user = User::create([
-                        'name' => $request->Nombre,
+                        'name' => $request->razon_s,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
                         'rol' => 2,

@@ -16,6 +16,7 @@ use App\Models\ClienteModel;
 use App\Models\DomicilioModel;
 use App\Models\personaExpuestaModel;
 use App\Models\ProveedorModel;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -28,12 +29,47 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
+        //$usuarios = User::all();
+
+        $resultados1 = DB::table('TBL_USUARIOS_STAKE')
+        ->join('CLIENTES', 'TBL_USUARIOS_STAKE.email', '=', 'CLIENTES.Mail')
+        ->select('TBL_USUARIOS_STAKE.name', 'TBL_USUARIOS_STAKE.comentario','TBL_USUARIOS_STAKE.id','TBL_USUARIOS_STAKE.rol','TBL_USUARIOS_STAKE.PEP','CLIENTES.Nit','TBL_USUARIOS_STAKE.aprovado','TBL_USUARIOS_STAKE.aprovado2','TBL_USUARIOS_STAKE.aprovado3')
+        ->get();
+
+        $resultados2 = DB::table('TBL_USUARIOS_STAKE')
+        ->join('PROVEEDORES', 'TBL_USUARIOS_STAKE.email', '=', 'PROVEEDORES.Mail')
+        ->select('TBL_USUARIOS_STAKE.name', 'TBL_USUARIOS_STAKE.comentario','TBL_USUARIOS_STAKE.id','TBL_USUARIOS_STAKE.rol','TBL_USUARIOS_STAKE.PEP','PROVEEDORES.ID as Nit','TBL_USUARIOS_STAKE.aprovado','TBL_USUARIOS_STAKE.aprovado2','TBL_USUARIOS_STAKE.aprovado3')
+        ->get();
+
+        $usuarios= $resultados1->concat($resultados2);
+
+        //return $usuarios;
+
         return view("admin.index_user",['usuarios'=>$usuarios]);
+    }
+
+    public function comentario(Request $request,$id)
+    {
+        if (auth()->user()->rol != 3) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
+        $user = User::find($id);
+        if ($user) {
+            $user->comentario = $request->comentario ;
+            $user->save();
+        }
+
+
+        return back();
     }
 
     public function aprobarUser($id)
     {
+        if (auth()->user()->rol != 3) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
         $user = User::find($id);
 
         if ($user->aprovado == 0 || $user->aprovado == 2 || $user->aprovado == null) {
@@ -49,6 +85,10 @@ class AdminController extends Controller
 
     public function rechazarUser($id)
     {
+        if (auth()->user()->rol != 3) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
         $user = User::find($id);
 
         if ($user->aprovado == 0 || $user->aprovado == 1 || $user->aprovado == null) {
@@ -64,6 +104,10 @@ class AdminController extends Controller
 
     public function aprobarUser1($id)
     {
+        if (auth()->user()->rol != 4) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
         $user = User::find($id);
 
         if ($user->aprovado2 == 0 || $user->aprovado2 == 2 || $user->aprovado2 == null) {
@@ -79,6 +123,10 @@ class AdminController extends Controller
 
     public function rechazarUser1($id)
     {
+        if (auth()->user()->rol != 4) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
         $user = User::find($id);
 
         if ($user->aprovado2 == 0 || $user->aprovado2 == 1 || $user->aprovado2 == null) {
@@ -94,21 +142,32 @@ class AdminController extends Controller
 
     public function aprobarUser2($id)
     {
+        // Verificar el rol del usuario
+        if (auth()->user()->rol != 5) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
+
         $user = User::find($id);
 
         if ($user->aprovado3 == 0 || $user->aprovado3 == 2 || $user->aprovado3 == null) {
             $user->aprovado3 = 1;
-        }else {
+        } else {
             $user->aprovado3 = 0;
-
         }
         $user->save();
 
         return back();
     }
 
+
     public function rechazarUser2($id)
     {
+        if (auth()->user()->rol != 5) {
+            session()->flash('error', 'No tienes permiso para realizar esta acción.');
+            return back();
+        }
+
         $user = User::find($id);
 
         if ($user->aprovado3 == 0 || $user->aprovado3 == 1 || $user->aprovado3 == null) {

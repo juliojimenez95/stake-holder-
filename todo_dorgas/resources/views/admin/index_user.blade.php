@@ -52,6 +52,11 @@
               </div>
             </div>
         </div>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
             <div class="card bg-light" style="padding-top: 45px; padding-bottom: 45px">
             <div class="container-fluid">
                 <div class="row">
@@ -61,9 +66,11 @@
                         <thead>
                           <tr>
                               <th>Nombre</th>
-                              <th>Email</th>
-                              <th>¿PEP?</th>
+                              <th>NIT</th>
+                              <th>PEP</th>
+                              <th>Rol</th>
                               <th>Acciones</th>
+                              <th>comentario</th>
                               <th>O.C</th>
                               <th>A.F</th>
                               <th>CEO</th>
@@ -73,43 +80,57 @@
                                   @foreach ($usuarios as $usuario)
                                   <tr>
                                       <td>{{ $usuario->name }}</td>
-                                      <td>{{ $usuario->email }}</td>
+                                      <td>{{ $usuario->Nit }}</td>
                                       @if ( $usuario->PEP == 1)
                                       <td>Si</td>
                                       @else
                                       <td>No</td>
                                       @endif
 
+                                      @if ( $usuario->rol == 1)
+                                      <td>cliente</td>
+                                      @elseif ($usuario->rol == 2)
+                                      <td>proveedor</td>
+                                      @else
+                                      <td>administrador</td>
+                                      @endif
+
                                       <td style="color: black" class="td_cus">
-                                        <a href="#" onclick="dataPersonal({{ $usuario->id }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 20px; text-decoration: none;">
+                                        <a href="#" onclick="dataPersonal({{ $usuario->id }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 15px; text-decoration: none;">
                                             <i class="fa-solid fa-user"></i>
                                         </a>
-                                        <a href="#" onclick="dataTributaria({{ 98 }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 20px; text-decoration: none;">
-                                                <img src="{{ asset('images/Información-Tributaria.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
+                                        <a href="#" onclick="dataTributaria({{ $usuario->id }})" {{--   data-toggle="modal" data-target="#modalInformacionTributaria" --}} style="margin-right: 15px; text-decoration: none;">
+                                                <img src="{{ asset('images/Información-Tributaria.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
-                                        <a href="#" onclick="dataFinanciera({{ $usuario->id }})" {{-- data-toggle="modal"   data-target="#modalInformacionFinanciera"  --}} style="margin-right: 20px; text-decoration: none;">
-                                            <img src="{{ asset('images/Información-financiera.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
+                                        <a href="#" onclick="dataFinanciera({{ $usuario->id }})" {{-- data-toggle="modal"   data-target="#modalInformacionFinanciera"  --}} style="margin-right: 15px; text-decoration: none;">
+                                            <img src="{{ asset('images/Información-financiera.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
-                                        <a href="#"  onclick="dataPagare({{ $usuario->id }})" {{-- data-toggle="modal" data-target="#modalInformacionPagare"  --}} style="margin-right: 20px; text-decoration: none;">
-                                            <img src="{{ asset('images/Pagaré.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
-                                        </a>
-
-                                        <a href="#"  onclick="dataBancaria({{ 98 }})"  {{--  data-toggle="modal" data-target="#modalInformacionBancariaLabel"--}}  style="margin-right: 20px; text-decoration: none;">
-                                            <img src="{{ asset('images/Información-Bancaria.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
+                                        <a href="#"  onclick="dataPagare({{ $usuario->id }})" {{-- data-toggle="modal" data-target="#modalInformacionPagare"  --}} style="margin-right: 15px; text-decoration: none;">
+                                            <img src="{{ asset('images/Pagaré.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
 
-                                        <a href="#"  onclick="cargarSocios({{ 98 }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                        <a href="#"  onclick="dataBancaria({{ $usuario->id }})"  {{--  data-toggle="modal" data-target="#modalInformacionBancariaLabel"--}}  style="margin-right: 15px; text-decoration: none;">
+                                            <img src="{{ asset('images/Información-Bancaria.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
+                                        </a>
+
+                                        <a href="#"  onclick="cargarSocios({{ $usuario->id }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <i class="fa-solid fa-user-group"></i>
                                         </a>
 
                                         <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
-                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
+                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
 
                                         <a href="{{ route('admin.unirpdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
-                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="40" height="40">
+                                            <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
+                                        <a href="#"  data-toggle="modal" data-target="#updateModal" data-id="{{ $usuario->id }}" {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                            <i class="fa-solid fa-comment"></i>
+                                        </a>
+
                                     </td>
+
+                                    <td>{{ $usuario->comentario }}</td>
 
                                     <td style="color: black">
 
@@ -259,14 +280,13 @@
                     <div class="row">
                       <div class="col-md-6">
                         <p id="Aestanpillada" class="p_ch"> <strong></strong></p>
-                        @if ('Si' === 'Si')
-                        <p id ="estanpilla" class="p_ch"> <strong></strong></p>
-                        @endif
-                      </div>
-                      <div class="col-md-6">
-                        <p id=" contribuyente" class="p_ch"> <strong></strong></p>
 
                       </div>
+                      <div class="col-md-6">
+                        <p id ="estanpilla" class="p_ch"> <strong></strong></p>
+
+                      </div>
+
                     </div>
                     <div class="row">
                       <div class="col-md-6">
@@ -281,6 +301,10 @@
                     </div>
 
                     <div class="row">
+
+                        <div class="col-md-6">
+                            <p id="contribuyente" class="p_ch"> <strong></strong></p>
+                        </div>
                         <div class="col-md-6">
                           <p id="emailt" class="p_ch"><strong></strong></p>
 
@@ -352,13 +376,62 @@
                 <div class="modal-body">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <p id="pagare" class="p_ch"> <strong></strong></p>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <p id= "documento" class="p_ch"><strong></strong></p>
                       </div>
                     </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido de la vista modal  Pagare-->
+          <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Actualizar Comentario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form  action="{{ route('admin.comentario', ':id') }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="comentario">Comentario:</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+          <!-- Contenido de la vista modal  no informacion-->
+          <div class="modal fade" id="modalInformacionNo" tabindex="-1" role="dialog" aria-labelledby="modalInformacionNoLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title tit_mod" id="modalInformacionNoLabel">Alerta</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p> <strong>No hay información registrada aún</strong></p>
+                      </div>
 
                   </div>
                 </div>
@@ -520,7 +593,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <h5 class="tit_mod" >Representante</h5>
+                  <h5 class="tit_mod" >Información Representante Legal</h5>
                 </div>
               </div>
 
@@ -579,14 +652,14 @@
               </div>
 
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <p id="Os" class="p_ch"><strong></strong></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12">
-                  <h5 class="tit_mod">Contacto</h5>
+                  <h5 class="tit_mod"> Información de  Contacto</h5>
                 </div>
               </div>
               <div class="row">
@@ -598,9 +671,12 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <p id="NC" class="p_ch"><strong></strong></p>
                 </div>
+                <div class="col-md-6">
+                    <p id="TC" class="p_ch"><strong></strong></p>
+                  </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -608,12 +684,6 @@
                 </div>
                 <div class="col-md-6">
                   <p id="EC" class="p_ch"> <strong></strong></p>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <p id="TC" class="p_ch"><strong></strong></p>
                 </div>
               </div>
 
@@ -680,35 +750,35 @@
             $('#TC').empty();
 
             $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.cliente.TipoNit+"</span>");
-            $('#n_documento').append("Numero documento: "+"<span>"+response.cliente.Nit+"</span>");
+            $('#n_documento').append("Número documento: "+"<span>"+response.cliente.Nit+"</span>");
             $('#nombres_a').append("Nombre: "+"<span>"+response.cliente.Nombre+"</span>");
             $('#Departamento_p').append("Departamento: "+"<span>"+response.domicilio.Departamento+"</span>");
             $('#cuidad_p').append("Cuidad: "+"<span>"+response.domicilio.Ciudad+"</span>");
-            $('#telefono_p').append("Telefono: "+"<span>"+response.domicilio.Telefono+"</span>");
-            $('#direccion_p').append("Direccion: "+"<span>"+response.domicilio.Direccion+"</span>");
-            $('#Actividad_e').append("Actividad economica: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
+            $('#telefono_p').append("Teléfono: "+"<span>"+response.domicilio.Telefono+"</span>");
+            $('#direccion_p').append("Dirección: "+"<span>"+response.domicilio.Direccion+"</span>");
+            $('#Actividad_e').append("Código CIIU: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
 
             $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
-            $('#DR').append("Numero documento: "+"<span>"+response.representante.Nit+"</span>");
+            $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
             $('#NR').append("Nombre: "+"<span>"+response.representante.Nombre1+"</span>");
-            $('#TeR').append("Telefono: "+"<span>"+response.representante.Telefono+"</span>");
+            $('#TeR').append("Teléfono: "+"<span>"+response.representante.Telefono+"</span>");
             $('#CR').append("Cargo: "+"<span>"+response.representante.Cargo+"</span>");
             $('#ER').append("Email: "+"<span>"+response.representante.Email+"</span>");
-            $('#Rp').append("Manejo recursos publicos: "+"<span>"+response.representante.ManejoRP+"</span>");
-            $('#Rpp').append("Poder político o públicos: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
+            $('#Rp').append("Manejo recursos públicos: "+"<span>"+response.representante.ManejoRP+"</span>");
+            $('#Rpp').append("Poder político o público: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
 
-            $('#RRp').append("Reconocimiento político o públicos: "+"<span>"+response.representante.Reconocimiento+"</span>");
-            $('#Pe').append("Vinculo con la persona exxpuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
-            $('#Ot').append("Tributa en otro pais: "+"<span>"+response.representante.ObligacionTE+"</span>");
+            $('#RRp').append("Reconocimiento político o público: "+"<span>"+response.representante.Reconocimiento+"</span>");
+            $('#Pe').append("Vínculo con la persona expuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
+            $('#Ot').append("Tributa en otro país: "+"<span>"+response.representante.ObligacionTE+"</span>");
             $('#oi').append("Tiene funciones en una O.I: "+"<span>"+response.representante.OrganizacionI+"</span>");
-            $('#Os').append("Obligada a tener un programa: "+"<span>"+response.representante.ObligacionP+"</span>");
+            $('#Os').append("Obligada a tener un programa SAGRILAFT: "+"<span>"+response.representante.ObligacionP+"</span>");
 
             $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
-            $('#NDC').append("Numero de documento: "+"<span>"+response.contacto.Nit+"</span>");
+            $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
             $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
             $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
             $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
-            $('#TC').append("Telfono: "+"<span>"+response.contacto.Telefono+"</span>");
+            $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
 
 
             $("#modalInformacionPersonal").modal("show");
@@ -744,35 +814,35 @@
             $('#TC').empty();
 
             $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.cliente.TipoNit+"</span>");
-            $('#n_documento').append("Numero documento: "+"<span>"+response.cliente.Nit+"</span>");
+            $('#n_documento').append("Número documento: "+"<span>"+response.cliente.Nit+"</span>");
             $('#nombres_a').append("Nombre: "+"<span>"+response.cliente.Nombre+"</span>");
             $('#Departamento_p').append("Departamento: "+"<span>"+response.domicilio.Departamento+"</span>");
             $('#cuidad_p').append("Cuidad: "+"<span>"+response.domicilio.Ciudad+"</span>");
-            $('#telefono_p').append("Telefono: "+"<span>"+response.domicilio.Telefono+"</span>");
-            $('#direccion_p').append("Direccion: "+"<span>"+response.domicilio.Direccion+"</span>");
-            $('#Actividad_e').append("Actividad economica: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
+            $('#telefono_p').append("Teléfono: "+"<span>"+response.domicilio.Telefono+"</span>");
+            $('#direccion_p').append("Dirección: "+"<span>"+response.domicilio.Direccion+"</span>");
+            $('#Actividad_e').append("Código CIIU: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
 
             $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
-            $('#DR').append("Numero documento: "+"<span>"+response.representante.Nit+"</span>");
+            $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
             $('#NR').append("Nombre: "+"<span>"+response.representante.Nombre1+"</span>");
-            $('#TeR').append("Telefono: "+"<span>"+response.representante.Telefono+"</span>");
+            $('#TeR').append("Teléfono: "+"<span>"+response.representante.Telefono+"</span>");
             $('#CR').append("Cargo: "+"<span>"+response.representante.Cargo+"</span>");
             $('#ER').append("Email: "+"<span>"+response.representante.Email+"</span>");
-            $('#Rp').append("Manejo recursos publicos: "+"<span>"+response.representante.ManejoRP+"</span>");
-            $('#Rpp').append("Poder político o públicos: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
+            $('#Rp').append("Manejo recursos públicos: "+"<span>"+response.representante.ManejoRP+"</span>");
+            $('#Rpp').append("Poder político o público: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
 
-            $('#RRp').append("Reconocimiento político o públicos: "+"<span>"+response.representante.Reconocimiento+"</span>");
-            $('#Pe').append("Vinculo con la persona exxpuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
-            $('#Ot').append("Tributa en otro pais: "+"<span>"+response.representante.ObligacionTE+"</span>");
+            $('#RRp').append("Reconocimiento político o público: "+"<span>"+response.representante.Reconocimiento+"</span>");
+            $('#Pe').append("Vínculo con la persona expuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
+            $('#Ot').append("Tributa en otro país: "+"<span>"+response.representante.ObligacionTE+"</span>");
             $('#oi').append("Tiene funciones en una O.I: "+"<span>"+response.representante.OrganizacionI+"</span>");
-            $('#Os').append("Obligada a tener un programa: "+"<span>"+response.representante.ObligacionP+"</span>");
+            $('#Os').append("Obligada a tener un programa SAGRILAFT: "+"<span>"+response.representante.ObligacionP+"</span>");
 
             $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
-            $('#NDC').append("Numero de documento: "+"<span>"+response.contacto.Nit+"</span>");
+            $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
             $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
             $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
             $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
-            $('#TC').append("Telfono: "+"<span>"+response.contacto.Telefono+"</span>");
+            $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
 
 
             $("#modalInformacionPersonal").modal("show");
@@ -814,35 +884,35 @@
                 $('#TC').empty();
 
                 $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.Proveedor.TipoNit+"</span>");
-                $('#n_documento').append("Numero documento: "+"<span>"+response.Proveedor.Nit+"</span>");
+                $('#n_documento').append("Número documento: "+"<span>"+response.Proveedor.Nit+"</span>");
                 $('#nombres_a').append("Nombre: "+"<span>"+response.Proveedor.Nombre+"</span>");
                 $('#Departamento_p').append("Departamento: "+"<span>"+response.Proveedor.Departamento+"</span>");
                 $('#cuidad_p').append("Cuidad: "+"<span>"+response.Proveedor.Ciudad+"</span>");
-                $('#telefono_p').append("Telefono: "+"<span>"+response.Proveedor.Telefono+"</span>");
-                $('#direccion_p').append("Direccion: "+"<span>"+response.Proveedor.Direccion+"</span>");
-                $('#Actividad_e').append("Actividad economica: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
+                $('#telefono_p').append("Teléfono: "+"<span>"+response.Proveedor.Telefono+"</span>");
+                $('#direccion_p').append("Dirección: "+"<span>"+response.Proveedor.Direccion+"</span>");
+                $('#Actividad_e').append("Código CIIU: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
 
                 $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
-                $('#DR').append("Numero documento: "+"<span>"+response.representante.Nit+"</span>");
+                $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
                 $('#NR').append("Nombre: "+"<span>"+response.representante.Nombre1+"</span>");
-                $('#TeR').append("Telefono: "+"<span>"+response.representante.Telefono+"</span>");
+                $('#TeR').append("Teléfono: "+"<span>"+response.representante.Telefono+"</span>");
                 $('#CR').append("Cargo: "+"<span>"+response.representante.Cargo+"</span>");
                 $('#ER').append("Email: "+"<span>"+response.representante.Email+"</span>");
-                $('#Rp').append("Manejo recursos publicos: "+"<span>"+response.representante.ManejoRP+"</span>");
-                $('#Rpp').append("Poder político o públicos: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
+                $('#Rp').append("Manejo recursos públicos: "+"<span>"+response.representante.ManejoRP+"</span>");
+                $('#Rpp').append("Poder político o público: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
 
-                $('#RRp').append("Reconocimiento político o públicos: "+"<span>"+response.representante.Reconocimiento+"</span>");
-                $('#Pe').append("Vinculo con la persona exxpuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
-                $('#Ot').append("Tributa en otro pais: "+"<span>"+response.representante.ObligacionTE+"</span>");
+                $('#RRp').append("Reconocimiento político o público: "+"<span>"+response.representante.Reconocimiento+"</span>");
+                $('#Pe').append("Vínculo con la persona expuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
+                $('#Ot').append("Tributa en otro país: "+"<span>"+response.representante.ObligacionTE+"</span>");
                 $('#oi').append("Tiene funciones en una O.I: "+"<span>"+response.representante.OrganizacionI+"</span>");
-                $('#Os').append("Obligada a tener un programa: "+"<span>"+response.representante.ObligacionP+"</span>");
+                $('#Os').append("Obligada a tener un programa SAGRILAFT: "+"<span>"+response.representante.ObligacionP+"</span>");
 
                 $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
-                $('#NDC').append("Numero de documento: "+"<span>"+response.contacto.Nit+"</span>");
+                $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
                 $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
-                $('#TC').append("Telfono: "+"<span>"+response.contacto.Telefono+"</span>");
+                $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
 
 
                 $("#modalInformacionPersonal").modal("show");
@@ -878,35 +948,35 @@
                 $('#TC').empty();
 
                 $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.Proveedor.TipoNit+"</span>");
-                $('#n_documento').append("Numero documento: "+"<span>"+response.Proveedor.Nit+"</span>");
+                $('#n_documento').append("Número documento: "+"<span>"+response.Proveedor.Nit+"</span>");
                 $('#nombres_a').append("Nombre: "+"<span>"+response.Proveedor.Nombre+"</span>");
                 $('#Departamento_p').append("Departamento: "+"<span>"+response.Proveedor.Departamento+"</span>");
                 $('#cuidad_p').append("Cuidad: "+"<span>"+response.Proveedor.Ciudad+"</span>");
-                $('#telefono_p').append("Telefono: "+"<span>"+response.Proveedor.Telefono+"</span>");
-                $('#direccion_p').append("Direccion: "+"<span>"+response.Proveedor.Direccion+"</span>");
-                $('#Actividad_e').append("Actividad economica: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
+                $('#telefono_p').append("Teléfono: "+"<span>"+response.Proveedor.Telefono+"</span>");
+                $('#direccion_p').append("Dirección: "+"<span>"+response.Proveedor.Direccion+"</span>");
+                $('#Actividad_e').append("Código CIIU: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
 
                 $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
-                $('#DR').append("Numero documento: "+"<span>"+response.representante.Nit+"</span>");
+                $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
                 $('#NR').append("Nombre: "+"<span>"+response.representante.Nombre1+"</span>");
-                $('#TeR').append("Telefono: "+"<span>"+response.representante.Telefono+"</span>");
+                $('#TeR').append("Teléfono: "+"<span>"+response.representante.Telefono+"</span>");
                 $('#CR').append("Cargo: "+"<span>"+response.representante.Cargo+"</span>");
                 $('#ER').append("Email: "+"<span>"+response.representante.Email+"</span>");
-                $('#Rp').append("Manejo recursos publicos: "+"<span>"+response.representante.ManejoRP+"</span>");
-                $('#Rpp').append("Poder político o públicos: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
+                $('#Rp').append("Manejo recursos públicos: "+"<span>"+response.representante.ManejoRP+"</span>");
+                $('#Rpp').append("Poder político o público: "+"<span>"+response.representante.EjercidoPPOP+"</span>");
 
-                $('#RRp').append("Reconocimiento político o públicos: "+"<span>"+response.representante.Reconocimiento+"</span>");
-                $('#Pe').append("Vinculo con la persona exxpuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
-                $('#Ot').append("Tributa en otro pais: "+"<span>"+response.representante.ObligacionTE+"</span>");
+                $('#RRp').append("Reconocimiento político o público: "+"<span>"+response.representante.Reconocimiento+"</span>");
+                $('#Pe').append("Vínculo con la persona expuesta: "+"<span>"+response.representante.VincuPExpuesta+"</span>");
+                $('#Ot').append("Tributa en otro país: "+"<span>"+response.representante.ObligacionTE+"</span>");
                 $('#oi').append("Tiene funciones en una O.I: "+"<span>"+response.representante.OrganizacionI+"</span>");
-                $('#Os').append("Obligada a tener un programa: "+"<span>"+response.representante.ObligacionP+"</span>");
+                $('#Os').append("Obligada a tener un programa SAGRILAFT: "+"<span>"+response.representante.ObligacionP+"</span>");
 
                 $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
-                $('#NDC').append("Numero de documento: "+"<span>"+response.contacto.Nit+"</span>");
+                $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
                 $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
-                $('#TC').append("Telfono: "+"<span>"+response.contacto.Telefono+"</span>");
+                $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
 
 
                 $("#modalInformacionPersonal").modal("show");
@@ -997,16 +1067,16 @@
                 $('#emailt').empty();
 
 
-                $('#iva').append("Responsable del impuesto a la venta IVA: "+"<span>"+response.informaciont.ResponsableImpuesto+"</span>");
-                $('#retencion').append("Está sujeto a retención: "+"<span>"+response.informaciont.SujetoRetencion+"</span>");
-                $('#renta').append("Está obligado a Declarar Renta: "+"<span>"+response.informaciont.Declarar+"</span>");
-                $('#rst').append("¿Está en el RST (Régimen Simple de Tributación)? "+"<span>"+response.informaciont.RST+"</span>");
-                $('#Aestanpillada').append("Aplica estampillas: "+"<span>"+response.informaciont.Estampillas+"</span>");
-                $('#estanpilla').append("Cuáles estampillas aplica: "+"<span>"+response.informaciont.Observacion1+"</span>");
-                $('#contribuyente').append("Es usted Gran Contribuyente: "+"<span>"+response.informaciont.GContribuyente+"</span>");
-                $('#auCorrector').append("Es usted Autorretenedor en la Fuente: "+"<span>"+response.informaciont.AutorretenedorF+"</span>");
-                $('#ica').append("Es usted Autorretenedor de ICA: "+"<span>"+response.informaciont.AutorretenedorICA+"</span>");
-                $('#emailt').append("Correo de recepción para Factura Electrónica: "+"<span>"+response.informaciont.Email+"</span>");
+                $('#iva').append("¿Es usted responsable del impuesto a la venta I.V.A.? "+"<span>"+response.informaciont.ResponsableImpuesto+"</span>");
+                $('#retencion').append("¿Está usted sujeto a retención? "+"<span>"+response.informaciont.SujetoRetencion+"</span>");
+                $('#renta').append("¿Está usted obligado a Declarar Renta? "+"<span>"+response.informaciont.Declarar+"</span>");
+                $('#rst').append("¿Es usted R.S.T. Régimen Simple de Tributación? "+"<span>"+response.informaciont.RST+"</span>");
+                $('#Aestanpillada').append("¿Usted aplica estampillas? "+"<span>"+response.informaciont.Estampillas+"</span>");
+                $('#estanpilla').append("¿Cuáles estampillas aplica? "+"<span>"+response.informaciont.Observacion1+"</span>");
+                $('#contribuyente').append("¿Es usted Gran Contribuyente? "+"<span>"+response.informaciont.GContribuyente+"</span>");
+                $('#auCorrector').append("¿Es usted Autorretenedor en la Fuente? "+"<span>"+response.informaciont.AutorretenedorF+"</span>");
+                $('#ica').append("¿Es usted Autorretenedor de ICA? "+"<span>"+response.informaciont.AutorretenedorICA+"</span>");
+                $('#emailt').append("¿Cuál es el correo de recepción para Factura Electrónica? "+"<span>"+response.informaciont.Email+"</span>");
 
                 $("#modalInformacionTributaria").modal("show");
 
@@ -1043,13 +1113,12 @@
              $('#Egresos').empty();
              $('#p_vinculada').empty();
 
-             $('#Activo').append("Activo: "+response.informacionf.Activo);
-             $('#Pasivo').append("Pasivo: "+response.informacionf.Pasivo);
-             $('#Patrimonio').append("Patrimonio: "+response.informacionf.Patrimonio);
-             $('#Ingresos').append("Ingresos: "+response.informacionf.IngresosTotales);
-             $('#Egresos').append("Egresos: "+response.informacionf.EgresosTotales);
-             $('#p_vinculada').append("Personas vinculadas: "+response.informacionf.CantidadPersonas);
-
+             $('#Activo').append("Activo Totales: $"+response.informacionf.Activo);
+             $('#Pasivo').append("Pasivo Totales: $"+response.informacionf.Pasivo);
+             $('#Patrimonio').append("Patrimonio : $"+response.informacionf.Patrimonio);
+             $('#Ingresos').append("Ingresos Totales: $"+response.informacionf.IngresosTotales);
+             $('#Egresos').append("Egresos Totales: $"+response.informacionf.EgresosTotales);
+             $('#p_vinculada').append("Personal con vinculación directa: "+response.informacionf.CantidadPersonas);
 
 
 
@@ -1086,12 +1155,12 @@
 
 
              if (response.pagare.pagare == 0) {
-                $('#pagare').append("¿ aplica para ventas a credito?: no");
+                $('#pagare').append("¿Aplica para ventas a crédito?: no");
                 } else if (response.pagare.pagare == 1) {
-                $('#pagare').append("¿ aplica para ventas a credito?: si");
+                $('#pagare').append("¿Aplica para ventas a crédito? : si");
                 }
 
-             $('#documento').append('<a class="btn btn-primary mt-3 a_cus btn_cus" id="descarga" data-file="' + response.pagare.archivo + '">Descargar</a><span></span>');
+             $('#documento').append('<a class="btn btn-primary mt-3 a_cus btn_cus" id="descarga" data-file="' + response.pagare.archivo + '">Descargar Pagaré</a><span></span>');
              $("#modalInformacionPagare").modal("show");
 
              const button = document.querySelector('#descarga');
@@ -1145,17 +1214,17 @@
 
              $('#banco1').append("Banco : "+response.informacionb.Banco);
              $('#Tipo1').append("Tipo cuenta : "+response.informacionb.TipoCuenta);
-             $('#n_cuenta1').append("Numero cuenta: "+response.informacionb.Cuenta);
+             $('#n_cuenta1').append("Número cuenta: "+response.informacionb.Cuenta);
              $('#Cuidad1').append("Cuidad: "+response.informacionb.Ciudad);
              $('#Departamento1').append("Departamento: "+response.informacionb.Departamento);
-             $('#pais1').append("Pais: "+response.informacionb.Pais);
+             $('#pais1').append("País: "+response.informacionb.Pais);
 
              $('#banco2').append("Banco 2: "+response.informacionb.Banco2);
              $('#Tipo2').append("Tipo cuenta 2: "+response.informacionb.TipoCuenta2);
-             $('#n_cuenta2').append("Numero cuenta 2: "+response.informacionb.Cuenta2);
+             $('#n_cuenta2').append("Número cuenta 2: "+response.informacionb.Cuenta2);
              $('#Cuidad2').append("Cuidad 2: "+response.informacionb.Ciudad2);
              $('#Departamento2').append("Departamento 2: "+response.informacionb.Departamento2);
-             $('#pais2').append("Pais 2: "+response.informacionb.Pais2);
+             $('#pais2').append("País 2: "+response.informacionb.Pais2);
 
 
 
@@ -1168,6 +1237,19 @@
      });
      }
  </script>
+ <script>
+    $('#updateModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget); // Botón que abre la modal
+        var id = button.data('id'); // Obtiene el ID del atributo data-id
+
+        // Asigna el valor del ID al atributo "action" del formulario
+        var form = $(this).find('form');
+        var action = form.attr('action');
+        action = action.replace(':id', id);
+        form.attr('action', action);
+    });
+</script>
+
 
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

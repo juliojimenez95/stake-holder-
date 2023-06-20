@@ -12,7 +12,7 @@
 
 .div_inside {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     border: 1px solid rgb(233, 232, 232);
     border-radius: 10px;
@@ -23,7 +23,7 @@
 .image-green {
     filter: brightness(150%) hue-rotate(120deg);
   }
-  
+
 .div_img {
     width: 50px;
     height: 50px;
@@ -37,6 +37,8 @@
     color: #004492;
     font-size: 14px;
     font-weight: 600;
+    width: 100%;
+    text-align: center;
 }
 
 .div_p span {

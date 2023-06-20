@@ -36,7 +36,7 @@
         <div class="row d-flex mb-4">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                    <h3 class="datos h3_tit">Datos personales</h3>
+                    <h3 class="datos h3_tit">Datos Generales</h3>
                    <strong> <h2 class="my-3 persona_c h2_tit">Persona</h2></strong>
                    <strong>  <h2 class="natural_c h2_tit">Jurídica</h2> </strong> <br> <br>
                   <hr class="underline2">
@@ -113,7 +113,7 @@
                             </div>
                             <div class="row mb-3">
 
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento<span>*</span></strong></label>
                                         <select  class="form-control select_custom" aria-label="Seleccione una departamento" id="departamento" name="departamento">
                                         <option  value="{{old('departamento')}}">Seleccione un departamento</option>
@@ -124,7 +124,7 @@
                                         @endif
                                 </div>
 
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio<span>*</span></strong></label>
                                     <select class="form-control select_custom" aria-label="Seleccione una municipio" id="municipio" name="municipio">
                                         <option value="{{old('municipio')}}">Seleccione un municipio</option>
@@ -132,6 +132,15 @@
                                     </select>
                                     @if ($errors->has('municipio'))
                                         <p class="text-danger">{{ $errors->first('municipio') }}</p>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <label for="Telefono" class="form-label label_c"><strong>Teléfono</strong><span>*</span></label>
+                                    <input type="text" class="form-control select_c" id="Telefono" name="Telefono" value="{{old('Telefono')}}"
+                                        placeholder="">
+                                    @if ($errors->has('Telefono'))
+                                        <p class="text-danger">{{ $errors->first('Telefono') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -308,7 +317,7 @@
                  <div class="form-group ">
                       <div style="display: flex; justify-content: space-between;">
                             <div class="">
-                              <span class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales <br> como ONG, ONU, UNICEF, etc.? </span>
+                              <p class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales  como ONG, ONU, UNICEF, etc.? </p>
                             </div>
                             <div class="">
                               <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
@@ -326,7 +335,8 @@
                  <div class="form-group">
                       <div style="display: flex; justify-content: space-between;">
                             <div class="">
-                              <span class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, <br> SARLAFT o equivalentes?</span>
+                              <p class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT,  SARLAFT o equivalentes?</p>
+
                             </div>
                             <div class="">
                               <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>
@@ -343,9 +353,7 @@
                  </div>
                 </div><!--Final row-->
 
-
               </div>
-
 
              </div>
 

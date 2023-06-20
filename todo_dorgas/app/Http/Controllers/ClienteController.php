@@ -20,6 +20,7 @@ use App\Models\personaExpuestaModel;
 use App\Models\PaisModel;
 use App\Models\AccionistaModel;
 use App\Models\AutorizacionModel;
+use App\Models\PagareModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -188,13 +189,41 @@ class ClienteController extends Controller
     }
     public function informaciont($id)
     {
-        return view("cliente.informacion_tributaria",['id'=>$id]);
+        $informacion = InformacionTributariaModel::where('Cliente_id',$id)->first();
+        //return $informacion;
+        if ($informacion) {
+            return view("editar.informacion_tributaria",['id'=>$id,'informacion'=>$informacion]);
+
+        }else {
+            return view("cliente.informacion_tributaria",['id'=>$id]);
+
+        }
+    }
+
+    public function informaciontributaria($id)
+    {
+        $informacion = InformacionTributariaModel::where('Cliente_id',$id)->first();
+        return  response()->json([
+            'informacion'=>$informacion
+        ]);
+
     }
 
     public function informacionf($id)
     {
 
-        return view("cliente.informacion_financiera",['id'=>$id]);
+        $informacion = InformacionFinancieraModel::where('user_id',$id)->first();
+
+        //return $informacion;
+
+        if ($informacion) {
+            return view("editar.informacion_financiera",['id'=>$id,'informacion'=>$informacion]);
+
+        }else {
+            return view("cliente.informacion_financiera",['id'=>$id]);
+
+        }
+
     }
 
     public function informacionb($id)
@@ -208,12 +237,34 @@ class ClienteController extends Controller
         "CONFIAR COOPERATIVA FINANCIERA","BANCO UNION antes GIROS","COLTEFINANCIERA","NEQUI","DAVIPLATA",
         "BANCO CREDIFINANCIERA","IRIS","MOVII S.A."];
         $cuentas=["AHORROS","CORRIENTE"];
-        return view("cliente.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas,'id'=>$id]);
+        $informacion = InformacionBancariaModel::where('user_id',$id)->first();
+        if ($informacion) {
+            return view("editar.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas,'id'=>$id,'informacion'=>$informacion]);
+
+        }else {
+            return view("cliente.informacion_bancaria",["bancos"=>$bancos,"cuentas"=>$cuentas,'id'=>$id]);
+
+        }
     }
 
     public function pagare($id)
     {
-        return view("cliente.pagare",['id'=>$id]);
+        $pagare = PagareModel::where('user_id',$id)->first();
+        if ($pagare) {
+            return view("editar.pagare",['id'=>$id]);
+        }else {
+            return view("cliente.pagare",['id'=>$id,]);
+
+        }
+    }
+
+    public function pagareinf($id)
+    {
+        $pagare = PagareModel::where('user_id',$id)->first();
+
+        return  response()->json([
+            'pagare'=>$pagare
+        ]);
     }
     public function storePagare($id)
     {
@@ -424,22 +475,24 @@ class ClienteController extends Controller
 
         $request->validate(
             [
-                'tipo_d'=> 'required',
-                'n_docuemnto'=> 'required|numeric',
-                'Nombre'=> 'required',
+                'razon_s'=> 'required',
+                'nit'=> 'required|numeric',
+                'ta_e'=> 'required',
+                'pais'=> 'required',
                 'departamento'=> 'required',
                 'municipio'=>'required',
-                'email'=>'required|email|unique:users',
+                'email'=>'required|email|unique:TBL_USUARIOS_STAKE',
                 'Telefono'=>'required|unique:DOMICILIOS',
                 'direccion'=>'required',
-                'servicio'=>'required',
-                'actividad'=>'required'
+                'actividad'=>'required',
+                'tipo_s'=>'required',
+
 
             ],
             [
-                'tipo_d.required' => 'Tipo de documento es requerido',
-                'n_docuemnto.required' => 'El documento de identidad es requerido',
-                'Nombre.required' => 'El Nombre completo  es requerido',
+                'razon_s.required' => 'Tipo de rayon social es requerida',
+                'nit.required' => 'El NIT es requerido',
+                'ta_e.required' => 'El tamaño de la empresa es requerido',
                 'departamento.required' => 'El departamento es requerido',
                 'municipio.required' => 'El municipio es requerido',
                 'email.required' => 'El correo es requerido',
@@ -448,6 +501,8 @@ class ClienteController extends Controller
                 'Telefono.required' => 'El telefono es requerido',
                 'Telefono.unique' => 'El telefono ya esta registrado',
                 'direccion.required' => 'La dirección es requerido',
+                'tipo_s.required' => 'Tipo de sociedad es requerido',
+
 
             ]
             );
@@ -459,16 +514,21 @@ class ClienteController extends Controller
             $cliente->DV = 0;
 
             //nombres
-            $cliente->Nombre =$request->Nombre;
+            $cliente->Nombre =$request->razon_s;
             $cliente->Nombre1=" ";
             $cliente->Nombre2= " ";
             $cliente->Apellido1=" ";
             $cliente->Apellido2=" ";
-            //documento tipo y verificacion
-            $cliente->Nit=$request->n_docuemnto;
+            //documento tipo y verificacion pagina_web
+            $cliente->Nit=$request->nit;
+            $cliente->pagina_web=$request->pagina;
+            $cliente->tamano=$request->ta_e;
+            $cliente->tipo_s=$request->tipo_s;
+
+
             $cliente->Regimen="";
             $cliente->Movil="";
-            $cliente->TipoNit=$request->tipo_d;
+            $cliente->TipoNit="Nit";
             //
             //$cliente->Regimen=$request->regimen;
             $cliente->BirthDay=" ";
@@ -479,8 +539,8 @@ class ClienteController extends Controller
             $cliente->FechaIngreso=date('Y-m-d');
             //$cliente->Contacto=$request->nombre1;
             $cliente->Credito=0;
-            $cliente->Referencia=$request->referencia;
-            $cliente->ReferenciaTelefono1=$request->referencia_t;
+            $cliente->Referencia="";
+            $cliente->ReferenciaTelefono1="";
             $cliente->ReferenciaTelefono2="";
 
             //$cliente->ReferenciaTelefono2=$request->nombre1;
@@ -504,7 +564,7 @@ class ClienteController extends Controller
 
             $cliente->Medio=" ";
             if ($cliente->save()) {
-                $cliente2 = ClienteModel::where('Nit', $request->n_docuemnto)->first();
+                $cliente2 = ClienteModel::where('Nit', $request->nit)->first();
 
                 //return  $cliente2;
 
@@ -529,9 +589,11 @@ class ClienteController extends Controller
 
                     $cliente_domicilio->Telefono = $request->Telefono;
                     $cliente_domicilio->ID_Cliente = $cliente2->ID;
+                    $cliente_domicilio->save();
+
 
                     $user = User::create([
-                        'name' => $request->Nombre,
+                        'name' => $request->razon_s,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
                         'rol' => 1,
@@ -551,7 +613,6 @@ class ClienteController extends Controller
                         'Observacion7'=> $request->Observacion7.""
                         ]);
 
-                    $cliente_domicilio->save();
 
 
             }
@@ -624,11 +685,9 @@ class ClienteController extends Controller
 
     public function storeRepresentante(Request $request,$id)
     {
-      /*     $request->validate(
+          $request->validate(
             [
                 'p_nombre'=> 'required',
-                'p_apellido'=> 'required',
-                's_apellido'=> 'required',
                 'tipo_d'=> 'required',
                 'documento'=>'required|numeric',
                 'email'=>'required|email',
@@ -638,8 +697,6 @@ class ClienteController extends Controller
             ],
             [
                 'p_nombre.required' => 'El nombre  es requerido',
-                'p_apellido.required' => 'El apellido  es requerido',
-                's_apellido.required' => 'El apellido  es requerido',
                 'tipo_d.required' => 'Tipo de documento es requerido',
                 'documento.required' => 'El documento de identidad es requerido',
                 'email.required' => 'El correo es requerido',
@@ -648,15 +705,12 @@ class ClienteController extends Controller
                 'cargo.required' => 'El cargo es requerido',
 
             ]
-            );*/
+            );
            try {
                 $Representante = new RepresentanteLegalModel();
 
 
                 $Representante->Nombre1 = $request->p_nombre;
-                $Representante->Nombre2 = $request->s_nombre;
-                $Representante->Apellido1 = $request->p_nombre;
-                $Representante->Apellido2 = $request->s_apellido;
                 $Representante->TipoNit = $request->tipo_d;
                 $Representante->Nit = $request->documento;
                 $Representante->Telefono = $request->telefono;

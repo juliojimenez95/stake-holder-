@@ -16,7 +16,6 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
           <h1 class="text-primary p_tit">Declaraciones y Autorizaciones</h1>
-          <hr class="underline">
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hi</title>
+    <title>inFormacion Persona</title>
 </head>
 <body>
 {{--
@@ -23,7 +23,7 @@
                                       <p id="Tipodocumento" class="p_ch"> <strong>Tipo de documento: <span>{{ $cliente->TipoNit }}</span></strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="n_documento" class="p_ch"><strong>Numero de Documento: <span>{{ $cliente->Nit }}</span></strong></p>
+                                      <p id="n_documento" class="p_ch"><strong>Número de Documento: <span>{{ $cliente->Nit }}</span></strong></p>
                                     </div>
                                   </div>
                                   <div class="row">
@@ -39,7 +39,7 @@
                                       <p id="cuidad_p" class="p_ch"><strong>Municipio: <span>{{ $domicilio->Ciudad }}</span></strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="telefono_p" class="p_ch"> <strong>Telefono: <span>{{ $domicilio->Telefono }}</span></strong></p>
+                                      <p id="telefono_p" class="p_ch"> <strong>Teléfono: <span>{{ $domicilio->Telefono }}</span></strong></p>
 
                                     </div>
                                   </div>
@@ -216,7 +216,7 @@
 
                                 </div>
                               </div>
-                               <h1>Pagaré</h1>
+                               <h1> Información Pagaré</h1>
 
                               <div class="row">
                                 <div class="col-md-6">
@@ -280,21 +280,23 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table id="tablaSocios" class="table table-striped">
+                                        <table id="tablaSocios" class="" style="border: 1px solid black; width: 100%; border-collapse: collapse;">
                                             <thead>
-                                                <tr>
+                                                <tr style="border: 1px solid black ">
                                                     <th class="th_cus">Nombre</th>
-                                                    <th class="th_cus">Participación</th>
+                                                    <th class="th_cus">Participación %</th>
                                                     <th class="th_cus">Nacionalidad</th>
                                                     <th class="th_cus">PEP</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($socios as $socio )
+                                                <tr>
                                                     <td>{{ $socio->Nombres }}</td>
                                                     <td>{{ $socio->Participacion }}</td>
                                                     <td>{{ $socio->Nacionalidad }}</td>
                                                     <td>{{ $socio->PEP }}</td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>

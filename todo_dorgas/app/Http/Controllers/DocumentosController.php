@@ -15,6 +15,7 @@ use App\Models\DomicilioModel;
 use App\Models\ContactoModel;
 use App\Models\RepresentanteLegalModel;
 use App\Models\InformacionTributariaModel;
+use App\Models\origenDeFondoModel;
 use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
 use App\Models\PagareModel;
@@ -28,9 +29,6 @@ use Illuminate\Support\Facades\Storage;
 use PDF;
 use PDFMerger;
 use setasign\Fpdi\Fpdi;
-
-
-
 
 
 
@@ -168,23 +166,86 @@ class DocumentosController extends Controller
 
     public function storepagare(Request $request,$id)
     {
+        $request->validate(
+            [
+                'credito'=> 'required',
+
+            ],
+            [
+                'credito.required' => 'Documento es requerido'
+
+            ]
+            );
 
         try {
 
             $pagare = new PagareModel();
-            $name_pdf1 = '';
-            if ($request->file('document')) {
-                $pdf = $request->file('document');
+            if ($request->credito == 1) {
+                $name_pdf1 = '';
+                if ($request->file('document')) {
+                    $pdf = $request->file('document');
+                    $ext = $pdf->getClientOriginalExtension();
+                    $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                }else{
+                    return back();
+
+                }
+                $pagare->archivo = $name_pdf1;
+                $pagare->pagare = $request->credito;
+                $pagare->user_id = $id;
+
+                if ($pagare->save()) {
+                    return redirect('/home');
+
+                } else {
+
+                    return back();
+                }
+            } else {
+                $name_pdf1 = '';
+                $pagare->archivo = $name_pdf1;
+                $pagare->pagare = $request->credito;
+                $pagare->user_id = $id;
+
+                if ($pagare->save()) {
+                    return redirect('/home');
+
+                } else {
+
+                    return back();
+                }
+            }
+
+
+            //return redirect('/actividad/');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function storefondo(Request $request,$id)
+    {
+
+        try {
+
+            $fondos = new origenDeFondoModel();
+
+           // return $request->file('fondo');
+            $name_pdf1 = ' ';
+            if ($request->file('fondo')){
+                $pdf = $request->file('fondo');
                 $ext = $pdf->getClientOriginalExtension();
-                $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                $name_pdf1 = 'fondo'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
                 $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
             }
-            $pagare->archivo = $name_pdf1;
-            $pagare->pagare = $request->credito;
-            $pagare->user_id = $id;
 
-            if ($pagare->save()) {
-                return redirect('/home');
+          //  return $name_pdf1;
+            $fondos->archivo = $name_pdf1;
+            $fondos->user_id = $id;
+
+            if ($fondos->save()) {
+                return redirect('/cliente/documentos_anexos/'.$id);
 
             } else {
 

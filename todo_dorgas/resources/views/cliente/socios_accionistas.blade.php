@@ -24,7 +24,7 @@
               <div class="text-center">
                 <img src="{{ asset('images/logo_t2.png') }}" class="img-fluid">
                 <h1 class="text-primary h1_tit">Socios o Accionistas</h1>
-                <hr class="underline under_S">
+                <hr class="underline under_S" style="left: -35px; position: relative;">
               </div>
             </div>
         </div>
@@ -114,6 +114,7 @@
                                   @foreach ($accionistas as $accionista)
                                   <tr>
                                       <td>{{ $accionista->Nombres }}</td>
+                                      <td>{{ $accionista->TipoNit }}</td>
                                       <td>{{ $accionista->Participacion }}</td>
                                       <td>{{ $accionista->Nacionalidad }}</td>
 
@@ -133,32 +134,36 @@
             <div class="container">
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <div class="cont_cus">
-                        <div class="div_con">
-                            <p>Documento Declaración de Origen de Fondos<br><span>Por favor descargar el D.O.F diligenciar y cargarlo nuevamente</span></p>
-                        </div>
-                        <div class="des_cus">
-                            <div class="cont_all">
-                                <div class="img_cus">
-                                    <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
+                    <form action="{{ route('storefondo',$id)}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="cont_cus">
+                            <div class="div_con">
+                                <p>Documento Declaración de Origen de Fondos<br><span>Por favor descargar el D.O.F diligenciar y cargarlo nuevamente</span></p>
+                            </div>
+                            <div class="des_cus">
+                                <div class="cont_all">
+                                    <div class="img_cus">
+                                        <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
+                                    </div>
+                                    <div class="btn_c">
+                                        <a class="btn btn-primary" id="descarga" data-file="FO_SAG_04_Declaracion_Origen_Fondos_Proveedores_V01.pdf">DESCARGAR</a><span>*</span>
+                                    </div>
                                 </div>
-                                <div class="btn_c">
-                                    <a class="btn btn-primary" id="descarga" data-file="AF_2023-05-02-6451c5c84871a.pdf">DESCARGAR</a><span>*</span>
+                                <div class="cont_all">
+                                    <div class="img_cus">
+                                        <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
+                                    </div>
+                                    <div class="btn_c">
+                                        <a class="btn btn-primary" onclick="document.getElementById('fondo').click()">CARGAR</a><span>*</span>
+                                        <input type="file" id="fondo" name="fondo" style="display:none;">
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="cont_all">
-                                <div class="img_cus">
-                                    <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
-                                </div>
-                                <div class="btn_c">
-                                    <a class="btn btn-primary" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
-                                    <input type="file" id="document" name="document" style="display:none;">
 
-                                </div>
-                            </div>
                         </div>
 
-                    </div>
+
                 </div>
             </div>
             <div class="row mb-4">
@@ -170,6 +175,7 @@
                     </div>
                 </div>
             </div>
+         </form>
             </div>
         </div>
     </div>

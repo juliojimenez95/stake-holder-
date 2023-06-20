@@ -47,7 +47,7 @@
                                     <p class="">Activos Totales</p>
                                   </div>
                                   <div class="col-8">
-                                    <input type="number" class="form-control col-12 input_cus" id="Activo" name="Activo">
+                                    <input type="number" class="form-control col-12 input_cus" id="Activo" name="Activo" value="{{ $informacion->Activo }}">
                                     @if ($errors->has('Activo'))
                                         <p class="text-danger">{{ $errors->first('Activo') }}</p>
                                     @endif
@@ -60,7 +60,7 @@
                                   <p class="">Pasivos Totales</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="number" class="form-control col-12 input_cus" id="Pasivo" name="Pasivo">
+                                    <input type="number" class="form-control col-12 input_cus" id="Pasivo" name="Pasivo" value="{{ $informacion->Pasivo }}">
                                     @if ($errors->has('Pasivo'))
                                        <p class="text-danger">{{ $errors->first('Pasivo') }}</p>
                                     @endif
@@ -73,7 +73,7 @@
                               <p class="">Patrimonio</p>
                             </div>
                             <div class="col-8">
-                                <input type="number" class="form-control col-12 input_cus" id="Patrimonio" name="Patrimonio">
+                                <input type="number" class="form-control col-12 input_cus" id="Patrimonio" name="Patrimonio" value="{{ $informacion->Patrimonio }}">
                                 @if ($errors->has('Patrimonio'))
                                    <p class="text-danger">{{ $errors->first('Patrimonio') }}</p>
                                 @endif
@@ -90,7 +90,7 @@
                                   <p class="">Ingresos Totales</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="number" class="form-control col-12 input_cus" id="ingresos" name="Ingresos">
+                                    <input type="number" class="form-control col-12 input_cus" id="ingresos" name="Ingresos" value="{{ $informacion->IngresosTotales }}">
                                     @if ($errors->has('Ingresos'))
                                        <p class="text-danger">{{ $errors->first('Ingresos') }}</p>
                                     @endif
@@ -102,7 +102,7 @@
                                   <p class="">Egresos Totales</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="number" class="form-control col-12 input_cus" id="egresos" name="Egresos">
+                                    <input type="number" class="form-control col-12 input_cus" id="egresos" name="Egresos" value="{{ $informacion->EgresosTotales }}">
                                     @if ($errors->has('Egresos'))
                                        <p class="text-danger">{{ $errors->first('Egresos') }}</p>
                                     @endif
@@ -114,7 +114,7 @@
                                   <p class="">Número de personal con vinculación directa</p>
                                 </div>
                                 <div class="col-8">
-                                    <input type="number" class="form-control col-12 input_cus" id="vinculado" name="Vinculado">
+                                    <input type="number" class="form-control col-12 input_cus" id="vinculado" name="Vinculado" value="{{ $informacion->CantidadPersonas }}">
                                     @if ($errors->has('Vinculado'))
                                        <p class="text-danger">{{ $errors->first('Vinculado') }}</p>
                                     @endif

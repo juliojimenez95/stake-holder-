@@ -38,8 +38,8 @@
                   <p class="p_tx">por favor cargar un documento que lo certifique y este firmado por el Representante Legal.</p>
                   <p class="p_tx cus_cus" >¿Aplica para ventas a crédito?<span>*</span></p>
                     <strong class="p_tx text-center">
-                    <label class="op_cus">Si <input type="radio" name="credito" value="1"></label>
-                    <label class="op_cus">No <input type="radio" name="credito" value="0"></label>
+                    <label class="op_cus">Si <input type="radio" name="credito" id="credito1" value="1"></label>
+                    <label class="op_cus">No <input type="radio" name="credito" id="credito0" value="0"></label>
                     </strong>
                   </div>
                   </div>
@@ -116,5 +116,37 @@
     </script>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+
+       $.ajax({
+      url: "/informaciontributaria/2",
+      dataType: "json",
+      type: "GET",
+      success: function(response) {
+          console.log(response);
+
+          informacion_local = response.pagare;
+
+          if (response.informacion.pagare == 'Si') {
+
+              $("#credito1").prop('checked',true);
+          } else {
+              $("#credito0").prop('checked',true);
+
+          }
+
+      },
+      error: function(response) {
+          console.log("Ocurrió un error al traer los municipios");
+      },
+      });
+      }
+
+      );
+
+  </script>
 </body>
 </html>

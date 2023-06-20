@@ -30,7 +30,7 @@
         <div class="row d-flex mb-4">
             <div class="col-12 col-lg-6 " style="background-color: #004492; height: 640px; color: white;">
                 <div class="d-flex justify-content-center  h-100 flex-column alinear">
-                    <h3 class="datos h3_tit">Datos personales</h3>
+                    <h3 class="datos h3_tit">Datos Generales</h3>
                    <strong> <h2 class=" my-3 persona_c h2_tit">Persona</h2></strong>
                    <strong>  <h2 class=" natural_c h2_tit">Natural</h2> </strong> <br> <br>
                   <hr class="underline2">
@@ -39,7 +39,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('proveedor.pn') }}" method="POST">
+                        <form action=" {{ route('proveedor.storepn') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
 
@@ -177,7 +177,7 @@
                             </div>
                             </center>-->
 
-                        </form>
+
                     </div>
                 </div>
 
@@ -282,7 +282,7 @@
                  <div class="form-group ">
                       <div style="display: flex; justify-content: space-between;">
                             <div class="">
-                              <span class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales <br> como ONG, ONU, UNICEF, etc.? </span>
+                              <p class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales  como ONG, ONU, UNICEF, etc.? </p>
                             </div>
                             <div class="">
                               <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
@@ -300,7 +300,7 @@
                  <div class="form-group">
                       <div style="display: flex; justify-content: space-between;">
                             <div class="">
-                              <span class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, <br> SARLAFT o equivalentes?</span>
+                              <p class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT,  SARLAFT o equivalentes?</p>
                             </div>
                             <div class="">
                               <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>
@@ -328,7 +328,7 @@
                 <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
             </div>
             </center>
-            </form>
+        </form>
 
         </div>
     </div>

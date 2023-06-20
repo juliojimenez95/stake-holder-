@@ -23,6 +23,7 @@ class ProveedorModel extends Model
         'Departamento',
         'Pais',
         'Ciudad',
+        'tipo_s',
         'Telefono1',
         'Telefono2',
         'Fax',

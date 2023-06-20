@@ -20,7 +20,7 @@
             <div class="col-md-12">
               <div class="text-center">
                 <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
-                <h1 class="text-primary h1_tit">Documentos Anexos</h1>
+                <h1 class="text-primary h1_tit" >Documentos Anexos</h1>
                 <hr class="underline under_S">
               </div>
             </div>
@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">
-                    <p class="text_main">Por favor necesitamos que adjuntes los documentos necesiarios  en la sección correspondiente.</p>
+                    <p class="text_main">Por favor adjunte los siguientes documentos.</p>
                 </div>
                 <div class="col-md-12 mb-4">
                   <div class="div_main">
@@ -154,7 +154,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <button class="btn btn-primary btn_continuar">Guardar y Continuar</button> <span style="color:blue; font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></span>
+                        <button class="btn btn-primary btn_continuar">Guardar y Continuar</button> 
                     </div>
                 </div>
             </div>

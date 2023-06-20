@@ -54,6 +54,8 @@ Route::get('/cliente/documentos_anexos/{id}', [ClienteController::class, 'docume
  //storage
 Route::post('/cliente/storepn', [ClienteController::class, 'storepn'])->name('clientes.storepn');
 Route::post('/cliente/storepj', [ClienteController::class, 'storepj'])->name('clientes.storepj');
+Route::post('/proveedor/storepn', [ProveedorController::class, 'storepn'])->name('proveedor.storepn');
+Route::post('/proveedor/storepj', [ProveedorController::class, 'storepj'])->name('proveedor.storepj');
 Route::post('/cliente/storeRepresentante/{id}', [ClienteController::class,'storeRepresentante'])->name('clientes.storeRepresentante');
 Route::post('/cliente/storeInformaciont/{id}', [ClienteController::class,'storeInformaciont'])->name('clientes.storeInformaciont');
 Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeInformacionf'])->name('clientes.storeInformacionf');
@@ -61,6 +63,8 @@ Route::post('/cliente/storeInformacionb/{id}', [ClienteController::class,'storeI
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/storeanexos/{id}', [DocumentosController::class,'storeanexos'])->name('storeanexos');
 Route::post('/storepagare/{id}', [DocumentosController::class,'storepagare'])->name('storepagare');
+Route::post('/storefondo/{id}', [DocumentosController::class,'storefondo'])->name('storefondo');
+
 Route::post('/storedeclaracion/{id}', [ClienteController::class,'storedeclaracion'])->name('storedeclaracion');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/cliente/storepersonaE/{id}', [ClienteController::class, 'storepersonaE'])->name('clientes.storepersonaE');
@@ -69,6 +73,7 @@ Route::post('/storecontactopn/{id}', [ClienteController::class,'storecontactopn'
 //admin
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
 Route::post('/admin/Informaciont', [AdminController::class, 'Informaciont'])->name('admin.Informaciont');
+Route::get('/admin/comentario/{id}', [AdminController::class, 'comentario'])->name('admin.comentario');
 Route::post('/admin/Informacionf', [AdminController::class, 'Informacionf'])->name('admin.Informacionf');
 Route::post('/admin/Informacionb', [AdminController::class, 'Informacionb'])->name('admin.Informacionb');
 Route::post('/admin/Informacionsocios', [AdminController::class, 'Informacionsocios'])->name('admin.Informacionsocios');
@@ -88,6 +93,10 @@ Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->nam
 //routas para alimentar municipios
 Route::get('/listarMunicipios', [ClienteController::class, 'listarMunicipios'])->name('listarMunicipios');
 Route::get('/listarpaises', [ClienteController::class, 'listarpaises'])->name('listarpaises');
+Route::get('/informaciontributaria/{id}', [ClienteController::class, 'informaciontributaria'])->name('informaciontributaria');
+Route::get('/pagareinf/{id}', [ClienteController::class, 'pagareinf'])->name('pagareinf');
+
+
 
 Auth::routes();
 

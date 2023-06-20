@@ -50,6 +50,7 @@
                             <div class="row mb-9">
 
                                 <div class="col-md-4 col-sm-12 mb-3">
+                                    <br>
                                     <label for="tipo_d" class="form-label label_c"><strong>Tipo de documento</strong><span>*</span></label>
                                     <select class="form-control select_custom" aria-label="Default select example" name="tipo_d">
                                         <option value="">Seleccione un tipo</option>
@@ -71,6 +72,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-sm-12">
+                                    <br>
                                     <label for="email" class="form-label label_c"><strong>Correo electrónico</strong><span>*</span></label>
                                     <input type="text" class="form-control select_c" id="email" name="email" value="{{old('email')}}"
                                         placeholder="">

@@ -27,38 +27,50 @@ $(document).ready(function(){
     },
 });
 $("#pais").change(function(e){
-    console.log("valor pais",e.target.value);
+   console.log("valor pais",e.target.value);
     $("#departamento").empty();
         let munfiltro1 = JSON.parse(localStorage.getItem('departamentos_local'));
       //  console.log("resultado 2-->",localStorage.getItem('departamentos_local'));
        // console.log("resultado 3-->",munfiltro1);
 
        let result1 = munfiltro1.filter(function(value){
-        //console.log("resultado 4-->",value);
         return value.ID_Pais == e.target.value;
        });
-
-       console.log("resul",result1);
-       // let result1 = munfiltro1.filter(m=>m.pais == e.target.value);
-
-       // console.log("resultado 1-->",result1);
+       if (result1.length != 0) {
 
         result1.forEach(element => {
             $("#departamento").append('<option value="' + element.Departamento + '">' + element.Departamento + '</option>')
         })
-    $("#departamento").change(function(e){
-        //alert(e.target.value);
+        $("#departamento").change(function(e){
+            //alert(e.target.value);
+
+            console.log("aqui entra1");
+
+            $("#municipio").empty();
+            let munfiltro = JSON.parse(localStorage.getItem('municipios_local'));
+            let result = munfiltro.filter(m=>m.Departamento == e.target.value);
+
+            result.forEach(element => {
+                        $("#municipio").append('<option value="' + element.Municipio + '">' + element.Municipio + '</option>')
+                    })
+
+
+        });
+
+       }else{
+        console.log("aqui entra1");
+
+        $("#departamento").empty();
+
+        $("#departamento").append('<option value="N/A">' + " " + '</option>')
 
         $("#municipio").empty();
-        let munfiltro = JSON.parse(localStorage.getItem('municipios_local'));
-        let result = munfiltro.filter(m=>m.Departamento == e.target.value);
 
-        result.forEach(element => {
-                    $("#municipio").append('<option value="' + element.Municipio + '">' + element.Municipio + '</option>')
-                })
+        $("#municipio").append('<option value="N/A">' + " " + '</option>')
+
+       }
 
 
-    });
     });
 });
 

@@ -147,4 +147,17 @@
     font-size: 0.67em; /* 0.67em es un tercio del tamaño actual */
   }
 
+  .div_main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_cb_c {
+    background-color: #004492!important;
+    border-color: #004492!important;
+    font-family: 'franklin-gothic-book-regular', sans-serif;
+}
+
+
 

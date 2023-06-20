@@ -14,18 +14,34 @@
   <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="dv_c">
-                <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();"
-                                 style="margin-top: 25px;">
-                    {{ __('Cerrar sesión') }}
-                </a>
+            <div class="div_main">
+                <div class="">
+                    <a class="btn btn-success btn_cb_c" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();"
+                                     style="margin-top: 25px;">
+                                     <i class="fa-solid fa-user"></i>
+                        {{ __('Actualizar Perfil') }}
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+                <div class="">
+                    <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();"
+                                     style="margin-top: 25px;">
+                        {{ __('Cerrar sesión') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
     <div class="row mb-5">

@@ -20,6 +20,8 @@ class ProveedorModel extends Model
         'ActividadEconomica',
         'Direccion',
         'Ciudad',
+        'pagina_web',
+        'tamano',
         'Departamento',
         'Pais',
         'Ciudad',
@@ -35,6 +37,7 @@ class ProveedorModel extends Model
         'Cupo',
         'Plazo',
         'Saldo',
+        'juridico',
         'Enabled'
     ];
 }

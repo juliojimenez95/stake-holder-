@@ -36,6 +36,8 @@
     </div>
     <form action="{{ route('editpagare',$id)}}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('put')
+
 
       <div class="col-md-12">
         <div class="card bg-light mt-4">

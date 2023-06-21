@@ -22,6 +22,8 @@ use App\Models\AccionistaModel;
 use App\Models\AutorizacionModel;
 use App\Models\PagareModel;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Hash;
 
 
@@ -39,6 +41,78 @@ class ClienteController extends Controller
         return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
         "id"=>$id]);
     }
+
+    public function perfil($id)
+    {
+        $user = DB::table('TBL_USUARIOS_STAKE')
+        ->join('CLIENTES', 'TBL_USUARIOS_STAKE.email', '=', 'CLIENTES.Mail')
+        ->join('CLIENTES_DOMICILIOS', 'CLIENTES.ID', '=', 'CLIENTES_DOMICILIOS.ID_Cliente')
+        ->join('DOMICILIOS', 'CLIENTES_DOMICILIOS.Telefono', '=', 'DOMICILIOS.Telefono')
+        ->select('TBL_USUARIOS_STAKE.name', 'TBL_USUARIOS_STAKE.email','TBL_USUARIOS_STAKE.id','TBL_USUARIOS_STAKE.ManejoRP',
+        'TBL_USUARIOS_STAKE.Observacion1','TBL_USUARIOS_STAKE.EjercidoPPOP','TBL_USUARIOS_STAKE.Observacion2',
+        'TBL_USUARIOS_STAKE.Reconocimiento','TBL_USUARIOS_STAKE.Observacion3','TBL_USUARIOS_STAKE.VincuPExpuesta',
+        'TBL_USUARIOS_STAKE.Observacion4','TBL_USUARIOS_STAKE.ObligacionTE','TBL_USUARIOS_STAKE.Observacion5',
+        'TBL_USUARIOS_STAKE.OrganizacionI','TBL_USUARIOS_STAKE.Observacion6','TBL_USUARIOS_STAKE.ObligacionP',
+        'TBL_USUARIOS_STAKE.Observacion7','CLIENTES.Nit','CLIENTES.TipoNit',
+        'DOMICILIOS.Direccion','DOMICILIOS.Ciudad','DOMICILIOS.Departamento',
+        'DOMICILIOS.Pais','CLIENTES.Natural','CLIENTES.ActividadEconomica')
+        ->where('TBL_USUARIOS_STAKE.id',$id)
+        ->get();
+
+        return $id;
+
+        if ($user->Natural == 1) {
+
+            return view("editar.registroC_pn",["user"=>$user,
+            "id"=>$id]);
+
+        }else {
+
+            return view("editar.registroC_pj",["user"=>$user,
+            "id"=>$id]);
+        }
+
+
+    }
+
+    public function perfiladicional($id)
+    {
+        $user = DB::table('TBL_USUARIOS_STAKE')
+        ->select('TBL_USUARIOS_STAKE.ManejoRP',
+        'TBL_USUARIOS_STAKE.Observacion1','TBL_USUARIOS_STAKE.EjercidoPPOP','TBL_USUARIOS_STAKE.Observacion2',
+        'TBL_USUARIOS_STAKE.Reconocimiento','TBL_USUARIOS_STAKE.Observacion3','TBL_USUARIOS_STAKE.VincuPExpuesta',
+        'TBL_USUARIOS_STAKE.Observacion4','TBL_USUARIOS_STAKE.ObligacionTE','TBL_USUARIOS_STAKE.Observacion5',
+        'TBL_USUARIOS_STAKE.OrganizacionI','TBL_USUARIOS_STAKE.Observacion6','TBL_USUARIOS_STAKE.ObligacionP',
+        'TBL_USUARIOS_STAKE.Observacion7')
+        ->where('TBL_USUARIOS_STAKE.id',$id)
+        ->get();
+
+        return  response()->json([
+            "user"=>$user
+        ]);
+
+
+    }
+
+    public function perfilrepresentante($id)
+    {
+        $user = DB::table('TBL_USUARIOS_STAKE')
+        ->select('TBL_USUARIOS_STAKE.ManejoRP',
+        'TBL_USUARIOS_STAKE.Observacion1','TBL_USUARIOS_STAKE.EjercidoPPOP','TBL_USUARIOS_STAKE.Observacion2',
+        'TBL_USUARIOS_STAKE.Reconocimiento','TBL_USUARIOS_STAKE.Observacion3','TBL_USUARIOS_STAKE.VincuPExpuesta',
+        'TBL_USUARIOS_STAKE.Observacion4','TBL_USUARIOS_STAKE.ObligacionTE','TBL_USUARIOS_STAKE.Observacion5',
+        'TBL_USUARIOS_STAKE.OrganizacionI','TBL_USUARIOS_STAKE.Observacion6','TBL_USUARIOS_STAKE.ObligacionP',
+        'TBL_USUARIOS_STAKE.Observacion7')
+        ->where('TBL_USUARIOS_STAKE.id',$id)
+        ->get();
+
+        return  response()->json([
+            "user"=>$user
+        ]);
+
+
+    }
+
 
     public function storeaccionistas(Request $request,$id)
     {
@@ -119,6 +193,44 @@ class ClienteController extends Controller
             }
     }
 
+    public function editpersonaE(Request $request,$id)
+    {
+           $request->validate(
+            [
+                'Nombre'=> 'required',
+                'tipo_d'=> 'required',
+                'Nacionalidad'=>'required',
+
+            ],
+            [
+                'Nombre.required' => 'El nombre  es requerido',
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'Nacionalidad.required' => 'La nacionalidad es requerida',
+            ]
+            );
+           try {
+                $personaE =  personaExpuestaModel::where('user_id',$id)->first();
+
+                $personaE->Nombres = $request->Nombre;
+                $personaE->TipoNit = $request->tipo_d;
+                $personaE->Nacionalidad = $request->Nacionalidad;
+                $personaE->Cargo = $request->Cargo;
+                $personaE->PEP = 1;
+                $personaE->Nit = 0;
+                $personaE->user_id = $id;
+
+            if ($personaE->save()) {
+
+            }
+
+
+            return redirect('/cliente/contacto/'.$id);
+
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
     public function documentos_anexos($id)
     {
         return view("cliente.documentos_anexos",['id'=>$id]);
@@ -132,7 +244,14 @@ class ClienteController extends Controller
     public function conocimiento($id)
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
-        return view("cliente.conocimiento",["tipos"=>$tipos,'id'=>$id]);
+        $personaE =  personaExpuestaModel::where('user_id',$id)->first();
+        if ($personaE) {
+            return view("cliente.conocimiento",["tipos"=>$tipos,'id'=>$id,'personaE'=>$personaE]);
+
+        }else{
+            return view("cliente.conocimiento",["tipos"=>$tipos,'id'=>$id]);
+
+        }
     }
 
     public function declaracion($id)
@@ -150,7 +269,6 @@ class ClienteController extends Controller
                 'grupo4'=>'required',
                 'grupo5'=>'required',
 
-
             ],
             [
                 'grupo1.required' => 'La autorizacion  es requerida',
@@ -162,6 +280,48 @@ class ClienteController extends Controller
             );*/
            try {
                 $autorizacion = new AutorizacionModel();
+
+                $autorizacion->Autorizacion_datos = $request->grupo1;
+                $autorizacion->Autorizacion_riesgos = $request->grupo2;
+                $autorizacion->Declaracion_fondos = $request->grupo3;
+                $autorizacion->Cumplimiento_etico = $request->grupo4;
+                $autorizacion->Cumplimiento_anticorrupcion = $request->grupo5;
+                $autorizacion->user_id = $id;
+
+            if ($autorizacion->save()) {
+
+            }
+
+
+            return redirect('/home');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function editdeclaracion(Request $request,$id)
+    {
+         /*  $request->validate(
+            [
+                'grupo1'=> 'required',
+                'grupo2'=> 'required',
+                'grupo3'=>'required',
+                'grupo4'=>'required',
+                'grupo5'=>'required',
+
+            ],
+            [
+                'grupo1.required' => 'La autorizacion  es requerida',
+                'grupo2.required' => 'La autorizacion es requerida',
+                'grupo3.required' => 'La declaracion es requerida',
+                'grupo4.required' => 'La autorizacion es requerida',
+                'grupo5.required' => 'La autorizacion es requerida'
+            ]
+            );*/
+           try {
+                $autorizacion = AutorizacionModel::where('user_id',$id)->first();
 
                 $autorizacion->Autorizacion_datos = $request->grupo1;
                 $autorizacion->Autorizacion_riesgos = $request->grupo2;
@@ -275,7 +435,14 @@ class ClienteController extends Controller
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
         $actividades = actividad_economicaModel::get();
-      return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos]);
+        $Representante = RepresentanteLegalModel::where('user_id',$id)->first();
+        if ($Representante) {
+            return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos,'Representante'=>$Representante]);
+
+        }else{
+        return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos]);
+
+        }
     }
     public function listarMunicipios()
     {
@@ -372,7 +539,6 @@ class ClienteController extends Controller
             //$cliente->Regimen=$request->regimen;
             $cliente->BirthDay=" ";
             $cliente->BirthMonth=" ";
-            $cliente->BirthYear= " ";
             //email e ingreso
             $cliente->Mail=$request->email;
             $cliente->FechaIngreso=date('Y-m-d');
@@ -398,7 +564,7 @@ class ClienteController extends Controller
 
             $cliente->ActividadEconomica=$request->actividad;
             //$cliente->GranContribuyente=$request->nombre1;
-            $cliente->Sexo=" ";
+           // $cliente->Sexo=" ";
             $cliente->Contacto="";
 
             $cliente->Medio=" ";
@@ -453,6 +619,163 @@ class ClienteController extends Controller
                         ]);
 
                     $cliente_domicilio->save();
+
+
+            }
+
+
+            return redirect('/conocimiento/'.$user->id);
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
+
+
+
+    }
+
+    public function editpn(Request $request,$id)
+    {
+
+           $request->validate(
+            [
+                'tipo_d'=> 'required',
+                'n_docuemnto'=> 'required|numeric',
+                'Nombre'=> 'required',
+                'departamento'=> 'required',
+                'municipio'=>'required',
+                'email'=>'required|email|unique:users',
+                'Telefono'=>'required|unique:DOMICILIOS',
+                'direccion'=>'required',
+
+            ],
+            [
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'n_docuemnto.required' => 'El documento de identidad es requerido',
+                'Nombre.required' => 'El Nombre completo  es requerido',
+                'departamento.required' => 'El departamento es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'email.unique' => 'El correo ya esta  registrado',
+                'Telefono.required' => 'El telefono es requerido',
+                'Telefono.unique' => 'El telefono ya esta registrado',
+                'direccion.required' => 'La dirección es requerido',
+
+            ]
+            );
+           try {
+
+
+            $user = User::where('id',$id)->firts();
+
+
+            $cliente = ClienteModel::where('Mail',$user->email)->firts();
+
+            $domicilio_cliente = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->firts();
+            $domicilio = Cliente_DomicilioModel::where('Telefono',$domicilio_cliente->Telefono)->firts();
+
+            $cliente->DV = 0;
+
+            //nombres
+            $cliente->Nombre =$request->Nombre;
+            $cliente->Nombre1=" ";
+            $cliente->Nombre2= " ";
+            $cliente->Apellido1=" ";
+            $cliente->Apellido2=" ";
+            //documento tipo y verificacion
+            $cliente->Nit=$request->n_docuemnto;
+            $cliente->Regimen="";
+            $cliente->Movil="";
+            $cliente->TipoNit=$request->tipo_d;
+            //
+            //$cliente->Regimen=$request->regimen;
+            $cliente->BirthDay=" ";
+            $cliente->BirthMonth=" ";
+            $cliente->BirthYear= " ";
+            //email e ingreso
+            $cliente->Mail=$request->email;
+            $cliente->FechaIngreso=date('Y-m-d');
+            //$cliente->Contacto=$request->nombre1;
+            $cliente->Credito=0;
+            $cliente->Referencia=$request->referencia;
+            $cliente->ReferenciaTelefono1=$request->referencia_t;
+            $cliente->ReferenciaTelefono2="";
+
+            //$cliente->ReferenciaTelefono2=$request->nombre1;
+            $cliente->Cupo=0;
+            $cliente->Plazo=0;
+            $cliente->Saldo=0;
+            $cliente->Bloqueo='1900-01-01 00:00:00';
+            $cliente->Medio=$request->medio;
+            $cliente->Observaciones='Registrado';
+            $cliente->Institucional=0;
+            $cliente->Retenedor=0;
+            //$cliente->RetenedorModo="N/A";
+            $cliente->Notificacion=0;
+            $cliente->Enabled=1;
+            $cliente->Natural=1;
+
+            $cliente->ActividadEconomica=$request->actividad;
+            //$cliente->GranContribuyente=$request->nombre1;
+            $cliente->Sexo=" ";
+            $cliente->Contacto="";
+
+            $cliente->Medio=" ";
+            if ($cliente->save()) {
+                $cliente2 = ClienteModel::where('Nit', $request->n_docuemnto)->first();
+
+                //return  $cliente2;
+
+
+
+
+                    $domicilio->Telefono = $request->Telefono;
+                    $domicilio->Direccion = $request->direccion;
+                    $domicilio->Ciudad = $request->municipio;
+                    //domicilio->/'ID_Ruta' => $request->ruta;
+                    $domicilio->Departamento = $request->departamento;
+                    $domicilio->Pais = "COLOMBIA";
+                    $domicilio->CodigoPostal = 0;
+                    $domicilio->Enabled = 1;
+
+                    $domicilio->save();
+
+                    //'Domicilio' => $request->complemento3
+                    //documento tipo y verificacion
+
+
+
+
+                    $domicilio_cliente->Telefono = $request->Telefono;
+                    $domicilio_cliente->ID_Cliente = $cliente2->ID;
+
+
+                        $user->name = $request->Nombre;
+                        $user->email = $request->email;
+                        $user->password = Hash::make($request->password);
+                        $user->rol = 1;
+                        $user->ManejoRP= $request->grupo1 ;
+                        $user->Observacion1= $request->Observacion."" ;
+                        $user->EjercidoPPOP= $request->grupo2 ;
+                        $user->Observacion2= $request->Observacion2."" ;
+                        $user->Reconocimiento= $request->grupo3;
+                        $user->Observacion3= $request->Observacion3."";
+                        $user->VincuPExpuesta= $request->grupo4 ;
+                        $user->Observacion4= $request->Observacion4."" ;
+                        $user->ObligacionTE= $request->grupo5 ;
+                        $user->Observacion5= $request->Observacion5."";
+                        $user->OrganizacionI= $request->grupo6;
+                        $user->Observacion6= $request->Observacion6."" ;
+                        $user->ObligacionP= $request->grupo7;
+                        $user->Observacion7= $request->Observacion7."";
+
+                        $user->save();
+
+
+                    $domicilio_cliente->save();
 
 
             }
@@ -628,6 +951,169 @@ class ClienteController extends Controller
 
     }
 
+
+    public function editpj(Request $request,$id)
+    {
+
+        $request->validate(
+            [
+                'razon_s'=> 'required',
+                'nit'=> 'required|numeric',
+                'ta_e'=> 'required',
+                'pais'=> 'required',
+                'departamento'=> 'required',
+                'municipio'=>'required',
+                'email'=>'required|email',
+                'Telefono'=>'required',
+                'direccion'=>'required',
+                'actividad'=>'required',
+                'tipo_s'=>'required',
+
+
+            ],
+            [
+                'razon_s.required' => 'Tipo de rayon social es requerida',
+                'nit.required' => 'El NIT es requerido',
+                'ta_e.required' => 'El tamaño de la empresa es requerido',
+                'departamento.required' => 'El departamento es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'Telefono.required' => 'El telefono es requerido',
+                'Telefono.unique' => 'El telefono ya esta registrado',
+                'direccion.required' => 'La dirección es requerido',
+                'tipo_s.required' => 'Tipo de sociedad es requerido',
+
+
+            ]
+            );
+           try {
+
+
+            $user = User::where('id',$id)->firts();
+
+
+            $cliente = ClienteModel::where('Mail',$user->email)->firts();
+
+            $domicilio_cliente = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->firts();
+            $domicilio = Cliente_DomicilioModel::where('Telefono',$domicilio_cliente->Telefono)->firts();
+
+
+
+            $cliente->DV = 0;
+
+            //nombres
+            $cliente->Nombre =$request->razon_s;
+            $cliente->Nombre1=" ";
+            $cliente->Nombre2= " ";
+            $cliente->Apellido1=" ";
+            $cliente->Apellido2=" ";
+            //documento tipo y verificacion pagina_web
+            $cliente->Nit=$request->nit;
+            $cliente->pagina_web=$request->pagina;
+            $cliente->tamano=$request->ta_e;
+            $cliente->tipo_s=$request->tipo_s;
+
+
+            $cliente->Regimen="";
+            $cliente->Movil="";
+            $cliente->TipoNit="Nit";
+            //
+            //$cliente->Regimen=$request->regimen;
+            $cliente->BirthDay=" ";
+            $cliente->BirthMonth=" ";
+            $cliente->BirthYear= " ";
+            //email e ingreso
+            $cliente->Mail=$request->email;
+            $cliente->FechaIngreso=date('Y-m-d');
+            //$cliente->Contacto=$request->nombre1;
+            $cliente->Credito=0;
+            $cliente->Referencia="";
+            $cliente->ReferenciaTelefono1="";
+            $cliente->ReferenciaTelefono2="";
+
+            //$cliente->ReferenciaTelefono2=$request->nombre1;
+            $cliente->Cupo=0;
+            $cliente->Plazo=0;
+            $cliente->Saldo=0;
+            $cliente->Bloqueo='1900-01-01 00:00:00';
+            $cliente->Medio=$request->medio;
+            $cliente->Observaciones='Registrado';
+            $cliente->Institucional=0;
+            $cliente->Retenedor=0;
+            //$cliente->RetenedorModo="N/A";
+            $cliente->Notificacion=0;
+            $cliente->Enabled=1;
+            $cliente->Natural=0;
+
+            $cliente->ActividadEconomica=$request->actividad;
+            //$cliente->GranContribuyente=$request->nombre1;
+            $cliente->Sexo=" ";
+            $cliente->Contacto="";
+
+            $cliente->Medio=" ";
+            if ($cliente->save()) {
+
+                //return  $cliente2;
+
+
+
+
+                    $domicilio->Telefono = $request->Telefono;
+                    $domicilio->Direccion = $request->direccion;
+                    $domicilio->Ciudad = $request->municipio;
+                    //$domicilio->'ID_Ruta' => $request->ruta;
+                    $domicilio->Departamento = $request->departamento;
+                    $domicilio->Pais = "COLOMBIA";
+                    $domicilio->CodigoPostal = 0;
+                    $domicilio->Enabled = 1;
+
+                    $ $domicilio->save();
+
+                    //'Domicilio' => $request->complemento3
+                    //documento tipo y verificacion
+
+
+                    $cliente_domicilio->Telefono = $request->Telefono;
+                    $cliente_domicilio->ID_Cliente = $cliente2->ID;
+                    $cliente_domicilio->save();
+
+
+
+                        $user->name = $request->razon_s;
+                        $user->email = $request->email;
+                        $user->ManejoRP= $request->grupo1 ;
+                        $user->Observacion1= $request->Observacion."" ;
+                        $user->EjercidoPPOP= $request->grupo2 ;
+                        $user->Observacion2= $request->Observacion2."" ;
+                        $user->Reconocimiento= $request->grupo3;
+                        $user->Observacion3= $request->Observacion3."";
+                        $user->VincuPExpuesta= $request->grupo4 ;
+                        $user->Observacion4= $request->Observacion4."" ;
+                        $user->ObligacionTE= $request->grupo5 ;
+                        $user->Observacion5= $request->Observacion5."";
+                        $user->OrganizacionI= $request->grupo6;
+                        $user->Observacion6= $request->Observacion6."" ;
+                        $user->ObligacionP= $request->grupo7;
+                        $user->Observacion7= $request->Observacion7."";
+
+                        $user->save();
+
+
+
+            }
+
+
+            return redirect('/actividad/'.$user->id);
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
+
+    }
+
     public function contacto($id)
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
@@ -658,6 +1144,55 @@ class ClienteController extends Controller
             );
            try {
                 $contacto = new ContactoModel();
+
+                $contacto->Nombre1 = $request->Nombre;
+                $contacto->Nombre2 = "";
+                $contacto->Apellido1 = "";
+                $contacto->Apellido2 = "";
+                $contacto->TipoNit = $request->tipo_d;
+                $contacto->Nit = $request->n_docuemnto;
+                $contacto->Telefono = $request->telefono;
+                $contacto->Cargo = $request->cargo;
+                $contacto->Email = $request->email;
+                $contacto->Cliente_id = $id;
+
+            if ($contacto->save()) {
+
+            }
+
+
+            return redirect('/home');
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function editcontactopn(Request $request,$id)
+    {
+           $request->validate(
+            [
+                'Nombre'=> 'required',
+                'tipo_d'=> 'required',
+                'n_docuemnto'=>'required',
+                'email'=>'required|email',
+                'telefono'=>'required',
+                'cargo'=>'required',
+
+            ],
+            [
+                'Nombre.required' => 'El nombre  es requerido',
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'n_docuemnto.required' => 'El documento de identidad es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'telefono.required' => 'El telefono es requerido',
+                'cargo.required' => 'El cargo es requerido',
+            ]
+            );
+           try {
+                $contacto =  ContactoModel::where('Cliente_id',$id)->first();
 
                 $contacto->Nombre1 = $request->Nombre;
                 $contacto->Nombre2 = "";
@@ -732,6 +1267,63 @@ class ClienteController extends Controller
                 $Representante->Observacion7 = $request->Observacion7."";
 
                 $Representante->user_id = $id;
+
+                $Representante->save();
+
+                return redirect('/conocimiento/'.$id);
+
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
+    public function editRepresentante(Request $request,$id)
+    {
+          $request->validate(
+            [
+                'p_nombre'=> 'required',
+                'tipo_d'=> 'required',
+                'documento'=>'required|numeric',
+                'email'=>'required|email',
+                'telefono'=>'required',
+                'cargo'=>'required'
+
+            ],
+            [
+                'p_nombre.required' => 'El nombre  es requerido',
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'documento.required' => 'El documento de identidad es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'telefono.required' => 'El telefono es requerido',
+                'cargo.required' => 'El cargo es requerido',
+
+            ]
+            );
+           try {
+                $Representante = RepresentanteLegalModel::where('user_id',$id);
+
+
+                $Representante->Nombre1 = $request->p_nombre;
+                $Representante->TipoNit = $request->tipo_d;
+                $Representante->Nit = $request->documento;
+                $Representante->Telefono = $request->telefono;
+                $Representante->Cargo = $request->cargo;
+                $Representante->Email = $request->email;
+                $Representante->ManejoRP = $request->grupo1;
+                $Representante->Observacion1 = $request->Observacion."";
+                $Representante->EjercidoPPOP = $request->grupo2;
+                $Representante->Observacion2 = $request->Observacion2."";
+                $Representante->Reconocimiento = $request->grupo3;
+                $Representante->Observacion3 = $request->Observacion3."";
+                $Representante->VincuPExpuesta = $request->grupo4;
+                $Representante->Observacion4 = $request->Observacion4."";
+                $Representante->ObligacionTE = $request->grupo5;
+                $Representante->Observacion5 = $request->Observacion5."";
+                $Representante->OrganizacionI = $request->grupo6;
+                $Representante->Observacion6 = $request->Observacion6."";
+                $Representante->ObligacionP = $request->grupo7;
+                $Representante->Observacion7 = $request->Observacion7."";
 
                 $Representante->save();
 

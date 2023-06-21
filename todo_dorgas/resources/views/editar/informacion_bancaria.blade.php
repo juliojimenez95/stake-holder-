@@ -40,8 +40,10 @@
     </div>
     <div class="card bg-light" style="padding-top: 45px;">
     <div class="container">
-      <form action="{{ route('clientes.storeInformacionb',$id) }}" method="POST">
+      <form action="{{ route('editInformacionb',$id) }}" method="POST">
             @csrf
+            @method('put')
+
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-4">

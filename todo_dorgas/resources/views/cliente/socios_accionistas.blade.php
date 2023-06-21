@@ -169,6 +169,15 @@
 
                                     </div>
                                 </div>
+
+                                <div class="cont_all">
+                                    <div class="img_cus">
+                                        <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
+                                    </div>
+                                    <div class="btn_c">
+                                        <a class="btn btn-primary" id="descarga" data-file="FO_SAG_04_Declaracion_Origen_Fondos_Proveedores_V01.pdf">EXISTENTE</a><span>*</span>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

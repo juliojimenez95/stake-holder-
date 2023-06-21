@@ -16,13 +16,24 @@
         <div class="col-md-12">
             <div class="div_main">
                 <div class="">
-                    <a class="btn btn-success btn_cb_c" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();"
-                                     style="margin-top: 25px;">
-                                     <i class="fa-solid fa-user"></i>
-                        {{ __('Actualizar Perfil') }}
-                    </a>
+                    @if (Auth::user()->rol == 1)
+                        <a class="btn btn-success btn_cb_c" href="{{ route('clientes.perfil',Auth::user()->id) }}"
+
+                                        style="margin-top: 25px;">
+                                        <i class="fa-solid fa-user"></i>
+                            {{ __('Actualizar Perfil') }}
+                        </a>
+                    @else
+
+                        <a class="btn btn-success btn_cb_c" href="{{ route('proveedor.perfil',Auth::user()->id) }}"
+
+                                        style="margin-top: 25px;">
+                                        <i class="fa-solid fa-user"></i>
+                            {{ __('Actualizar Perfil') }}
+                        </a>
+
+                    @endif
+
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -93,6 +104,9 @@
                   </div>
                 </div>
               </div>
+
+              @if (Auth::user()->rol == 1)
+
               <div class="col">
                 <div class="card text-center border-0 transparente">
                   <div class="card-body">
@@ -112,6 +126,9 @@
                   </div>
                 </div>
               </div>
+
+              @endif
+
               <div class="col">
                 <div class="card text-center border-0 transparente">
                   <div class="card-body">

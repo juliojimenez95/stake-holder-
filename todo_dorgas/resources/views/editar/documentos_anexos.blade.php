@@ -25,8 +25,10 @@
               </div>
             </div>
         </div>
-        <form action="{{ route('storeanexos',$id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('editanexos',$id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('put')
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">
@@ -37,9 +39,11 @@
                     <div class="div_inside">
                         <p class="div_p">Cámara y Comercio<span>*</span></p>
                         <div style="display: flex;">
-                            <a class="div_img" href="https://www.google.com" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            @if ($anexos->Camara_comercio != '')
+                            <a class="div_img" id="descarga" data-file="{{ $anexos->Camara_comercio }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen"  class="img-fluid">
                             </a>
+                            @endif
                               <div class="div_img">
                                 <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
                                 <input type="file" id="camara_comercio" name="camara_comercio" style="display:none; " onchange="changeImageColor()">
@@ -52,9 +56,11 @@
                     <div class="div_inside">
                       <p class="div_p">R.U.T del Año Vigente<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Rut != '')
+                            <a class="div_img" id="descarga2" data-file="{{ $anexos->Rut }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                        @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Rut').click()">
                             <input type="file" id="Rut" name="Rut" style="display:none;" onchange="changeImageColor1()">
@@ -65,9 +71,11 @@
                     <div class="div_inside">
                       <p class="div_p">Copia de C.C Representante Legal<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Cc_representante != '')
+                            <a class="div_img" id="descarga3" data-file="{{ $anexos->Cc_representante }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img3" class="img-fluid" onclick="document.getElementById('CC').click()" >
                             <input type="file" id="CC" name="CC" style="display:none;" onchange="changeImageColor2()">
@@ -84,9 +92,11 @@
                     <div class="div_inside">
                       <p class="div_p">Estados Financieros del Año Anterior<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Estados_financieros != '')
+                            <a class="div_img" id="descarga4" data-file="{{ $anexos->Estados_financieros }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" id="img4" alt="Imagen" class="img-fluid" onclick="document.getElementById('FAA').click()">
                             <input type="file" id="FAA" name="FAA" style="display:none;" onchange="changeImageColor3()">
@@ -98,9 +108,11 @@
                     <div class="div_inside">
                       <p class="div_p">Referencia Comercial no superior a 1 mes<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Referencia_comercial != '')
+                            <a class="div_img" id="descarga5" data-file="{{ $anexos->Referencia_comercial }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img5" class="img-fluid" onclick="document.getElementById('RC').click()">
                             <input type="file" id="RC" name="RC" style="display:none;" onchange="changeImageColor4()">
@@ -111,9 +123,11 @@
                     <div class="div_inside">
                       <p class="div_p">Resolucion Rete ICA<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->ICA != '')
+                            <a class="div_img" id="descarga6" data-file="{{ $anexos->ICA }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img6" class="img-fluid" onclick="document.getElementById('RRI').click()">
                             <input type="file" id="RRI" name="RRI" style="display:none;" onchange="changeImageColor5()">
@@ -129,9 +143,11 @@
                     <div class="div_inside">
                       <p class="div_p">Gran Contribuyente<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Contribuyente != '')
+                            <a class="div_img" id="descarga7" data-file="{{ $anexos->Contribuyente }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img7" class="img-fluid" onclick="document.getElementById('GC').click()">
                             <input type="file" id="GC" name="GC" style="display:none;"  onchange="changeImageColor6()">
@@ -142,9 +158,11 @@
                     <div class="div_inside">
                       <p class="div_p">Autoretenedor en la Fuente<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Autoretenedor_f != '')
+                            <a class="div_img" id="descarga8" data-file="{{ $anexos->Autoretenedor_f }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img8" class="img-fluid" onclick="document.getElementById('AF').click()">
                             <input type="file" id="AF" name="AF" style="display:none;"  onchange="changeImageColor7()">
@@ -155,9 +173,11 @@
                     <div class="div_inside">
                       <p class="div_p">Autoretenedor ICA<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Autoretenedor_ICA != '')
+                            <a class="div_img" id="descarga9" data-file="{{ $anexos->Autoretenedor_ICA }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img9" class="img-fluid" onclick="document.getElementById('ICA').click()">
                             <input type="file" id="ICA" name="ICA" style="display:none;"  onchange="changeImageColor8()">
@@ -172,9 +192,11 @@
                         <div class="div_inside">
                       <p class="div_p">Brochure<span>*</span></p>
                       <div style="display: flex">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Brochure != '')
+                            <a class="div_img" id="descarga10" data-file="{{ $anexos->Brochure }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img10" class="img-fluid" onclick="document.getElementById('Brochure').click()">
                             <input type="file" id="Brochure" name="Brochure" style="display:none;"  onchange="changeImageColor9()">
@@ -185,9 +207,11 @@
                     <div class="div_inside">
                       <p class="div_p">Certificado Bancario<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->Certificado_bancario != '')
+                            <a class="div_img" id="descarga11" data-file="{{ $anexos->Certificado_bancario }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img11" class="img-fluid" onclick="document.getElementById('CB').click()">
                             <input type="file" id="CB" name="CB" style="display:none;"  onchange="changeImageColor10()">
@@ -198,9 +222,11 @@
                     <div class="div_inside">
                       <p class="div_p">Certificado de implementacion del SG-SST<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->SG_SST != '')
+                            <a class="div_img" id="descarga12" data-file="{{ $anexos->SG_SST  }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('SG-SST').click()">
                             <input type="file" id="SG-SST" name="SG-SST" style="display:none;"  onchange="changeImageColor11()">
@@ -215,9 +241,11 @@
                   <div class="div_inside">
                       <p class="div_p">Plantilla Aporte Seguridad Social<span>*</span></p>
                       <div style="display: flex;">
-                        <a class="div_img" href="https://www.google.com" target="_blank">
-                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                        </a>
+                        @if ($anexos->SS != '')
+                            <a class="div_img" id="descarga13" data-file="{{ $anexos->SS  }}" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                            @endif
                         <div class="div_img">
                             <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img13" class="img-fluid" onclick="document.getElementById('SS').click()">
                             <input type="file" id="SS" name="SS" style="display:none;"  onchange="changeImageColor12()">
@@ -239,6 +267,14 @@
         </div>
 </div>
 <script src="{{ asset('js/documento.js') }}"></script>
+<script>const button = document.querySelector('#descarga');
+    button.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });</script>
+</body>
 
 </body>
 </html>

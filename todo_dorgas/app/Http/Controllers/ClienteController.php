@@ -68,9 +68,12 @@ class ClienteController extends Controller
         'TBL_USUARIOS_STAKE.OrganizacionI','TBL_USUARIOS_STAKE.Observacion6','TBL_USUARIOS_STAKE.ObligacionP',
         'TBL_USUARIOS_STAKE.Observacion7','CLIENTES.Nit','CLIENTES.TipoNit',
         'DOMICILIOS.Direccion','DOMICILIOS.Ciudad','DOMICILIOS.Departamento',
-        'DOMICILIOS.Pais','CLIENTES.Natural as Natural','CLIENTES.ActividadEconomica','CLIENTES_DOMICILIOS.Telefono')
+        'DOMICILIOS.Pais','CLIENTES.Natural as Natural','CLIENTES.ActividadEconomica','CLIENTES_DOMICILIOS.Telefono',
+        'CLIENTES.pagina_web','CLIENTES.tamano')
         ->where('TBL_USUARIOS_STAKE.id',$id)
         ->first();
+
+        //return $user;
 
 
 
@@ -83,9 +86,13 @@ class ClienteController extends Controller
             "id"=>$id,"tipos"=>$tipos,"actividades"=>$actividades]);
 
         }else {
+            $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
+            $actividades = actividad_economicaModel::get();
+            $empresas=['Microempresas','Pequeña empresa','Mediana empresa','Grande empresa'];
+
 
             return view("editar.registroC_pj",["user"=>$user,
-            "id"=>$id]);
+            "id"=>$id,"tipos"=>$tipos,"actividades"=>$actividades,"empresas"=>$empresas]);
         }
 
 
@@ -252,7 +259,7 @@ class ClienteController extends Controller
         $anexos = AnexoModel::where('user_id',$id)->first();
 
         if($anexos){
-            return view("editar.documentos_anexos",['id'=>$id]);
+            return view("editar.documentos_anexos",['id'=>$id,'anexos'=>$anexos]);
 
         }else{
             return view("cliente.documentos_anexos",['id'=>$id]);
@@ -461,8 +468,9 @@ class ClienteController extends Controller
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
         $actividades = actividad_economicaModel::get();
         $Representante = RepresentanteLegalModel::where('user_id',$id)->first();
+        //return $Representante;
         if ($Representante) {
-            return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos,'Representante'=>$Representante]);
+            return view("editar.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos,'Representante'=>$Representante]);
 
         }else{
         return view("cliente.actividad_economica",["actividades"=>$actividades,'id'=>$id, 'tipos'=>$tipos]);
@@ -515,7 +523,7 @@ class ClienteController extends Controller
     public function storepn(Request $request)
     {
 
-           /*$request->validate(
+           $request->validate(
             [
                 'tipo_d'=> 'required',
                 'n_docuemnto'=> 'required|numeric',
@@ -541,11 +549,11 @@ class ClienteController extends Controller
                 'direccion.required' => 'La dirección es requerido',
 
             ]
-            );*/
+            );
            try {
 
 
-           /* $cliente = new ClienteModel();
+            $cliente = new ClienteModel();
 
             $cliente->DV = 0;
 
@@ -592,8 +600,8 @@ class ClienteController extends Controller
            // $cliente->Sexo=" ";
             $cliente->Contacto="";
 
-            $cliente->Medio=" "*/
-           // if ($cliente->save()) {
+            $cliente->Medio=" ";
+            if ($cliente->save()) {
                 $cliente2 = ClienteModel::where('Nit', $request->n_docuemnto)->first();
 
                 //return  $request->Telefono;
@@ -665,7 +673,7 @@ class ClienteController extends Controller
 
 
 
-           // }
+            }
 
 
             return redirect('/conocimiento/'.$user->id);
@@ -945,11 +953,21 @@ class ClienteController extends Controller
 
                     ]);
 
-                    $cliente_domicilio = new Cliente_DomicilioModel();
+                    if ($cliente2) {
+                        Cliente_DomicilioModel::create([
+                            'Telefono' => $request->Telefono,
+                            'ID_Cliente' => $cliente2->ID,
+
+                        ]);
+                    }else{
+                        return back();
+                    }
+
+                    /*$cliente_domicilio = new Cliente_DomicilioModel();
 
                     $cliente_domicilio->Telefono = $request->Telefono;
                     $cliente_domicilio->ID_Cliente = $cliente2->ID;
-                    $cliente_domicilio->save();
+                    $cliente_domicilio->save();*/
 
 
                     $user = User::create([
@@ -1027,13 +1045,15 @@ class ClienteController extends Controller
            try {
 
 
-            $user = User::where('id',$id)->firts();
+            $user = User::where('id',$id)->first();
 
 
-            $cliente = ClienteModel::where('Mail',$user->email)->firts();
+            $cliente = ClienteModel::where('Mail',$user->email)->first();
 
-            $domicilio_cliente = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->firts();
-            $domicilio = Cliente_DomicilioModel::where('Telefono',$domicilio_cliente->Telefono)->firts();
+
+
+            $domicilio_cliente = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
+            $domicilio = DomicilioModel::where('Telefono',$domicilio_cliente->Telefono)->first();
 
 
 
@@ -1103,15 +1123,15 @@ class ClienteController extends Controller
                     $domicilio->CodigoPostal = 0;
                     $domicilio->Enabled = 1;
 
-                    $ $domicilio->save();
+                    $domicilio->save();
 
                     //'Domicilio' => $request->complemento3
                     //documento tipo y verificacion
 
 
-                    $cliente_domicilio->Telefono = $request->Telefono;
-                    $cliente_domicilio->ID_Cliente = $cliente2->ID;
-                    $cliente_domicilio->save();
+                    $domicilio_cliente->Telefono = $request->Telefono;
+                    $domicilio_cliente->ID_Cliente = $cliente->ID;
+                    $domicilio_cliente->save();
 
 
 
@@ -1343,7 +1363,7 @@ class ClienteController extends Controller
             ]
             );
            try {
-                $Representante = RepresentanteLegalModel::where('user_id',$id);
+                $Representante = RepresentanteLegalModel::where('user_id',$id)->first();
 
 
                 $Representante->Nombre1 = $request->p_nombre;

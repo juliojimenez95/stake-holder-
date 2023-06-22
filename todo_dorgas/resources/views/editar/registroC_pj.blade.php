@@ -45,7 +45,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('clientes.storepj') }}" method="POST">
+                        <form action=" {{ route('editpj',$id) }}" method="POST">
                             @csrf
                             @method('put')
 
@@ -94,7 +94,7 @@
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="pagina" class="form-label label_c"><strong>Página web </strong></label>
-                                    <input type="text" class="form-control input_custom select_c" id="pagina" name="pagina" value="{{$user->pagina}}"
+                                    <input type="text" class="form-control input_custom select_c" id="pagina" name="pagina" value="{{$user->pagina_web}}"
                                         placeholder="">
                                     @if ($errors->has('pagina'))
                                         <p class="text-danger">{{ $errors->first('pagina') }}</p>
@@ -104,7 +104,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="pais" class="form-label label_c"><strong>País<span>*</span></strong></label>
                                         <select  class="form-control select_custom" aria-label="Seleccione pais" id="pais" name="pais">
-                                        <option  value="{{$user->pagina}}">{{$user->pagina}}"</option>
+                                        <option  value="{{$user->Pais}}">{{$user->Pais}}"</option>
 
                                         </select>
                                         @if ($errors->has('pais'))
@@ -118,7 +118,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="departamento" class="form-label label_c"><strong>Departamento<span>*</span></strong></label>
                                         <select  class="form-control select_custom" aria-label="Seleccione una departamento" id="departamento" name="departamento">
-                                        <option  value="{{$user->pagina}}">{{$user->pagina}}"</option>
+                                        <option  value="{{$user->Departamento}}">{{$user->Departamento}}"</option>
 
                                         </select>
                                         @if ($errors->has('departamento'))
@@ -129,7 +129,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="municipio" class="form-label label_c"><strong>Municipio<span>*</span></strong></label>
                                     <select class="form-control select_custom" aria-label="Seleccione una municipio" id="municipio" name="municipio">
-                                        <option value="{{$user->pagina}}">{{$user->pagina}}</option>
+                                        <option value="{{$user->Ciudad}}">{{$user->Ciudad}}</option>
 
                                     </select>
                                     @if ($errors->has('municipio'))
@@ -139,7 +139,7 @@
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="Telefono" class="form-label label_c"><strong>Teléfono</strong><span>*</span></label>
-                                    <input type="text" class="form-control select_c" id="Telefono" name="Telefono" value="{{$user->pagina}}"
+                                    <input type="text" class="form-control select_c" id="Telefono" name="Telefono" value="{{$user->Telefono}}"
                                         placeholder="">
                                     @if ($errors->has('Telefono'))
                                         <p class="text-danger">{{ $errors->first('Telefono') }}</p>
@@ -150,7 +150,7 @@
 
                                 <div class="col-md-4 col-sm-12">
                                     <label for="direccion" class="form-label label_c"><strong>Dirección<span>*</span></strong></label>
-                                    <input type="text" class="form-control input_custom select_c" id="direccion" name="direccion" value="{{$user->pagina}}"
+                                    <input type="text" class="form-control input_custom select_c" id="direccion" name="direccion" value="{{$user->Direccion}}"
                                         placeholder="">
                                     @if ($errors->has('direccion'))
                                         <p class="text-danger">{{ $errors->first('direccion') }}</p>
@@ -160,7 +160,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="ta_e" class="form-label label_c"><strong>Tamaño de empresa<span>*</span></strong></label>
                                     <select class="form-control select_custom" aria-label="Seleccione un tipo de sociedad" name="ta_e">
-                                        <option value="{{$user->pagina}}">{{$user->pagina}}</option>
+                                        <option value="{{$user->tamano}}">{{$user->tamano}}</option>
                                         @foreach ($empresas as $empresa)
                                             <option value="{{ $empresa }}">{{ $empresa }}</option>
                                         @endforeach
@@ -185,31 +185,13 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="actividad" class="form-label label_c"><strong>Actividad económica</strong><span>*</span></label>
                                     <select class="form-select select_c" aria-label="Default select example" name="actividad">
-                                        <option value="{{$user->pagina}}">{{$user->pagina}}"</option>
+                                        <option value="{{$user->ActividadEconomica}}">{{$user->ActividadEconomica}}"</option>
                                        @foreach ($actividades as $actividad)
                                            <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
                                        @endforeach
                                    </select>
                                     @if ($errors->has('actividad'))
                                         <p class="text-danger">{{ $errors->first('actividad') }}</p>
-                                    @endif
-                                </div>
-
-                                <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
-                                    <input type="password" class="form-control input_custom select_c" id="password" name="password"
-                                        placeholder="">
-                                    @if ($errors->has('password'))
-                                        <p class="text-danger">{{ $errors->first('password') }}</p>
-                                    @endif
-                                </div>
-
-                                <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Confirmar contraseña<span>*</span></strong></label>
-                                    <input type="password" class="form-control input_custom select_c" id="password" name="password_confirmation"
-                                    required autocomplete="new-password"  placeholder="">
-                                    @if ($errors->has('password'))
-                                        <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
 
@@ -231,9 +213,9 @@
                               <span class="color-cs">¿Por su cargo o actividad maneja o a manejado recursos públicos? </span>
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo1" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo1" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo1" id="grupo1s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo1" id="grupo1n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1" id="grupo1na" value="N/A"></label>
                               <span class="mr_5 color-cb">Observaciones</span>
                               <input type="text" class="input_col" name="Observacion" id="Observacion">
                             </div>
@@ -249,9 +231,9 @@
                               <span class="color-cs">¿Por su cargo o actividad ejerce o ha ejercido algún grado de poder político o público? </span>
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo2" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo2" id="grupo2s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" id="grupo2n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" id="grupo2na" value="N/A"></label>
                               <span class="color-cb mr_5">Observaciones</span>
                               <input type="text" name="Observacion3" id="Observacion3" class="input_col">
                             </div>
@@ -265,9 +247,9 @@
                               <span class="color-cs">¿Por su actividad u oficio goza usted de reconocimiento político o público?</span>
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo3" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo3" id="grupo3s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" id="grupo3n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" id="grupo3na" value="N/A"></label>
                               <span class="mr_5 color-cb">Observaciones</span>
                               <input type="text" name="Observacion2" id="Observacion2" class="input_col">
                             </div>
@@ -285,9 +267,9 @@
                               <span class="color-cs">¿Existe algún vinculo entre usted y una persona considerada públicamente expuesta?</span>
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo4" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo4" id="grupo4s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" id="grupo4n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" id="grupo4na" value="N/A"></label>
                               <span class="mr_5 color-cb">Observaciones</span>
                               <input type="text" name="Observacion4" id="Observacion4" class="input_col">
                             </div>
@@ -302,9 +284,9 @@
                               <span class="color-cs">¿Es usted sujeto de obligaciones tributarias en otro país o grupo de países?</span>
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo5" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo5" id="grupo5s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" id="grupo5n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" id="grupo5na" value="N/A"></label>
                               <span class="mr_5 color-cb">Observaciones</span>
                               <input type="text color-cb" name="Observacion5" id=" Observacion5" class="input_col">
                             </div>
@@ -322,9 +304,9 @@
                               <p class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales  como ONG, ONU, UNICEF, etc.? </p>
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" id="grupo6s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" id="grupo6n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" id="grupo6na" value="N/A"></label>
                               <span class="mr_5 color-cb">Observaciones</span>
                               <input type="text color-cb" name="Observacion6" id="Observacion6" class="input_col">
                             </div>
@@ -341,9 +323,9 @@
 
                             </div>
                             <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" value="N/A"></label>
+                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" id="grupo7s" value="Si"></label>
+                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" id="grupo7n" value="No"></label>
+                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" id="grupo7na" value="N/A"></label>
                               <span class="mr_5 color-cb">Observaciones</span>
                               <input type="text color-cb" name="Observacion7" id="Observacion7" class="input_col">
                             </div>

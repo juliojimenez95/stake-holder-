@@ -164,6 +164,322 @@ class DocumentosController extends Controller
             }
     }
 
+    public function editanexos(Request $request,$id)
+    {
+
+           try {
+
+                $Anexo = AnexoModel::where('user_id',$id)->first();
+
+                if ($request->file('camara_comercio')){
+                    if ($Anexo->Camara_comercio !='') {
+                        Storage::disk('documentos')->delete($Anexo->Camara_comercio);
+                        $name_pdf1 = '';
+                        $pdf = $request->file('camara_comercio');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf1 = 'camara_c'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                        $Anexo->Camara_comercio = $name_pdf1;
+                    }else{
+                        $name_pdf1 = '';
+                        $pdf = $request->file('camara_comercio');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf1 = 'camara_c'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                        $Anexo->Camara_comercio = $name_pdf1;
+                    }
+
+                }
+
+                if ($request->file('Rut')){
+                    if ($Anexo->Rut !='') {
+                        Storage::disk('documentos')->delete($Anexo->Rut);
+                        $name_pdf2 = '';
+
+                        $pdf = $request->file('Rut');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf2 = 'Rut'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf2, file_get_contents($pdf));
+                        $Anexo->Rut = $name_pdf2;
+
+                    } else {
+                        $name_pdf2 = '';
+
+                        $pdf = $request->file('Rut');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf2 = 'Rut'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf2, file_get_contents($pdf));
+                        $Anexo->Rut = $name_pdf2;
+                    }
+
+
+                }
+
+
+                if ($request->file('CC')){
+                    if ($Anexo->Cc_representante !='') {
+                        Storage::disk('documentos')->delete($Anexo->Cc_representante);
+                        $name_pdf3 = '';
+                        $pdf = $request->file('CC');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf3 = 'cc_r'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf3, file_get_contents($pdf));
+
+                        $Anexo->Cc_representante = $name_pdf3;
+
+                    } else {
+                        $name_pdf3 = '';
+                        $pdf = $request->file('CC');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf3 = 'cc_r'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf3, file_get_contents($pdf));
+
+                        $Anexo->Cc_representante = $name_pdf3;
+                    }
+
+
+                }
+
+
+                if ($request->file('FAA')){
+                    if ($Anexo->Estados_financieros !='') {
+                        Storage::disk('documentos')->delete($Anexo->Estados_financieros);
+                        $name_pdf4 = '';
+                        $pdf = $request->file('FAA');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf4 = 'Estado_f'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf4, file_get_contents($pdf));
+
+                        $Anexo->Estados_financieros = $name_pdf4;
+
+                    } else {
+                        #$name_pdf4 = '';
+                        $pdf = $request->file('FAA');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf4 = 'Estado_f'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf4, file_get_contents($pdf));
+
+                        $Anexo->Estados_financieros = $name_pdf4;
+
+                    }
+
+                }
+
+
+                if ($request->file('RC')){
+                    if ($Anexo->Referencia_comercial !='') {
+                        Storage::disk('documentos')->delete($Anexo->Referencia_comercial);
+                        $name_pdf5 = '';
+                        $pdf = $request->file('RC');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf5 = 'RC'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf5, file_get_contents($pdf));
+                        $Anexo->Referencia_comercial = $name_pdf5;
+
+                    } else {
+                        $name_pdf5 = '';
+                        $pdf = $request->file('RC');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf5 = 'RC'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf5, file_get_contents($pdf));
+                        $Anexo->Referencia_comercial = $name_pdf5;
+                    }
+
+                }
+
+                if ($request->file('RRI')){
+                    if ($Anexo->ICA !='') {
+                        Storage::disk('documentos')->delete($Anexo->ICA);
+                        $name_pdf6 = '';
+
+                        $pdf = $request->file('RRI');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf6 = 'RRI'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf6, file_get_contents($pdf));
+                        $Anexo->ICA = $name_pdf6;
+
+
+                    } else {
+                        $pdf = $request->file('RRI');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf6 = 'RRI'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf6, file_get_contents($pdf));
+                        $Anexo->ICA = $name_pdf6;
+                    }
+
+                }
+                if ($request->file('GC')){
+                    if ($Anexo->Contribuyente !='') {
+                        Storage::disk('documentos')->delete($Anexo->Contribuyente);
+                        $name_pdf7 = '';
+
+                        $pdf = $request->file('GC');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf7 = 'GC'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf7, file_get_contents($pdf));
+                        $Anexo->Contribuyente = $name_pdf7;
+
+                    } else {
+                        $pdf = $request->file('GC');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf7 = 'GC'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf7, file_get_contents($pdf));
+                        $Anexo->Contribuyente = $name_pdf7;
+                    }
+
+
+                }
+                if ($request->file('AF')){
+                    if ($Anexo->Autoretenedor_f !='') {
+                        Storage::disk('documentos')->delete($Anexo->Autoretenedor_f);
+                        $name_pdf8 = '';
+
+                        $pdf = $request->file('AF');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf8 = 'AF'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf8, file_get_contents($pdf));
+                        $Anexo->Autoretenedor_f = $name_pdf8;
+
+                    } else {
+                        $pdf = $request->file('AF');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf8 = 'AF'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf8, file_get_contents($pdf));
+                        $Anexo->Autoretenedor_f = $name_pdf8;
+                    }
+
+
+                }
+                if ($request->file('ICA')){
+                    if ($Anexo->Autoretenedor_ICA !='') {
+                        Storage::disk('documentos')->delete($Anexo->Autoretenedor_ICA);
+                        $name_pdf9 = '';
+
+                        $pdf = $request->file('ICA');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf9 = 'ICA'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf9, file_get_contents($pdf));
+                        $Anexo->Autoretenedor_ICA = $name_pdf9;
+
+                    } else {
+                        $name_pdf9 = '';
+
+                        $pdf = $request->file('ICA');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf9 = 'ICA'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf9, file_get_contents($pdf));
+                        $Anexo->Autoretenedor_ICA = $name_pdf9;
+                    }
+
+
+                }
+                if ($request->file('Brochure')){
+                    if ($Anexo->Brochure !='') {
+                        Storage::disk('documentos')->delete($Anexo->Brochure);
+                        $name_pdf10 = '';
+
+                        $pdf = $request->file('Brochure');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf10 = 'Brochure'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf10, file_get_contents($pdf));
+                        $Anexo->Brochure = $name_pdf10;
+
+                    } else {
+                        $pdf = $request->file('Brochure');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf10 = 'Brochure'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf10, file_get_contents($pdf));
+                        $Anexo->Brochure = $name_pdf10;
+                    }
+
+
+                }
+                if ($request->file('CB')){
+                    if ($Anexo->Certificado_bancario !='') {
+                        Storage::disk('documentos')->delete($Anexo->Certificado_bancario);
+
+                        $pdf = $request->file('CB');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf11 = 'CB'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf11, file_get_contents($pdf));
+                        $Anexo->Certificado_bancario = $name_pdf11;
+
+                    } else {
+                        $name_pdf11 = '';
+
+                        $pdf = $request->file('CB');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf11 = 'CB'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf11, file_get_contents($pdf));
+                        $Anexo->Certificado_bancario = $name_pdf11;
+                    }
+
+
+                }
+                if ($request->file('SG-SST')){
+                    if ($Anexo->SG_SST !='') {
+                        Storage::disk('documentos')->delete($Anexo->SG_SST);
+                        $name_pdf12 = '';
+
+                        $pdf = $request->file('SG-SST');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf12 = 'SG-SST'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf12, file_get_contents($pdf));
+                        $Anexo->SG_SST = $name_pdf12;
+
+                    } else {
+                        $name_pdf12 = '';
+
+                        $pdf = $request->file('SG-SST');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf12 = 'SG-SST'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf12, file_get_contents($pdf));
+                        $Anexo->SG_SST = $name_pdf12;
+                    }
+
+
+                }
+                if ($request->file('SS')){
+                    if ($Anexo->SS !='') {
+                        Storage::disk('documentos')->delete($Anexo->SS);
+                        $name_pdf13 = '';
+                        $pdf = $request->file('SS');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf13 = 'SS'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                        $Anexo->SS = $name_pdf13;
+
+                    } else {
+                        $name_pdf13 = '';
+
+                        $pdf = $request->file('SS');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf13 = 'SS'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                        $Anexo->SS = $name_pdf13;
+                    }
+
+
+                }
+
+
+            if ($Anexo->save()) {
+                return redirect('/declaracion/'.$id);
+
+            }else{
+
+                return "aqui llega";
+            }
+
+
+
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+    }
+
     public function storepagare(Request $request,$id)
     {
         $request->validate(
@@ -244,17 +560,27 @@ class DocumentosController extends Controller
             if ($request->credito == 1) {
                 $name_pdf1 = '';
                 if ($request->file('document')) {
-                    $pdf = $request->file('document');
-                    $ext = $pdf->getClientOriginalExtension();
-                    $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                    $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                    if ($pagare->pagare ='') {
+                        Storage::disk('documentos')->delete($pagare->pagare);
+                        $pdf = $request->file('document');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+
+                    }else{
+
+                        $pdf = $request->file('document');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+
+                    }
+
                 }else{
                     return back();
 
                 }
-                $pagare->archivo = $name_pdf1;
                 $pagare->pagare = $request->credito;
-                $pagare->user_id = $id;
 
                 if ($pagare->save()) {
                     return redirect('/home');
@@ -264,10 +590,7 @@ class DocumentosController extends Controller
                     return back();
                 }
             } else {
-                $name_pdf1 = '';
-                $pagare->archivo = $name_pdf1;
                 $pagare->pagare = $request->credito;
-                $pagare->user_id = $id;
 
                 if ($pagare->save()) {
                     return redirect('/home');
@@ -293,7 +616,7 @@ class DocumentosController extends Controller
             $fondos = new origenDeFondoModel();
 
            // return $request->file('fondo');
-            $name_pdf1 = ' ';
+            $name_pdf1 = '';
             if ($request->file('fondo')){
                 $pdf = $request->file('fondo');
                 $ext = $pdf->getClientOriginalExtension();
@@ -329,6 +652,12 @@ class DocumentosController extends Controller
            // return $request->file('fondo');
             $name_pdf1 = ' ';
             if ($request->file('fondo')){
+                if ($fondos->archivo != '') {
+
+                } else {
+                    # code...
+                }
+
                 $pdf = $request->file('fondo');
                 $ext = $pdf->getClientOriginalExtension();
                 $name_pdf1 = 'fondo'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;

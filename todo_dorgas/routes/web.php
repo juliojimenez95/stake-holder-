@@ -91,6 +91,7 @@ Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->nam
 //editar
 
 Route::put('/editpagare/{id}', [DocumentosController::class,'editpagare'])->name('editpagare');
+Route::put('/editanexos/{id}', [DocumentosController::class,'editanexos'])->name('editanexos');
 Route::put('/editfondo/{id}', [DocumentosController::class,'editfondo'])->name('editfondo');
 Route::put('/editInformaciont/{id}', [ClienteController::class,'editInformaciont'])->name('editInformaciont');
 Route::put('/editInformacionf/{id}', [ClienteController::class,'editInformacionf'])->name('editInformacionf');

@@ -45,7 +45,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('clientes.storepn') }}" method="POST">
+                        <form action=" {{ route('editpn',$id) }}" method="POST">
                             @csrf
                             @method('put')
 
@@ -151,7 +151,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <label for="actividad" class="form-label label_c"><strong>Actividad económica</strong></label>
                                     <select class="form-control select_custom" aria-label="Default select example" name="actividad">
-                                        <option value="{{$user->Direccion}}">{{$user->Direccion}}</option>
+                                        <option value="{{$user->ActividadEconomica}}">{{$user->ActividadEconomica}}</option>
                                        @foreach ($actividades as $actividad)
                                            <option value="{{ $actividad->Actividad }}">{{ $actividad->Actividad }}</option>
                                        @endforeach
@@ -161,23 +161,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Contraseña</strong><span>*</span></label>
-                                    <input type="password" class="form-control input_custom select_c" id="password" name="password"
-                                        placeholder="">
-                                    @if ($errors->has('password'))
-                                        <p class="text-danger">{{ $errors->first('password') }}</p>
-                                    @endif
-                                </div>
 
-                                <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Confirmar contraseña</strong><span>*</span></label>
-                                    <input type="password" class="form-control input_custom select_c" id="password" name="password_confirmation"
-                                    required autocomplete="new-password"  placeholder="">
-                                    @if ($errors->has('password'))
-                                        <p class="text-danger">{{ $errors->first('password') }}</p>
-                                    @endif
-                                </div>
 
 
                             </div>
@@ -352,7 +336,7 @@
 
 
            $.ajax({
-          url: "/perfiladicional/2",
+          url: "/perfiladicional/"+{{ Auth::user()->id }},
           dataType: "json",
           type: "GET",
           success: function(response) {

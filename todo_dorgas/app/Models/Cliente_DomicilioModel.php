@@ -10,8 +10,8 @@ class Cliente_DomicilioModel extends Model
     use HasFactory;
     public $table ="CLIENTES_DOMICILIOS";
     public $timestamps = false;
-    protected $primaryKey = "Telefono";
     protected $fillable = [
+        "Telefono",
         'ID_Cliente'
     ];
 }

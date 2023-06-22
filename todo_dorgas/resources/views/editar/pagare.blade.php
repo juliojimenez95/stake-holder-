@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="{{ asset('css/pagare.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+  <!--fuentes-->
+  <script  src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+            crossorigin="anonymous"></script>
   <!--fuentes-->
   <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
   <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
@@ -111,7 +116,7 @@
     </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
@@ -133,15 +138,13 @@
 
 
        $.ajax({
-      url: "/informaciontributaria/2",
+      url: "/pagareinf/"+{{ Auth::user()->id }},
       dataType: "json",
       type: "GET",
       success: function(response) {
-          console.log(response);
 
-          informacion_local = response.pagare;
-
-          if (response.informacion.pagare == 'Si') {
+            console.log(response);
+          if (response.pagare.pagare == 'Si') {
 
               $("#credito1").prop('checked',true);
           } else {

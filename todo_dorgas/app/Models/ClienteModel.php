@@ -21,7 +21,6 @@ class ClienteModel extends Model
         'Movil',
         'BirthDay',
         'BirthMonth',
-        'BirthYear',
         'Mail',
         'pagina_web',
         'tamano',

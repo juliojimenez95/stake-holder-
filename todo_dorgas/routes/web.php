@@ -90,24 +90,24 @@ Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->nam
 
 //editar
 
-Route::post('/editpagare/{id}', [DocumentosController::class,'editpagare'])->name('editpagare');
-Route::post('/editfondo/{id}', [DocumentosController::class,'editfondo'])->name('editfondo');
-Route::post('/editInformaciont/{id}', [ClienteController::class,'editInformaciont'])->name('editInformaciont');
-Route::post('/editInformacionf/{id}', [ClienteController::class,'editInformacionf'])->name('editInformacionf');
-Route::post('/editInformacionb/{id}', [ClienteController::class,'editInformacionb'])->name('editInformacionb');
+Route::put('/editpagare/{id}', [DocumentosController::class,'editpagare'])->name('editpagare');
+Route::put('/editfondo/{id}', [DocumentosController::class,'editfondo'])->name('editfondo');
+Route::put('/editInformaciont/{id}', [ClienteController::class,'editInformaciont'])->name('editInformaciont');
+Route::put('/editInformacionf/{id}', [ClienteController::class,'editInformacionf'])->name('editInformacionf');
+Route::put('/editInformacionb/{id}', [ClienteController::class,'editInformacionb'])->name('editInformacionb');
 Route::get('/cliente/perfil/{id}', [ClienteController::class,'perfil'])->name('clientes.perfil');
-Route::post('/editpjp/{id}', [ProveedorController::class,'editpj'])->name('editpj');
-Route::post('/editpnp/{id}', [ProveedorController::class,'editpn'])->name('editpn');
-Route::post('/editRepresentante/{id}', [ClienteController::class,'editRepresentante'])->name('editRepresentante');
-Route::post('/editpersonaE/{id}', [ClienteController::class,'editpersonaE'])->name('editpersonaE');
-Route::post('/editcontactopn/{id}', [ClienteController::class,'editcontactopn'])->name('editcontactopn');
-Route::post('/editdeclaracion/{id}', [ClienteController::class,'editdeclaracion'])->name('editdeclaracion');
+Route::put('/editpjp/{id}', [ProveedorController::class,'editpj'])->name('editpj');
+Route::put('/editpnp/{id}', [ProveedorController::class,'editpn'])->name('editpn');
+Route::put('/editRepresentante/{id}', [ClienteController::class,'editRepresentante'])->name('editRepresentante');
+Route::put('/editpersonaE/{id}', [ClienteController::class,'editpersonaE'])->name('editpersonaE');
+Route::put('/editcontactopn/{id}', [ClienteController::class,'editcontactopn'])->name('editcontactopn');
+Route::put('/editdeclaracion/{id}', [ClienteController::class,'editdeclaracion'])->name('editdeclaracion');
 
 
-Route::post('/editpn/{id}', [ClienteController::class,'editpn'])->name('editpn');
-Route::post('/editpj/{id}', [ClienteController::class,'editpj'])->name('editpj');
+Route::put('/editpn/{id}', [ClienteController::class,'editpn'])->name('editpn');
+Route::put('/editpj/{id}', [ClienteController::class,'editpj'])->name('editpj');
 
-Route::post('/proveedor/perfil/{id}', [ProveedorController::class,'perfil'])->name('proveedor.perfil');
+Route::get('/proveedor/perfil/{id}', [ProveedorController::class,'perfil'])->name('proveedor.perfil');
 
 
 

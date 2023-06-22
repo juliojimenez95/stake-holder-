@@ -47,7 +47,7 @@
                 <div class="card-body">
                 <form action="{{ route('editInformaciont',$id) }}" method="POST">
                   @csrf
-                  @method('put')
+                  @method('PUT')
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -206,10 +206,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
   $(document).ready(function(){
-
+    
 
      $.ajax({
-    url: "/informaciontributaria/2",
+    url: "/informaciontributaria/"+{{ Auth::user()->id }},
     dataType: "json",
     type: "GET",
     success: function(response) {

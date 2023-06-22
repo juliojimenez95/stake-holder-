@@ -20,8 +20,11 @@ use App\Models\personaExpuestaModel;
 use App\Models\PaisModel;
 use App\Models\AccionistaModel;
 use App\Models\AutorizacionModel;
+use App\Models\origenDeFondoModel;
 use App\Models\PagareModel;
 use App\Models\User;
+use App\Models\AnexoModel;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Hash;
@@ -38,8 +41,18 @@ class ClienteController extends Controller
     {
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
         $accionistas = AccionistaModel::where('user_id',$id)->get();
-        return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
-        "id"=>$id]);
+
+        $origen = origenDeFondoModel::where('user_id',$id)->first();
+
+        if ($origen) {
+            return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
+            "id"=>$id,"origen"=>$origen]);
+        }else{
+            return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
+            "id"=>$id]);
+        }
+
+
     }
 
     public function perfil($id)
@@ -55,16 +68,19 @@ class ClienteController extends Controller
         'TBL_USUARIOS_STAKE.OrganizacionI','TBL_USUARIOS_STAKE.Observacion6','TBL_USUARIOS_STAKE.ObligacionP',
         'TBL_USUARIOS_STAKE.Observacion7','CLIENTES.Nit','CLIENTES.TipoNit',
         'DOMICILIOS.Direccion','DOMICILIOS.Ciudad','DOMICILIOS.Departamento',
-        'DOMICILIOS.Pais','CLIENTES.Natural','CLIENTES.ActividadEconomica')
+        'DOMICILIOS.Pais','CLIENTES.Natural as Natural','CLIENTES.ActividadEconomica','CLIENTES_DOMICILIOS.Telefono')
         ->where('TBL_USUARIOS_STAKE.id',$id)
-        ->get();
+        ->first();
 
-        return $id;
+
 
         if ($user->Natural == 1) {
+            $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
+            $actividades = actividad_economicaModel::get();
+
 
             return view("editar.registroC_pn",["user"=>$user,
-            "id"=>$id]);
+            "id"=>$id,"tipos"=>$tipos,"actividades"=>$actividades]);
 
         }else {
 
@@ -233,7 +249,16 @@ class ClienteController extends Controller
 
     public function documentos_anexos($id)
     {
-        return view("cliente.documentos_anexos",['id'=>$id]);
+        $anexos = AnexoModel::where('user_id',$id)->first();
+
+        if($anexos){
+            return view("editar.documentos_anexos",['id'=>$id]);
+
+        }else{
+            return view("cliente.documentos_anexos",['id'=>$id]);
+
+        }
+
     }
 
      public function identificacion()
@@ -490,7 +515,7 @@ class ClienteController extends Controller
     public function storepn(Request $request)
     {
 
-           $request->validate(
+           /*$request->validate(
             [
                 'tipo_d'=> 'required',
                 'n_docuemnto'=> 'required|numeric',
@@ -516,11 +541,11 @@ class ClienteController extends Controller
                 'direccion.required' => 'La dirección es requerido',
 
             ]
-            );
+            );*/
            try {
 
 
-            $cliente = new ClienteModel();
+           /* $cliente = new ClienteModel();
 
             $cliente->DV = 0;
 
@@ -567,11 +592,14 @@ class ClienteController extends Controller
            // $cliente->Sexo=" ";
             $cliente->Contacto="";
 
-            $cliente->Medio=" ";
-            if ($cliente->save()) {
+            $cliente->Medio=" "*/
+           // if ($cliente->save()) {
                 $cliente2 = ClienteModel::where('Nit', $request->n_docuemnto)->first();
 
-                //return  $cliente2;
+                //return  $request->Telefono;
+
+
+
 
 
 
@@ -592,10 +620,27 @@ class ClienteController extends Controller
 
                     ]);
 
-                    $cliente_domicilio = new Cliente_DomicilioModel();
+
+                    if ($cliente2) {
+                        Cliente_DomicilioModel::create([
+                            'Telefono' => $request->Telefono,
+                            'ID_Cliente' => $cliente2->ID,
+
+                        ]);
+                    }else{
+                        return back();
+                    }
+
+                   /* $cliente_domicilio = new Cliente_DomicilioModel();
 
                     $cliente_domicilio->Telefono = $request->Telefono;
                     $cliente_domicilio->ID_Cliente = $cliente2->ID;
+                    $cliente_domicilio->save();*/
+
+
+
+
+
 
                     $user = User::create([
                         'name' => $request->Nombre,
@@ -618,10 +663,9 @@ class ClienteController extends Controller
                         'Observacion7'=> $request->Observacion7.""
                         ]);
 
-                    $cliente_domicilio->save();
 
 
-            }
+           // }
 
 
             return redirect('/conocimiento/'.$user->id);
@@ -646,8 +690,8 @@ class ClienteController extends Controller
                 'Nombre'=> 'required',
                 'departamento'=> 'required',
                 'municipio'=>'required',
-                'email'=>'required|email|unique:users',
-                'Telefono'=>'required|unique:DOMICILIOS',
+                'email'=>'required|email',
+                'Telefono'=>'required',
                 'direccion'=>'required',
 
             ],
@@ -669,13 +713,13 @@ class ClienteController extends Controller
            try {
 
 
-            $user = User::where('id',$id)->firts();
+            $user = User::where('id',$id)->first();
 
 
-            $cliente = ClienteModel::where('Mail',$user->email)->firts();
+            $cliente = ClienteModel::where('Mail',$user->email)->first();
 
-            $domicilio_cliente = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->firts();
-            $domicilio = Cliente_DomicilioModel::where('Telefono',$domicilio_cliente->Telefono)->firts();
+            $domicilio_cliente = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
+            $domicilio = DomicilioModel::where('Telefono',$domicilio_cliente->Telefono)->first();
 
             $cliente->DV = 0;
 
@@ -692,35 +736,29 @@ class ClienteController extends Controller
             $cliente->TipoNit=$request->tipo_d;
             //
             //$cliente->Regimen=$request->regimen;
-            $cliente->BirthDay=" ";
+
             $cliente->BirthMonth=" ";
-            $cliente->BirthYear= " ";
             //email e ingreso
             $cliente->Mail=$request->email;
             $cliente->FechaIngreso=date('Y-m-d');
             //$cliente->Contacto=$request->nombre1;
-            $cliente->Credito=0;
+
             $cliente->Referencia=$request->referencia;
             $cliente->ReferenciaTelefono1=$request->referencia_t;
             $cliente->ReferenciaTelefono2="";
 
             //$cliente->ReferenciaTelefono2=$request->nombre1;
-            $cliente->Cupo=0;
-            $cliente->Plazo=0;
-            $cliente->Saldo=0;
+
             $cliente->Bloqueo='1900-01-01 00:00:00';
             $cliente->Medio=$request->medio;
             $cliente->Observaciones='Registrado';
-            $cliente->Institucional=0;
-            $cliente->Retenedor=0;
+
             //$cliente->RetenedorModo="N/A";
-            $cliente->Notificacion=0;
-            $cliente->Enabled=1;
-            $cliente->Natural=1;
+
 
             $cliente->ActividadEconomica=$request->actividad;
             //$cliente->GranContribuyente=$request->nombre1;
-            $cliente->Sexo=" ";
+
             $cliente->Contacto="";
 
             $cliente->Medio=" ";
@@ -749,8 +787,7 @@ class ClienteController extends Controller
 
 
 
-                    $domicilio_cliente->Telefono = $request->Telefono;
-                    $domicilio_cliente->ID_Cliente = $cliente2->ID;
+                        $domicilio_cliente->Telefono = $request->Telefono;
 
 
                         $user->name = $request->Nombre;
@@ -854,9 +891,9 @@ class ClienteController extends Controller
             $cliente->TipoNit="Nit";
             //
             //$cliente->Regimen=$request->regimen;
-            $cliente->BirthDay=" ";
+
             $cliente->BirthMonth=" ";
-            $cliente->BirthYear= " ";
+
             //email e ingreso
             $cliente->Mail=$request->email;
             $cliente->FechaIngreso=date('Y-m-d');
@@ -882,7 +919,7 @@ class ClienteController extends Controller
 
             $cliente->ActividadEconomica=$request->actividad;
             //$cliente->GranContribuyente=$request->nombre1;
-            $cliente->Sexo=" ";
+
             $cliente->Contacto="";
 
             $cliente->Medio=" ";
@@ -1022,7 +1059,6 @@ class ClienteController extends Controller
             //$cliente->Regimen=$request->regimen;
             $cliente->BirthDay=" ";
             $cliente->BirthMonth=" ";
-            $cliente->BirthYear= " ";
             //email e ingreso
             $cliente->Mail=$request->email;
             $cliente->FechaIngreso=date('Y-m-d');
@@ -1048,7 +1084,6 @@ class ClienteController extends Controller
 
             $cliente->ActividadEconomica=$request->actividad;
             //$cliente->GranContribuyente=$request->nombre1;
-            $cliente->Sexo=" ";
             $cliente->Contacto="";
 
             $cliente->Medio=" ";
@@ -1116,6 +1151,13 @@ class ClienteController extends Controller
 
     public function contacto($id)
     {
+
+        $contacto = ContactoModel::where('Cliente_id',$id)->first();
+        if ($contacto) {
+            $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
+            //return  $contacto;
+            return view("editar.contacto",["tipos"=>$tipos,'id'=>$id,'contacto'=>$contacto]);
+        }
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
         return view("cliente.contacto",["tipos"=>$tipos,'id'=>$id]);
     }
@@ -1387,7 +1429,7 @@ class ClienteController extends Controller
             ]
             );
            try {
-                $Informaciont = new InformacionTributariaModel();
+                $Informaciont =  InformacionTributariaModel::where('Cliente_id',$id);
 
                 $Informaciont->ResponsableImpuesto = $request->grupo1;
                 $Informaciont->SujetoRetencion = $request->grupo2;
@@ -1399,7 +1441,6 @@ class ClienteController extends Controller
                 $Informaciont->AutorretenedorF = $request->grupo7;
                 $Informaciont->AutorretenedorICA = $request->grupo8;
                 $Informaciont->Email = $request->email;
-                $Informaciont->Cliente_id = $id;
 
             if ($Informaciont->save()) {
 
@@ -1483,7 +1524,7 @@ class ClienteController extends Controller
             ]
             );
            try {
-                $Informacionf =  InformacionFinancieraModel::where('id',$id);
+                $Informacionf =  InformacionFinancieraModel::where('user_id',$id)->first();
 
                 $Informacionf->Activo = $request->Activo;
                 $Informacionf->Pasivo = $request->Pasivo;
@@ -1575,7 +1616,7 @@ class ClienteController extends Controller
             ]
             );
            try {
-                $Informacionb =  InformacionBancariaModel::where('id',$id);
+                $Informacionb =  InformacionBancariaModel::where('user_id',$id)->first();
 
                 $Informacionb->Banco = $request->banco;
                 $Informacionb->TipoCuenta = $request->cuenta;
@@ -1589,7 +1630,6 @@ class ClienteController extends Controller
                 $Informacionb->Ciudad2 = $request->municipio2." ";
                 $Informacionb->Departamento2 = $request->departamento2." ";
                 $Informacionb->Pais2 = $request->pais2." ";
-                $Informacionb->user_id = $id;
 
             if ($Informacionb->save()) {
 

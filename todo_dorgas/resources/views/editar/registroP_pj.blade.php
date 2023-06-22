@@ -375,7 +375,7 @@
 
 
            $.ajax({
-          url: "/perfiladicional/2",
+          url: "/perfiladicional/"+{{ Auth::user()->id }},
           dataType: "json",
           type: "GET",
           success: function(response) {

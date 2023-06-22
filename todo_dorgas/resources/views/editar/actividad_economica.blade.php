@@ -58,7 +58,7 @@
 
         <div class="row">
             <div class="col-md-12">
-              <div class="text-center">
+              <div class="" style="text-align: center;">
                 <img src="{{ asset('images/logo_t2.png') }}"   class=" my-4 img-fluid">
               </div>
             </div>

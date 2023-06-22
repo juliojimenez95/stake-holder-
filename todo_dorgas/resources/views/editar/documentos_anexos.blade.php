@@ -36,25 +36,42 @@
                   <div class="div_main">
                     <div class="div_inside">
                         <p class="div_p">Cámara y Comercio<span>*</span></p>
-                        <div class="div_img">
-                          <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
-                          <input type="file" id="camara_comercio" name="camara_comercio" style="display:none; " onchange="changeImageColor()">
+                        <div style="display: flex;">
+                            <a class="div_img" href="https://www.google.com" target="_blank">
+                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                            </a>
+                              <div class="div_img">
+                                <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
+                                <input type="file" id="camara_comercio" name="camara_comercio" style="display:none; " onchange="changeImageColor()">
+                              </div>
                         </div>
+
                     </div>
 
 
                     <div class="div_inside">
                       <p class="div_p">R.U.T del Año Vigente<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Rut').click()">
-                        <input type="file" id="Rut" name="Rut" style="display:none;" onchange="changeImageColor1()">
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Rut').click()">
+                            <input type="file" id="Rut" name="Rut" style="display:none;" onchange="changeImageColor1()">
+                          </div>
                       </div>
+
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Copia de C.C Representante Legal<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img3" class="img-fluid" onclick="document.getElementById('CC').click()" >
-                        <input type="file" id="CC" name="CC" style="display:none;" onchange="changeImageColor2()">
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img3" class="img-fluid" onclick="document.getElementById('CC').click()" >
+                            <input type="file" id="CC" name="CC" style="display:none;" onchange="changeImageColor2()">
+                          </div>
                       </div>
                     </div>
 
@@ -66,25 +83,43 @@
 
                     <div class="div_inside">
                       <p class="div_p">Estados Financieros del Año Anterior<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" id="img4" alt="Imagen" class="img-fluid" onclick="document.getElementById('FAA').click()">
-                        <input type="file" id="FAA" name="FAA" style="display:none;" onchange="changeImageColor3()">
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" id="img4" alt="Imagen" class="img-fluid" onclick="document.getElementById('FAA').click()">
+                            <input type="file" id="FAA" name="FAA" style="display:none;" onchange="changeImageColor3()">
+                          </div>
                       </div>
+
                     </div>
 
                     <div class="div_inside">
                       <p class="div_p">Referencia Comercial no superior a 1 mes<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img5" class="img-fluid" onclick="document.getElementById('RC').click()">
-                        <input type="file" id="RC" name="RC" style="display:none;" onchange="changeImageColor4()">
-                        </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img5" class="img-fluid" onclick="document.getElementById('RC').click()">
+                            <input type="file" id="RC" name="RC" style="display:none;" onchange="changeImageColor4()">
+                            </div>
+                      </div>
+
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Resolucion Rete ICA<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img6" class="img-fluid" onclick="document.getElementById('RRI').click()">
-                        <input type="file" id="RRI" name="RRI" style="display:none;" onchange="changeImageColor5()">
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img6" class="img-fluid" onclick="document.getElementById('RRI').click()">
+                            <input type="file" id="RRI" name="RRI" style="display:none;" onchange="changeImageColor5()">
+                          </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -93,24 +128,42 @@
                   <div class="div_main">
                     <div class="div_inside">
                       <p class="div_p">Gran Contribuyente<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img7" class="img-fluid" onclick="document.getElementById('GC').click()">
-                        <input type="file" id="GC" name="GC" style="display:none;"  onchange="changeImageColor6()">
-                    </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img7" class="img-fluid" onclick="document.getElementById('GC').click()">
+                            <input type="file" id="GC" name="GC" style="display:none;"  onchange="changeImageColor6()">
+                        </div>
+                      </div>
+
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Autoretenedor en la Fuente<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img8" class="img-fluid" onclick="document.getElementById('AF').click()">
-                        <input type="file" id="AF" name="AF" style="display:none;"  onchange="changeImageColor7()">
-                    </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img8" class="img-fluid" onclick="document.getElementById('AF').click()">
+                            <input type="file" id="AF" name="AF" style="display:none;"  onchange="changeImageColor7()">
+                        </div>
+                      </div>
+
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Autoretenedor ICA<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img9" class="img-fluid" onclick="document.getElementById('ICA').click()">
-                        <input type="file" id="ICA" name="ICA" style="display:none;"  onchange="changeImageColor8()">
-                    </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img9" class="img-fluid" onclick="document.getElementById('ICA').click()">
+                            <input type="file" id="ICA" name="ICA" style="display:none;"  onchange="changeImageColor8()">
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -118,24 +171,42 @@
                     <div class="div_main">
                         <div class="div_inside">
                       <p class="div_p">Brochure<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img10" class="img-fluid" onclick="document.getElementById('Brochure').click()">
-                        <input type="file" id="Brochure" name="Brochure" style="display:none;"  onchange="changeImageColor9()">
-                    </div>
+                      <div style="display: flex">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img10" class="img-fluid" onclick="document.getElementById('Brochure').click()">
+                            <input type="file" id="Brochure" name="Brochure" style="display:none;"  onchange="changeImageColor9()">
+                        </div>
+                      </div>
+
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Certificado Bancario<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img11" class="img-fluid" onclick="document.getElementById('CB').click()">
-                        <input type="file" id="CB" name="CB" style="display:none;"  onchange="changeImageColor10()">
-                    </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img11" class="img-fluid" onclick="document.getElementById('CB').click()">
+                            <input type="file" id="CB" name="CB" style="display:none;"  onchange="changeImageColor10()">
+                        </div>
+                      </div>
+
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Certificado de implementacion del SG-SST<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('SG-SST').click()">
-                        <input type="file" id="SG-SST" name="SG-SST" style="display:none;"  onchange="changeImageColor11()">
-                    </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('SG-SST').click()">
+                            <input type="file" id="SG-SST" name="SG-SST" style="display:none;"  onchange="changeImageColor11()">
+                        </div>
+                      </div>
+
                     </div>
                     </div>
                 </div>
@@ -143,10 +214,16 @@
                   <div class="div_main">
                   <div class="div_inside">
                       <p class="div_p">Plantilla Aporte Seguridad Social<span>*</span></p>
-                      <div class="div_img">
-                        <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img13" class="img-fluid" onclick="document.getElementById('SS').click()">
-                        <input type="file" id="SS" name="SS" style="display:none;"  onchange="changeImageColor12()">
-                    </div>
+                      <div style="display: flex;">
+                        <a class="div_img" href="https://www.google.com" target="_blank">
+                            <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                        </a>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img13" class="img-fluid" onclick="document.getElementById('SS').click()">
+                            <input type="file" id="SS" name="SS" style="display:none;"  onchange="changeImageColor12()">
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

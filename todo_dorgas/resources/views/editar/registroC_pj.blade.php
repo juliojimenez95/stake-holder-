@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/juridica.css') }}">
     <link rel="stylesheet" href="{{ asset('css/natural.css') }}">
     <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
     <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
@@ -26,6 +27,43 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="div_main">
+                    <div class="">
+                        @if (Auth::user()->rol == 1)
+                            <a class="btn btn-success btn_cb_c" href="{{ route('clientes.perfil',Auth::user()->id) }}"
+
+                                            style="margin-top: 25px;">
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                {{ __('Regresar') }}
+                            </a>
+                        @else
+
+                            <a class="btn btn-success btn_cb_c" href="{{ route('proveedor.perfil',Auth::user()->id) }}"
+
+                                            style="margin-top: 25px;">
+                                            <i class="fa-solid fa-user"></i>
+                                {{ __('Actualizar Perfil') }}
+                            </a>
+
+                        @endif
+
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
+                                         style="margin-top: 25px;">
+                            {{ __('Continuar') }}
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
      <div class="row">
       <div class="col-md-12">
         <div class="text-center">

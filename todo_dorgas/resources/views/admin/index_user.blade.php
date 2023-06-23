@@ -108,7 +108,8 @@
                                         <a href="#"  onclick="dataPagare({{ $usuario->id }})" {{-- data-toggle="modal" data-target="#modalInformacionPagare"  --}} style="margin-right: 15px; text-decoration: none;">
                                             <img src="{{ asset('images/Pagaré.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
-
+                                        <br>
+                                        <br>
                                         <a href="#"  onclick="dataBancaria({{ $usuario->id }})"  {{--  data-toggle="modal" data-target="#modalInformacionBancariaLabel"--}}  style="margin-right: 15px; text-decoration: none;">
                                             <img src="{{ asset('images/Información-Bancaria.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>

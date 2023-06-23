@@ -647,7 +647,7 @@ class DocumentosController extends Controller
 
         try {
 
-            $fondos =  origenDeFondoModel::where('id',$id);
+            $fondos =  origenDeFondoModel::where('user_id',$id)->first();
 
            // return $request->file('fondo');
             $name_pdf1 = ' ';

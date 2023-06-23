@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/socios.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
+
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -144,8 +146,10 @@
             <div class="container">
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <form action="{{ route('storefondo',$id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('editfondo',$id)}}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
+
                         <div class="cont_cus">
                             <div class="div_con">
                                 <p>Documento Declaración de Origen de Fondos<br><span>Por favor descargar el D.O.F diligenciar y cargarlo nuevamente</span></p>
@@ -164,8 +168,8 @@
                                         <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
                                     </div>
                                     <div class="btn_c">
-                                        <a class="btn btn-primary" onclick="document.getElementById('fondo').click()">CARGAR</a><span>*</span>
-                                        <input type="file" id="fondo" name="fondo" style="display:none;">
+                                        <a class="btn btn-primary" id="img1" onclick="document.getElementById('fondo').click()">CARGAR</a><span>*</span>
+                                        <input type="file" id="fondo" name="fondo" style="display:none;"  onchange="changeImageColor()">
 
                                     </div>
                                 </div>
@@ -175,7 +179,7 @@
                                         <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
                                     </div>
                                     <div class="btn_c">
-                                        <a class="btn btn-primary" id="descarga" data-file="FO_SAG_04_Declaracion_Origen_Fondos_Proveedores_V01.pdf">EXISTENTE</a><span>*</span>
+                                        <a class="btn btn-primary" id="descarga1" data-file="{{ $origen->archivo }}">EXISTENTE</a><span>*</span>
                                     </div>
                                 </div>
                             </div>
@@ -188,9 +192,8 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <a href="{{ route('clientes.documentos_anexos',$id) }}">
                         <button  class="btn btn-primary btn_continuar">Guardar y Continuar</button>
-                    </a>
+
                     </div>
                 </div>
             </div>
@@ -207,8 +210,19 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/fondo.js') }}"></script>
+
   <script>const button = document.querySelector('#descarga');
     button.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });</script>
+
+<script>
+    button2 = document.querySelector('#descarga1');
+    button2.addEventListener('click', function() {
         // Obtener el archivo PDF correspondiente
         const filename = this.getAttribute('data-file');
         // Descargar el archivo

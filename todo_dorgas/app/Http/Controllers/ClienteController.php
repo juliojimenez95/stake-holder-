@@ -44,8 +44,10 @@ class ClienteController extends Controller
 
         $origen = origenDeFondoModel::where('user_id',$id)->first();
 
+        //return $origen;
+
         if ($origen) {
-            return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
+            return view("editar.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,
             "id"=>$id,"origen"=>$origen]);
         }else{
             return view("cliente.socios_accionistas",["tipos"=>$tipos,"accionistas"=>$accionistas,

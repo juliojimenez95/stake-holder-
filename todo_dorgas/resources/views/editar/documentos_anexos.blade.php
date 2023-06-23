@@ -273,7 +273,136 @@
         const filename = this.getAttribute('data-file');
         // Descargar el archivo
         window.location.href = '/descargar-pdf/' + filename;
-    });</script>
+    });
+
+   const button2 = document.querySelector('#descarga2');
+   if (button2){
+        button2.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+
+
+    const button3 = document.querySelector('#descarga3');
+    if (button3){
+        button3.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+    const button4 = document.querySelector('#descarga4');
+    if (button4){
+        button4.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+    const button5 = document.querySelector('#descarga5');
+    if (button5){
+        button5.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+    const button6 = document.querySelector('#descarga6');
+    if (button6){
+        button6.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+    const button7 = document.querySelector('#descarga7');
+    if (button7){
+        button7.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+    const button8 = document.querySelector('#descarga8');
+    if (button8){
+        button8.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+    const button9 = document.querySelector('#descarga9');
+    if (button9){
+        button9.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+    const button10 = document.querySelector('#descarga10');
+    if (button10){
+        button10.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+    const button11 = document.querySelector('#descarga11');
+    if (button11){
+        button11.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+    const button12 = document.querySelector('#descarga12');
+    if (button12){
+        button12.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+    }
+
+
+    const button13 = document.querySelector('#descarga13');
+    button13.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+
+    </script>
 </body>
 
 </body>

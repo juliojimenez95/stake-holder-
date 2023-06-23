@@ -6,6 +6,7 @@
     <title>Todo Drogas</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/contacto.css') }}">
     <!-- Agregar el enlace a la hoja de estilo de Bootstrap -->
@@ -13,6 +14,43 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="div_main">
+                    <div class="">
+                        @if (Auth::user()->rol == 1)
+                            <a class="btn btn-success btn_cb_c" href="/conocimiento/{{ $id }}"
+
+                                            style="margin-top: 25px;">
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                {{ __('Regresar') }}
+                            </a>
+                        @else
+
+                            <a class="btn btn-success btn_cb_c" href="/conocimiento/{{ $id }}"
+
+                                            style="margin-top: 25px;">
+                                            <i class="fa-solid fa-user"></i>
+                                {{ __('Actualizar Perfil') }}
+                            </a>
+
+                        @endif
+
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-success btn_cb" href="/home"
+                                         style="margin-top: 25px;">
+                            {{ __('Inicio') }}
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
      <div class="row">
       <div class="col-md-12">
         <div class="text-center">

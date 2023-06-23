@@ -263,22 +263,31 @@ class ProveedorController extends Controller
         return view("proveedor.identificacion");
     }
 
-    public function perfil()
+    public function perfil($id)
     {
         $user = DB::table('TBL_USUARIOS_STAKE')
             ->join('PROVEEDORES', 'TBL_USUARIOS_STAKE.email', '=', 'PROVEEDORES.Mail')
-            ->select('TBL_USUARIOS_STAKE.name','TBL_USUARIOS_STAKE.rol', 'TBL_USUARIOS_STAKE.id','TBL_USUARIOS_STAKE.PEP','PROVEEDORES.ID as Nit','PROVEEDORES.TipoID',
+            ->select('TBL_USUARIOS_STAKE.name','TBL_USUARIOS_STAKE.rol','TBL_USUARIOS_STAKE.email', 'TBL_USUARIOS_STAKE.id','TBL_USUARIOS_STAKE.PEP','PROVEEDORES.ID as Nit','PROVEEDORES.TipoID',
             'PROVEEDORES.ActividadEconomica','PROVEEDORES.Ciudad','PROVEEDORES.Departamento',
             'PROVEEDORES.Pais','PROVEEDORES.Telefono1',
             'PROVEEDORES.Direccion','PROVEEDORES.juridico','PROVEEDORES.tamano','PROVEEDORES.pagina_web',
-            'PROVEEDORES.tipo_s','PROVEEDORES.DV')
-            ->get();
+            'PROVEEDORES.tipo_s','PROVEEDORES.DV')->where('TBL_USUARIOS_STAKE.id',$id)
+            ->first();
+
+            //return $user;
 
             if ($user->juridico == 0) {
-                return view("editar.registroP_pn",['user'=>$user]);
+                $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
+                $actividades = actividad_economicaModel::get();
+                return view("editar.registroP_pn",['user'=>$user,'id'=>$id,"tipos"=>$tipos,"actividades"=>$actividades]);
 
             }else {
-                return view("editar.registroP_pj",['user'=>$user]);
+                $tipos=['Sociedades Limitadas – LTDA.','Sociedades Anónimas – S.A.','Sociedad en Comandita – & Cía.',
+                'Sociedad en Comandita Simple – S. en C.','Sociedad en Comandita por Acciones – S.C.A.',
+                'Sociedad por Acciones Simplificada – S.A.S.','Sociedad Colectiva.'];
+                $empresas=['Microempresas','Pequeña empresa','Mediana empresa','Grande empresa'];
+                $actividades = actividad_economicaModel::get();
+                return view("editar.registroP_pj",['id'=>$id,'user'=>$user,"empresas"=>$empresas,"tipos"=>$tipos,"actividades"=>$actividades]);
 
             }
 
@@ -423,6 +432,8 @@ class ProveedorController extends Controller
     public function editpj(Request $request,$id)
     {
 
+       // return $id;
+
         $request->validate(
             [
                 'razon_s'=> 'required',
@@ -454,6 +465,7 @@ class ProveedorController extends Controller
             ]
             );
            try {
+
             $user = User::where('id',$id)->first();
 
             $proveedor = ProveedorModel::where('Mail',$user->email)->first();

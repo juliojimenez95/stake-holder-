@@ -24,43 +24,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="div_main">
-                    <div class="">
-                        @if (Auth::user()->rol == 1)
-                            <a class="btn btn-success btn_cb_c" href="{{ route('clientes.perfil',Auth::user()->id) }}"
 
-                                            style="margin-top: 25px;">
-                                            <i class="fa-solid fa-arrow-left"></i>
-                                {{ __('Regresar') }}
-                            </a>
-                        @else
-
-                            <a class="btn btn-success btn_cb_c" href="{{ route('proveedor.perfil',Auth::user()->id) }}"
-
-                                            style="margin-top: 25px;">
-                                            <i class="fa-solid fa-user"></i>
-                                {{ __('Actualizar Perfil') }}
-                            </a>
-
-                        @endif
-
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                    <div class="">
-                        <a class="btn btn-success btn_cb" href="{{ route('logout') }}"
-                                         style="margin-top: 25px;">
-                            {{ __('Continuar') }}
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="div_main">
@@ -117,7 +81,7 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('proveedor.storepj') }}" method="POST">
+                        <form action=" {{ route('editppj',$id) }}" method="POST">
                             @csrf
                             @method('put')
 
@@ -270,23 +234,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Contraseña<span>*</span></strong></label>
-                                    <input type="password" class="form-control input_custom select_c" id="password" name="password"
-                                        placeholder="">
-                                    @if ($errors->has('password'))
-                                        <p class="text-danger">{{ $errors->first('password') }}</p>
-                                    @endif
-                                </div>
 
-                                <div class="col-md-4 col-sm-12">
-                                    <label for="password" class="form-label label_c"><strong>Confirmar contraseña<span>*</span></strong></label>
-                                    <input type="password" class="form-control input_custom select_c" id="password" name="password_confirmation"
-                                    required autocomplete="new-password"  placeholder="">
-                                    @if ($errors->has('password'))
-                                        <p class="text-danger">{{ $errors->first('password') }}</p>
-                                    @endif
-                                </div>
 
 
                             </div>

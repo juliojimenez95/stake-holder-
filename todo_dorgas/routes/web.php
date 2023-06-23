@@ -97,8 +97,8 @@ Route::put('/editInformaciont/{id}', [ClienteController::class,'editInformaciont
 Route::put('/editInformacionf/{id}', [ClienteController::class,'editInformacionf'])->name('editInformacionf');
 Route::put('/editInformacionb/{id}', [ClienteController::class,'editInformacionb'])->name('editInformacionb');
 Route::get('/cliente/perfil/{id}', [ClienteController::class,'perfil'])->name('clientes.perfil');
-Route::put('/editpjp/{id}', [ProveedorController::class,'editpj'])->name('editpj');
-Route::put('/editpnp/{id}', [ProveedorController::class,'editpn'])->name('editpn');
+Route::put('/editpjp/{id}', [ProveedorController::class,'editpj'])->name('editppj');
+Route::put('/editpnp/{id}', [ProveedorController::class,'editpn'])->name('editppn');
 Route::put('/editRepresentante/{id}', [ClienteController::class,'editRepresentante'])->name('editRepresentante');
 Route::put('/editpersonaE/{id}', [ClienteController::class,'editpersonaE'])->name('editpersonaE');
 Route::put('/editcontactopn/{id}', [ClienteController::class,'editcontactopn'])->name('editcontactopn');

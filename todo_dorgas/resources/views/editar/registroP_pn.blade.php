@@ -49,7 +49,7 @@
                         </form>
                     </div>
                     <div class="">
-                        <a class="btn btn-success btn_cb" href="/actividad/{{ $id }}"
+                        <a class="btn btn-success btn_cb" href="/conocimiento/{{ $id }}"
                                          style="margin-top: 25px;">
                             {{ __('Continuar') }}
                             <i class="fa-solid fa-arrow-right"></i>

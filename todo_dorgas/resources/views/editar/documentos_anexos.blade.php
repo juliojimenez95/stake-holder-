@@ -16,6 +16,24 @@
 </head>
 <body>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="div_main">
+
+            <div class="div_volver mt-3">
+                <a href="/home" class="btn btn-success btn_cb_c">
+                    <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+            </div>
+            <div class="">
+                <a class="btn btn-success btn_cb" href="/conocimiento/{{ $id }}"
+                                 style="margin-top: 25px;">
+                    {{ __('Continuar') }}
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
         <div class="row mb-3">
             <div class="col-md-12">
               <div class="text-center">

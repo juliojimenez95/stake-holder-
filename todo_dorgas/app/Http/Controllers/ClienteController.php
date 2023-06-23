@@ -145,6 +145,7 @@ class ClienteController extends Controller
             [
                 'Nombre'=> 'required',
                 'tipo_d'=> 'required',
+                'documento'=> 'required',
                 'participacion'=>'required',
                 'Nacionalidad'=>'required',
 
@@ -152,6 +153,7 @@ class ClienteController extends Controller
             [
                 'Nombre.required' => 'El nombre  es requerido',
                 'tipo_d.required' => 'Tipo de documento es requerido',
+                'documento.required' => 'Documento es requerido',
                 'participacion.required' => 'La participacion es requerida',
                 'Nacionalidad.required' => 'La nacionalidad es requerida',
             ]
@@ -161,10 +163,10 @@ class ClienteController extends Controller
 
                 $accionista->Nombres = $request->Nombre;
                 $accionista->TipoNit = $request->tipo_d;
+                $accionista->Nit = $request->documento;
                 $accionista->Participacion = $request->participacion;
                 $accionista->Nacionalidad = $request->Nacionalidad;
                 $accionista->PEP = $request->PEP;
-                $accionista->Nit = 0;
                 $accionista->user_id = $id;
 
             if ($accionista->save()) {
@@ -280,7 +282,7 @@ class ClienteController extends Controller
         $tipos=['N/D','CC','RC','TI','NIT','PAS','DIE'];
         $personaE =  personaExpuestaModel::where('user_id',$id)->first();
         if ($personaE) {
-            return view("cliente.conocimiento",["tipos"=>$tipos,'id'=>$id,'personaE'=>$personaE]);
+            return view("editar.conocimiento",["tipos"=>$tipos,'id'=>$id,'personaE'=>$personaE]);
 
         }else{
             return view("cliente.conocimiento",["tipos"=>$tipos,'id'=>$id]);
@@ -290,8 +292,32 @@ class ClienteController extends Controller
 
     public function declaracion($id)
     {
-        return view("cliente.declaracion",['id'=>$id]);
+        $autorizacion =  AutorizacionModel::where('user_id',$id)->first();
+
+        if ($autorizacion) {
+            return view("editar.declaracion",['id'=>$id,'autorizacion'=>$autorizacion]);
+
+        } else {
+            return view("cliente.declaracion",['id'=>$id]);
+
+        }
+
+
     }
+
+
+    public function declaracioninf($id)
+    {
+        $autorizacion =  AutorizacionModel::where('user_id',$id)->first();
+
+        return  response()->json([
+            'autorizacion'=>$autorizacion
+        ]);
+
+
+    }
+
+
 
     public function storedeclaracion(Request $request,$id)
     {

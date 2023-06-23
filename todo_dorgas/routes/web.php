@@ -129,6 +129,8 @@ Route::get('/informaciontributaria/{id}', [ClienteController::class, 'informacio
 Route::get('/pagareinf/{id}', [ClienteController::class, 'pagareinf'])->name('pagareinf');
 Route::get('/perfiladicional/{id}', [ClienteController::class, 'perfiladicional'])->name('perfiladicional');
 Route::get('/perfilrepresentante/{id}', [ClienteController::class, 'perfilrepresentante'])->name('perfilrepresentante');
+Route::get('/declaracioninf/{id}', [ClienteController::class, 'declaracioninf'])->name('declaracioninf');
+
 
 
 

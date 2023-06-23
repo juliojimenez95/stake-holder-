@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/socios.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,7 +41,7 @@
         </div>
         <div class="card bg-light mt-4">
             <div class="card-body">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="content_1">
@@ -78,6 +77,15 @@
                                 <p class="text-danger">{{ $errors->first('tipo_d') }}</p>
                             @endif
                         </div>
+
+                        <div class="div_cus">
+                            <label for="">Documento<span>*</span> </label>
+                            <input type="text" class="form-control custom_input" name="documento">
+                            @if ($errors->has('documento'))
+                                <p class="text-danger">{{ $errors->first('documento') }}</p>
+                            @endif
+                        </div>
+
                         <div class="div_cus">
                             <label for="">Participación %<span>*</span> </label>
                             <input type="text" class="form-control custom_input" name="participacion">
@@ -116,6 +124,7 @@
                           <tr>
                               <th>Nombres y Apellidos</th>
                               <th>Tipo de documento</th>
+                              <th>Documento</th>
                               <th>Participación %</th>
                               <th>Nacionalidad</th>
                               <th>PEP</th>
@@ -127,6 +136,7 @@
                                   <tr>
                                       <td>{{ $accionista->Nombres }}</td>
                                       <td>{{ $accionista->TipoNit }}</td>
+                                      <td>{{ $accionista->Nit }}</td>
                                       <td>{{ $accionista->Participacion }}</td>
                                       <td>{{ $accionista->Nacionalidad }}</td>
 

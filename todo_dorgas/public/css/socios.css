@@ -18,6 +18,10 @@
     color: #004492;
 }
 
+.image-green {
+    filter: brightness(150%) hue-rotate(120deg);
+  }
+
 /*Estilo para el botón de radio*/
 input[type="radio"] {
     width: 18px;

@@ -169,5 +169,88 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+
+       $.ajax({
+      url: "/declaracioninf/"+{{ Auth::user()->id }},
+      dataType: "json",
+      type: "GET",
+      success: function(response) {
+          console.log(response);
+
+
+          if (response.autorizacion.ManejoRP == 'Si') {
+
+              $("#grupo1s").prop('checked',true);
+          }else if (response.autorizacion.ManejoRP =='No') {
+              $("#grupo1n").prop('checked',true);
+
+          } else {
+              $("#grupo1na").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.EjercidoPPOP == 'Si') {
+
+               $("#grupo2s").prop('checked',true);
+          }else if (response.autorizacion.EjercidoPPOP =='No') {
+               $("#grupo2n").prop('checked',true);
+
+          } else {
+               $("#grupo2na").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.Reconocimiento == 'Si') {
+
+           $("#grupo3s").prop('checked',true);
+          }else if (response.autorizacion.Reconocimiento =='No') {
+              $("#grupo3n").prop('checked',true);
+
+          } else {
+           $("#grupo3na").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.VincuPExpuesta == 'Si') {
+
+          $("#grupo4s").prop('checked',true);
+          }else if (response.autorizacion.VincuPExpuesta =='No') {
+          $("#grupo4n").prop('checked',true);
+
+          } else {
+          $("#grupo4na").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.ObligacionTE == 'Si') {
+
+          $("#grupo5s").prop('checked',true);
+          }else if (response.autorizacion.ObligacionTE =='No') {
+          $("#grupo5n").prop('checked',true);
+
+          } else {
+          $("#grupo5na").prop('checked',true);
+
+          }
+
+
+
+
+
+        //  $("#email").val(response.informacion.Email);
+
+      },
+      error: function(response) {
+          console.log("Ocurrió un error al traer los municipios");
+      },
+      });
+      }
+
+      );
+
+  </script>
 </body>
 </html>

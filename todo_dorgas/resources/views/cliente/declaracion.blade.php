@@ -119,6 +119,7 @@
                     <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal4"><strong>Conoce más</strong></a>
                     <br><br>
                     <p class="text-primary cus_cus" >Cumplimiento Normas Anticorrupción<span>*</span></p>
+                    <br>
                     <strong class="text-primary">
                     <label class="op_cus">Si <input type="radio" name="grupo5" value="1"></label>
                     <label class="op_cus">No <input type="radio" name="grupo5" value="0"></label>

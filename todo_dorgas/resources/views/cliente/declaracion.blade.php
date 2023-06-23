@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienvenido</title>
+  <script
+            src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+            crossorigin="anonymous"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -242,5 +246,70 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+
+       $.ajax({
+      url: "/declaracioninf/"+{{ Auth::user()->id }},
+      dataType: "json",
+      type: "GET",
+      success: function(response) {
+          console.log(response);
+
+
+          if (response.autorizacion.Autorizacion_datos == 1) {
+
+              $("#grupo1s").prop('checked',true);
+          }else if (response.autorizacion.Autorizacion_datos == 0) {
+              $("#grupo1n").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.Autorizacion_riesgos == 1) {
+
+               $("#grupo2s").prop('checked',true);
+          }else if (response.autorizacion.Autorizacion_riesgos == 0) {
+               $("#grupo2n").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.Declaracion_fondos == 1) {
+
+           $("#grupo3s").prop('checked',true);
+          }else if (response.autorizacion.Declaracion_fondos == 0) {
+              $("#grupo3n").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.Cumplimiento_etico == 1) {
+
+          $("#grupo4s").prop('checked',true);
+          }else if (response.autorizacion.Cumplimiento_etico == 0) {
+          $("#grupo4n").prop('checked',true);
+
+          }
+
+          if (response.autorizacion.Cumplimiento_anticorrupcion == 1) {
+
+          $("#grupo5s").prop('checked',true);
+          }else if (response.autorizacion.Cumplimiento_anticorrupcion == 0) {
+          $("#grupo5n").prop('checked',true);
+
+          }
+
+        //  $("#email").val(response.informacion.Email);
+
+      },
+      error: function(response) {
+          console.log("Ocurrió un error al traer los municipios");
+      },
+      });
+      }
+
+      );
+
+  </script>
 </body>
 </html>

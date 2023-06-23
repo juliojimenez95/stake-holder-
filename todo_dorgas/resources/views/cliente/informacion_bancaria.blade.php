@@ -81,11 +81,10 @@
                                         <p class="text-danger">{{ $errors->first('n_cuenta') }}</p>
                                     @endif
                             </div>
-
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad<span>*</span></label>
-                                <select class="form-control select_custom" name="municipio" id="municipio">
-                                    <option value="">Seleccione una ciudad</option>
+                                <label for="" class="label_custom">País<span>*</span></label>
+                                <select class="form-control select_custom"  id="pais" name="pais">
+                                    <option value="Colombia">Colombia</option>
                                 </select>
                             </div>
 
@@ -101,9 +100,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">País<span>*</span></label>
-                                <select class="form-control select_custom"  id="pais" name="pais">
-                                    <option value="Colombia">Colombia</option>
+                                <label for="" class="label_custom">Ciudad<span>*</span></label>
+                                <select class="form-control select_custom" name="municipio" id="municipio">
+                                    <option value="">Seleccione una ciudad</option>
                                 </select>
                             </div>
 
@@ -154,11 +153,10 @@
                                 <label for="" class="label_custom">Número de Cuenta</label>
                                 <input type="text" class="form-control input_custom"name="n_cuenta2">
                             </div>
-
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad</label>
-                                <select class="form-control select_custom" name="municipio2" id="municipio2">
-                                    <option value="">Seleccione una ciudad</option>
+                                <label for="" class="label_custom">País</label>
+                                <select class="form-control select_custom" name="pais2" id="pais2">
+                                    <option value="Colombia">Colombia</option>
                                 </select>
                             </div>
 
@@ -170,9 +168,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">País</label>
-                                <select class="form-control select_custom" name="pais2" id="pais2">
-                                    <option value="Colombia">Colombia</option>
+                                <label for="" class="label_custom">Ciudad</label>
+                                <select class="form-control select_custom" name="municipio2" id="municipio2">
+                                    <option value="">Seleccione una ciudad</option>
                                 </select>
                             </div>
 

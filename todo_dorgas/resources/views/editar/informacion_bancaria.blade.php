@@ -94,9 +94,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad<span>*</span></label>
-                                <select class="form-control select_custom" name="municipio" id="municipio">
-                                    <option value="{{ $informacion->Ciudad }}">{{ $informacion->Ciudad }}</option>
+                                <label for="" class="label_custom">País<span>*</span></label>
+                                <select class="form-control select_custom"  id="pais" name="pais">
+                                    <option value="Colombia">Colombia</option>
                                 </select>
                             </div>
 
@@ -112,9 +112,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">País<span>*</span></label>
-                                <select class="form-control select_custom"  id="pais" name="pais">
-                                    <option value="Colombia">Colombia</option>
+                                <label for="" class="label_custom">Ciudad<span>*</span></label>
+                                <select class="form-control select_custom" name="municipio" id="municipio">
+                                    <option value="{{ $informacion->Ciudad }}">{{ $informacion->Ciudad }}</option>
                                 </select>
                             </div>
 
@@ -177,9 +177,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">Ciudad</label>
-                                <select class="form-control select_custom" name="municipio2" id="municipio2">
-                                    <option value="{{ $informacion->Ciudad2 }}">{{ $informacion->Ciudad2 }}</option>
+                                <label for="" class="label_custom">País</label>
+                                <select class="form-control select_custom" name="pais2" id="pais2">
+                                    <option value="{{ $informacion->Pais2 }}">{{ $informacion->Pais2 }}</option>
                                 </select>
                             </div>
 
@@ -191,9 +191,9 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="" class="label_custom">País</label>
-                                <select class="form-control select_custom" name="pais2" id="pais2">
-                                    <option value="{{ $informacion->Pais2 }}">{{ $informacion->Pais2 }}</option>
+                                <label for="" class="label_custom">Ciudad</label>
+                                <select class="form-control select_custom" name="municipio2" id="municipio2">
+                                    <option value="{{ $informacion->Ciudad2 }}">{{ $informacion->Ciudad2 }}</option>
                                 </select>
                             </div>
 

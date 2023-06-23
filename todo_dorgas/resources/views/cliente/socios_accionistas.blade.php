@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/socios.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
+
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -164,20 +166,12 @@
                                         <img src="{{ asset('images/Subir-PDF.png') }}" class="img-fluid">
                                     </div>
                                     <div class="btn_c">
-                                        <a class="btn btn-primary" onclick="document.getElementById('fondo').click()">CARGAR</a><span>*</span>
-                                        <input type="file" id="fondo" name="fondo" style="display:none;">
+                                        <a class="btn btn-primary" id="img1" onclick="document.getElementById('fondo').click()">CARGAR</a><span>*</span>
+                                        <input type="file" id="fondo" name="fondo" style="display:none;" onchange="changeImageColor()">
 
                                     </div>
                                 </div>
 
-                                <div class="cont_all">
-                                    <div class="img_cus">
-                                        <img src="{{ asset('images/Descargar-PDF.png') }}" class="img-fluid">
-                                    </div>
-                                    <div class="btn_c">
-                                        <a class="btn btn-primary" id="descarga" data-file="FO_SAG_04_Declaracion_Origen_Fondos_Proveedores_V01.pdf">EXISTENTE</a><span>*</span>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
@@ -188,9 +182,9 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <a href="{{ route('clientes.documentos_anexos',$id) }}">
+
                         <button  class="btn btn-primary btn_continuar">Guardar y Continuar</button>
-                    </a>
+
                     </div>
                 </div>
             </div>

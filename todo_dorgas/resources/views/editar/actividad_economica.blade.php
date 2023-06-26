@@ -10,6 +10,11 @@
 
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
+  <!-- Agregar el enlace de jquery -->
+  <script
+  src="https://code.jquery.com/jquery-3.6.3.js"
+  integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  crossorigin="anonymous"></script>
 
   <!--fuentes-->
   <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
@@ -34,8 +39,8 @@
                         <a class="btn btn-success btn_cb_c" href="{{ route('proveedor.perfil',Auth::user()->id) }}"
 
                                         style="margin-top: 25px;">
-                                        <i class="fa-solid fa-user"></i>
-                            {{ __('Actualizar Perfil') }}
+                                        <i class="fa-solid fa-arrow-left"></i>
+                            {{ __('Regresar') }}
                         </a>
 
                     @endif
@@ -314,10 +319,126 @@
 
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+
+       $.ajax({
+      url: "/perfilrepresentante/"+{{ Auth::user()->id }},
+      dataType: "json",
+      type: "GET",
+      success: function(response) {
+          console.log(response);
+
+          informacion_local = response.user;
+
+          if (response.user.ManejoRP == 'Si') {
+
+              $("#grupo1s").prop('checked',true);
+          }else if (response.user.ManejoRP =='No') {
+              $("#grupo1n").prop('checked',true);
+
+          } else {
+              $("#grupo1na").prop('checked',true);
+
+          }
+
+          if (response.user.EjercidoPPOP == 'Si') {
+
+               $("#grupo2s").prop('checked',true);
+          }else if (response.user.EjercidoPPOP =='No') {
+               $("#grupo2n").prop('checked',true);
+
+          } else {
+               $("#grupo2na").prop('checked',true);
+
+          }
+
+          if (response.user.Reconocimiento == 'Si') {
+
+           $("#grupo3s").prop('checked',true);
+          }else if (response.user.Reconocimiento =='No') {
+              $("#grupo3n").prop('checked',true);
+
+          } else {
+           $("#grupo3na").prop('checked',true);
+
+          }
+
+          if (response.user.VincuPExpuesta == 'Si') {
+
+          $("#grupo4s").prop('checked',true);
+          }else if (response.user.VincuPExpuesta =='No') {
+          $("#grupo4n").prop('checked',true);
+
+          } else {
+          $("#grupo4na").prop('checked',true);
+
+          }
+
+          if (response.user.ObligacionTE == 'Si') {
+
+          $("#grupo5s").prop('checked',true);
+          }else if (response.user.ObligacionTE =='No') {
+          $("#grupo5n").prop('checked',true);
+
+          } else {
+          $("#grupo5na").prop('checked',true);
+
+          }
+
+          if (response.user.OrganizacionI == 'Si') {
+
+              $("#grupo6s").prop('checked',true);
+              }else if (response.user.OrganizacionI =='No') {
+              $("#grupo6n").prop('checked',true);
+
+              } else {
+              $("#grupo6na").prop('checked',true);
+
+              }
+
+              if (response.user.ObligacionP == 'Si') {
+
+              $("#grupo7s").prop('checked',true);
+              }else if (response.user.ObligacionP =='No') {
+              $("#grupo7n").prop('checked',true);
+
+              } else {
+              $("#grupo7na").prop('checked',true);
+
+              }
+
+
+
+
+
+
+
+
+
+          $("#Observacion").val(response.user.Observacion1);
+          $("#Observacion2").val(response.user.Observacion2);
+          $("#Observacion3").val(response.user.Observacion3);
+          $("#Observacion4").val(response.user.Observacion4);
+          $("#Observacion5").val(response.user.Observacion5);
+          $("#Observacion6").val(response.user.Observacion6);
+          $("#Observacion7").val(response.user.Observacion7);
+
+
+      },
+      error: function(response) {
+          console.log("Ocurrió un error al traer los municipios");
+      },
+      });
+      }
+
+      );
+
+  </script>
 </body>
 </html>

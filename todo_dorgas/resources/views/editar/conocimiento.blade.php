@@ -36,8 +36,8 @@
                             <a class="btn btn-success btn_cb_c" href=" /actividad/{{ $id }}"
 
                                             style="margin-top: 25px;">
-                                            <i class="fa-solid fa-user"></i>
-                                {{ __('Actualizar Perfil') }}
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                {{ __('Regresar') }}
                             </a>
 
                         @endif

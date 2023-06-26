@@ -10,11 +10,30 @@
             crossorigin="anonymous"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/declaracion.css') }}">
 </head>
 <body>
   <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="div_main">
+
+            <div class="div_volver mt-3">
+                <a href="/cliente/documentos_anexos/{{ $id }}" class="btn btn-success btn_cb_c">
+                    <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+            </div>
+            <div class="">
+                <a class="btn btn-success btn_cb" href="/home"
+                                 style="margin-top: 25px;">
+                    {{ __('Continuar') }}
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
     <div class="row mb-4">
       <div class="col-md-12">
         <div class="text-center">

@@ -25,6 +25,8 @@ class AnexoModel extends Model
         'Certificado_bancario' ,
         'SG_SST' ,
         'SS',
+        'Certificado_c',
+        'Referencia_comercial2',
         'user_id' ,
     ];
 }

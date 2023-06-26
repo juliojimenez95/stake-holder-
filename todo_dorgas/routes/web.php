@@ -62,6 +62,8 @@ Route::post('/cliente/storeInformacionf/{id}', [ClienteController::class,'storeI
 Route::post('/cliente/storeInformacionb/{id}', [ClienteController::class,'storeInformacionb'])->name('clientes.storeInformacionb');
 Route::post('/cliente/storeaccionistas/{id}', [ClienteController::class,'storeaccionistas'])->name('clientes.storeaccionistas');
 Route::post('/storeanexos/{id}', [DocumentosController::class,'storeanexos'])->name('storeanexos');
+Route::post('/storeanexosn/{id}', [DocumentosController::class,'storeanexosn'])->name('storeanexosn');
+
 Route::post('/storepagare/{id}', [DocumentosController::class,'storepagare'])->name('storepagare');
 Route::post('/storefondo/{id}', [DocumentosController::class,'storefondo'])->name('storefondo');
 
@@ -92,6 +94,8 @@ Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->nam
 
 Route::put('/editpagare/{id}', [DocumentosController::class,'editpagare'])->name('editpagare');
 Route::put('/editanexos/{id}', [DocumentosController::class,'editanexos'])->name('editanexos');
+Route::put('/editanexosn/{id}', [DocumentosController::class,'editanexosn'])->name('editanexosn');
+
 Route::put('/editfondo/{id}', [DocumentosController::class,'editfondo'])->name('editfondo');
 Route::put('/editInformaciont/{id}', [ClienteController::class,'editInformaciont'])->name('editInformaciont');
 Route::put('/editInformacionf/{id}', [ClienteController::class,'editInformacionf'])->name('editInformacionf');

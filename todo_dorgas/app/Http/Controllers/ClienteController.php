@@ -24,6 +24,8 @@ use App\Models\origenDeFondoModel;
 use App\Models\PagareModel;
 use App\Models\User;
 use App\Models\AnexoModel;
+use App\Models\ProveedorModel;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -121,15 +123,7 @@ class ClienteController extends Controller
 
     public function perfilrepresentante($id)
     {
-        $user = DB::table('TBL_USUARIOS_STAKE')
-        ->select('TBL_USUARIOS_STAKE.ManejoRP',
-        'TBL_USUARIOS_STAKE.Observacion1','TBL_USUARIOS_STAKE.EjercidoPPOP','TBL_USUARIOS_STAKE.Observacion2',
-        'TBL_USUARIOS_STAKE.Reconocimiento','TBL_USUARIOS_STAKE.Observacion3','TBL_USUARIOS_STAKE.VincuPExpuesta',
-        'TBL_USUARIOS_STAKE.Observacion4','TBL_USUARIOS_STAKE.ObligacionTE','TBL_USUARIOS_STAKE.Observacion5',
-        'TBL_USUARIOS_STAKE.OrganizacionI','TBL_USUARIOS_STAKE.Observacion6','TBL_USUARIOS_STAKE.ObligacionP',
-        'TBL_USUARIOS_STAKE.Observacion7')
-        ->where('TBL_USUARIOS_STAKE.id',$id)
-        ->get();
+        $user = RepresentanteLegalModel::where('user_id',$id)->first();
 
         return  response()->json([
             "user"=>$user
@@ -260,15 +254,58 @@ class ClienteController extends Controller
 
     public function documentos_anexos($id)
     {
-        $anexos = AnexoModel::where('user_id',$id)->first();
+        $user = user::where('id',$id)->first();
+        if ($user->rol ==1 ) {
+                $cliente = ClienteModel::where('Mail',$user->email)->first();
+                if ($cliente->Natural == 1) {
+                    $anexos = AnexoModel::where('user_id',$id)->first();
 
-        if($anexos){
-            return view("editar.documentos_anexos",['id'=>$id,'anexos'=>$anexos]);
+                    if($anexos){
+                        return view("editar.documentos_anexosn",['id'=>$id,'anexos'=>$anexos]);
 
-        }else{
-            return view("cliente.documentos_anexos",['id'=>$id]);
+                    }else{
+                        return view("cliente.documentos_anexosn",['id'=>$id]);
 
+                    }
+                } else {
+                    $anexos = AnexoModel::where('user_id',$id)->first();
+
+                    if($anexos){
+                        return view("editar.documentos_anexos",['id'=>$id,'anexos'=>$anexos]);
+
+                    }else{
+                        return view("cliente.documentos_anexos",['id'=>$id]);
+
+                    }
+                }
+
+        } else {
+            $proveedor = ProveedorModel::where('Mail',$user->email)->first();
+                if ($proveedor->juridico != 1) {
+                    $anexos = AnexoModel::where('user_id',$id)->first();
+
+                    if($anexos){
+                        return view("editar.documentos_anexosn",['id'=>$id,'anexos'=>$anexos]);
+
+                    }else{
+                        return view("cliente.documentos_anexosn",['id'=>$id]);
+
+                    }
+                } else {
+                    $anexos = AnexoModel::where('user_id',$id)->first();
+
+                    if($anexos){
+                        return view("editar.documentos_anexos",['id'=>$id,'anexos'=>$anexos]);
+
+                    }else{
+                        return view("cliente.documentos_anexos",['id'=>$id]);
+
+                    }
+                }
+
+               // return back();
         }
+
 
     }
 

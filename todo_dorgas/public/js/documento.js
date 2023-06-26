@@ -130,8 +130,19 @@ function changeImageColor() {
   }
 
   function changeImageColor12() {
-    var fileInput = document.getElementById('SS');
+    var fileInput = document.getElementById('Certificado_c');
     var image = document.getElementById('img13');
+
+    if (fileInput.files && fileInput.files[0]) {
+      image.classList.add('image-green');
+    } else {
+      image.classList.remove('image-green');
+    }
+  }
+
+  function changeImageColor13() {
+    var fileInput = document.getElementById('Referencia_comercial2');
+    var image = document.getElementById('img14');
 
     if (fileInput.files && fileInput.files[0]) {
       image.classList.add('image-green');

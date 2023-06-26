@@ -98,6 +98,20 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-3">
+                <div class="card text-center border-0 transparente" >
+                  <div class="card-body body_cus">
+                    <div class="img_cusx">
+                      <img src="{{ asset('images/Descargar-PDF.png') }}" class="image-clas2" alt="">
+                    </div>
+                    <br><br>
+                    <a class="btn btn-primary mt-3 a_cus" id="descarga" data-file="Formato pagaré Inversiones Tododrogas.pdf">DESCARGAR</a><span>*</span>
+                    <br>
+                    <p class="text-primary p_cv">EXISTENTE</p>
+                    <br>
+                  </div>
+                </div>
+              </div>
             </div>
             <center>
                 <div class="row">

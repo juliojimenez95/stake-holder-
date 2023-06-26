@@ -32,7 +32,7 @@
                 <div class="div_main">
                     <div class="">
                         @if (Auth::user()->rol == 1)
-                            <a class="btn btn-success btn_cb_c" href="{{ route('clientes.perfil',Auth::user()->id) }}"
+                            <a class="btn btn-success btn_cb_c" href="/home"
 
                                             style="margin-top: 25px;">
                                             <i class="fa-solid fa-arrow-left"></i>
@@ -40,11 +40,11 @@
                             </a>
                         @else
 
-                            <a class="btn btn-success btn_cb_c" href="{{ route('proveedor.perfil',Auth::user()->id) }}"
+                            <a class="btn btn-success btn_cb_c" href="/home"
 
                                             style="margin-top: 25px;">
-                                            <i class="fa-solid fa-user"></i>
-                                {{ __('Actualizar Perfil') }}
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                {{ __('Regresar') }}
                             </a>
 
                         @endif
@@ -484,6 +484,15 @@
                   $("#grupo7na").prop('checked',true);
 
                   }
+
+                    $("#Observacion").val(response.user.Observacion1);
+                    $("#Observacion2").val(response.user.Observacion2);
+                    $("#Observacion3").val(response.user.Observacion3);
+                    $("#Observacion4").val(response.user.Observacion4);
+                    $("#Observacion5").val(response.user.Observacion5);
+                    $("#Observacion6").val(response.user.Observacion6);
+                    $("#Observacion7").val(response.user.Observacion7);
+
 
 
                   if (response.informacion.AutorretenedorICA == 'Si') {

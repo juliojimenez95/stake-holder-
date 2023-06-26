@@ -467,6 +467,15 @@
                   }
 
 
+                    $("#Observacion").val(response.user.Observacion1);
+                    $("#Observacion2").val(response.user.Observacion2);
+                    $("#Observacion3").val(response.user.Observacion3);
+                    $("#Observacion4").val(response.user.Observacion4);
+                    $("#Observacion5").val(response.user.Observacion5);
+                    $("#Observacion6").val(response.user.Observacion6);
+                    $("#Observacion7").val(response.user.Observacion7);
+
+
                   if (response.informacion.AutorretenedorICA == 'Si') {
 
                   $("#grupo8s").prop('checked',true);

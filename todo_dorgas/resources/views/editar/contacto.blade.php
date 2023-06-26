@@ -30,8 +30,8 @@
                             <a class="btn btn-success btn_cb_c" href="/conocimiento/{{ $id }}"
 
                                             style="margin-top: 25px;">
-                                            <i class="fa-solid fa-user"></i>
-                                {{ __('Actualizar Perfil') }}
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                {{ __('Regresar') }}
                             </a>
 
                         @endif

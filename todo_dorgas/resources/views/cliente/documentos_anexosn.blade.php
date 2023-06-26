@@ -26,7 +26,7 @@
               </div>
             </div>
         </div>
-        <form action="{{ route('storeanexos',$id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('storeanexosn',$id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div class="row">
@@ -36,10 +36,10 @@
                 <div class="col-md-12 mb-4">
                   <div class="div_main">
                     <div class="div_inside">
-                        <p class="div_p">Cámara y Comercio<span>*</span></p>
+                        <p class="div_p">Plantilla Aporte Seguridad Social<span></span></p>
                         <div class="div_img">
-                          <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
-                          <input type="file" id="camara_comercio" name="camara_comercio" style="display:none; " onchange="changeImageColor()">
+                          <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('SS').click()">
+                          <input type="file" id="SS" name="SS" style="display:none; " onchange="changeImageColor()">
                         </div>
                     </div>
 

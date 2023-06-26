@@ -22,6 +22,7 @@
 </head>
 <body>
     <div class="container-fluid">
+        
         <div class="row">
             <div class="col-md-12">
                 <div class="div_main">
@@ -31,7 +32,7 @@
                         <i class="fa-solid fa-arrow-left"></i> Regresar</a>
                 </div>
                 <div class="">
-                    <a class="btn btn-success btn_cb" href="/conocimiento/{{ $id }}"
+                    <a class="btn btn-success btn_cb" href="/cliente/documentos_anexos/{{ $id }}"
                                      style="margin-top: 25px;">
                         {{ __('Continuar') }}
                         <i class="fa-solid fa-arrow-right"></i>

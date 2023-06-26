@@ -239,6 +239,7 @@ class AdminController extends Controller
             $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
 
             $contacto = ContactoModel::where('Cliente_id',$request->id)->first();
+            //return $contacto;
             $representante = RepresentanteLegalModel::where('user_id',$request->id)->first();
             $personae = personaExpuestaModel::where('user_id',$request->id)->first();
 
@@ -269,9 +270,9 @@ class AdminController extends Controller
         }elseif ($user->rol == 2) {
 
                 $Proveedor = ProveedorModel::where('Mail',$user->email)->first();
-                $contacto = ContactoModel::where('user_id',$user->ID)->first();
-                $representante = RepresentanteLegalModel::where('user_id',$user->ID)->first();
-                $personae = personaExpuestaModel::where('user_id',$user->ID)->first();
+                $contacto = ContactoModel::where('Cliente_id',$request->id)->first();
+                $representante = RepresentanteLegalModel::where('user_id',$request->id)->first();
+                $personae = personaExpuestaModel::where('user_id',$request->id)->first();
 
                 if ($personae) {
                     return  response()->json([

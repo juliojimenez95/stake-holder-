@@ -853,10 +853,17 @@
         }
 
         if (response.user.rol == 2) {
+            console.log(response.user);
+            console.log(response.Proveedor);
 
-            if (response.Proveedor.Juridico == 1) {
 
-                $('#Tipodocumento').empty();
+
+            if (response.Proveedor.juridico == 1) {
+
+                console.log('Proveedor');
+
+
+               /* $('#Tipodocumento').empty();
                 $('#n_documento').empty();
                 $('#nombres_a').empty();
                 $('#Departamento_p').empty();
@@ -913,10 +920,11 @@
                 $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
-                $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
+                $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");*/
 
 
-                $("#modalInformacionPersonal").modal("show");
+                //$("#modalInformacionPersonal").modal("show");
+                alert('aqui llega hp ');
 
             }else{
 
@@ -1198,7 +1206,7 @@
          },
          success: function(response) {
 
-             console.log(response.informacionb.Banco);
+             console.log(response);
              $('#banco1').empty();
              $('#Tipo1').empty();
              $('#n_cuenta1').empty();
@@ -1233,7 +1241,7 @@
 
          },
          error: function(response) {
-             console.log(response);
+
          },
      });
      }

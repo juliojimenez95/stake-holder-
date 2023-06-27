@@ -110,20 +110,14 @@ Route::put('/editdeclaracion/{id}', [ClienteController::class,'editdeclaracion']
 
 
 Route::put('/editpn/{id}', [ClienteController::class,'editpn'])->name('editpn');
+Route::put('/editarpn2', [ProveedorController::class,'editarpn2'])->name('editarpn2');
+Route::put('/editarpj2', [ProveedorController::class,'editarpj2'])->name('editarpj2');
 Route::put('/editpj/{id}', [ClienteController::class,'editpj'])->name('editpj');
 
 Route::get('/proveedor/perfil/{id}', [ProveedorController::class,'perfil'])->name('proveedor.perfil');
 
-
-
-
-
-
-
-
-
-
-
+//eliminar
+Route::delete('/accionistas/{id}', [ClienteController::class, 'destroysocio'])->name('accionistas.destroysocio');
 
 
 //routas para alimentar municipios

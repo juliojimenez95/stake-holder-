@@ -58,7 +58,7 @@
                     <div class="content_main">
                         <div class="div_cus">
                             <label for="">Nombres y Apellidos<span>*</span> </label>
-                            <input type="text" class="form-control custom_input" name="Nombre">
+                            <input type="text" class="form-control custom_input" name="Nombre" value="{{ old('Nombre') }}">
                             @if ($errors->has('Nombre'))
                                 <p class="text-danger">{{ $errors->first('Nombre') }}</p>
                             @endif
@@ -67,7 +67,7 @@
                         <div class="div_cus">
                             <label for="tipo_d" class="form-label label_cus">Tipo de documento<span>*</span></label>
                             <select class="form-control custom_input_s" aria-label="Seleccione un tipo de documento" name="tipo_d">
-                                <option value=""> Documento</option>
+                                <option value="{{ old('tipo_d') }}"> Documento</option>
                                 @foreach ($tipos as $tipo)
                                     <option value="{{ $tipo }}">{{ $tipo }}</option>
                                 @endforeach
@@ -80,7 +80,7 @@
 
                         <div class="div_cus">
                             <label for="">Documento<span>*</span> </label>
-                            <input type="text" class="form-control custom_input" name="documento">
+                            <input type="text" class="form-control custom_input" name="documento" value="{{ old('documento') }}">
                             @if ($errors->has('documento'))
                                 <p class="text-danger">{{ $errors->first('documento') }}</p>
                             @endif
@@ -88,14 +88,14 @@
 
                         <div class="div_cus">
                             <label for="">Participación %<span>*</span> </label>
-                            <input type="text" class="form-control custom_input" name="participacion">
+                            <input type="text" class="form-control custom_input" name="participacion" value="{{ old('participacion') }}">
                             @if ($errors->has('participacion'))
                                 <p class="text-danger">{{ $errors->first('participacion') }}</p>
                             @endif
                         </div>
                         <div class="div_cus">
                             <label for="">Nacionalidad<span>*</span> </label>
-                            <input type="text" class="form-control custom_input" name="Nacionalidad">
+                            <input type="text" class="form-control custom_input" name="Nacionalidad" value="{{ old('Nacionalidad') }}">
                         </div>
                         <div class="cont_cus_cus">
                             <div class="div_inside">
@@ -128,6 +128,8 @@
                               <th>Participación %</th>
                               <th>Nacionalidad</th>
                               <th>PEP</th>
+                              <th>Eliminar</th>
+
 
                           </tr>
                         </thead>
@@ -141,6 +143,13 @@
                                       <td>{{ $accionista->Nacionalidad }}</td>
 
                                       <td> {{ $accionista->PEP }}</td>
+                                      <td>
+                                        <form action="{{ route('accionistas.destroysocio', $accionista->ID) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                   </tr>
                               @endforeach
 

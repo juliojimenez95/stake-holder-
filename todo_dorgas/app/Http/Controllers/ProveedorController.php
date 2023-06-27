@@ -62,78 +62,327 @@ class ProveedorController extends Controller
             );
            try {
 
+             $proveedor =  ProveedorModel::where('id',$request->n_docuemnto)->first();
 
-            $proveedor = new ProveedorModel();
-
-            $proveedor->DV = 0;
-            $proveedor->id = $request->n_docuemnto;
-
-            $proveedor->TipoID = $request->tipo_d;
-
-            //nombres
-            $proveedor->Mail=$request->email;
-
-            $proveedor->Nombre =$request->Nombre;
-            $proveedor->Departamento=$request->departamento;
-            $proveedor->Ciudad=$request->municipio;
-            $proveedor->Pais="Colombia";
-            $proveedor->Telefono1=$request->Telefono;
-            $proveedor->Telefono2=" ";
-            $proveedor->Direccion=$request->direccion;
+                if ($proveedor) {
 
 
+                $proveedor->DV = 0;
+
+                $proveedor->TipoID = $request->tipo_d;
+
+                //nombres
+                $proveedor->Mail=$request->email;
+
+                $proveedor->Nombre =$request->Nombre;
+                $proveedor->Departamento=$request->departamento;
+                $proveedor->Ciudad=$request->municipio;
+                $proveedor->Pais="Colombia";
+                $proveedor->Telefono1=$request->Telefono;
+                $proveedor->Direccion=$request->direccion;
+
+                $proveedor->ActividadEconomica=$request->actividad;
 
 
-            $proveedor->Regimen="";
-            $proveedor->GranContribuyente="";
-            $proveedor->Movil="";
-            $proveedor->ActividadEconomica=$request->actividad;
+                //email e ingreso
+                $proveedor->FechaIngreso=date('Y-m-d');
 
-            $proveedor->Fax="";
+                $proveedor->Credito=0;
+                $proveedor->Contacto="N/A";
 
-            //email e ingreso
-            $proveedor->FechaIngreso=date('Y-m-d');
-            //$proveedor->Contacto=$request->nombre1;
-            $proveedor->Contacto="";
+                //$proveedor->ReferenciaTelefono2=$request->nombre1;
+                $proveedor->Cupo=0;
+                $proveedor->Plazo=0;
+                $proveedor->Saldo=0;
+               // $proveedor->juridico=0;
 
-            $proveedor->Credito=0;
-            $proveedor->Contacto="N/A";
+                $proveedor->Enabled=1;
 
-            //$proveedor->ReferenciaTelefono2=$request->nombre1;
-            $proveedor->Cupo=0;
-            $proveedor->Plazo=0;
-            $proveedor->Saldo=0;
-            $proveedor->juridico=0;
+                if ($proveedor->save()) {
 
-            $proveedor->Enabled=1;
-
-            if ($proveedor->save()) {
-
-                    $user = User::create([
-                        'name' => $request->Nombre,
-                        'email' => $request->email,
-                        'password' => Hash::make($request->password),
-                        'rol' => 2,
-                        'ManejoRP'=> $request->grupo1 ,
-                        'Observacion1'=> $request->Observacion."" ,
-                        'EjercidoPPOP'=> $request->grupo2 ,
-                        'Observacion2'=> $request->Observacion2."" ,
-                        'Reconocimiento'=> $request->grupo3,
-                        'Observacion3'=> $request->Observacion3."",
-                        'VincuPExpuesta'=> $request->grupo4 ,
-                        'Observacion4'=> $request->Observacion4."" ,
-                        'ObligacionTE'=> $request->grupo5 ,
-                        'Observacion5'=> $request->Observacion5."",
-                        'OrganizacionI'=> $request->grupo6,
-                        'Observacion6'=> $request->Observacion6."" ,
-                        'ObligacionP'=> $request->grupo7,
-                        'Observacion7'=> $request->Observacion7.""
-                        ]);
+                        $user = User::create([
+                            'name' => $request->Nombre,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+                            'rol' => 2,
+                            'ManejoRP'=> $request->grupo1 ,
+                            'Observacion1'=> $request->Observacion."" ,
+                            'EjercidoPPOP'=> $request->grupo2 ,
+                            'Observacion2'=> $request->Observacion2."" ,
+                            'Reconocimiento'=> $request->grupo3,
+                            'Observacion3'=> $request->Observacion3."",
+                            'VincuPExpuesta'=> $request->grupo4 ,
+                            'Observacion4'=> $request->Observacion4."" ,
+                            'ObligacionTE'=> $request->grupo5 ,
+                            'Observacion5'=> $request->Observacion5."",
+                            'OrganizacionI'=> $request->grupo6,
+                            'Observacion6'=> $request->Observacion6."" ,
+                            'ObligacionP'=> $request->grupo7,
+                            'Observacion7'=> $request->Observacion7.""
+                            ]);
 
 
+                }
+
+                return redirect('/conocimiento/'.$user->id);
+            } else {
+                $proveedor = new ProveedorModel();
+
+                $proveedor->DV = 0;
+                $proveedor->id = $request->n_docuemnto;
+
+                $proveedor->TipoID = $request->tipo_d;
+
+                //nombres
+                $proveedor->Mail=$request->email;
+
+                $proveedor->Nombre =$request->Nombre;
+                $proveedor->Departamento=$request->departamento;
+                $proveedor->Ciudad=$request->municipio;
+                $proveedor->Pais="Colombia";
+                $proveedor->Telefono1=$request->Telefono;
+                $proveedor->Telefono2=" ";
+                $proveedor->Direccion=$request->direccion;
+
+
+
+
+                $proveedor->Regimen="";
+                $proveedor->GranContribuyente="";
+                $proveedor->Movil="";
+                $proveedor->ActividadEconomica=$request->actividad;
+
+                $proveedor->Fax="";
+
+                //email e ingreso
+                $proveedor->FechaIngreso=date('Y-m-d');
+                //$proveedor->Contacto=$request->nombre1;
+                $proveedor->Contacto="";
+
+                $proveedor->Credito=0;
+                $proveedor->Contacto="N/A";
+
+                //$proveedor->ReferenciaTelefono2=$request->nombre1;
+                $proveedor->Cupo=0;
+                $proveedor->Plazo=0;
+                $proveedor->Saldo=0;
+                $proveedor->juridico=0;
+
+                $proveedor->Enabled=1;
+
+                if ($proveedor->save()) {
+
+                        $user = User::create([
+                            'name' => $request->Nombre,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+                            'rol' => 2,
+                            'ManejoRP'=> $request->grupo1 ,
+                            'Observacion1'=> $request->Observacion."" ,
+                            'EjercidoPPOP'=> $request->grupo2 ,
+                            'Observacion2'=> $request->Observacion2."" ,
+                            'Reconocimiento'=> $request->grupo3,
+                            'Observacion3'=> $request->Observacion3."",
+                            'VincuPExpuesta'=> $request->grupo4 ,
+                            'Observacion4'=> $request->Observacion4."" ,
+                            'ObligacionTE'=> $request->grupo5 ,
+                            'Observacion5'=> $request->Observacion5."",
+                            'OrganizacionI'=> $request->grupo6,
+                            'Observacion6'=> $request->Observacion6."" ,
+                            'ObligacionP'=> $request->grupo7,
+                            'Observacion7'=> $request->Observacion7.""
+                            ]);
+
+
+                }
+
+                return redirect('/conocimiento/'.$user->id);
             }
 
-            return redirect('/conocimiento/'.$user->id);
+
+
+
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
+    }
+
+    public function editarpn2(Request $request)
+    {
+
+        $request->validate(
+            [
+                'tipo_d'=> 'required',
+                'n_docuemnto'=> 'required|numeric',
+                'Nombre'=> 'required',
+                'departamento'=> 'required',
+                'municipio'=>'required',
+                'email'=>'required|email|unique:TBL_USUARIOS_STAKE',
+                'Telefono'=>'required',
+                'direccion'=>'required',
+                'actividad'=>'required'
+
+            ],
+            [
+                'tipo_d.required' => 'Tipo de documento es requerido',
+                'n_docuemnto.required' => 'El documento de identidad es requerido',
+                'Nombre.required' => 'El Nombre completo  es requerido',
+                'departamento.required' => 'El departamento es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'email.unique' => 'El correo ya esta  registrado',
+                'Telefono.required' => 'El telefono es requerido',
+                'Telefono.unique' => 'El telefono ya esta registrado',
+                'direccion.required' => 'La dirección es requerido',
+
+            ]
+            );
+           try {
+
+             $proveedor =  ProveedorModel::where('id',$request->n_docuemnto)->first();
+
+                if ($proveedor) {
+
+
+                $proveedor->DV = 0;
+
+                $proveedor->TipoID = $request->tipo_d;
+
+                //nombres
+                $proveedor->Mail=$request->email;
+
+                $proveedor->Nombre =$request->Nombre;
+                $proveedor->Departamento=$request->departamento;
+                $proveedor->Ciudad=$request->municipio;
+                $proveedor->Pais="Colombia";
+                $proveedor->Telefono1=$request->Telefono;
+                $proveedor->Direccion=$request->direccion;
+
+                $proveedor->ActividadEconomica=$request->actividad;
+
+
+                //email e ingreso
+                $proveedor->FechaIngreso=date('Y-m-d');
+
+                $proveedor->Credito=0;
+                $proveedor->Contacto="N/A";
+
+                //$proveedor->ReferenciaTelefono2=$request->nombre1;
+                $proveedor->Cupo=0;
+                $proveedor->Plazo=0;
+                $proveedor->Saldo=0;
+                $proveedor->juridico=0;
+
+                $proveedor->Enabled=1;
+
+                if ($proveedor->save()) {
+
+                        $user = User::create([
+                            'name' => $request->Nombre,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+                            'rol' => 2,
+                            'ManejoRP'=> $request->grupo1 ,
+                            'Observacion1'=> $request->Observacion."" ,
+                            'EjercidoPPOP'=> $request->grupo2 ,
+                            'Observacion2'=> $request->Observacion2."" ,
+                            'Reconocimiento'=> $request->grupo3,
+                            'Observacion3'=> $request->Observacion3."",
+                            'VincuPExpuesta'=> $request->grupo4 ,
+                            'Observacion4'=> $request->Observacion4."" ,
+                            'ObligacionTE'=> $request->grupo5 ,
+                            'Observacion5'=> $request->Observacion5."",
+                            'OrganizacionI'=> $request->grupo6,
+                            'Observacion6'=> $request->Observacion6."" ,
+                            'ObligacionP'=> $request->grupo7,
+                            'Observacion7'=> $request->Observacion7.""
+                            ]);
+
+
+                }
+
+                return redirect('/conocimiento/'.$user->id);
+            } else {
+                $proveedor = new ProveedorModel();
+
+                $proveedor->DV = 0;
+                $proveedor->id = $request->n_docuemnto;
+
+                $proveedor->TipoID = $request->tipo_d;
+
+                //nombres
+                $proveedor->Mail=$request->email;
+
+                $proveedor->Nombre =$request->Nombre;
+                $proveedor->Departamento=$request->departamento;
+                $proveedor->Ciudad=$request->municipio;
+                $proveedor->Pais="Colombia";
+                $proveedor->Telefono1=$request->Telefono;
+                $proveedor->Telefono2=" ";
+                $proveedor->Direccion=$request->direccion;
+
+
+
+
+                $proveedor->Regimen="";
+                $proveedor->GranContribuyente="";
+                $proveedor->Movil="";
+                $proveedor->ActividadEconomica=$request->actividad;
+
+                $proveedor->Fax="";
+
+                //email e ingreso
+                $proveedor->FechaIngreso=date('Y-m-d');
+                //$proveedor->Contacto=$request->nombre1;
+                $proveedor->Contacto="";
+
+                $proveedor->Credito=0;
+                $proveedor->Contacto="N/A";
+
+                //$proveedor->ReferenciaTelefono2=$request->nombre1;
+                $proveedor->Cupo=0;
+                $proveedor->Plazo=0;
+                $proveedor->Saldo=0;
+                $proveedor->juridico=0;
+
+                $proveedor->Enabled=1;
+
+                if ($proveedor->save()) {
+
+                        $user = User::create([
+                            'name' => $request->Nombre,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+                            'rol' => 2,
+                            'ManejoRP'=> $request->grupo1 ,
+                            'Observacion1'=> $request->Observacion."" ,
+                            'EjercidoPPOP'=> $request->grupo2 ,
+                            'Observacion2'=> $request->Observacion2."" ,
+                            'Reconocimiento'=> $request->grupo3,
+                            'Observacion3'=> $request->Observacion3."",
+                            'VincuPExpuesta'=> $request->grupo4 ,
+                            'Observacion4'=> $request->Observacion4."" ,
+                            'ObligacionTE'=> $request->grupo5 ,
+                            'Observacion5'=> $request->Observacion5."",
+                            'OrganizacionI'=> $request->grupo6,
+                            'Observacion6'=> $request->Observacion6."" ,
+                            'ObligacionP'=> $request->grupo7,
+                            'Observacion7'=> $request->Observacion7.""
+                            ]);
+
+
+                }
+
+                return redirect('/conocimiento/'.$user->id);
+            }
+
+
+
+
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
@@ -421,6 +670,214 @@ class ProveedorController extends Controller
 
 
             return redirect('/actividad/'.$user->id);
+
+            //return redirect('/actividad/');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
+    }
+
+    public function editarpj2(Request $request)
+    {
+
+        $request->validate(
+            [
+                'razon_s'=> 'required',
+                'id'=> 'required|unique:PROVEEDORES',
+                'ta_e'=> 'required',
+                'tipo_s'=>'required',
+                'pais'=> 'required',
+                'departamento'=> 'required',
+                'municipio'=>'required',
+                'email'=>'required|email|unique:TBL_USUARIOS_STAKE',
+                'direccion'=>'required',
+                'actividad'=>'required'
+
+            ],
+            [
+                'razon_s.required' => 'Tipo de rayon social es requerida',
+                'id.required' => 'El nit es requerido',
+                'id.unique' => 'El nit ya esta  registrado',
+                'ta_e.required' => 'El tamaño de la empresa es requerido',
+                'pais.required' => 'El departamento es requerido',
+                'departamento.required' => 'El departamento es requerido',
+                'municipio.required' => 'El municipio es requerido',
+                'email.required' => 'El correo es requerido',
+                'email.email' => 'El correo debe ser real ej. example@example.com',
+                'email.unique' => 'El correo ya esta  registrado',
+                'direccion.required' => 'La dirección es requerido',
+                'actividad.required' => 'El codigo CIUU es requerido',
+                'tipo_s.required' => 'Tipo de sociedad es requerido',
+
+
+            ]
+            );
+           try {
+
+            $proveedor =  ProveedorModel::where('id',$request->n_docuemnto)->first();
+            if ($proveedor) {
+                if (isset($request->dv) && !empty($request->dv)) {
+                    $proveedor->DV = $request->dv;
+
+                }else {
+                     $proveedor->DV = 0;
+                }
+                $proveedor->id = $request->id;
+
+                $proveedor->TipoID ="Nit";
+
+                //nombres
+                $proveedor->Mail=$request->email;
+                $proveedor->tipo_s=$request->tipo_s;
+
+
+                $proveedor->Nombre =$request->razon_s;
+                $proveedor->juridico=1;
+                $proveedor->Departamento=$request->departamento;
+                $proveedor->Ciudad=$request->municipio;
+                $proveedor->Pais=$request->pais;
+                $proveedor->Telefono1=$request->Telefono;
+                $proveedor->Telefono2=" ";
+                $proveedor->Direccion=$request->direccion;
+                $proveedor->pagina_web=$request->pagina;
+                $proveedor->tamano=$request->ta_e;
+                $proveedor->Regimen="";
+                $proveedor->GranContribuyente="";
+                $proveedor->Movil="";
+                $proveedor->ActividadEconomica=$request->actividad;
+
+                $proveedor->Fax="";
+
+                //email e ingreso
+                $proveedor->FechaIngreso=date('Y-m-d');
+                //$proveedor->Contacto=$request->nombre1;
+                $proveedor->Contacto="";
+
+                $proveedor->Credito=0;
+                $proveedor->Contacto="N/A";
+                $proveedor->juridico=1;
+
+
+                //$proveedor->ReferenciaTelefono2=$request->nombre1;
+                $proveedor->Cupo=0;
+                $proveedor->Plazo=0;
+                $proveedor->Saldo=0;
+                $proveedor->Enabled=1;
+
+                //return $proveedor;
+
+                if ($proveedor->save()) {
+
+                        $user = User::create([
+                            'name' => $request->razon_s,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+                            'rol' => 2,
+                            'ManejoRP'=> $request->grupo1 ,
+                            'Observacion1'=> $request->Observacion."" ,
+                            'EjercidoPPOP'=> $request->grupo2 ,
+                            'Observacion2'=> $request->Observacion2."" ,
+                            'Reconocimiento'=> $request->grupo3,
+                            'Observacion3'=> $request->Observacion3."",
+                            'VincuPExpuesta'=> $request->grupo4 ,
+                            'Observacion4'=> $request->Observacion4."" ,
+                            'ObligacionTE'=> $request->grupo5 ,
+                            'Observacion5'=> $request->Observacion5."",
+                            'OrganizacionI'=> $request->grupo6,
+                            'Observacion6'=> $request->Observacion6."" ,
+                            'ObligacionP'=> $request->grupo7,
+                            'Observacion7'=> $request->Observacion7.""
+                            ]);
+
+
+                }
+
+
+                return redirect('/actividad/'.$user->id);
+            }else{
+
+
+                $proveedor = new ProveedorModel();
+                if (isset($request->dv) && !empty($request->dv)) {
+                    $proveedor->DV = $request->dv;
+
+                } else {
+                    $proveedor->DV = 0;
+                }
+                $proveedor->id = $request->id;
+
+                $proveedor->TipoID ="Nit";
+
+                //nombres
+                $proveedor->Mail=$request->email;
+                $proveedor->tipo_s=$request->tipo_s;
+
+
+                $proveedor->Nombre =$request->razon_s;
+                $proveedor->juridico=1;
+                $proveedor->Departamento=$request->departamento;
+                $proveedor->Ciudad=$request->municipio;
+                $proveedor->Pais=$request->pais;
+                $proveedor->Telefono1=$request->Telefono;
+                $proveedor->Telefono2=" ";
+                $proveedor->Direccion=$request->direccion;
+                $proveedor->pagina_web=$request->pagina;
+                $proveedor->tamano=$request->ta_e;
+                $proveedor->Regimen="";
+                $proveedor->GranContribuyente="";
+                $proveedor->Movil="";
+                $proveedor->ActividadEconomica=$request->actividad;
+
+                $proveedor->Fax="";
+
+                //email e ingreso
+                $proveedor->FechaIngreso=date('Y-m-d');
+                //$proveedor->Contacto=$request->nombre1;
+                $proveedor->Contacto="";
+
+                $proveedor->Credito=0;
+                $proveedor->Contacto="N/A";
+                $proveedor->juridico=1;
+
+
+                //$proveedor->ReferenciaTelefono2=$request->nombre1;
+                $proveedor->Cupo=0;
+                $proveedor->Plazo=0;
+                $proveedor->Saldo=0;
+                $proveedor->Enabled=1;
+
+                //return $proveedor;
+
+                if ($proveedor->save()) {
+
+                    $user = User::create([
+                        'name' => $request->razon_s,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->password),
+                        'rol' => 2,
+                        'ManejoRP'=> $request->grupo1 ,
+                        'Observacion1'=> $request->Observacion."" ,
+                        'EjercidoPPOP'=> $request->grupo2 ,
+                        'Observacion2'=> $request->Observacion2."" ,
+                        'Reconocimiento'=> $request->grupo3,
+                        'Observacion3'=> $request->Observacion3."",
+                        'VincuPExpuesta'=> $request->grupo4 ,
+                        'Observacion4'=> $request->Observacion4."" ,
+                        'ObligacionTE'=> $request->grupo5 ,
+                        'Observacion5'=> $request->Observacion5."",
+                        'OrganizacionI'=> $request->grupo6,
+                        'Observacion6'=> $request->Observacion6."" ,
+                        'ObligacionP'=> $request->grupo7,
+                        'Observacion7'=> $request->Observacion7.""
+                        ]);
+
+
+                }
+
+
+                return redirect('/actividad/'.$user->id);
+            }
 
             //return redirect('/actividad/');
             } catch (\Throwable $th) {

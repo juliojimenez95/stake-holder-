@@ -417,28 +417,6 @@
         </div>
 
 
-          <!-- Contenido de la vista modal  no informacion-->
-          <div class="modal fade" id="modalInformacionNo" tabindex="-1" role="dialog" aria-labelledby="modalInformacionNoLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title tit_mod" id="modalInformacionNoLabel">Alerta</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <p> <strong>No hay información registrada aún</strong></p>
-                      </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <!-- Contenido de la vista modal informacion Bancaria-->
           <div class="modal fade" id="modalInformacionBancaria" tabindex="-1" role="dialog" aria-labelledby="modalInformacionBancariaLabel" aria-hidden="true">
@@ -853,17 +831,11 @@
         }
 
         if (response.user.rol == 2) {
-            console.log(response.user);
-            console.log(response.Proveedor);
-
-
-
             if (response.Proveedor.juridico == 1) {
 
-                console.log('Proveedor');
 
 
-               /* $('#Tipodocumento').empty();
+                $('#Tipodocumento').empty();
                 $('#n_documento').empty();
                 $('#nombres_a').empty();
                 $('#Departamento_p').empty();
@@ -920,11 +892,11 @@
                 $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
-                $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");*/
+                $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
 
 
-                //$("#modalInformacionPersonal").modal("show");
-                alert('aqui llega hp ');
+                $("#modalInformacionPersonal").modal("show");
+
 
             }else{
 

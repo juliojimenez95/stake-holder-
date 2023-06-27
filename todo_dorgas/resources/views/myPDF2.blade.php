@@ -20,36 +20,36 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                      <p id="Tipodocumento" class="p_ch"> <strong>Tipo de documento: <span>{{ $cliente->TipoNit }}</span></strong></p>
+                                      <p id="Tipodocumento" class="p_ch"> <strong>Tipo de documento: <span>{{ $Proveedor->TipoNit }}</span></strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="n_documento" class="p_ch"><strong>Número de Documento: <span>{{ $cliente->Nit }}</span></strong></p>
+                                      <p id="n_documento" class="p_ch"><strong>Número de Documento: <span>{{ $Proveedor->ID }}</span></strong></p>
                                     </div>
                                   </div>
                                   <div class="row">
                                     <div class="col-md-6">
-                                      <p id="nombres_a" class="p_ch"> <strong>Nombre: <span>{{ $cliente->Nombre }}</span></strong></p>
+                                      <p id="nombres_a" class="p_ch"> <strong>Nombre: <span>{{ $Proveedor->Nombre }}</span></strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="Departamento_p" class="p_ch"><strong>Departamento: <span>{{ $domicilio->Departamento }}</span></strong></p>
+                                      <p id="Departamento_p" class="p_ch"><strong>Departamento: <span>{{ $Proveedor->Departamento }}</span></strong></p>
                                     </div>
                                   </div>
                                    <div class="row">
                                     <div class="col-md-6">
-                                      <p id="cuidad_p" class="p_ch"><strong>Municipio: <span>{{ $domicilio->Ciudad }}</span></strong></p>
+                                      <p id="cuidad_p" class="p_ch"><strong>Municipio: <span>{{ $Proveedor->Ciudad }}</span></strong></p>
                                     </div>
                                     <div class="col-md-6">
-                                      <p id="telefono_p" class="p_ch"> <strong>Teléfono: <span>{{ $domicilio->Telefono }}</span></strong></p>
+                                      <p id="telefono_p" class="p_ch"> <strong>Teléfono: <span>{{ $Proveedor->Telefono1 }}</span></strong></p>
 
                                     </div>
                                   </div>
 
                                   <div class="row">
                                       <div class="col-md-6">
-                                        <p id="direccion_p" class="p_ch"> <strong>Dirección: <span>{{ $domicilio->Direccion }}</span></strong></p>
+                                        <p id="direccion_p" class="p_ch"> <strong>Dirección: <span>{{ $Proveedor->Direccion }}</span></strong></p>
                                       </div>
                                       <div class="col-md-6">
-                                        <p id="Actividad_e" class="p_ch"><strong>Actividad economica: <span>{{ $cliente->ActividadEconomica }}</span></strong></p>
+                                        <p id="Actividad_e" class="p_ch"><strong>Actividad economica: <span>{{ $Proveedor->ActividadEconomica }}</span></strong></p>
                                       </div>
                                     </div>
 

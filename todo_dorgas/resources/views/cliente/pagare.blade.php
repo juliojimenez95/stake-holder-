@@ -74,8 +74,8 @@
                     </div>
                     <br><br>
 
-                    <a class="btn btn-primary mt-3 a_cus" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
-                    <input type="file" id="document" name="document" style="display:none;">
+                    <a class="btn btn-primary mt-3 a_cus" id="img1" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
+                    <input type="file" id="document" name="document" style="display:none;" onchange="changeImageColor()">
 
                     <p class="text-primary p_cv">Cargue el formato de Pagaré diligenciado y firmado o el documento de certificación.</p>
                     <br>
@@ -104,6 +104,19 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
+    <script>
+        function changeImageColor() {
+        var fileInput = document.getElementById('document');
+        var image = document.getElementById('img1');
+        console.log("leiotn");
+
+        if (fileInput.files && fileInput.files[0]) {
+        image.classList.add('image-green');
+        } else {
+        image.classList.remove('image-green');
+        }
+    }
+    </script>
     <script>
     const button = document.querySelector('#descarga');
         button.addEventListener('click', function() {

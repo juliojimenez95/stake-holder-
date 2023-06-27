@@ -22,6 +22,7 @@ use App\Models\PagareModel;
 use App\Models\AnexoModel;
 use App\Models\personaExpuestaModel;
 use App\Models\AccionistaModel;
+use App\Models\ProveedorModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -167,6 +168,10 @@ class DocumentosController extends Controller
                     $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
                 }
                 $Anexo->Referencia_comercial2 = $name_pdf14;
+                $name_pdf15 = '';
+                $Anexo->SS = $name_pdf15;
+
+
                 $Anexo->user_id = $id;
 
             if ($Anexo->save()) {
@@ -318,6 +323,8 @@ class DocumentosController extends Controller
                     $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
                 }
                 $Anexo->Referencia_comercial2 = $name_pdf14;
+                $name_pdf15 = '';
+                $Anexo->Camara_comercio = $name_pdf15;
                 $Anexo->user_id = $id;
 
             if ($Anexo->save()) {
@@ -1093,22 +1100,22 @@ class DocumentosController extends Controller
 
             $pagare =  PagareModel::where('id',$id)->first();
             if ($request->credito == 1) {
-                $name_pdf1 = '';
                 if ($request->file('document')) {
-                    if ($pagare->pagare ='') {
+                if ($pagare->pagare !='') {
+                        $name_pdf1 = '';
                         Storage::disk('documentos')->delete($pagare->pagare);
                         $pdf = $request->file('document');
                         $ext = $pdf->getClientOriginalExtension();
                         $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
                         $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
-
+                        $pagare->archivo = $name_pdf1;
                     }else{
 
                         $pdf = $request->file('document');
                         $ext = $pdf->getClientOriginalExtension();
                         $name_pdf1 = 'pagare'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
                         $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
-
+                        $pagare->archivo = $name_pdf1;
                     }
 
                 }else{
@@ -1185,31 +1192,32 @@ class DocumentosController extends Controller
             $fondos =  origenDeFondoModel::where('user_id',$id)->first();
 
            // return $request->file('fondo');
-            $name_pdf1 = ' ';
             if ($request->file('fondo')){
-                if ($fondos->archivo != '') {
+                    $name_pdf1 = ' ';
+                    $pdf = $request->file('fondo');
+                    $ext = $pdf->getClientOriginalExtension();
+                    $name_pdf1 = 'fondo'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                    $fondos->archivo = $name_pdf1;
 
-                } else {
-                    # code...
-                }
+                    if ($fondos->save()) {
+                        return redirect('/cliente/documentos_anexos/'.$id);
 
-                $pdf = $request->file('fondo');
-                $ext = $pdf->getClientOriginalExtension();
-                $name_pdf1 = 'fondo'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                $url = Storage::disk('documentos')->put($name_pdf1, file_get_contents($pdf));
+                    } else {
+
+                        return back();
+                    }
+
+            }else{
+
+                return back();
+
+
             }
 
           //  return $name_pdf1;
-            $fondos->archivo = $name_pdf1;
-            $fondos->user_id = $id;
 
-            if ($fondos->save()) {
-                return redirect('/cliente/documentos_anexos/'.$id);
 
-            } else {
-
-                return back();
-            }
 
             //return redirect('/actividad/');
         } catch (\Throwable $th) {
@@ -1224,36 +1232,102 @@ class DocumentosController extends Controller
         try {
             $anexo = AnexoModel::where('user_id',$id)->first();
 
-            $file1 = public_path('documentos/' . $anexo->Camara_comercio);
-            $file2 = public_path('documentos/' . $anexo->Rut);
-            $file3 = public_path('documentos/' . $anexo->Cc_representante);
-            $file4 = public_path('documentos/' . $anexo->Estados_financieros);
-            $file5 = public_path('documentos/' . $anexo->Referencia_comercial);
-            $file6 = public_path('documentos/' . $anexo->ICA);
-            $file7 = public_path('documentos/' . $anexo->Contribuyente);
-            $file8 = public_path('documentos/' . $anexo->Autoretenedor_f);
-            $file9 = public_path('documentos/' . $anexo->Autoretenedor_ICA);
-            $file10 = public_path('documentos/' . $anexo->Brochure);
-            $file11 = public_path('documentos/' . $anexo->Certificado_bancario);
-            $file12 = public_path('documentos/' . $anexo->SG_SST);
-            $file13 = public_path('documentos/' . $anexo->SS);
-
-
-
             $pdf = PDFMerger::init();
-            $pdf->addPDF($file1, 'all');
-            $pdf->addPDF($file2, 'all');
-            $pdf->addPDF($file3, 'all');
-            $pdf->addPDF($file4, 'all');
-            $pdf->addPDF($file5, 'all');
-            $pdf->addPDF($file6, 'all');
-            $pdf->addPDF($file7, 'all');
-            $pdf->addPDF($file8, 'all');
-            $pdf->addPDF($file9, 'all');
-            $pdf->addPDF($file10, 'all');
-            $pdf->addPDF($file11, 'all');
-            $pdf->addPDF($file12, 'all');
-            $pdf->addPDF($file13, 'all');
+
+
+            if ($anexo->Camara_comercio != '' ) {
+                $file1 = public_path('documentos/' . $anexo->Camara_comercio);
+                $pdf->addPDF($file1, 'all');
+            }
+
+            if ($anexo->Rut != '') {
+                $file2 = public_path('documentos/' . $anexo->Rut);
+                $pdf->addPDF($file2, 'all');
+
+
+            }
+
+            if ($anexo->Cc_representante != '') {
+                $file3 = public_path('documentos/' . $anexo->Cc_representante);
+                $pdf->addPDF($file3, 'all');
+
+
+            }
+            if ($anexo->Estados_financieros != '') {
+                $file4 = public_path('documentos/' . $anexo->Estados_financieros);
+                $pdf->addPDF($file4, 'all');
+
+
+            }
+            if ($anexo->Referencia_comercial != '') {
+                $file5 = public_path('documentos/' . $anexo->Referencia_comercial);
+                $pdf->addPDF($file5, 'all');
+
+            }
+            if ($anexo->ICA != '') {
+                $file6 = public_path('documentos/' . $anexo->ICA);
+                $pdf->addPDF($file6, 'all');
+
+            }
+
+            if ($anexo->Contribuyente != '') {
+                $file7 = public_path('documentos/' . $anexo->Contribuyente);
+                $pdf->addPDF($file7, 'all');
+
+            }
+
+            if ($anexo->Autoretenedor_f != '') {
+                $file8 = public_path('documentos/' . $anexo->Autoretenedor_f);
+                $pdf->addPDF($file8, 'all');
+            }
+
+            if ($anexo->Autoretenedor_ICA != '') {
+                $file9 = public_path('documentos/' . $anexo->Autoretenedor_ICA);
+                $pdf->addPDF($file9, 'all');
+
+            }
+
+            if ($anexo->Brochure != '') {
+                $file10 = public_path('documentos/' . $anexo->Brochure);
+                $pdf->addPDF($file10, 'all');
+
+
+            }
+
+            if ($anexo->Certificado_bancario != '') {
+                $file11 = public_path('documentos/' . $anexo->Certificado_bancario);
+                $pdf->addPDF($file11, 'all');
+
+
+            }
+
+            if ($anexo->SG_SST != '') {
+                $file12 = public_path('documentos/' . $anexo->SG_SST);
+                $pdf->addPDF($file12, 'all');
+
+
+            }
+
+            if ($anexo->SS != '') {
+                $file13 = public_path('documentos/' . $anexo->SS);
+                $pdf->addPDF($file13, 'all');
+
+
+            }
+
+            if ($anexo->Certificado_c != '' && $anexo->Certificado_c != null) {
+                $file14 = public_path('documentos/' . $anexo->Certificado_c);
+                $pdf->addPDF($file14, 'all');
+
+            }
+
+            if ($anexo->Referencia_comercial2 != '' && $anexo->Referencia_comercial2 != null) {
+                $file15 = public_path('documentos/' . $anexo->Referencia_comercial2);
+                $pdf->addPDF($file15, 'all');
+
+            }
+
+
 
             $pdf->merge();
 
@@ -1281,34 +1355,64 @@ class DocumentosController extends Controller
         try {
             $user = User::find($id);
 
-            $cliente = ClienteModel::where('Mail',$user->email)->first();
-            $cliente_domicilio = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
-            $telefono = strval($cliente_domicilio->Telefono);
-            $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
+            if ($user->rol == 1) {
+                $cliente = ClienteModel::where('Mail',$user->email)->first();
+                $cliente_domicilio = Cliente_DomicilioModel::where('ID_Cliente',$cliente->ID)->first();
+                $telefono = strval($cliente_domicilio->Telefono);
+                $domicilio = DomicilioModel::where('Telefono',$telefono)->first();
 
-             $contacto = ContactoModel::where('Cliente_id',$id)->first();
-            $representante = RepresentanteLegalModel::where('user_id',$id)->first();
-            $personae = personaExpuestaModel::where('user_id',$id)->first();
+                $contacto = ContactoModel::where('Cliente_id',$id)->first();
+                $representante = RepresentanteLegalModel::where('user_id',$id)->first();
+                $personae = personaExpuestaModel::where('user_id',$id)->first();
 
-            $informaciont = InformacionTributariaModel::where('Cliente_id',$id)->first();
-            $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
-            $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
-            $pagare = PagareModel::where('user_id',$id)->first();
-            $socios = AccionistaModel::where('user_id',$id)->get();
+                $informaciont = InformacionTributariaModel::where('Cliente_id',$id)->first();
+                $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
+                $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
+                $pagare = PagareModel::where('user_id',$id)->first();
+                $socios = AccionistaModel::where('user_id',$id)->get();
 
 
-           // return $informacionb;
-            $data = [
-                'title' => 'Welcome to CodeSolutionStuff.com',
-                'date' => date('m/d/Y')
-            ];
+            // return $informacionb;
+                $data = [
+                    'title' => 'Welcome to CodeSolutionStuff.com',
+                    'date' => date('m/d/Y')
+                ];
 
-            $pdf = PDF::loadView('myPDF', ['data'=>$data, 'cliente'=>$cliente,
-            'domicilio'=>$domicilio,'contacto'=>$contacto, 'representante'=>$representante,
-            'informaciont'=> $informaciont,'informacionb'=> $informacionb,'informacionf'=> $informacionf,
-            'pagare'=> $pagare,'socios'=> $socios]);
+                $pdf = PDF::loadView('myPDF', ['data'=>$data, 'cliente'=>$cliente,
+                'domicilio'=>$domicilio,'contacto'=>$contacto, 'representante'=>$representante,
+                'informaciont'=> $informaciont,'informacionb'=> $informacionb,'informacionf'=> $informacionf,
+                'pagare'=> $pagare,'socios'=> $socios]);
 
-            return $pdf->download('codesolutionstuff.pdf');
+                return $pdf->download('informePersona.pdf');
+            } else {
+                $Proveedor = ProveedorModel::where('Mail',$user->email)->first();
+                $contacto = ContactoModel::where('Cliente_id',$id)->first();
+                $representante = RepresentanteLegalModel::where('user_id',$id)->first();
+                $personae = personaExpuestaModel::where('user_id',$id)->first();
+
+                $informaciont = InformacionTributariaModel::where('Cliente_id',$id)->first();
+                $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
+                $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
+                $pagare = PagareModel::where('user_id',$id)->first();
+                $socios = AccionistaModel::where('user_id',$id)->get();
+
+                $data = [
+                    'title' => 'Welcome to CodeSolutionStuff.com',
+                    'date' => date('m/d/Y')
+                ];
+
+                $pdf = PDF::loadView('myPDF2', ['data'=>$data, 'Proveedor'=>$Proveedor,
+                'contacto'=>$contacto, 'representante'=>$representante,
+                'informaciont'=> $informaciont,'informacionb'=> $informacionb,
+                'informacionf'=> $informacionf,
+                'pagare'=> $pagare,'socios'=> $socios]);
+
+                return $pdf->download('informePersona.pdf');
+
+            }
+
+
+
 
             /*$pdf = Pdf::loadView('pdf.pdf', compact('data')  /*['cliente'=>$cliente,
             'cliente_domicilio'=>$cliente_domicilio,'domicilio'=>$domicilio

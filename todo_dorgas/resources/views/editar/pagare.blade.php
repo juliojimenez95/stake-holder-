@@ -61,7 +61,7 @@
                   </div>
                 </center>
             <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body">
                   </div>
@@ -90,14 +90,16 @@
                     </div>
                     <br><br>
 
-                    <a class="btn btn-primary mt-3 a_cus" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
-                    <input type="file" id="document" name="document" style="display:none;">
+                    <a class="btn btn-primary mt-3 a_cus" id="img1" onclick="document.getElementById('document').click()">CARGAR</a><span>*</span>
+                    <input type="file" id="document" name="document" style="display:none; " onchange="changeImageColor()">
 
                     <p class="text-primary p_cv">Cargue el formato de Pagaré diligenciado y firmado o el documento de certificación.</p>
                     <br>
                   </div>
                 </div>
               </div>
+              @if ($pagare->archivo != '')
+
               <div class="col-md-3">
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body body_cus">
@@ -105,21 +107,24 @@
                       <img src="{{ asset('images/Descargar-PDF.png') }}" class="image-clas2" alt="">
                     </div>
                     <br><br>
-                    <a class="btn btn-primary mt-3 a_cus" id="descarga" data-file="Formato pagaré Inversiones Tododrogas.pdf">DESCARGAR</a><span>*</span>
+                    <a class="btn btn-primary mt-3 a_cus" id="descarga1" data-file="{{ $pagare->archivo }}">DESCARGAR</a><span>*</span>
                     <br>
                     <p class="text-primary p_cv">EXISTENTE</p>
                     <br>
                   </div>
                 </div>
               </div>
+
+              @endif
+
             </div>
             <center>
                 <div class="row">
                   <div class="col-12 text-center">
 
-                  <a href="{{ route('home') }}">
+
                   <button class="btn btn-primary  ml-10 btn_cx">Guardar y Continuar</button>
-                </a>
+
                   </div>
                   </div>
             </center>
@@ -134,6 +139,20 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
+    <script>
+        function changeImageColor() {
+        var fileInput = document.getElementById('document');
+        var image = document.getElementById('img1');
+        console.log("leiotn");
+
+        if (fileInput.files && fileInput.files[0]) {
+        image.classList.add('image-green');
+        } else {
+        image.classList.remove('image-green');
+        }
+    }
+    </script>
+
     <script>
     const button = document.querySelector('#descarga');
         button.addEventListener('click', function() {
@@ -176,5 +195,13 @@
       );
 
   </script>
+  <script>
+    button2 = document.querySelector('#descarga1');
+    button2.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });</script>
 </body>
 </html>

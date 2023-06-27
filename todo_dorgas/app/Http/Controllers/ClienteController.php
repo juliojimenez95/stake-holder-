@@ -140,8 +140,10 @@ class ClienteController extends Controller
                 'Nombre'=> 'required',
                 'tipo_d'=> 'required',
                 'documento'=> 'required',
-                'participacion'=>'required',
+                'participacion'=>'required|numeric',
                 'Nacionalidad'=>'required',
+                'PEP'=>'required',
+
 
             ],
             [
@@ -149,6 +151,7 @@ class ClienteController extends Controller
                 'tipo_d.required' => 'Tipo de documento es requerido',
                 'documento.required' => 'Documento es requerido',
                 'participacion.required' => 'La participacion es requerida',
+                'participacion.required' => 'La participacion debe ser un número',
                 'Nacionalidad.required' => 'La nacionalidad es requerida',
             ]
             );
@@ -158,7 +161,7 @@ class ClienteController extends Controller
                 $accionista->Nombres = $request->Nombre;
                 $accionista->TipoNit = $request->tipo_d;
                 $accionista->Nit = $request->documento;
-                $accionista->Participacion = $request->participacion;
+                $accionista->Participacion = floatval($request->participacion);
                 $accionista->Nacionalidad = $request->Nacionalidad;
                 $accionista->PEP = $request->PEP;
                 $accionista->user_id = $id;
@@ -508,11 +511,19 @@ class ClienteController extends Controller
     {
         $pagare = PagareModel::where('user_id',$id)->first();
         if ($pagare) {
-            return view("editar.pagare",['id'=>$id]);
+            return view("editar.pagare",['id'=>$id,'pagare'=> $pagare]);
         }else {
             return view("cliente.pagare",['id'=>$id,]);
 
         }
+    }
+
+    public function destroysocio( $id)
+    {
+        $accionista = AccionistaModel::findOrFail($id);
+        $accionista->delete();
+
+        return back();
     }
 
     public function pagareinf($id)
@@ -1514,7 +1525,7 @@ class ClienteController extends Controller
             ]
             );
            try {
-                $Informaciont =  InformacionTributariaModel::where('Cliente_id',$id);
+                $Informaciont =  InformacionTributariaModel::where('Cliente_id',$id)->first();
 
                 $Informaciont->ResponsableImpuesto = $request->grupo1;
                 $Informaciont->SujetoRetencion = $request->grupo2;

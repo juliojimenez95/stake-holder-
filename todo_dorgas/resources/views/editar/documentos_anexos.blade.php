@@ -255,8 +255,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="div_main">
-                  <div class="div_inside">
+                  <div class="div_main2">
+                  <div class="div_inside2">
                       <p class="div_p">Certificado de calidad<span>*</span></p>
                       <div style="display: flex;">
                         @if ($anexos->Certificado_c != '')

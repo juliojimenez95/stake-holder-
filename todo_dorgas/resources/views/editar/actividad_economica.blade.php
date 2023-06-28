@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
   <!-- Agregar el enlace de jquery -->
   <script
   src="https://code.jquery.com/jquery-3.6.3.js"

@@ -6,6 +6,7 @@
     <title>Todo Drogas</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
     <!-- Agregar el enlace de jquery -->
     <script
             src="https://code.jquery.com/jquery-3.6.3.js"

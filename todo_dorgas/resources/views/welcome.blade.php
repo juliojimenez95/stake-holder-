@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/wel.css') }}">
   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
 
   <style>
     /* Estilo para ocultar los bordes del select y hacerlo transparente */

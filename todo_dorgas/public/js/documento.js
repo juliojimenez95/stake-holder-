@@ -9,6 +9,18 @@ function changeImageColor() {
     }
   }
 
+
+  function changeImageColor14() {
+    var fileInput = document.getElementById('SS');
+    var image = document.getElementById('img1');
+
+    if (fileInput.files && fileInput.files[0]) {
+      image.classList.add('image-green');
+    } else {
+      image.classList.remove('image-green');
+    }
+  }
+
   function changeImageColor1() {
     var fileInput = document.getElementById('Rut');
     var image = document.getElementById('img2');

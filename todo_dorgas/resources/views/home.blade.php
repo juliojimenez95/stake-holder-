@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/infor_banca.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
 </head>
 <body>
   <div class="container-fluid">
@@ -146,6 +147,26 @@
                   </div>
                 </div>
               </div>
+              @if (Auth::user()->Natural == 1)
+              <div class="col">
+                <div class="card text-center border-0 transparente">
+                  <div class="card-body">
+                    <div class="image3">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" class="image-clas2" alt="">
+
+                    </div>
+                    <br><br>
+                    <h2 class="txt_cus">INFORMACIÓN<span>*</span></h2>
+                    <h2 class="txt_cus mb-3">DOCUMENTOS <br>ANEXOS</h2>
+
+                    <a href="{{ route('clientes.documentos_anexos',Auth::user()->id) }}">
+                        <button class="btn btn-primary mt-3 btn_card">VISITAR</button>
+                    </a>
+                    <br><br>
+                  </div>
+                </div>
+              </div>
+              @else
               <div class="col">
                 <div class="card text-center border-0 transparente">
                   <div class="card-body">
@@ -165,6 +186,9 @@
                   </div>
                 </div>
               </div>
+
+              @endif
+
             </div>
           </div>
         </div>

@@ -44,14 +44,21 @@ class DocumentosController extends Controller
                 'camara_comercio'=> 'required',
                 'Rut'=> 'required',
                 'CC'=>'required',
-                'CC'=>'required',
                 'FAA'=>'required',
                 'CB'=>'required',
 
 
 
 
-            ],);
+            ],[
+                'camara_comercio.required' => 'Documento requerido',
+                'Rut.required' => 'Documento  requerido',
+                'CC.required' => 'Documento requerido',
+                'FAA.required' => 'Documento requerido',
+                'CB.required' => 'Documento requerido'
+
+
+            ]);
 
            try {
 
@@ -199,14 +206,18 @@ class DocumentosController extends Controller
                 'SS'=> 'required',
                 'Rut'=> 'required',
                 'CC'=>'required',
-                'CC'=>'required',
-                'FAA'=>'required',
                 'CB'=>'required',
 
 
+            ],
+            [
+                'SS.required' => 'Documento requerido',
+                'Rut.required' => 'Documento  requerido',
+                'CC.required' => 'Documento requerido',
+                'CB.required' => 'Documento requerido'
 
 
-            ],);
+            ]);
 
            try {
 

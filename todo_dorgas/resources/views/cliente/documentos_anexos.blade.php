@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
 
   <style>
 
@@ -37,6 +38,9 @@
                   <div class="div_main">
                     <div class="div_inside">
                         <p class="div_p">Cámara y Comercio<span>*</span></p>
+                        @if ($errors->has('camara_comercio'))
+                            <p class="text-danger">{{ $errors->first('camara_comercio') }}</p>
+                        @endif
                         <div class="div_img">
                           <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('camara_comercio').click()">
                           <input type="file" id="camara_comercio" name="camara_comercio" style="display:none; " onchange="changeImageColor()">
@@ -46,6 +50,9 @@
 
                     <div class="div_inside">
                       <p class="div_p">R.U.T del Año Vigente<span>*</span></p>
+                      @if ($errors->has('Rut'))
+                            <p class="text-danger">{{ $errors->first('Rut') }}</p>
+                      @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Rut').click()">
                         <input type="file" id="Rut" name="Rut" style="display:none;" onchange="changeImageColor1()">
@@ -53,6 +60,9 @@
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Copia de C.C Representante Legal<span>*</span></p>
+                      @if ($errors->has('CC'))
+                            <p class="text-danger">{{ $errors->first('CC') }}</p>
+                      @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img3" class="img-fluid" onclick="document.getElementById('CC').click()" >
                         <input type="file" id="CC" name="CC" style="display:none;" onchange="changeImageColor2()">
@@ -67,6 +77,9 @@
 
                     <div class="div_inside">
                       <p class="div_p">Estados Financieros del Año Anterior<span>*</span></p>
+                      @if ($errors->has('FAA'))
+                            <p class="text-danger">{{ $errors->first('FAA') }}</p>
+                      @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" id="img4" alt="Imagen" class="img-fluid" onclick="document.getElementById('FAA').click()">
                         <input type="file" id="FAA" name="FAA" style="display:none;" onchange="changeImageColor3()">
@@ -126,6 +139,9 @@
                     </div>
                     <div class="div_inside">
                       <p class="div_p">Certificado Bancario<span>*</span></p>
+                      @if ($errors->has('CB'))
+                            <p class="text-danger">{{ $errors->first('CB') }}</p>
+                      @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img11" class="img-fluid" onclick="document.getElementById('CB').click()">
                         <input type="file" id="CB" name="CB" style="display:none;"  onchange="changeImageColor10()">
@@ -141,8 +157,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="div_main">
-                  <div class="div_inside">
+                  <div class="div_main2">
+                  <div class="div_inside2">
                       <p class="div_p">Certificado de calidad <span></span></p>
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img13" class="img-fluid" onclick="document.getElementById('Certificado_c').click()">

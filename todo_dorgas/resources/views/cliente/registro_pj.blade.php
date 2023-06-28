@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/juridica.css') }}">
     <link rel="stylesheet" href="{{ asset('css/natural.css') }}">
     <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
+    <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
 
     <link href="https://www.dafontfree.net/embed/ZnJhbmtsaW4tZ290aGljLWJvb2stcmVndWxhciZkYXRhLzMyL2YvMTU0MjI1L0ZyYW5rbGluIEdvdGhpYyBCb29rIFJlZ3VsYXIudHRm" rel="stylesheet" type="text/css"/>
     <link href="https://allfont.net/allfont.css?fonts=franklin-gothic-medium" rel="stylesheet" type="text/css" />
@@ -45,8 +46,10 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('clientes.storepj') }}" method="POST">
+                        <form action=" {{ route('editarpj') }}" method="POST">
                             @csrf
+                            @method('PUT')
+
                             <div class="row mb-3">
 
                                 <div class="col-md-4 col-sm-12">

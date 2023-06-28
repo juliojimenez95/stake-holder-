@@ -6,6 +6,7 @@
     <title>Todo Drogas</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
     <!-- Agregar el enlace de jquery -->
     <script
             src="https://code.jquery.com/jquery-3.6.3.js"
@@ -45,8 +46,10 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
             <div class="card formulario w-100 " style="border-radius: 50px;">
                     <div class="card-body">
-                        <form action=" {{ route('clientes.storepn') }}" method="POST">
+                        <form action=" {{ route('editarpn') }}" method="POST">
                             @csrf
+                            @method('PUT')
+
                             <div class="row mb-9">
 
                                 <div class="col-md-4 col-sm-12 mb-3">

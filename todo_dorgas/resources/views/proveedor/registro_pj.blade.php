@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/natural.css') }}">
     <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
+    <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
     <!-- Agregar el enlace a la hoja de estilo de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>

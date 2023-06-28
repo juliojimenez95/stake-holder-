@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/provedor.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
 </head>
 <body>
   <div class="container-fluid">

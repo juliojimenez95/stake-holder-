@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
   <style>
 
     </style>
@@ -21,7 +22,7 @@
             <div class="div_main">
 
             <div class="div_volver mt-3">
-                <a href="{{ route('clientes.socios_accionistas',Auth::user()->id) }}" class="btn btn-success btn_cb_c">
+                <a href="/home" class="btn btn-success btn_cb_c">
                     <i class="fa-solid fa-arrow-left"></i> Regresar</a>
             </div>
             <div class="">
@@ -55,7 +56,7 @@
                 <div class="col-md-12 mb-4">
                   <div class="div_main">
                     <div class="div_inside">
-                        <p class="div_p">Plantilla Aporte Seguridad Social<span>*</span></p>
+                        <p class="div_p">Plantilla Aporte Seguridad Social<span></span></p>
                         <div style="display: flex;">
                             @if ($anexos->SS != '')
                             <a class="div_img" id="descarga" data-file="{{ $anexos->SS }}" target="_blank">
@@ -72,7 +73,7 @@
 
 
                     <div class="div_inside">
-                      <p class="div_p">R.U.T del Año Vigente<span>*</span></p>
+                      <p class="div_p">R.U.T del Año Vigente<span></span></p>
                       <div style="display: flex;">
                         @if ($anexos->Rut != '')
                             <a class="div_img" id="descarga2" data-file="{{ $anexos->Rut }}" target="_blank">
@@ -87,7 +88,7 @@
 
                     </div>
                     <div class="div_inside">
-                      <p class="div_p">Copia de C.C Representante Legal<span></span></p>
+                      <p class="div_p">Copia de C.C <span></span></p>
                       <div style="display: flex;">
                         @if ($anexos->Cc_representante != '')
                             <a class="div_img" id="descarga3" data-file="{{ $anexos->Cc_representante }}" target="_blank">
@@ -108,36 +109,38 @@
                   <div class="div_main">
 
                     <div class="div_inside">
-                      <p class="div_p">Estados Financieros del Año Anterior<span></span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->Estados_financieros != '')
-                            <a class="div_img" id="descarga4" data-file="{{ $anexos->Estados_financieros }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" id="img4" alt="Imagen" class="img-fluid" onclick="document.getElementById('FAA').click()">
-                            <input type="file" id="FAA" name="FAA" style="display:none;" onchange="changeImageColor3()">
-                          </div>
-                      </div>
+                        <p class="div_p">Referencia Comercial no superior a 1 mes<span></span></p>
+                        <div style="display: flex;">
+                          @if ($anexos->Referencia_comercial != '')
+                              <a class="div_img" id="descarga5" data-file="{{ $anexos->Referencia_comercial }}" target="_blank">
+                                  <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                              </a>
+                              @endif
+                          <div class="div_img">
+                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img5" class="img-fluid" onclick="document.getElementById('RC').click()">
+                              <input type="file" id="RC" name="RC" style="display:none;" onchange="changeImageColor4()">
+                              </div>
+                        </div>
 
                     </div>
 
                     <div class="div_inside">
-                      <p class="div_p">Referencia Comercial no superior a 1 mes<span>*</span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->Referencia_comercial != '')
-                            <a class="div_img" id="descarga5" data-file="{{ $anexos->Referencia_comercial }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img5" class="img-fluid" onclick="document.getElementById('RC').click()">
-                            <input type="file" id="RC" name="RC" style="display:none;" onchange="changeImageColor4()">
-                            </div>
-                      </div>
+                        <p class="div_p">Referencia Comercial 2 no superior a 1 mes<span></span></p>
+                        <div style="display: flex;">
+                          @if ($anexos->Referencia_comercial2 != '')
+                              <a class="div_img" id="descarga14" data-file="{{ $anexos->Referencia_comercial2  }}" target="_blank">
+                                  <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img14" class="img-fluid">
+                              </a>
+                              @endif
+                          <div class="div_img">
+                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('Referencia_comercial2').click()">
+                              <input type="file" id="Referencia_comercial2" name="Referencia_comercial2" style="display:none;"  onchange="changeImageColor13()">
+                          </div>
+                        </div>
 
                     </div>
+
+
                     <div class="div_inside">
                       <p class="div_p">Resolucion Rete ICA<span></span></p>
                       <div style="display: flex;">
@@ -157,57 +160,8 @@
                 </div>
 
                 <div class="col-md-12 mb-5">
-                  <div class="div_main">
-                    <div class="div_inside">
-                      <p class="div_p">Gran Contribuyente<span></span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->Contribuyente != '')
-                            <a class="div_img" id="descarga7" data-file="{{ $anexos->Contribuyente }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img7" class="img-fluid" onclick="document.getElementById('GC').click()">
-                            <input type="file" id="GC" name="GC" style="display:none;"  onchange="changeImageColor6()">
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="div_inside">
-                      <p class="div_p">Autoretenedor en la Fuente<span></span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->Autoretenedor_f != '')
-                            <a class="div_img" id="descarga8" data-file="{{ $anexos->Autoretenedor_f }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img8" class="img-fluid" onclick="document.getElementById('AF').click()">
-                            <input type="file" id="AF" name="AF" style="display:none;"  onchange="changeImageColor7()">
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="div_inside">
-                      <p class="div_p">Autoretenedor ICA<span>*</span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->Autoretenedor_ICA != '')
-                            <a class="div_img" id="descarga9" data-file="{{ $anexos->Autoretenedor_ICA }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img9" class="img-fluid" onclick="document.getElementById('ICA').click()">
-                            <input type="file" id="ICA" name="ICA" style="display:none;"  onchange="changeImageColor8()">
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 mb-5">
-                    <div class="div_main">
-                        <div class="div_inside">
+                    <div class="div_main2">
+                        <div class="div_inside2">
                       <p class="div_p">Brochure<span>*</span></p>
                       <div style="display: flex">
                         @if ($anexos->Brochure != '')
@@ -223,7 +177,7 @@
 
                     </div>
                     <div class="div_inside">
-                      <p class="div_p">Certificado Bancario<span>*</span></p>
+                      <p class="div_p">Certificado Bancario<span></span></p>
                       <div style="display: flex;">
                         @if ($anexos->Certificado_bancario != '')
                             <a class="div_img" id="descarga11" data-file="{{ $anexos->Certificado_bancario }}" target="_blank">
@@ -237,56 +191,7 @@
                       </div>
 
                     </div>
-                    <div class="div_inside">
-                      <p class="div_p">Certificado de implementacion del SG-SST<span>*</span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->SG_SST != '')
-                            <a class="div_img" id="descarga12" data-file="{{ $anexos->SG_SST  }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('SG-SST').click()">
-                            <input type="file" id="SG-SST" name="SG-SST" style="display:none;"  onchange="changeImageColor11()">
-                        </div>
-                      </div>
-
                     </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="div_main">
-                  <div class="div_inside">
-                      <p class="div_p">Certificado de calidad<span>*</span></p>
-                      <div style="display: flex;">
-                        @if ($anexos->Certificado_c != '')
-                            <a class="div_img" id="descarga13" data-file="{{ $anexos->Certificado_c  }}" target="_blank">
-                                <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
-                            </a>
-                            @endif
-                        <div class="div_img">
-                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img13" class="img-fluid" onclick="document.getElementById('Certificado_c').click()">
-                            <input type="file" id="Certificado_c" name="Certificado_c" style="display:none;"  onchange="changeImageColor12()">
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="div_inside">
-                        <p class="div_p">Referencia Comercial 2 no superior a 1 mes<span>*</span></p>
-                        <div style="display: flex;">
-                          @if ($anexos->Referencia_comercial2 != '')
-                              <a class="div_img" id="descarga14" data-file="{{ $anexos->Referencia_comercial2  }}" target="_blank">
-                                  <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img14" class="img-fluid">
-                              </a>
-                              @endif
-                          <div class="div_img">
-                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('Referencia_comercial2').click()">
-                              <input type="file" id="Referencia_comercial2" name="Referencia_comercial2" style="display:none;"  onchange="changeImageColor13()">
-                          </div>
-                        </div>
-
-                      </div>
-                  </div>
                 </div>
             </div>
             <div class="row mb-4">

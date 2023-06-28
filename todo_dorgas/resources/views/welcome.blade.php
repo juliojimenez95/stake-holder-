@@ -38,12 +38,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="abs_cont">
-          <div class="div_fa">
+          <!--<div class="div_fa">
             <div class="img_fa">
                 <i class="fa-solid fa-users"></i>
             </div>
             <p class="p_img_c">Admin</p>
-          </div>
+          </div> -->
 
           <div class="div_father">
             <div class="text_fa">

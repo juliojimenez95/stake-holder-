@@ -37,13 +37,13 @@
                 <div class="col-md-12 mb-4">
                   <div class="div_main">
                     <div class="div_inside">
-                        <p class="div_p">Plantilla Aporte Seguridad Social<span>*</span></p>
+                        <p class="div_p">Planilla Aporte Seguridad Social<span>*</span></p>
                         @if ($errors->has('SS'))
-                                        <p class="text-danger">{{ $errors->first('SS') }}</p>
+                            <p class="text-danger">{{ $errors->first('SS') }}</p>
                         @endif
                         <div class="div_img">
                           <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid" onclick="document.getElementById('SS').click()">
-                          <input type="file" id="SS" name="SS" style="display:none; " onchange="changeImageColor14()">
+                          <input type="file" id="SS" name="SS" style="display:none; " value="{{old('SS')}}" onchange="changeImageColor14()">
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                       @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img2"  class="img-fluid" onclick="document.getElementById('Rut').click()">
-                        <input type="file" id="Rut" name="Rut" style="display:none;" onchange="changeImageColor1()">
+                        <input type="file" id="Rut" name="Rut" style="display:none;" value="{{old('Rut')}}" onchange="changeImageColor1()">
                       </div>
                     </div>
                     <div class="div_inside">
@@ -65,7 +65,7 @@
                       @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img3" class="img-fluid" onclick="document.getElementById('CC').click()" >
-                        <input type="file" id="CC" name="CC" style="display:none;" onchange="changeImageColor2()">
+                        <input type="file" id="CC" name="CC" style="display:none;" value="{{old('CC')}}" onchange="changeImageColor2()">
                       </div>
                     </div>
 
@@ -78,7 +78,7 @@
                         <p class="div_p">Referencia Comercial no superior a 1 mes<span></span></p>
                         <div class="div_img">
                           <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img5" class="img-fluid" onclick="document.getElementById('RC').click()">
-                          <input type="file" id="RC" name="RC" style="display:none;" onchange="changeImageColor4()">
+                          <input type="file" id="RC" name="RC" style="display:none;" value="{{old('RC')}}" onchange="changeImageColor4()">
                           </div>
                     </div>
                     <div class="div_inside">
@@ -94,7 +94,7 @@
                       <p class="div_p">Resolucion Rete ICA<span></span></p>
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img6" class="img-fluid" onclick="document.getElementById('RRI').click()">
-                        <input type="file" id="RRI" name="RRI" style="display:none;" onchange="changeImageColor5()">
+                        <input type="file" id="RRI" name="RRI" style="display:none;" value="{{old('RRI')}}" onchange="changeImageColor5()">
                       </div>
                     </div>
                   </div>
@@ -107,7 +107,7 @@
                       <p class="div_p">Brochure<span></span></p>
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img10" class="img-fluid" onclick="document.getElementById('Brochure').click()">
-                        <input type="file" id="Brochure" name="Brochure" style="display:none;"  onchange="changeImageColor9()">
+                        <input type="file" id="Brochure" name="Brochure"  value="{{old('Brochure')}}" style="display:none;"  onchange="changeImageColor9()">
                     </div>
                     </div>
                     <div class="div_inside">
@@ -117,7 +117,7 @@
                       @endif
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img11" class="img-fluid" onclick="document.getElementById('CB').click()">
-                        <input type="file" id="CB" name="CB" style="display:none;"  onchange="changeImageColor10()">
+                        <input type="file" id="CB" name="CB" style="display:none;" value="{{old('CB')}}" onchange="changeImageColor10()">
                     </div>
                     </div>
                     </div>
@@ -127,7 +127,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <button class="btn btn-primary btn_continuar">Guardar y Continuar</button>
+                        <button class="btn btn-primary btn_continuar" onclick="pp()">Guardar y Continuar</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +135,12 @@
         </div>
 </div>
 <script src="{{ asset('js/documento.js') }}"></script>
+<script>
+
+    function pp(){
+        alert("aqui esta");
+    }
+</script>
 
 </body>
 </html>

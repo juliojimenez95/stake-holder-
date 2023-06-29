@@ -27,7 +27,7 @@
               </div>
             </div>
         </div>
-        <form action="{{ route('storeanexosn',$id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('storeanexosn',$id) }}" method="post" enctype="multipart/form-data" id="myForm">
         @csrf
         <div class="container">
             <div class="row">
@@ -127,7 +127,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="div_continuar">
-                        <button class="btn btn-primary btn_continuar" onclick="pp()">Guardar y Continuar</button>
+                        <button class="btn btn-primary btn_continuar">Guardar y Continuar</button>
                     </div>
                 </div>
             </div>
@@ -136,10 +136,29 @@
 </div>
 <script src="{{ asset('js/documento.js') }}"></script>
 <script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
+        let val1 = document.getElementById("SS").value;
+        let val2 =document.getElementById("Rut").value;
+        let val3 =document.getElementById("CC").value;
+        let val4 =document.getElementById("CB").value;
+        if(val1 != '' && val2 != '' && val3 != '' && val4 != ''){
+            document.getElementById("myForm").submit();
+        }else {
+            alert("Faltan archivos requeridos");
+        }
 
-    function pp(){
-        alert("aqui esta");
-    }
+    });
+
+    /*function pp(){
+
+        if(val1 != '' && val2 != '' && val3 != '' && val4 != ''){
+            document.getElementById("myForm").submit();
+        }else {
+            event.preventDefault();
+        }
+        //
+    }*/
 </script>
 
 </body>

@@ -153,6 +153,8 @@ class ClienteController extends Controller
                 'participacion.required' => 'La participacion es requerida',
                 'participacion.required' => 'La participacion debe ser un número',
                 'Nacionalidad.required' => 'La nacionalidad es requerida',
+                'PEP.required' => 'PEP es requerida'
+
             ]
             );
            try {

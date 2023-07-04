@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido</title>
+  <title>Todo Drogas</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
+  <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -106,9 +106,12 @@
                                         <a href="#" onclick="dataFinanciera({{ $usuario->id }})" {{-- data-toggle="modal"   data-target="#modalInformacionFinanciera"  --}} style="margin-right: 15px; text-decoration: none;">
                                             <img src="{{ asset('images/Información-financiera.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
+                                        @if ($usuario->rol == 1 )
                                         <a href="#"  onclick="dataPagare({{ $usuario->id }})" {{-- data-toggle="modal" data-target="#modalInformacionPagare"  --}} style="margin-right: 15px; text-decoration: none;">
                                             <img src="{{ asset('images/Pagaré.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
+                                        @endif
+
                                         <br>
                                         <br>
                                         <a href="#"  onclick="dataBancaria({{ $usuario->id }})"  {{--  data-toggle="modal" data-target="#modalInformacionBancariaLabel"--}}  style="margin-right: 15px; text-decoration: none;">
@@ -118,6 +121,8 @@
                                         <a href="#"  onclick="cargarSocios({{ $usuario->id }})"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <i class="fa-solid fa-user-group"></i>
                                         </a>
+
+
 
                                         <a href="{{ route('admin.pdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
@@ -755,7 +760,7 @@
 
             $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
             $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
-            $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
+            $('#NC').append("Nombre: "+"<span>"+response.contacto.Nombre1+"</span>");
             $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
             $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
             $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
@@ -864,12 +869,12 @@
                 $('#EC').empty();
                 $('#TC').empty();
 
-                $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.Proveedor.TipoNit+"</span>");
-                $('#n_documento').append("Número documento: "+"<span>"+response.Proveedor.Nit+"</span>");
+                $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.Proveedor.TipoID+"</span>");
+                $('#n_documento').append("Número documento: "+"<span>"+response.Proveedor.ID+"</span>");
                 $('#nombres_a').append("Nombre: "+"<span>"+response.Proveedor.Nombre+"</span>");
                 $('#Departamento_p').append("Departamento: "+"<span>"+response.Proveedor.Departamento+"</span>");
                 $('#cuidad_p').append("Cuidad: "+"<span>"+response.Proveedor.Ciudad+"</span>");
-                $('#telefono_p').append("Teléfono: "+"<span>"+response.Proveedor.Telefono+"</span>");
+                $('#telefono_p').append("Teléfono: "+"<span>"+"N/A"+"</span>");
                 $('#direccion_p').append("Dirección: "+"<span>"+response.Proveedor.Direccion+"</span>");
                 $('#Actividad_e').append("Código CIIU: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
 
@@ -890,7 +895,7 @@
 
                 $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
                 $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
-                $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
+                $('#NC').append("Nombre: "+"<span>"+response.contacto.Nombre1+"</span>");
                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
                 $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
@@ -929,8 +934,8 @@
                 $('#EC').empty();
                 $('#TC').empty();
 
-                $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.Proveedor.TipoNit+"</span>");
-                $('#n_documento').append("Número documento: "+"<span>"+response.Proveedor.Nit+"</span>");
+                $('#Tipodocumento').append("Tipo documento: "+"<span>"+response.Proveedor.TipoID+"</span>");
+                $('#n_documento').append("Número documento: "+"<span>"+response.Proveedor.ID+"</span>");
                 $('#nombres_a').append("Nombre: "+"<span>"+response.Proveedor.Nombre+"</span>");
                 $('#Departamento_p').append("Departamento: "+"<span>"+response.Proveedor.Departamento+"</span>");
                 $('#cuidad_p').append("Cuidad: "+"<span>"+response.Proveedor.Ciudad+"</span>");
@@ -955,7 +960,7 @@
 
                 $('#TDC').append("Tipo documento: "+"<span>"+response.contacto.TipoNit+"</span>");
                 $('#NDC').append("Número de documento: "+"<span>"+response.contacto.Nit+"</span>");
-                $('#NC').append("Nombre: "+"<span>"+response.contacto.Cargo+"</span>");
+                $('#NC').append("Nombre: "+"<span>"+response.contacto.Nombre1+"</span>");
                 $('#CC').append("Cargo: "+"<span>"+response.contacto.Cargo+"</span>");
                 $('#EC').append("Email: "+"<span>"+response.contacto.Email+"</span>");
                 $('#TC').append("Teléfono: "+"<span>"+response.contacto.Telefono+"</span>");
@@ -1095,12 +1100,12 @@
              $('#Egresos').empty();
              $('#p_vinculada').empty();
 
-             $('#Activo').append("Activo Totales: $"+response.informacionf.Activo);
-             $('#Pasivo').append("Pasivo Totales: $"+response.informacionf.Pasivo);
-             $('#Patrimonio').append("Patrimonio : $"+response.informacionf.Patrimonio);
-             $('#Ingresos').append("Ingresos Totales: $"+response.informacionf.IngresosTotales);
-             $('#Egresos').append("Egresos Totales: $"+response.informacionf.EgresosTotales);
-             $('#p_vinculada').append("Personal con vinculación directa: "+response.informacionf.CantidadPersonas);
+             $('#Activo').append("Activo Totales: $"+"<span>"+response.informacionf.Activo+"</span>");
+             $('#Pasivo').append("Pasivo Totales: $"+"<span>"+response.informacionf.Pasivo+"</span>");
+             $('#Patrimonio').append("Patrimonio : $"+"<span>"+response.informacionf.Patrimonio+"</span>");
+             $('#Ingresos').append("Ingresos Totales: $"+"<span>"+response.informacionf.IngresosTotales+"</span>");
+             $('#Egresos').append("Egresos Totales: $"+"<span>"+response.informacionf.EgresosTotales+"</span>");
+             $('#p_vinculada').append("Personal con vinculación directa: "+"<span>"+response.informacionf.CantidadPersonas+"</span>");
 
 
 
@@ -1194,19 +1199,30 @@
              $('#Departamento2').empty();
              $('#pais2').empty();
 
-             $('#banco1').append("Banco : "+response.informacionb.Banco);
-             $('#Tipo1').append("Tipo cuenta : "+response.informacionb.TipoCuenta);
-             $('#n_cuenta1').append("Número cuenta: "+response.informacionb.Cuenta);
-             $('#Cuidad1').append("Cuidad: "+response.informacionb.Ciudad);
-             $('#Departamento1').append("Departamento: "+response.informacionb.Departamento);
-             $('#pais1').append("País: "+response.informacionb.Pais);
+             $('#banco1').append("Banco : "+"<span>"+response.informacionb.Banco+"</span>");
+             $('#Tipo1').append("Tipo cuenta : "+"<span>"+response.informacionb.TipoCuenta+"</span>");
+             $('#n_cuenta1').append("Número cuenta: "+"<span>"+response.informacionb.Cuenta+"</span>");
+             $('#Cuidad1').append("Cuidad: "+"<span>"+response.informacionb.Ciudad+"</span>");
+             $('#Departamento1').append("Departamento: "+"<span>"+response.informacionb.Departamento+"</span>");
+             $('#pais1').append("País: "+"<span>"+response.informacionb.Pais+"</span>");
+                if (response.informacionb.Banco2 == " ") {
 
-             $('#banco2').append("Banco 2: "+response.informacionb.Banco2);
-             $('#Tipo2').append("Tipo cuenta 2: "+response.informacionb.TipoCuenta2);
-             $('#n_cuenta2').append("Número cuenta 2: "+response.informacionb.Cuenta2);
-             $('#Cuidad2').append("Cuidad 2: "+response.informacionb.Ciudad2);
-             $('#Departamento2').append("Departamento 2: "+response.informacionb.Departamento2);
-             $('#pais2').append("País 2: "+response.informacionb.Pais2);
+                    $('#banco2').append("Banco 2: "+"<span>"+"N/A"+"</span>");
+                    $('#Tipo2').append("Tipo cuenta 2: "+"<span>"+"N/A"+"</span>");
+                    $('#n_cuenta2').append("Número cuenta 2: "+"<span>"+"N/A"+"</span>");
+                    $('#Cuidad2').append("Cuidad 2: "+"<span>"+"N/A"+"</span>");
+                    $('#Departamento2').append("Departamento 2: "+"<span>"+"N/A"+"</span>");
+                    $('#pais2').append("País 2: "+"<span>"+"N/A"+"</span>");
+
+                }else{
+                    $('#banco2').append("Banco 2: "+"<span>"+response.informacionb.Banco2+"</span>");
+                    $('#Tipo2').append("Tipo cuenta 2: "+"<span>"+response.informacionb.TipoCuenta2+"</span>");
+                    $('#n_cuenta2').append("Número cuenta 2: "+"<span>"+response.informacionb.Cuenta2+"</span>");
+                    $('#Cuidad2').append("Cuidad 2: "+"<span>"+response.informacionb.Ciudad2+"</span>");
+                    $('#Departamento2').append("Departamento 2: "+"<span>"+response.informacionb.Departamento2+"</span>");
+                    $('#pais2').append("País 2: "+"<span>"+response.informacionb.Pais2+"</span>");
+                }
+
 
 
 

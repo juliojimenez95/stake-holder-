@@ -44,7 +44,6 @@ class DocumentosController extends Controller
                 'camara_comercio'=> 'required',
                 'Rut'=> 'required',
                 'CC'=>'required',
-                'FAA'=>'required',
                 'CB'=>'required',
 
 
@@ -54,7 +53,6 @@ class DocumentosController extends Controller
                 'camara_comercio.required' => 'Documento requerido',
                 'Rut.required' => 'Documento  requerido',
                 'CC.required' => 'Documento requerido',
-                'FAA.required' => 'Documento requerido',
                 'CB.required' => 'Documento requerido'
 
 

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
+    <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
 
     <title>{{ "Todo Drogas" }}</title>
 

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/natural.css') }}">
     <link rel="stylesheet" href="{{ asset('css/economica.css') }}">
-    <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
+    <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
     <!-- Agregar el enlace a la hoja de estilo de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
@@ -141,7 +141,7 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-12">
-                                    <label for="pagina" class="form-label label_c"><strong>Pagina web</strong></label>
+                                    <label for="pagina" class="form-label label_c"><strong>Página web</strong></label>
                                     <input type="text" class="form-control input_custom select_c" id="pagina" name="pagina" value="{{$user->pagina_web}}"
                                         placeholder="">
                                     @if ($errors->has('pagina'))
@@ -241,152 +241,18 @@
                             </div>
 
                     </div>
+
+                        <center style="margin-top:10px">
+                        <div class="col-md-12 mb-4">
+                            <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
+                        </div>
+                        </center>
+                    </form>
                 </div>
 
             </div>
         </div>
 
-        <div class="card text-center bg-light" style="padding-top: 45px; padding-bottom: 45px;">
-            <div class="container">
-                <div class="row">
-                  <div class="col-md-12 mb-4">
-                    <div class="form-group">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <span class="color-cs">¿Por su cargo o actividad maneja o a manejado recursos públicos? </span>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo1" id="grupo1s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo1"  id="grupo1n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo1"   id="grupo1na"value="N/A"></label>
-                              <span class="mr_5 color-cb">Observaciones</span>
-                              <input type="text" class="input_col" name="Observacion" id="Observacion">
-                            </div>
-
-
-                      </div>
-                    </div>
-                    </div>
-                <div class="col-md-12 mb-4">
-                  <div class="form-group">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <span class="color-cs">¿Por su cargo o actividad ejerce o ha ejercido algún grado de poder político o público? </span>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo2" id="grupo2s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo2" id="grupo2n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo2" id="grupo2na" value="N/A"></label>
-                              <span class="color-cb mr_5">Observaciones</span>
-                              <input type="text" name="Observacion3" id="Observacion3" class="input_col">
-                            </div>
-                      </div>
-                  </div>
-                 </div>
-                  <div class="col-md-12 mb-4">
-                   <div class="form-group">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <span class="color-cs">¿Por su actividad u oficio goza usted de reconocimiento político o público?</span>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo3" id="grupo3s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo3" id="grupo3n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo3" id="grupo3na" value="N/A"></label>
-                              <span class="mr_5 color-cb">Observaciones</span>
-                              <input type="text" name="Observacion2" id="Observacion2" class="input_col">
-                            </div>
-
-
-                      </div>
-                  </div>
-
-                 </div>
-
-                 <div class="col-md-12 mb-4">
-                 <div class="form-group ">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <span class="color-cs">¿Existe algún vinculo entre usted y una persona considerada públicamente expuesta?</span>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo4" id="grupo4s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo4" id="grupo4n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo4" id="grupo4na" value="N/A"></label>
-                              <span class="mr_5 color-cb">Observaciones</span>
-                              <input type="text" name="Observacion4" id="Observacion4" class="input_col">
-                            </div>
-                      </div>
-                  </div>
-                 </div>
-
-                 <div class="col-md-12 mb-4">
-                 <div class="form-group ">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <span class="color-cs">¿Es usted sujeto de obligaciones tributarias en otro país o grupo de países?</span>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo5" id="grupo5s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo5" id="grupo5n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo5" id="grupo5na" value="N/A"></label>
-                              <span class="mr_5 color-cb">Observaciones</span>
-                              <input type="text color-cb" name="Observacion5" id=" Observacion5" class="input_col">
-                            </div>
-
-
-                      </div>
-                  </div>
-
-                 </div>
-
-                 <div class="col-md-12 mb-4">
-                 <div class="form-group ">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <p class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales  como ONG, ONU, UNICEF, etc.? </p>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" id="grupo6s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo6" id="grupo6n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo6" id="grupo6na" value="N/A"></label>
-                              <span class="mr_5 color-cb">Observaciones</span>
-                              <input type="text color-cb" name="Observacion6" id="Observacion6" class="input_col">
-                            </div>
-                      </div>
-                  </div>
-
-                 </div>
-
-                 <div class="col-md-12 mb-4">
-                 <div class="form-group">
-                      <div style="display: flex; justify-content: space-between;">
-                            <div class="">
-                              <p class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, SARLAFT o equivalentes?</p>
-                            </div>
-                            <div class="">
-                              <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" id="grupo7s" value="Si"></label>
-                              <label class="mr-2 color-cb" >No <input type="radio" name="grupo7" id="grupo7n" value="No"></label>
-                              <label class="mr-2 color-cb" >N/A <input type="radio" name="grupo7" id="grupo7na" value="N/A"></label>
-                              <span class="mr_5 color-cb">Observaciones</span>
-                              <input type="text color-cb" name="Observacion7" id="Observacion7" class="input_col">
-                            </div>
-                      </div>
-                  </div>
-
-                  </div>
-
-                 </div>
-                </div><!--Final row-->
-
-
-              </div>
-              <center style="margin-top:10px">
-                <div class="col-md-12 mb-4">
-                    <button type="submit" class="btn btn-primary estilo_boton">Guardar y Continuar</button>
-                </div>
-                </center>
-            </form>
 
     </div>
         <!-- Agregar el script de JavaScript de Bootstrap -->

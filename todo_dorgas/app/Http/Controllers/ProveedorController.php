@@ -688,7 +688,7 @@ class ProveedorController extends Controller
         $request->validate(
             [
                 'razon_s'=> 'required',
-                'id'=> 'required|unique:PROVEEDORES',
+                'id'=> 'required',
                 'ta_e'=> 'required',
                 'tipo_s'=>'required',
                 'pais'=> 'required',
@@ -702,7 +702,6 @@ class ProveedorController extends Controller
             [
                 'razon_s.required' => 'Tipo de rayon social es requerida',
                 'id.required' => 'El nit es requerido',
-                'id.unique' => 'El nit ya esta  registrado',
                 'ta_e.required' => 'El tamaño de la empresa es requerido',
                 'pais.required' => 'El departamento es requerido',
                 'departamento.required' => 'El departamento es requerido',
@@ -719,7 +718,7 @@ class ProveedorController extends Controller
             );
            try {
 
-            $proveedor =  ProveedorModel::where('id',$request->n_docuemnto)->first();
+            $proveedor =  ProveedorModel::where('id',$request->id)->first();
             if ($proveedor) {
                 if (isset($request->dv) && !empty($request->dv)) {
                     $proveedor->DV = $request->dv;
@@ -727,7 +726,6 @@ class ProveedorController extends Controller
                 }else {
                      $proveedor->DV = 0;
                 }
-                $proveedor->id = $request->id;
 
                 $proveedor->TipoID ="Nit";
 
@@ -862,7 +860,7 @@ class ProveedorController extends Controller
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
                         'rol' => 2,
-                        'Natural' => 1,
+                        'Natural' => 0,
                         'ManejoRP'=> $request->grupo1 ,
                         'Observacion1'=> $request->Observacion."" ,
                         'EjercidoPPOP'=> $request->grupo2 ,

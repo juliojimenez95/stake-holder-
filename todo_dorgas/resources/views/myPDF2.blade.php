@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>inFormacion Persona</title>
+
 </head>
 <body>
 {{--
@@ -20,7 +21,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                      <p id="Tipodocumento" class="p_ch"> <strong>Tipo de documento: <span>{{ $Proveedor->TipoNit }}</span></strong></p>
+                                      <p id="Tipodocumento" class="p_ch"> <strong>Tipo de documento: <span>{{ $Proveedor->TipoID }}</span></strong></p>
                                     </div>
                                     <div class="col-md-6">
                                       <p id="n_documento" class="p_ch"><strong>Número de Documento: <span>{{ $Proveedor->ID }}</span></strong></p>
@@ -38,10 +39,18 @@
                                     <div class="col-md-6">
                                       <p id="cuidad_p" class="p_ch"><strong>Municipio: <span>{{ $Proveedor->Ciudad }}</span></strong></p>
                                     </div>
+                                    @if ($Proveedor->Telefono1 != null && $Proveedor->Telefono1 != "" )
                                     <div class="col-md-6">
-                                      <p id="telefono_p" class="p_ch"> <strong>Teléfono: <span>{{ $Proveedor->Telefono1 }}</span></strong></p>
+                                        <p id="telefono_p" class="p_ch"> <strong>Teléfono: <span>{{ $Proveedor->Telefono1 }}</span></strong></p>
 
-                                    </div>
+                                      </div>
+                                    @else
+                                    <div class="col-md-6">
+                                        <p id="telefono_p" class="p_ch"> <strong>Teléfono: <span>{{ "N/A" }}</span></strong></p>
+
+                                      </div>
+                                    @endif
+
                                   </div>
 
                                   <div class="row">
@@ -233,57 +242,86 @@
                               </div>
 
                                <h1>Información Bancaria</h1>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p id="banco1" class="p_ch"><strong>Nombre de la Entidad Bancaria <span>{{ $informacionb->Banco }}</span></strong></p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    <p id="banco1" class="p_ch"><strong>Nombre de la Entidad Bancaria <span>{{ $informacionb->Banco }}</span></strong></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <p id="Tipo1" class="p_ch"><strong>Tipo de Cuenta: <span> {{ $informacionb->TipoCuenta }}</span></strong></p>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                  <p id="Tipo1" class="p_ch"><strong>Tipo de Cuenta: <span> {{ $informacionb->TipoCuenta }}</span></strong></p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    <p id="n_cuenta1" class="p_ch"> <strong>Número de Cuenta: <span>{{ $informacionb->Cuenta }}</span></strong></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <p id="Cuidad1" class="p_ch"><strong>Ciudad: <span>{{ $informacionb->Ciudad }}</span></strong></p>
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p id="n_cuenta1" class="p_ch"> <strong>Número de Cuenta: <span>{{ $informacionb->Cuenta }}</span></strong></p>
-                                </div>
-                                <div class="col-md-6">
-                                  <p id="Cuidad1" class="p_ch"><strong>Ciudad: <span>{{ $informacionb->Ciudad }}</span></strong></p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p id="Departamento1" class="p_ch"><strong>Departamento: <span>{{ $informacionb->Departamento }}</span></strong></p>
-                                </div>
-                                <div class="col-md-6">
-                                  <p id="pais1" class="p_ch"> <strong>Pais: <span>{{ $informacionb->Pais }}</span></strong></p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    <p id="Departamento1" class="p_ch"><strong>Departamento: <span>{{ $informacionb->Departamento }}</span></strong></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <p id="pais1" class="p_ch"> <strong>Pais: <span>{{ $informacionb->Pais }}</span></strong></p>
 
+                                    </div>
                                 </div>
-                              </div>
+                                @if ($informacionb->Banco2 == " ")
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    <p id="banco2" class="p_ch"> <strong>Nombre de la Entidad Bancaria: <span>{{ "N/A" }}</span></strong></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <p id="Tipo2" class="p_ch"><strong>Tipo de Cuenta: <span>{{ "N/A" }}</span></strong></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    <p id="n_cuenta2" class="p_ch"><strong>Número de Cuenta: <span>{{ "N/A" }}</span></strong></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <p id="Cuidad2" class="p_ch"><strong>Ciudad: <span>{{ "N/A" }}</span></strong></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    <p id="Departamento2" class="p_ch"><strong>Departamento: <span>{{ "N/A" }}</span></strong></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <p id="pais2" class="p_ch"> <strong>Pais: <span>{{ "N/A" }}</span></strong></p>
 
-                              <div class="row">
-                                  <div class="col-md-6">
+                                    </div>
+                                </div>
+                              @else
+                                <div class="row">
+                                    <div class="col-md-6">
                                     <p id="banco2" class="p_ch"> <strong>Nombre de la Entidad Bancaria: <span>{{ $informacionb->Banco2 }}</span></strong></p>
-                                  </div>
-                                  <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
                                     <p id="Tipo2" class="p_ch"><strong>Tipo de Cuenta: <span>{{ $informacionb->TipoCuenta2 }}</span></strong></p>
-                                  </div>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                  <div class="col-md-6">
+                                    <div class="col-md-6">
                                     <p id="n_cuenta2" class="p_ch"><strong>Número de Cuenta: <span>{{ $informacionb->Cuenta2 }}</span></strong></p>
-                                  </div>
-                                  <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
                                     <p id="Cuidad2" class="p_ch"><strong>Ciudad: <span>{{ $informacionb->Ciudad2 }}</span></strong></p>
-                                  </div>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                  <div class="col-md-6">
+                                    <div class="col-md-6">
                                     <p id="Departamento2" class="p_ch"><strong>Departamento: <span>{{ $informacionb->Departamento2 }}</span></strong></p>
-                                  </div>
-                                  <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
                                     <p id="pais2" class="p_ch"> <strong>Pais: <span>{{ $informacionb->Pais2 }}</span></strong></p>
 
-                                  </div>
+                                    </div>
                                 </div>
+
+                              @endif
+
                                  <h1>Información Socios o Accionistas</h1>
 
                                 <div class="row">

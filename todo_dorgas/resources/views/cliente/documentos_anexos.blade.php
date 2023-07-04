@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido</title>
+  <title>Todo Drogas</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/anexos.css') }}">
-  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
+  <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
 
   <style>
 
@@ -27,7 +27,7 @@
               </div>
             </div>
         </div>
-        <form action="{{ route('storeanexos',$id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('storeanexos',$id) }}" method="post" enctype="multipart/form-data" id="myForm">
         @csrf
         <div class="container">
             <div class="row">
@@ -76,7 +76,7 @@
                   <div class="div_main">
 
                     <div class="div_inside">
-                      <p class="div_p">Estados Financieros del Año Anterior<span>*</span></p>
+                      <p class="div_p">Estados Financieros del Año Anterior<span></span></p>
                       @if ($errors->has('FAA'))
                             <p class="text-danger">{{ $errors->first('FAA') }}</p>
                       @endif
@@ -186,6 +186,23 @@
         </div>
 </div>
 <script src="{{ asset('js/documento.js') }}"></script>
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
+        let val1 = document.getElementById("camara_comercio").value;
+        let val2 =document.getElementById("Rut").value;
+        let val3 =document.getElementById("CC").value;
+        let val4 =document.getElementById("CB").value;
+        if(val1 != '' && val2 != '' && val3 != '' && val4 != ''){
+            document.getElementById("myForm").submit();
+        }else {
+            alert("Faltan archivos requeridos");
+        }
+
+    });
+
+
+</script>
 
 </body>
 </html>

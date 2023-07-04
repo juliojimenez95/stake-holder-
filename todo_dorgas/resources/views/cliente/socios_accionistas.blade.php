@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido</title>
+  <title>Todo Drogas</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/socios.css') }}">
-  <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/png" />
+  <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -106,6 +106,9 @@
                                 <label class="mr-2" >Si <input type="radio" name="PEP" value="1"></label>
                                 <label class="mr-2" >No <input type="radio" name="PEP" value="0"></label>
                             </div>
+                            @if ($errors->has('PEP'))
+                                <p class="text-danger">{{ $errors->first('PEP') }}</p>
+                            @endif
                           </div>
                     </div>
                         </div>
@@ -187,7 +190,7 @@
                                     </div>
                                     <div class="btn_c">
                                         <a class="btn btn-primary" id="img1" onclick="document.getElementById('fondo').click()">CARGAR</a><span>*</span>
-                                        <input type="file" id="fondo" name="fondo" style="display:none;" >
+                                        <input type="file" id="fondo" name="fondo" style="display:none;" onchange="changeImageColor()">
 
                                     </div>
                                 </div>
@@ -221,6 +224,8 @@
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/fondo.js') }}"></script>
+
   <script>const button = document.querySelector('#descarga');
     button.addEventListener('click', function() {
         // Obtener el archivo PDF correspondiente

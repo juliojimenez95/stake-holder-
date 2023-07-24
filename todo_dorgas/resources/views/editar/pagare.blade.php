@@ -62,12 +62,23 @@
                   </div>
                 </center>
             <div class="row">
-            <div class="col-md-2">
-                <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                  </div>
-                </div>
-              </div>
+                @if ($pagare->archivo != '')
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                        </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="col-md-3">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                        </div>
+                        </div>
+                    </div>
+
+                @endif
+
               <div class="col-md-3">
                 <div class="card text-center border-0 transparente" >
                   <div class="card-body body_cus">

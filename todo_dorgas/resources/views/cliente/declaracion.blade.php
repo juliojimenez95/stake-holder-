@@ -21,9 +21,14 @@
         <div class="text-center">
           <img src="{{ asset('images/logo_t2.png') }}" class="my-4 img-fluid">
           <h1 class="text-primary p_tit">Declaraciones y Autorizaciones</h1>
+          <br>
+          <div class="col-md-12 mb-5">
+            <p class="text_main">Por favor proceda a la lectura de cada sección y asigne autorización.Al terminar click en finalizar  y guardar,proceda a cerrar su sesión.</p>
+        </div>
         </div>
       </div>
     </div>
+
     <div class="row ">
       <div class="col-md-12">
         <form action="{{ route('storedeclaracion',$id) }}" method="post">
@@ -32,107 +37,239 @@
           <div class="card-body">
             <div class="row">
 
-              <div class="col-md-2">
-                <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3 mb-3">
-                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
-                    </div>
-                    <br>
-                    <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal"><strong>Conoce más</strong></a>
-                    <br><br>
-                    <p class="text-primary cus_cus" >Autorización para el tratamiento de Datos Personales<span>*</span></p>
-                    <strong class="text-primary">
-                    <div>
-                        <label class="op_cus">Si <input type="radio" name="grupo1" value="1"></label>
-                        <label class="op_cus">No <input type="radio" name="grupo1" value="0"></label>
-                    </div>
-                    </strong>
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3">
-                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
-                    </div>
-                    <br>
+                @if (Auth::user()->rol == 2)
 
-                    <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal1"><strong>Conoce más</strong></a>
-                    <br><br>
-                    <p class="text-primary cus_cus" >Autorización consulta y reporte en Centrales de Riesgo<span>*</span></p>
-                    <br>
-                    <strong class="text-primary">
-                    <label class="op_cus">Si <input type="radio" name="grupo2" value="1"></label>
-                    <label class="op_cus">No <input type="radio" name="grupo2" value="0"></label>
-                    </strong>
-
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3">
-                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3 mb-3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Autorización para el tratamiento de Datos Personales<span>*</span></p>
+                            <strong class="text-primary">
+                            <div>
+                                <label class="op_cus">Si <input type="radio" name="grupo1" value="1"></label>
+                                <label class="op_cus">No <input type="radio" name="grupo1" value="0"></label>
+                            </div>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
                     </div>
-                    <br>
+                    <div class="col-md-3">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
 
-                    <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal2"><strong>Conoce más</strong></a>
-                    <br><br>
-                    <p class="text-primary cus_cus" >Declaración de Origen de Fondos<span>*</span></p>
-                    <strong class="text-primary">
-                    <br>
-                    <label class="op_cus">Si <input type="radio" name="grupo3" value="1"></label>
-                    <label class="op_cus">No <input type="radio" name="grupo3" value="0"></label>
-                    </strong>
-                    <br><br><br>
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal1"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Autorización consulta y reporte en Centrales de Riesgo<span>*</span></p>
+                            <br>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo2" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo2" value="0"></label>
+                            </strong>
 
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3">
-                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            <br><br><br>
+                        </div>
+                        </div>
                     </div>
-                    <br>
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
 
-                    <a class="btn btn-outline-primary mt-3 color_cus color_cus_e" data-toggle="modal" data-target="#declaracionModal3"><strong>Conoce más</strong></a>
-                    <br>
-                    <p class="text-primary cus_cus" >Cumplimiento, Ética en los negocios, Libre competencia,Conflicto de intereses,Medio ambiente e Integridad<span>*</span></p>
-                    <strong class="text-primary">
-                    <label class="op_cus">Si <input type="radio" name="grupo4" value="1"></label>
-                    <label class="op_cus">No <input type="radio" name="grupo4" value="0"></label>
-                    </strong>
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="card text-center border-0 transparente" >
-                  <div class="card-body">
-                    <div class="image3">
-                      <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal2"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Declaración de Origen de Fondos<span>*</span></p>
+                            <strong class="text-primary">
+                            <br>
+                            <label class="op_cus">Si <input type="radio" name="grupo3" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo3" value="0"></label>
+                            </strong>
+                            <br><br><br>
+
+                        </div>
+                        </div>
                     </div>
-                    <br>
+                    <div class="col-md-3">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
 
-                    <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal4"><strong>Conoce más</strong></a>
-                    <br><br>
-                    <p class="text-primary cus_cus" >Cumplimiento Normas Anticorrupción<span>*</span></p>
-                    <br>
-                    <strong class="text-primary">
-                    <label class="op_cus">Si <input type="radio" name="grupo5" value="1"></label>
-                    <label class="op_cus">No <input type="radio" name="grupo5" value="0"></label>
-                    </strong>
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
+                            <a class="btn btn-outline-primary mt-3 color_cus color_cus_e" data-toggle="modal" data-target="#declaracionModal3"><strong>Conoce más</strong></a>
+                            <br>
+                            <p class="text-primary cus_cus" >Cumplimiento, Ética en los negocios, Libre competencia,Conflicto de intereses,Medio ambiente e Integridad<span>*</span></p>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo4" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo4" value="0"></label>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal4"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Cumplimiento Normas Anticorrupción<span>*</span></p>
+                            <br>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo5" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo5" value="0"></label>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+
+                @else
+
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3 mb-3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Autorización para el tratamiento de Datos Personales<span>*</span></p>
+                            <strong class="text-primary">
+                                <br>
+                            <div>
+                                <label class="op_cus">Si <input type="radio" name="grupo1" value="1"></label>
+                                <label class="op_cus">No <input type="radio" name="grupo1" value="0"></label>
+                            </div>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal1"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Autorización consulta y reporte en Centrales de Riesgo<span>*</span></p>
+                            <br>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo2" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo2" value="0"></label>
+                            </strong>
+
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal2"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Declaración de Origen de Fondos<span>*</span></p>
+                            <strong class="text-primary">
+                            <br> <br>
+                            <label class="op_cus">Si <input type="radio" name="grupo3" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo3" value="0"></label>
+                            </strong>
+                            <br><br><br>
+
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+
+                            <a class="btn btn-outline-primary mt-3 color_cus color_cus_e" data-toggle="modal" data-target="#declaracionModal3"><strong>Conoce más</strong></a>
+                            <br>
+                            <p class="text-primary cus_cus" >Cumplimiento, Ética en los negocios, Libre competencia,Conflicto de intereses,Medio ambiente e Integridad<span>*</span></p>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo4" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo4" value="0"></label>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal4"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Cumplimiento Normas Anticorrupción<span>*</span></p>
+                            <br> <br>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo5" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo5" value="0"></label>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="card text-center border-0 transparente" >
+                        <div class="card-body">
+                            <div class="image3">
+                            <img src="{{ asset('images/Declaraciones-y-Autorizaciones.png') }}" class="image-clas2" alt="">
+                            </div>
+                            <br>
+
+                            <a class="btn btn-outline-primary mt-3 color_cus" data-toggle="modal" data-target="#declaracionModal5"><strong>Conoce más</strong></a>
+                            <br><br>
+                            <p class="text-primary cus_cus" >Políticas de Devolución  <br> para clientes de  <br> Todo Drogas S.A.S.<span>*</span></p>
+                            <br>
+                            <strong class="text-primary">
+                            <label class="op_cus">Si <input type="radio" name="grupo6" value="1"></label>
+                            <label class="op_cus">No <input type="radio" name="grupo6" value="0"></label>
+                            </strong>
+                            <br><br><br>
+                        </div>
+                        </div>
+                    </div>
+
+                @endif
+
+
             </div>
 
               <button class="btn btn-primary text-center  ml-10 btn_finalizar" >FINALIZAR Y ENVIAR</button>
@@ -242,6 +379,27 @@
         </div>
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="declaracionModal5" tabindex="-1" aria-labelledby="declaracionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="cont_modal">
+                    <div class="sec_cus">
+                        <h3>Cumplimiento Normas Anticorrupción</h3>
+                    </div>
+                    <p class="p_cus_c">Al realizar una compra en nuestra compañía, usted reconoce y acepta las POLITICAS DE DEVOLUCIONES DE
+                        CLIENTES INSTITUCIONALES, descritas en el documento que puede descargar en la página de ingreso principal en el ícono Cultura de Legalidad.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
     integrity="sha384-EQhgPShYZDmf+OWKvoYf70b91G/J0xgfgvbXhNfP60ZQLPv6du/0h0sU6Ygr19d0"
@@ -299,6 +457,14 @@
           $("#grupo5n").prop('checked',true);
 
           }
+
+          if (response.autorizacion.politicas_devoluciones == 1) {
+
+            $("#grupo6s").prop('checked',true);
+            }else if (response.autorizacion.politicas_devoluciones == 0) {
+            $("#grupo6n").prop('checked',true);
+
+            }
 
         //  $("#email").val(response.informacion.Email);
 

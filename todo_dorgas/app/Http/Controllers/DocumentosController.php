@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 use App\Models\MunicipioModel;
 use App\Models\DepartamentoModel;
-use Exception;
 use App\Models\actividad_economicaModel;
 use App\Models\ClienteModel;
 use App\Models\Cliente_DomicilioModel;
@@ -20,15 +19,19 @@ use App\Models\InformacionFinancieraModel;
 use App\Models\InformacionBancariaModel;
 use App\Models\PagareModel;
 use App\Models\AnexoModel;
+use App\Models\AutorizacionModel;
 use App\Models\personaExpuestaModel;
 use App\Models\AccionistaModel;
 use App\Models\ProveedorModel;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use PDF;
 use PDFMerger;
+use PDFSeta;
+use Illuminate\Support\Facades\Http;
 use setasign\Fpdi\Fpdi;
 
 
@@ -175,6 +178,24 @@ class DocumentosController extends Controller
                 $Anexo->Referencia_comercial2 = $name_pdf14;
                 $name_pdf15 = '';
                 $Anexo->SS = $name_pdf15;
+
+                $name_pdf16 = '';
+                if ($request->file('Listas_precios')){
+                    $pdf = $request->file('Listas_precios');
+                    $ext = $pdf->getClientOriginalExtension();
+                    $name_pdf14 = 'Listas_precios'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                }
+                $Anexo->Listas_precios = $name_pdf16;
+
+                $name_pdf17 = '';
+                if ($request->file('Condiciones_Comerciales')){
+                    $pdf = $request->file('Condiciones_Comerciales');
+                    $ext = $pdf->getClientOriginalExtension();
+                    $name_pdf14 = 'Condiciones_Comerciales'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                }
+                $Anexo->Condiciones_Comerciales = $name_pdf17;
 
 
                 $Anexo->user_id = $id;
@@ -334,6 +355,10 @@ class DocumentosController extends Controller
                 $Anexo->Referencia_comercial2 = $name_pdf14;
                 $name_pdf15 = '';
                 $Anexo->Camara_comercio = $name_pdf15;
+                $name_pdf16 = '';
+                $Anexo->Listas_precios = $name_pdf16;
+                $name_pdf17 = '';
+                $Anexo->Condiciones_Comerciales = $name_pdf17;
                 $Anexo->user_id = $id;
 
             if ($Anexo->save()) {
@@ -654,23 +679,68 @@ class DocumentosController extends Controller
                 if ($request->file('Referencia_comercial2')){
                     if ($Anexo->Referencia_comercial2 !='') {
                         Storage::disk('documentos')->delete($Anexo->Referencia_comercial2);
-                        $name_pdf13 = '';
+                        $name_pdf14 = '';
                         $pdf = $request->file('Referencia_comercial2');
                         $ext = $pdf->getClientOriginalExtension();
-                        $name_pdf13 = 'Referencia_comercial2'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                        $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
-                        $Anexo->Referencia_comercial2 = $name_pdf13;
+                        $name_pdf14 = 'Referencia_comercial2'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf14, file_get_contents($pdf));
+                        $Anexo->Referencia_comercial2 = $name_pdf14;
 
                     } else {
-                        $name_pdf13 = '';
+                        $name_pdf14 = '';
 
                         $pdf = $request->file('Referencia_comercial2');
                         $ext = $pdf->getClientOriginalExtension();
-                        $name_pdf13 = 'Referencia_comercial2'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                        $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
-                        $Anexo->Referencia_comercial2 = $name_pdf13;
+                        $name_pdf14 = 'Referencia_comercial2'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf14, file_get_contents($pdf));
+                        $Anexo->Referencia_comercial2 = $name_pdf14;
                     }
 
+
+                }
+
+                if ($request->file('Listas_precios')){
+                    if ($Anexo->Listas_precios !='') {
+                        Storage::disk('documentos')->delete($Anexo->Listas_precios);
+                        $name_pdf15 = '';
+                        $pdf = $request->file('Listas_precios');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf15 = 'Listas_precios'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf15, file_get_contents($pdf));
+                        $Anexo->Listas_precios = $name_pdf15;
+
+                    } else {
+                        $name_pdf15 = '';
+
+                        $pdf = $request->file('Listas_precios');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf15 = 'Listas_precios'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf15, file_get_contents($pdf));
+                        $Anexo->Listas_precios = $name_pdf15;
+                    }
+
+
+                }
+
+
+                if ($request->file('Condiciones_Comerciales')){
+                    if ($Anexo->Condiciones_Comerciales !='') {
+                        Storage::disk('documentos')->delete($Anexo->Condiciones_Comerciales);
+                        $name_pdf16 = '';
+                        $pdf = $request->file('Condiciones_Comerciales');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf16 = 'Condiciones_Comerciales'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf16, file_get_contents($pdf));
+                        $Anexo->Condiciones_Comerciales = $name_pdf16;
+                    } else {
+                        $name_pdf16 = '';
+
+                        $pdf = $request->file('Condiciones_Comerciales');
+                        $ext = $pdf->getClientOriginalExtension();
+                        $name_pdf16 = 'Condiciones_Comerciales'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                        $url = Storage::disk('documentos')->put($name_pdf16, file_get_contents($pdf));
+                        $Anexo->Condiciones_Comerciales = $name_pdf16;
+                    }
 
                 }
 
@@ -1238,10 +1308,153 @@ class DocumentosController extends Controller
     public function unirpdf($id)
     {
 
-        try {
+        try
+        {
             $anexo = AnexoModel::where('user_id',$id)->first();
 
-            $pdf = PDFMerger::init();
+            $fondos =  origenDeFondoModel::where('user_id',$id)->first();
+
+            $pagare =  PagareModel::where('id',$id)->first();
+
+
+            $i=0;
+            $files=[];
+
+            if ($anexo->Camara_comercio != '' ) {
+                $files[$i] = public_path('documentos/' . $anexo->Camara_comercio);
+                $i++;
+
+            }
+
+            if ($anexo->Rut != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Rut);
+                $i++;
+
+
+            }
+
+            if ($anexo->Cc_representante != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Cc_representante);
+                $i++;
+
+
+            }
+            if ($anexo->Estados_financieros != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Cc_representante);
+                $i++;
+
+
+            }
+            if ($anexo->Referencia_comercial != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Referencia_comercial);
+                $i++;
+
+            }
+            if ($anexo->ICA != '') {
+                $files[$i] = public_path('documentos/' . $anexo->ICA);
+                $i++;
+
+            }
+
+            if ($anexo->Contribuyente != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Contribuyente);
+                $i++;
+
+            }
+
+            if ($anexo->Autoretenedor_f != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Autoretenedor_f);
+                $i++;
+            }
+
+            if ($anexo->Autoretenedor_ICA != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Autoretenedor_ICA);
+                $i++;
+
+            }
+
+            if ($anexo->Brochure != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Brochure);
+                $i++;
+
+
+            }
+
+            if ($anexo->Certificado_bancario != '') {
+                $files[$i] = public_path('documentos/' . $anexo->Certificado_bancario);
+                $i++;
+
+
+            }
+
+            if ($anexo->SG_SST != '') {
+                $files[$i] = public_path('documentos/' . $anexo->SG_SST);
+                $i++;
+
+
+            }
+
+            if ($anexo->SS != '') {
+                $files[$i] = public_path('documentos/' . $anexo->SS);
+                $i++;
+
+
+            }
+
+            if ($anexo->Certificado_c != '' && $anexo->Certificado_c != null) {
+                $files[$i] = public_path('documentos/' . $anexo->Certificado_c);
+                $i++;
+
+            }
+
+            if ($anexo->Referencia_comercial2 != '' && $anexo->Referencia_comercial2 != null) {
+                $files[$i] = public_path('documentos/' . $anexo->Referencia_comercial2);
+                $i++;
+
+            }
+
+            if ($anexo->Listas_precios != '' && $anexo->Listas_precios != null) {
+                $files[$i] = public_path('documentos/' . $anexo->Listas_precios);
+                $i++;
+
+            }
+
+            if ($anexo->Condiciones_Comerciales != '' && $anexo->Condiciones_Comerciales != null) {
+                $files[$i] = public_path('documentos/' . $anexo->Condiciones_Comerciales);
+                $i++;
+
+            }
+
+            if ($fondos) {
+
+                if ($fondos->archivo != '' && $fondos->archivo != null) {
+                    $files[$i] = public_path('documentos/' . $fondos->archivo);
+                    $i++;
+
+                }
+
+            }
+
+
+            if ($pagare) {
+
+                if ($pagare->archivo != '' && $pagare->archivo != null) {
+                    $files[$i] = public_path('documentos/' . $pagare->archivo);
+                    $i++;
+
+                }
+
+            }
+
+
+           return redirect()->route('archivounido',['files' => $files]);
+
+
+
+
+
+
+/*            $pdf = PDFMerger::init();
 
 
             if ($anexo->Camara_comercio != '' ) {
@@ -1341,19 +1554,17 @@ class DocumentosController extends Controller
             $pdf->merge();
 
             $mergedFilePath = public_path('documentos/resultante.pdf');
-            $pdf->save($mergedFilePath);
+
 
 
             $pdf->Output(public_path('documentos/resultante.pdf'), 'F');
 
-            return response()->download($mergedFilePath);
+            return response()->download($mergedFilePath); */
 
 
 
-
-
-        } catch (\Throwable $th) {
-            throw $th;
+        } catch (Exception $ex) {
+            return $ex;
         }
     }
 
@@ -1379,7 +1590,7 @@ class DocumentosController extends Controller
                 $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
                 $pagare = PagareModel::where('user_id',$id)->first();
                 $socios = AccionistaModel::where('user_id',$id)->get();
-
+                $autorizacion = AutorizacionModel::where('user_id',$id)->first();
 
             // return $informacionb;
                 $data = [
@@ -1390,7 +1601,7 @@ class DocumentosController extends Controller
                 $pdf = PDF::loadView('myPDF', ['data'=>$data, 'cliente'=>$cliente,
                 'domicilio'=>$domicilio,'contacto'=>$contacto, 'representante'=>$representante,
                 'informaciont'=> $informaciont,'informacionb'=> $informacionb,'informacionf'=> $informacionf,
-                'pagare'=> $pagare,'socios'=> $socios]);
+                'pagare'=> $pagare,'socios'=> $socios,'autorizacion'=> $autorizacion]);
 
                 return $pdf->download('informePersona.pdf');
             } else {
@@ -1403,6 +1614,7 @@ class DocumentosController extends Controller
                 $informacionb = InformacionBancariaModel::where('user_id',$id)->first();
                 $informacionf = InformacionFinancieraModel::where('user_id',$id)->first();
                 $pagare = PagareModel::where('user_id',$id)->first();
+                $autorizacion = AutorizacionModel::where('user_id',$id)->first();
                 $socios = AccionistaModel::where('user_id',$id)->get();
 
                 $data = [
@@ -1414,7 +1626,7 @@ class DocumentosController extends Controller
                 'contacto'=>$contacto, 'representante'=>$representante,
                 'informaciont'=> $informaciont,'informacionb'=> $informacionb,
                 'informacionf'=> $informacionf,
-                'pagare'=> $pagare,'socios'=> $socios]);
+                'pagare'=> $pagare,'socios'=> $socios,'autorizacion'=> $autorizacion]);
 
                 return $pdf->download('informePersona.pdf');
 

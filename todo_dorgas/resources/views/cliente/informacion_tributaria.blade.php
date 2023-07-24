@@ -109,7 +109,7 @@
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted Gran Contribuyente?<span>*</span></span>
                                 <p class="small-text p_litt">En caso de ser afirmativo indique el N° de Resolución de Gran Contribuyente</p>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <input type="text" class="form-control input_cus" id="Observacion2" name="Observacion2">
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo6" value="Si"></label>
@@ -123,7 +123,7 @@
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted Autorretenedor en la Fuente?<span>*</span></span>
                                 <p class="small-text p_litt">En caso afirmativo indique el N° de Resolución de Autorretenedor en la Fuente.</p>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <input type="text" class="form-control input_cus" id="Observacion3" name="Observacion3">
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo7" value="Si"></label>
@@ -137,7 +137,7 @@
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted Autorretenedor de ICA?<span>*</span></span>
                                 <p class="small-text p_litt">En caso afirmativo indique el N° Resolución de Autorretenedor de ICA.</p>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <input type="text" class="form-control input_cus" id="Observacion4" name="Observacion4">
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo8" value="Si"></label>

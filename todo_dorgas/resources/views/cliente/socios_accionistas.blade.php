@@ -46,6 +46,9 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="content_1">
+                        <p>Recuerde que debe ingresar cada uno de los socios con un porcentaje mayor al 5% y se debe ver reflejada en la tabla de abajo.</p>
+                    </div>
+                    <div class="content_1">
                         <p>Tiene socios o accionistas con participación directa o indirecta superior al 5%?</p>
                         <div><span>Sí</span>  <input type="radio" id="red" name="color" value="red"> <span>No</span>  <input type="radio" id="" name="color" value=""></div>
                     </div>

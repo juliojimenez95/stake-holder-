@@ -25,6 +25,7 @@ use App\Models\PagareModel;
 use App\Models\User;
 use App\Models\AnexoModel;
 use App\Models\ProveedorModel;
+use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Support\Facades\DB;
@@ -139,7 +140,7 @@ class ClienteController extends Controller
             [
                 'Nombre'=> 'required',
                 'tipo_d'=> 'required',
-                'documento'=> 'required',
+                'documento'=> 'required|numeric',
                 'participacion'=>'required|numeric',
                 'Nacionalidad'=>'required',
                 'PEP'=>'required',
@@ -150,6 +151,7 @@ class ClienteController extends Controller
                 'Nombre.required' => 'El nombre  es requerido',
                 'tipo_d.required' => 'Tipo de documento es requerido',
                 'documento.required' => 'Documento es requerido',
+                'documento.numeric' => 'Documento debe ser un número',
                 'participacion.required' => 'La participacion es requerida',
                 'participacion.required' => 'La participacion debe ser un número',
                 'Nacionalidad.required' => 'La nacionalidad es requerida',
@@ -388,12 +390,15 @@ class ClienteController extends Controller
                 $autorizacion->Declaracion_fondos = $request->grupo3;
                 $autorizacion->Cumplimiento_etico = $request->grupo4;
                 $autorizacion->Cumplimiento_anticorrupcion = $request->grupo5;
+                $autorizacion->politicas_devoluciones = $request->grupo6;
+
                 $autorizacion->user_id = $id;
 
             if ($autorizacion->save()) {
 
             }
 
+            Auth::logout();
 
             return redirect('/home');
 
@@ -430,12 +435,15 @@ class ClienteController extends Controller
                 $autorizacion->Declaracion_fondos = $request->grupo3;
                 $autorizacion->Cumplimiento_etico = $request->grupo4;
                 $autorizacion->Cumplimiento_anticorrupcion = $request->grupo5;
+                $autorizacion->politicas_devoluciones = $request->grupo6;
+
                 $autorizacion->user_id = $id;
 
             if ($autorizacion->save()) {
 
             }
 
+            Auth::logout();
 
             return redirect('/home');
 
@@ -2090,15 +2098,88 @@ class ClienteController extends Controller
            try {
                 $Informaciont = new InformacionTributariaModel();
 
-                $Informaciont->ResponsableImpuesto = $request->grupo1;
-                $Informaciont->SujetoRetencion = $request->grupo2;
-                $Informaciont->Declarar = $request->grupo3;
-                $Informaciont->RST = $request->grupo4;
-                $Informaciont->Estampillas = $request->grupo5;
+                if (isset($request->grupo1) && !empty($request->grupo1)) {
+                    $Informaciont->ResponsableImpuesto = $request->grupo1;
+
+                }else{
+                    $Informaciont->ResponsableImpuesto = 'N/A';
+                }
+
+                if (isset($request->grupo2) && !empty($request->grupo2)) {
+                    $Informaciont->SujetoRetencion = $request->grupo2;
+
+                }else{
+
+                    $Informaciont->SujetoRetencion = 0;
+
+                }
+
+                if (isset($request->grupo3) && !empty($request->grupo3)) {
+                    $Informaciont->Declarar = $request->grupo3;
+
+                }else{
+                    $Informaciont->Declarar = 'N/A';
+
+                }
+
+                if (isset($request->grupo4) && !empty($request->grupo4)) {
+                    $Informaciont->RST = $request->grupo4;
+
+
+                }else{
+                    $Informaciont->RST = 'N/A';
+                }
+
+                if (isset($request->grupo5) && !empty($request->grupo5)) {
+                    $Informaciont->Estampillas = $request->grupo5;
+
+
+
+                }else{
+                    $Informaciont->Estampillas = 'N/A';
+                }
+
+
+
+
                 $Informaciont->Observacion1 = $request->estampillas;
-                $Informaciont->GContribuyente = $request->grupo6;
-                $Informaciont->AutorretenedorF = $request->grupo7;
-                $Informaciont->AutorretenedorICA = $request->grupo8;
+                if (isset($request->grupo6) && !empty($request->grupo6)) {
+                    $Informaciont->GContribuyente = $request->grupo6;
+
+
+
+
+                }else{
+                    $Informaciont->GContribuyente = 'N/A';
+                }
+
+                if (isset($request->grupo7) && !empty($request->grupo7)) {
+                    $Informaciont->AutorretenedorF = $request->grupo7;
+
+
+
+
+
+                }else{
+                    $Informaciont->AutorretenedorF = 'N/A';
+                }
+
+                if (isset($request->grupo8) && !empty($request->grupo8)) {
+                    $Informaciont->AutorretenedorICA = $request->grupo8;
+
+
+
+
+
+
+                }else{
+                    $Informaciont->AutorretenedorICA = 'N/A';
+                }
+                $Informaciont->observacion2 = $request->Observacion2;
+                $Informaciont->observacion3 = $request->Observacion3;
+                $Informaciont->observacion4 = $request->Observacion4;
+
+
                 $Informaciont->Email = $request->email;
                 $Informaciont->Cliente_id = $id;
 
@@ -2139,6 +2220,9 @@ class ClienteController extends Controller
                 $Informaciont->GContribuyente = $request->grupo6;
                 $Informaciont->AutorretenedorF = $request->grupo7;
                 $Informaciont->AutorretenedorICA = $request->grupo8;
+                $Informaciont->observacion2 = $request->Observacion2;
+                $Informaciont->observacion3 = $request->Observacion3;
+                $Informaciont->observacion4 = $request->Observacion4;
                 $Informaciont->Email = $request->email;
 
             if ($Informaciont->save()) {

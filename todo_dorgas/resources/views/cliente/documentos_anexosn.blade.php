@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">
-                    <p class="text_main">Por favor adjunte los siguientes documentos.</p>
+                    <p class="text_main">Por favor adjunte la siguiente Información.</p>
                 </div>
                 <div class="col-md-12 mb-4">
                   <div class="div_main">

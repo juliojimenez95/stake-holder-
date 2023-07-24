@@ -131,7 +131,7 @@
                                         <a href="{{ route('admin.unirpdf',$usuario->id) }}"  target="_blank"  {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <img src="{{ asset('images/Descargar-PDF.png') }}" class="navbar-brand-img" alt="main_logo" width="30" height="30">
                                         </a>
-                                        <a href="#"  data-toggle="modal" data-target="#updateModal" data-id="{{ $usuario->id }}" {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
+                                        <a href="#"  data-toggle="modal" data-target="#updateModal" data-id="{{ $usuario->id }}" data-comentario="{{ $usuario->comentario }}" {{--data-toggle="modal" data-target="#modalInformacionTributaria" --}}>
                                             <i class="fa-solid fa-comment"></i>
                                         </a>
 
@@ -1239,14 +1239,19 @@
     $('#updateModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget); // Botón que abre la modal
         var id = button.data('id'); // Obtiene el ID del atributo data-id
+        var comentario = button.data('comentario'); // Obtiene el comentario del atributo data-comentario
 
         // Asigna el valor del ID al atributo "action" del formulario
         var form = $(this).find('form');
         var action = form.attr('action');
         action = action.replace(':id', id);
         form.attr('action', action);
+
+        // Asigna el comentario al campo "comentario" del formulario
+        form.find('#comentario').val(comentario);
     });
 </script>
+
 
 
 

@@ -17,6 +17,7 @@ class AutorizacionModel extends Model
         'Declaracion_fondos' ,
         'Cumplimiento_etico' ,
         'Cumplimiento_anticorrupcion' ,
+        'politicas_devoluciones',
         'user_id' ,
     ];
 }

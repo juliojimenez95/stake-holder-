@@ -21,7 +21,9 @@ class InformacionTributariaModel extends Model
         'GContribuyente' ,
         'Observacion2',
         'AutorretenedorF' ,
+        'observacion3',
         'AutorretenedorICA' ,
+        'observacion4',
         'Email' ,
         'Cliente_id'  ,
     ];

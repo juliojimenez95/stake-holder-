@@ -137,7 +137,12 @@ Route::get('/declaracioninf/{id}', [ClienteController::class, 'declaracioninf'])
 
 
 
+Route::get('/archivounido', function (Request $request) {
+    // Código para utilizar el archivo PHP nativo
+    require_once(public_path('generar.php'));
 
+    // Puedes realizar otras operaciones o retornar una respuesta si es necesario
+})->name('archivounido');
 
 
 Auth::routes();

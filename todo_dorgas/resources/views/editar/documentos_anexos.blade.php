@@ -51,7 +51,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">
-                    <p class="text_main">Por favor adjunte los siguientes documentos.</p>
+                    <p class="text_main">Por favor adjunte la siguiente Información.</p>
                 </div>
                 <div class="col-md-12 mb-4">
                   <div class="div_main">
@@ -256,8 +256,14 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="div_main2">
-                  <div class="div_inside2">
+                    @if (Auth::user()->rol == 2)
+                    <div class="div_main">
+                    <div class="div_inside">
+                    @else
+                     <div class="div_main2">
+                     <div class="div_inside2">
+                    @endif
+
                       <p class="div_p">Certificado de calidad<span>*</span></p>
                       <div style="display: flex;">
                         @if ($anexos->Certificado_c != '')
@@ -275,20 +281,65 @@
                     <div class="div_inside">
                         <p class="div_p">Referencia Comercial 2 no superior a 1 mes<span>*</span></p>
                         <div style="display: flex;">
-                          @if ($anexos->Referencia_comercial2 != '')
+                          @if ($anexos->Referencia_comercial2 != "")
                               <a class="div_img" id="descarga14" data-file="{{ $anexos->Referencia_comercial2  }}" target="_blank">
                                   <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img14" class="img-fluid">
                               </a>
                               @endif
                           <div class="div_img">
-                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img12" class="img-fluid" onclick="document.getElementById('Referencia_comercial2').click()">
+                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img14" class="img-fluid" onclick="document.getElementById('Referencia_comercial2').click()">
                               <input type="file" id="Referencia_comercial2" name="Referencia_comercial2" style="display:none;"  onchange="changeImageColor13()">
                           </div>
                         </div>
 
                       </div>
+                      @if (Auth::user()->rol == 2)
+                      <div class="div_inside">
+                        <p class="div_p">Listas precios<span>*</span></p>
+                        <div style="display: flex;">
+                          @if ($anexos->Listas_precios != '' && $anexos->Listas_precios != null)
+                              <a class="div_img" id="descarga15" data-file="{{ $anexos->Listas_precios  }}" target="_blank">
+                                  <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img1" class="img-fluid">
+                              </a>
+                              @endif
+                          <div class="div_img">
+                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img15" class="img-fluid" onclick="document.getElementById('Listas_precios').click()">
+                              <input type="file" id="Listas_precios" name="Listas_precios" style="display:none;"  onchange="changeImageColor14()">
+                          </div>
+                        </div>
+
+                      </div>
+
+                      @endif
+
                   </div>
                 </div>
+
+                @if (Auth::user()->rol == 2)
+                <div class="col-md-12" style="margin-top: 15px;">
+                    <div class="div_main">
+                    <div class="div_inside">
+                        <p class="div_p">Condiciones Comerciales<span>*</span></p>
+                        <div style="display: flex;">
+                          @if ($anexos->Condiciones_Comerciales != '' && $anexos->Condiciones_Comerciales != null)
+                              <a class="div_img" id="descarga16" data-file="{{ $anexos->Condiciones_Comerciales  }}" target="_blank">
+                                  <img src="{{ asset('images/Descargar-PDF.png') }}" alt="Imagen" id="img16" class="img-fluid">
+                              </a>
+                              @endif
+                          <div class="div_img">
+                              <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img16" class="img-fluid" onclick="document.getElementById('Condiciones_Comerciales').click()">
+                              <input type="file" id="Condiciones_Comerciales" name="Condiciones_Comerciales" style="display:none;"  onchange="changeImageColor15()">
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                 @endif
+
+
             </div>
             <div class="row mb-4">
                 <div class="col-md-12">
@@ -301,13 +352,20 @@
         </div>
 </div>
 <script src="{{ asset('js/documento.js') }}"></script>
-<script>const button = document.querySelector('#descarga');
-    button.addEventListener('click', function() {
-        // Obtener el archivo PDF correspondiente
-        const filename = this.getAttribute('data-file');
-        // Descargar el archivo
-        window.location.href = '/descargar-pdf/' + filename;
-    });
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const button = document.querySelector('#descarga');
+
+        if (button) {
+            button.addEventListener('click', function() {
+            // Obtener el archivo PDF correspondiente
+            const filename = this.getAttribute('data-file');
+            // Descargar el archivo
+            window.location.href = '/descargar-pdf/' + filename;
+        });
+
+        }
+
 
    const button2 = document.querySelector('#descarga2');
    if (button2){
@@ -438,12 +496,43 @@
 
 
     const button14 = document.querySelector('#descarga14');
-    button14.addEventListener('click', function() {
+    if (button14){
+        button14.addEventListener('click', function() {
         // Obtener el archivo PDF correspondiente
         const filename = this.getAttribute('data-file');
         // Descargar el archivo
         window.location.href = '/descargar-pdf/' + filename;
     });
+    }
+
+
+    const button15 = document.querySelector('#descarga15');
+    if (button15) {
+
+        button15.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+            const filename = this.getAttribute('data-file');
+            // Descargar el archivo
+            window.location.href = '/descargar-pdf/' + filename;
+        });
+
+    }
+
+
+    const button16 = document.querySelector('#descarga16');
+    if (button16) {
+        button16.addEventListener('click', function() {
+        // Obtener el archivo PDF correspondiente
+        const filename = this.getAttribute('data-file');
+        // Descargar el archivo
+        window.location.href = '/descargar-pdf/' + filename;
+    });
+
+    }
+
+    });
+
+
 
     </script>
 </body>

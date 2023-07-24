@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5">
-                    <p class="text_main">Por favor adjunte los siguientes documentos.</p>
+                    <p class="text_main">Por favor adjunte la siguiente Información.</p>
                 </div>
                 <div class="col-md-12 mb-4">
                   <div class="div_main">
@@ -157,8 +157,13 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="div_main2">
-                  <div class="div_inside2">
+                    @if (Auth::user()->rol == 2)
+                    <div class="div_main">
+                    <div class="div_inside">
+                    @else
+                     <div class="div_main2">
+                     <div class="div_inside2">
+                    @endif
                       <p class="div_p">Certificado de calidad <span></span></p>
                       <div class="div_img">
                         <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img13" class="img-fluid" onclick="document.getElementById('Certificado_c').click()">
@@ -172,7 +177,33 @@
                           <input type="file" id="Referencia_comercial2" name="Referencia_comercial2" style="display:none;"  onchange="changeImageColor13()">
                       </div>
                       </div>
+                      @if (Auth::user()->rol == 2)
+                        <div class="div_inside">
+                            <p class="div_p">Listas precios<span></span></p>
+                            <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img15" class="img-fluid" onclick="document.getElementById('Listas_precios').click()">
+                            <input type="file" id="Listas_precios" name="Listas_precios" style="display:none;"  onchange="changeImageColor14()">
+                        </div>
+                        </div>
+                      @endif
+
                   </div>
+                  </div>
+
+                  @if (Auth::user()->rol == 2)
+                    <div class="col-md-12 mb-5" style="margin-top: 15px;">
+                        <div class="div_main">
+                            <div class="div_inside">
+                        <p class="div_p">Condiciones Comerciales<span></span></p>
+                        <div class="div_img">
+                            <img src="{{ asset('images/Subir-PDF.png') }}" alt="Imagen" id="img10" class="img-fluid" onclick="document.getElementById('Condiciones_Comerciales').click()">
+                            <input type="file" id="Condiciones_Comerciales" name="Condiciones_Comerciales" style="display:none;"  onchange="changeImageColor15()">
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+
+                  @endif
                 </div>
             </div>
             <div class="row mb-4">

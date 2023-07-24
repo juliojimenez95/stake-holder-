@@ -125,7 +125,7 @@
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted Gran Contribuyente?<span>*</span></span>
                                 <p class="small-text p_litt">En caso de ser afirmativo indique el N° de Resolución de Gran Contribuyente</p>
-                                <input type="text" class="form-control input_cus" id="estampilla" name="estampilla">
+                                <input type="text" class="form-control input_cus" id="Observacion2" name="Observacion2">
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo6" id="grupo6s" value="Si"></label>
@@ -139,7 +139,7 @@
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted Autorretenedor en la Fuente?<span>*</span></span>
                                 <p class="small-text p_litt">En caso afirmativo indique el N° de Resolución de Autorretenedor en la Fuente.</p>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <input type="text" class="form-control input_cus" id="Observacion3" name="Observacion3">
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo7" id="grupo7s" value="Si"></label>
@@ -153,7 +153,7 @@
                               <div class="col">
                                 <span class="mr-2 span_c">¿Es usted Autorretenedor de ICA?<span>*</span></span>
                                 <p class="small-text p_litt">En caso afirmativo indique el N° Resolución de Autorretenedor de ICA.</p>
-                                <input type="text" class="form-control input_cus" id="" name="">
+                                <input type="text" class="form-control input_cus" id="Observacion4" name="Observacion4">
                               </div>
 
                               <label class="mr-2 lb_c" >Si <input type="radio" name="grupo8" id="grupo8s" value="Si"></label>
@@ -308,25 +308,20 @@
             }
 
 
-        if (response.informacion.Observacion1 != null) {
+            $("#estampilla").val(response.informacion.Observacion1);
 
-            $("#estampilla").append("si entra ");
 
-        } else {
+            $("#Observacion2").val(response.informacion.Observacion2);
 
-        }
-
-        if (response.informacion.Observacion2 == null) {
-
-        $("#estampilla").append("si entra ");
-
-        } else {
-
-        }
+            $("#Observacion3").val(response.informacion.observacion3);
+            $("#Observacion4").val(response.informacion.observacion4);
 
 
 
-        $("#email").val(response.informacion.Email);
+
+
+
+            $("#email").val(response.informacion.Email);
 
     },
     error: function(response) {

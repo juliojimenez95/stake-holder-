@@ -52,11 +52,12 @@
               </div>
               <div class="div_select">
                 <select id="mySelect" class="form-control">
-                    <option value="#">Conoce aquí nuestra Cultura de Legalidad</option>
-                    <option value="option1" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Datos</option>
-                    <option value="option2" data-file="AF_2023-05-02-6451c5c84871a.pdf">Políticas de Tratamiento de Información</option>
+                    <option value="#" data-file="#">Conoce aquí nuestra Cultura de Legalidad</option>
+                    <option value="option5" data-file="PO_CI_01_Politicas_de_Devoluciones_Clientes_Institucionales_V01 (6).pdf">Políticas de  Legalidad</option>
+                    <option value="option1" data-file="PO-PL-1_Politica_Tratamiento_Datos.pdf">Políticas de Tratamiento de Datos</option>
+                    <option value="option2" data-file="PO-PL-6_Politica_Tratamiento_Informacion.pdf">Políticas de Tratamiento de Información</option>
                     <option value="option3" data-file="PO_SAG_01_Políticas SAGRILAFT Inversiones Todo Drogas S.A.S.V01.pdf">Políticas SAGRILAFT</option>
-                    <option value="option4" data-file="AF_2023-05-02-6451c5c84871a.pdf">Código de Ética y Buen Gobierno</option>
+                    <option value="option4" data-file="PO_SAG_02_Código_Ética_Buen_Gobierno_V01.pdf">Código de Ética y Buen Gobierno</option>
                 </select>
               </div>
             </div>

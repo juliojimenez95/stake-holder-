@@ -322,6 +322,81 @@
 
                               @endif
 
+
+                              <h1>Autorizaciones</h1>
+                                        @if ($autorizacion->Autorizacion_datos == 1)
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <p id="TDC" class="p_ch"><strong>Tratamiento de Datos Personales: <span>Si</span></strong></p>
+                                                </div>
+                                        @else
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                              <p id="TDC" class="p_ch"><strong>Tratamiento de Datos Personales: <span>No</span></strong></p>
+                                            </div>
+
+                                        @endif
+
+                                        @if ($autorizacion->Autorizacion_riesgos == 1)
+                                        <div class="col-md-6">
+                                            <p id="NDC" class="p_ch"> <strong>Consulta y reporte en Centrales de Riesgo: <span>Si</span></strong></p>
+                                          </div>
+                                        </div>
+
+                                        @else
+                                        <div class="col-md-6">
+                                            <p id="NDC" class="p_ch"> <strong>Consulta y reporte en Centrales de Riesgo: <span>No</span></strong></p>
+                                          </div>
+                                        </div>
+
+                                        @endif
+
+                                      @if ($autorizacion->Declaracion_fondos == 1)
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <p id="NC" class="p_ch"><strong>Declaración de Origen de Fondos: <span>Si</span></strong></p>
+                                        </div>
+                                      </div>
+                                      @else
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <p id="NC" class="p_ch"><strong>Declaración de Origen de Fondos: <span>No</span></strong></p>
+                                        </div>
+                                      </div>
+                                      @endif
+
+                                      @if ($autorizacion->Cumplimiento_etico == 1)
+                                        <div class="row">
+                                        <div class="col-md-6">
+                                          <p id="CC" class="p_ch"><strong>Cumplimiento, Ética en los negocios : <span>Si</span></strong></p>
+                                        </div>
+                                        </div>
+                                      @else
+
+                                       <div class="row">
+                                            <div class="col-md-6">
+                                            <p id="CC" class="p_ch"><strong>Cumplimiento, Ética en los negocios : <span>No</span></strong></p>
+                                            </div>
+                                        </div>
+
+                                      @endif
+
+                                        @if ($autorizacion->Cumplimiento_anticorrupcion == 1)
+                                            <div class="row">
+
+                                            <div class="col-md-6">
+                                            <p id="EC" class="p_ch"> <strong>Cumplimiento Normas Anticorrupción: <span> Si</span></strong></p>
+                                          </div>
+                                        </div>
+                                        @else
+                                         <div class="row">
+                                                <div class="col-md-6">
+                                                <p id="EC" class="p_ch"> <strong>Cumplimiento Normas Anticorrupción: <span> No</span></strong></p>
+                                            </div>
+                                            </div>
+                                        @endif
+
+
                                  <h1>Información Socios o Accionistas</h1>
 
                                 <div class="row">
@@ -348,7 +423,7 @@
                                         </table>
                                     </div>
                                 </div>
-                    </div>
+                    </>
                 </div>
 
             </div>

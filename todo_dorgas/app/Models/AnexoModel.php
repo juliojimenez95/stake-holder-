@@ -27,6 +27,8 @@ class AnexoModel extends Model
         'SS',
         'Certificado_c',
         'Referencia_comercial2',
+        'Listas_precios',
+        'Condiciones_Comerciales',
         'user_id' ,
     ];
 }

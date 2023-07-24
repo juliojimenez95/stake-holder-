@@ -10,6 +10,14 @@
     margin-bottom: 20px;
 }
 
+.text_main {
+    text-align: center;
+    color: #004492;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
 .sec_cus h3 {
     margin: 0;
     font-size: 25px;

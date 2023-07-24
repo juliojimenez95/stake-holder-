@@ -162,3 +162,27 @@ function changeImageColor() {
       image.classList.remove('image-green');
     }
   }
+
+
+  function changeImageColor14() {
+    var fileInput = document.getElementById('Listas_precios');
+    var image = document.getElementById('img15');
+
+    if (fileInput.files && fileInput.files[0]) {
+      image.classList.add('image-green');
+    } else {
+      image.classList.remove('image-green');
+    }
+  }
+
+
+  function changeImageColor15() {
+    var fileInput = document.getElementById('Condiciones_Comerciales');
+    var image = document.getElementById('img16');
+
+    if (fileInput.files && fileInput.files[0]) {
+      image.classList.add('image-green');
+    } else {
+      image.classList.remove('image-green');
+    }
+  }

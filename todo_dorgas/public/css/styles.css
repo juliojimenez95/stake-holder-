@@ -110,6 +110,12 @@
     color: #004492;
   }
 
+  @media (max-width: 768px) { /* Ajusta el valor según tus necesidades */
+    .formulario {
+      left: auto; /* Esto quitará el estilo 'left: -30%;' */
+    }
+  }
+
   .formulario2{
     top: 1%;
     padding: 20px;

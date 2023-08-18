@@ -292,7 +292,7 @@
              <div class="form-group ">
                   <div style="display: flex; justify-content: space-between;">
                         <div class="">
-                          <p class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional tales como ONG, ONU, UNICEF, etc.? </>
+                          <span class="color-cs">¿Ejerce o ha ejercido funciones directivas en una organización internacional <br> tales  como ONG, ONU, UNICEF, etc.? </span>
                         </div>
                         <div class="">
                           <label class="mr-2 color-cb" >Si <input type="radio" name="grupo6" value="Si"></label>
@@ -310,7 +310,7 @@
              <div class="form-group">
                   <div style="display: flex; justify-content: space-between;">
                         <div class="">
-                          <p class="color-cs">¿La compañía que representa esta obligada a tener un programa de SAGRILAFT, SIPLAFT, SARLAFT o equivalentes?</p>
+                          <span class="color-cs">¿La compañía que representa esta obligada a tener un programa  de  <br>SAGRILAFT, SIPLAFT, SARLAFT o equivalentes?</span>
                         </div>
                         <div class="">
                           <label class="mr-2 color-cb" >Si <input type="radio" name="grupo7" value="Si"></label>

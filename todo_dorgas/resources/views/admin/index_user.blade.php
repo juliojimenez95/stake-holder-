@@ -319,6 +319,14 @@
 
                     </div>
 
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <p id="Fet" class="p_ch"> <strong></strong></p>
+                        </div>
+
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -363,6 +371,13 @@
 
                       </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <p id="Fef" class="p_ch"> <strong></strong></p>
+
+                        </div>
+                      </div>
 
                   </div>
                 </div>
@@ -488,6 +503,12 @@
                         </div>
                       </div>
 
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p id="Feb" class="p_ch"><strong></strong></p>
+                        </div>
+                      </div>
+
                   </div>
                 </div>
               </div>
@@ -576,6 +597,12 @@
                   <p id="Actividad_e" class="p_ch"><strong></strong></p>
                 </div>
               </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <p id="Fe" class="p_ch"> <strong></strong></p>
+                    </div>
+                </div>
               <div class="row">
                 <div class="col-md-12">
                   <h5 class="tit_mod" >Información Representante Legal</h5>
@@ -637,10 +664,10 @@
               </div>
 
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <p id="Os" class="p_ch"><strong></strong></p>
                 </div>
-              </div>
+
 
               <div class="row">
                 <div class="col-md-12">
@@ -704,6 +731,11 @@
             console.log(response);
         if (response.user.rol == 1) {
 
+            var fechaActualizacion = new Date(response.user.updated_at);
+            var formatoFecha = `${fechaActualizacion.getFullYear()}-${padZero(fechaActualizacion.getMonth() + 1)}-${padZero(fechaActualizacion.getDate())}`;
+            var formatoHora = `${padZero(fechaActualizacion.getHours())}:${padZero(fechaActualizacion.getMinutes())}:${padZero(fechaActualizacion.getSeconds())}`;
+            console.log(formatoFecha.'-'.formatoHora);
+
         if (response.cliente.Natural == 1) {
 
             $('#Tipodocumento').empty();
@@ -727,6 +759,8 @@
             $('#Ot').empty();
             $('#oi').empty();
             $('#Os').empty();
+            $('#Fe').empty();
+
 
             $('#NDC').empty();
             $('#NC').empty();
@@ -742,6 +776,11 @@
             $('#telefono_p').append("Teléfono: "+"<span>"+response.domicilio.Telefono+"</span>");
             $('#direccion_p').append("Dirección: "+"<span>"+response.domicilio.Direccion+"</span>");
             $('#Actividad_e').append("Código CIIU: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
+            $('#Fe').append("Fecha de actualización: " + "<span>" + formatoFecha + " " + formatoHora + "</span>");
+            function padZero(num) {
+                return num.toString().padStart(2, '0');
+            }
+
 
             $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
             $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
@@ -791,6 +830,7 @@
             $('#Ot').empty();
             $('#oi').empty();
             $('#Os').empty();
+            $('#Fe').empty();
 
             $('#NDC').empty();
             $('#NC').empty();
@@ -806,6 +846,11 @@
             $('#telefono_p').append("Teléfono: "+"<span>"+response.domicilio.Telefono+"</span>");
             $('#direccion_p').append("Dirección: "+"<span>"+response.domicilio.Direccion+"</span>");
             $('#Actividad_e').append("Código CIIU: "+"<span>"+response.cliente.ActividadEconomica+"</span>");
+            $('#Fe').append("Fecha de actualización: " + "<span>" + formatoFecha + " " + formatoHora + "</span>");
+            function padZero(num) {
+                return num.toString().padStart(2, '0');
+            }
+
 
             $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
             $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
@@ -862,6 +907,8 @@
                 $('#Ot').empty();
                 $('#oi').empty();
                 $('#Os').empty();
+                $('#Fe').empty();
+
 
                 $('#NDC').empty();
                 $('#NC').empty();
@@ -877,6 +924,12 @@
                 $('#telefono_p').append("Teléfono: "+"<span>"+"N/A"+"</span>");
                 $('#direccion_p').append("Dirección: "+"<span>"+response.Proveedor.Direccion+"</span>");
                 $('#Actividad_e').append("Código CIIU: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
+                $('#Fe').append("Fecha de actualización: " + "<span>" + formatoFecha + " " + formatoHora + "</span>");
+                function padZero(num) {
+                    return num.toString().padStart(2, '0');
+                }
+
+
 
                 $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
                 $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
@@ -927,6 +980,8 @@
                 $('#Ot').empty();
                 $('#oi').empty();
                 $('#Os').empty();
+                $('#Fe').empty();
+
 
                 $('#NDC').empty();
                 $('#NC').empty();
@@ -942,6 +997,10 @@
                 $('#telefono_p').append("Teléfono: "+"<span>"+response.Proveedor.Telefono+"</span>");
                 $('#direccion_p').append("Dirección: "+"<span>"+response.Proveedor.Direccion+"</span>");
                 $('#Actividad_e').append("Código CIIU: "+"<span>"+response.Proveedor.ActividadEconomica+"</span>");
+                $('#Fe').append("Fecha de actualización: " + "<span>" + formatoFecha + " " + formatoHora + "</span>");
+                function padZero(num) {
+                    return num.toString().padStart(2, '0');
+                }
 
                 $('#TR').append("Tipo documento: "+"<span>"+response.representante.TipoNit+"</span>");
                 $('#DR').append("Número documento: "+"<span>"+response.representante.Nit+"</span>");
@@ -1052,6 +1111,8 @@
                 $('#auCorrector').empty();
                 $('#ica').empty();
                 $('#emailt').empty();
+                $('#Fet').empty();
+
 
 
                 $('#iva').append("¿Es usted responsable del impuesto a la venta I.V.A.? "+"<span>"+response.informaciont.ResponsableImpuesto+"</span>");
@@ -1064,6 +1125,7 @@
                 $('#auCorrector').append("¿Es usted Autorretenedor en la Fuente? "+"<span>"+response.informaciont.AutorretenedorF+"</span>");
                 $('#ica').append("¿Es usted Autorretenedor de ICA? "+"<span>"+response.informaciont.AutorretenedorICA+"</span>");
                 $('#emailt').append("¿Cuál es el correo de recepción para Factura Electrónica? "+"<span>"+response.informaciont.Email+"</span>");
+                $('#Fet').append("Fecha de actualización : "+"<span>"+response.informaciont.updated_at+"</span>");
 
                 $("#modalInformacionTributaria").modal("show");
 
@@ -1097,8 +1159,10 @@
              $('#Pasivo').empty();
              $('#Patrimonio').empty();
              $('#Ingresos').empty();
-             $('#Egresos').empty();
+             $('#Egresos').empty();Fef
              $('#p_vinculada').empty();
+             $('#Fef').empty();
+
 
              $('#Activo').append("Activo Totales: $"+"<span>"+response.informacionf.Activo+"</span>");
              $('#Pasivo').append("Pasivo Totales: $"+"<span>"+response.informacionf.Pasivo+"</span>");
@@ -1106,6 +1170,7 @@
              $('#Ingresos').append("Ingresos Totales: $"+"<span>"+response.informacionf.IngresosTotales+"</span>");
              $('#Egresos').append("Egresos Totales: $"+"<span>"+response.informacionf.EgresosTotales+"</span>");
              $('#p_vinculada').append("Personal con vinculación directa: "+"<span>"+response.informacionf.CantidadPersonas+"</span>");
+             $('#Fef').append("Fecha de actualización : "+"<span>"+response.informacionf.updated_at+"</span>");
 
 
 
@@ -1191,6 +1256,8 @@
              $('#Cuidad1').empty();
              $('#Departamento1').empty();
              $('#pais1').empty();
+             $('#Feb').empty();
+
 
              $('#banco2').empty();
              $('#Tipo2').empty();
@@ -1223,6 +1290,7 @@
                     $('#pais2').append("País 2: "+"<span>"+response.informacionb.Pais2+"</span>");
                 }
 
+             $('#Feb').append("Fecha de actualización : "+"<span>"+response.informacionf.updated_at+"</span>");
 
 
 

@@ -9,7 +9,7 @@ class ContactoModel extends Model
 {
     use HasFactory;
     public $table ="Contacto";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $primaryKey = "ID";
     protected $fillable = [
         'Nombre1' ,

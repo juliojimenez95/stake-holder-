@@ -229,7 +229,7 @@
             </div>
         </div>
 
-        
+
 
     </div>
         <!-- Agregar el script de JavaScript de Bootstrap -->

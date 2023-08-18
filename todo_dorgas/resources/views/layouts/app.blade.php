@@ -9,6 +9,8 @@
 
     <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
 
+    
+
     <title>{{ "Todo Drogas" }}</title>
 
     <!-- Scripts -->

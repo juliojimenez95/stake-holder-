@@ -14,7 +14,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * The attributes that are mass assignable.
-     *
      * @var array<int, string>
      */
     protected $table = 'TBL_USUARIOS_STAKE';
@@ -22,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'updated_at',
         'password',
         'rol',
         'Natural',

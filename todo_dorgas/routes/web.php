@@ -89,6 +89,8 @@ Route::get('/users/aprobarUser2/{id}', [AdminController::class, 'aprobarUser2'])
 Route::get('/users/rechazarUser2/{id}', [AdminController::class, 'rechazarUser2'])->name('users.rechazarUser2');
 Route::get('/admin/pdf/{id}', [DocumentosController::class, 'pdf'])->name('admin.pdf');
 Route::get('/admin/unirpdf/{id}', [DocumentosController::class, 'unirpdf'])->name('admin.unirpdf');
+Route::get('/vistaRestricciones', [DocumentosController::class, 'vistaRestricciones'])->name('vistaRestricciones');
+
 
 //editar
 
@@ -156,6 +158,7 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
+    
 
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
@@ -170,4 +173,4 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/descargar-pdf/{filename}', function ($filename) {
     $pathToFile = public_path('documentos/' . $filename);
     return response()->download($pathToFile);
-});
+})->name('descargarArchivo');

@@ -9,7 +9,7 @@ class AutorizacionModel extends Model
 {
     use HasFactory;
     public $table ="Autorizacion";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $primaryKey = "id";
     protected $fillable = [
         'Autorizacion_datos' ,

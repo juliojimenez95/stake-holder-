@@ -9,7 +9,7 @@ class InformacionFinancieraModel extends Model
 {
     use HasFactory;
     public $table ="InformacionFinanciera";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $primaryKey = "ID";
     protected $fillable = [
         'Activo',

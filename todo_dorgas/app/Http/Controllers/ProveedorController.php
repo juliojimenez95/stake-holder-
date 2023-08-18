@@ -268,16 +268,16 @@ class ProveedorController extends Controller
                 //email e ingreso
                 $proveedor->FechaIngreso=date('Y-m-d');
 
-                $proveedor->Credito=0;
+              //  $proveedor->Credito=0;
                 $proveedor->Contacto="N/A";
 
                 //$proveedor->ReferenciaTelefono2=$request->nombre1;
-                $proveedor->Cupo=0;
+               /* $proveedor->Cupo=0;
                 $proveedor->Plazo=0;
                 $proveedor->Saldo=0;
                 $proveedor->juridico=0;
 
-                $proveedor->Enabled=1;
+                $proveedor->Enabled=1;*/
 
                 if ($proveedor->save()) {
 
@@ -383,9 +383,6 @@ class ProveedorController extends Controller
             }
 
 
-
-
-
             //return redirect('/actividad/');
             } catch (\Throwable $th) {
                 throw $th;
@@ -433,7 +430,7 @@ class ProveedorController extends Controller
 
             $proveedor =  ProveedorModel::where('Mail',$user->email)->first();
 
-            $proveedor->DV = 0;
+            //$proveedor->DV = 0;
             $proveedor->id = $request->n_docuemnto;
 
             $proveedor->TipoID = $request->tipo_d;
@@ -445,16 +442,16 @@ class ProveedorController extends Controller
             $proveedor->Departamento=$request->departamento;
             $proveedor->Ciudad=$request->municipio;
             $proveedor->Pais="Colombia";
-            $proveedor->Telefono1=$request->Telefono;
+            //$proveedor->Telefono1=$request->Telefono;
             $proveedor->Telefono2=" ";
             $proveedor->Direccion=$request->direccion;
 
 
 
 
-            $proveedor->Regimen="";
+            /*$proveedor->Regimen="";
             $proveedor->GranContribuyente="";
-            $proveedor->Movil="";
+            $proveedor->Movil="";*/
             $proveedor->ActividadEconomica=$request->actividad;
 
             $proveedor->Fax="";
@@ -464,16 +461,16 @@ class ProveedorController extends Controller
             //$proveedor->Contacto=$request->nombre1;
             $proveedor->Contacto="";
 
-            $proveedor->Credito=0;
+            //$proveedor->Credito=0;
             $proveedor->Contacto="N/A";
 
             //$proveedor->ReferenciaTelefono2=$request->nombre1;
-            $proveedor->Cupo=0;
+           /* $proveedor->Cupo=0;
             $proveedor->Plazo=0;
             $proveedor->Saldo=0;
             $proveedor->juridico=0;
 
-            $proveedor->Enabled=1;
+            $proveedor->Enabled=1;*/
 
             if ($proveedor->save()) {
 
@@ -723,8 +720,6 @@ class ProveedorController extends Controller
                 if (isset($request->dv) && !empty($request->dv)) {
                     $proveedor->DV = $request->dv;
 
-                }else {
-                     $proveedor->DV = 0;
                 }
 
                 $proveedor->TipoID ="Nit";
@@ -744,7 +739,7 @@ class ProveedorController extends Controller
                 $proveedor->Direccion=$request->direccion;
                 $proveedor->pagina_web=$request->pagina;
                 $proveedor->tamano=$request->ta_e;
-                $proveedor->Regimen="";
+                //$proveedor->Regimen="";
                 $proveedor->GranContribuyente="";
                 $proveedor->Movil="";
                 $proveedor->ActividadEconomica=$request->actividad;
@@ -762,10 +757,10 @@ class ProveedorController extends Controller
 
 
                 //$proveedor->ReferenciaTelefono2=$request->nombre1;
-                $proveedor->Cupo=0;
+               /* $proveedor->Cupo=0;
                 $proveedor->Plazo=0;
                 $proveedor->Saldo=0;
-                $proveedor->Enabled=1;
+                $proveedor->Enabled=1;*/
 
                 //return $proveedor;
 
@@ -934,9 +929,8 @@ class ProveedorController extends Controller
             if (isset($request->dv) && !empty($request->dv)) {
                 $proveedor->DV = $request->dv;
 
-            }else {
-                 $proveedor->DV = 0;
             }
+
             $proveedor->id = $request->id;
 
             $proveedor->TipoID ="Nit";
@@ -951,7 +945,6 @@ class ProveedorController extends Controller
             $proveedor->Departamento=$request->departamento;
             $proveedor->Ciudad=$request->municipio;
             $proveedor->Pais=$request->pais;
-            $proveedor->Telefono1=$request->Telefono;
             $proveedor->Telefono2=" ";
             $proveedor->Direccion=$request->direccion;
             $proveedor->pagina_web=$request->pagina;
@@ -966,18 +959,18 @@ class ProveedorController extends Controller
             //email e ingreso
             $proveedor->FechaIngreso=date('Y-m-d');
             //$proveedor->Contacto=$request->nombre1;
-            $proveedor->Contacto="";
+           // $proveedor->Contacto="";
 
-            $proveedor->Credito=0;
+            //$proveedor->Credito=0;
             $proveedor->Contacto="N/A";
             $proveedor->juridico=1;
 
 
             //$proveedor->ReferenciaTelefono2=$request->nombre1;
-            $proveedor->Cupo=0;
+            /*$proveedor->Cupo=0;
             $proveedor->Plazo=0;
             $proveedor->Saldo=0;
-            $proveedor->Enabled=1;
+            $proveedor->Enabled=1;*/
 
             //return $proveedor;
 

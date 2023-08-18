@@ -2,7 +2,7 @@
         require_once("library/SetaPDF/Autoload.php");
 
 
-            //echo "hola ";
+        try {
 
                 $files = $_GET["files"];
                 $rutam = public_path('documentos/resultado.pdf');
@@ -47,3 +47,17 @@
 
 
                // return response()->download($document);
+            } catch (SetaPDF_Exception $e) {
+                if ($e->getMessage() === 'Extraction of pages is not allowed with this credentials (user).') {
+                    // Redirecciona a la vista que informa sobre las restricciones
+
+                    $queryParams = http_build_query(['files' => $files]);
+
+                    $redireccion = 'https://stakeholders.tododrogas.com.co/' . 'vistaRestricciones?' . $queryParams;
+
+                    header("Location: $redireccion");
+                } else {
+                    // Manejo de otros errores que puedan ocurrir
+                    return "Ocurrió un error: " . $e->getMessage();
+                }
+            }

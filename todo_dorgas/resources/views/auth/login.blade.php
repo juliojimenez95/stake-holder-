@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Bienvenido</title>
+  <title>{{ "Todo Drogas" }}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/wel.css') }}">
   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+  <link rel="icon" href="{{ asset('images/fevicon.jpeg') }}" type="image/png" />
 
   <style>
     /* Estilo para ocultar los bordes del select y hacerlo transparente */
@@ -45,7 +46,7 @@
                 <img src="{{ asset('images/Cultura-de-Legalidad.png') }}"  style="height: 40px " class="img-fluid">
               </div>
               <div class="div_select">
-                <<select id="mySelect" class="form-control">
+                <select id="mySelect" class="form-control">
                     <option value="#" data-file="#">Conoce aquí nuestra Cultura de Legalidad</option>
                     <option value="option5" data-file="PO_CI_01_Politicas_de_Devoluciones_Clientes_Institucionales_V01 (6).pdf">Políticas de  Legalidad</option>
                     <option value="option1" data-file="PO-PL-1_Politica_Tratamiento_Datos.pdf">Políticas de Tratamiento de Datos</option>

@@ -9,7 +9,7 @@ class RepresentanteLegalModel extends Model
 {
     use HasFactory;
     public $table ="RepresentanteLegal";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $primaryKey = "ID";
     protected $fillable = [
         'Nombre1' ,

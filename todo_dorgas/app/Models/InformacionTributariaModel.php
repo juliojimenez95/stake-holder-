@@ -9,12 +9,13 @@ class InformacionTributariaModel extends Model
 {
     use HasFactory;
     public $table ="InformacionTributaria";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $primaryKey = "ID";
     protected $fillable = [
         'ResponsableImpuesto' ,
         'SujetoRetencion' ,
         'Declarar' ,
+        'updated_at',
         'RST' ,
         'Estampillas' ,
         'Observacion1',

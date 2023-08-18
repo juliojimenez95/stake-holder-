@@ -1403,7 +1403,6 @@ class ClienteController extends Controller
                 'Telefono'=>'required|unique:DOMICILIOS',
                 'direccion'=>'required',
                 'actividad'=>'required',
-                'tipo_s'=>'required',
 
 
             ],
@@ -1419,7 +1418,6 @@ class ClienteController extends Controller
                 'Telefono.required' => 'El telefono es requerido',
                 'Telefono.unique' => 'El telefono ya esta registrado',
                 'direccion.required' => 'La dirección es requerido',
-                'tipo_s.required' => 'Tipo de sociedad es requerido',
 
 
             ]
@@ -1437,7 +1435,12 @@ class ClienteController extends Controller
                 $cliente->Nit=$request->nit;
                 $cliente->pagina_web=$request->pagina;
                 $cliente->tamano=$request->ta_e;
-                $cliente->tipo_s=$request->tipo_s;
+                if (isset($request->tipo_s) && !empty($request->tipo_s)) {
+                    $cliente->tipo_s = $request->tipo_s;
+
+                }else {
+                    $cliente->tipo_s="";
+                }
 
                 $cliente->TipoNit="Nit";
                 //

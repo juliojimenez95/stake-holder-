@@ -33,6 +33,7 @@ use PDFMerger;
 use PDFSeta;
 use Illuminate\Support\Facades\Http;
 use setasign\Fpdi\Fpdi;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -173,7 +174,7 @@ class DocumentosController extends Controller
                     $pdf = $request->file('Referencia_comercial2');
                     $ext = $pdf->getClientOriginalExtension();
                     $name_pdf14 = 'Referencia_comercial2'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                    $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                    $url = Storage::disk('documentos')->put($name_pdf14, file_get_contents($pdf));
                 }
                 $Anexo->Referencia_comercial2 = $name_pdf14;
                 $name_pdf15 = '';
@@ -183,8 +184,8 @@ class DocumentosController extends Controller
                 if ($request->file('Listas_precios')){
                     $pdf = $request->file('Listas_precios');
                     $ext = $pdf->getClientOriginalExtension();
-                    $name_pdf14 = 'Listas_precios'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                    $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                    $name_pdf16 = 'Listas_precios'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf16, file_get_contents($pdf));
                 }
                 $Anexo->Listas_precios = $name_pdf16;
 
@@ -192,8 +193,8 @@ class DocumentosController extends Controller
                 if ($request->file('Condiciones_Comerciales')){
                     $pdf = $request->file('Condiciones_Comerciales');
                     $ext = $pdf->getClientOriginalExtension();
-                    $name_pdf14 = 'Condiciones_Comerciales'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                    $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                    $name_pdf17 = 'Condiciones_Comerciales'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
+                    $url = Storage::disk('documentos')->put($name_pdf17, file_get_contents($pdf));
                 }
                 $Anexo->Condiciones_Comerciales = $name_pdf17;
 
@@ -350,7 +351,7 @@ class DocumentosController extends Controller
                     $pdf = $request->file('Referencia_comercial2');
                     $ext = $pdf->getClientOriginalExtension();
                     $name_pdf14 = 'Referencia_comercial2'.'_'.date('Y').'-'.date('m').'-'.date('d').'-'.uniqid().'.'.$ext;
-                    $url = Storage::disk('documentos')->put($name_pdf13, file_get_contents($pdf));
+                    $url = Storage::disk('documentos')->put($name_pdf14, file_get_contents($pdf));
                 }
                 $Anexo->Referencia_comercial2 = $name_pdf14;
                 $name_pdf15 = '';
@@ -1229,6 +1230,16 @@ class DocumentosController extends Controller
         }
     }
 
+    public function vistaRestricciones(Request $request)
+    {
+        // Puedes acceder a la variable $files desde el request
+
+       // dd('Entro al método vistaRestricciones', $request->input('files'));
+        $files = $request->input('files');
+
+        return view('pdf.pdf', compact('files'));
+    }
+
     public function storefondo(Request $request,$id)
     {
 
@@ -1320,108 +1331,114 @@ class DocumentosController extends Controller
             $i=0;
             $files=[];
 
-            if ($anexo->Camara_comercio != '' ) {
-                $files[$i] = public_path('documentos/' . $anexo->Camara_comercio);
-                $i++;
+            if($anexo){
 
-            }
+                if ($anexo->Camara_comercio != '' ) {
+                    $files[$i] = public_path('documentos/' . $anexo->Camara_comercio);
+                    $i++;
 
-            if ($anexo->Rut != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Rut);
-                $i++;
+                }
 
-
-            }
-
-            if ($anexo->Cc_representante != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Cc_representante);
-                $i++;
+                if ($anexo->Rut != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Rut);
+                    $i++;
 
 
-            }
-            if ($anexo->Estados_financieros != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Cc_representante);
-                $i++;
+                }
+
+                if ($anexo->Cc_representante != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Cc_representante);
+                    $i++;
 
 
-            }
-            if ($anexo->Referencia_comercial != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Referencia_comercial);
-                $i++;
-
-            }
-            if ($anexo->ICA != '') {
-                $files[$i] = public_path('documentos/' . $anexo->ICA);
-                $i++;
-
-            }
-
-            if ($anexo->Contribuyente != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Contribuyente);
-                $i++;
-
-            }
-
-            if ($anexo->Autoretenedor_f != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Autoretenedor_f);
-                $i++;
-            }
-
-            if ($anexo->Autoretenedor_ICA != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Autoretenedor_ICA);
-                $i++;
-
-            }
-
-            if ($anexo->Brochure != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Brochure);
-                $i++;
+                }
+                if ($anexo->Estados_financieros != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Cc_representante);
+                    $i++;
 
 
-            }
+                }
+                if ($anexo->Referencia_comercial != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Referencia_comercial);
+                    $i++;
 
-            if ($anexo->Certificado_bancario != '') {
-                $files[$i] = public_path('documentos/' . $anexo->Certificado_bancario);
-                $i++;
+                }
+                if ($anexo->ICA != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->ICA);
+                    $i++;
+
+                }
+
+                if ($anexo->Contribuyente != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Contribuyente);
+                    $i++;
+
+                }
+
+                if ($anexo->Autoretenedor_f != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Autoretenedor_f);
+                    $i++;
+                }
+
+                if ($anexo->Autoretenedor_ICA != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Autoretenedor_ICA);
+                    $i++;
+
+                }
+
+                if ($anexo->Brochure != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Brochure);
+                    $i++;
 
 
-            }
+                }
 
-            if ($anexo->SG_SST != '') {
-                $files[$i] = public_path('documentos/' . $anexo->SG_SST);
-                $i++;
-
-
-            }
-
-            if ($anexo->SS != '') {
-                $files[$i] = public_path('documentos/' . $anexo->SS);
-                $i++;
+                if ($anexo->Certificado_bancario != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->Certificado_bancario);
+                    $i++;
 
 
-            }
+                }
 
-            if ($anexo->Certificado_c != '' && $anexo->Certificado_c != null) {
-                $files[$i] = public_path('documentos/' . $anexo->Certificado_c);
-                $i++;
+                if ($anexo->SG_SST != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->SG_SST);
+                    $i++;
 
-            }
 
-            if ($anexo->Referencia_comercial2 != '' && $anexo->Referencia_comercial2 != null) {
-                $files[$i] = public_path('documentos/' . $anexo->Referencia_comercial2);
-                $i++;
+                }
 
-            }
+                if ($anexo->SS != '') {
+                    $files[$i] = public_path('documentos/' . $anexo->SS);
+                    $i++;
 
-            if ($anexo->Listas_precios != '' && $anexo->Listas_precios != null) {
-                $files[$i] = public_path('documentos/' . $anexo->Listas_precios);
-                $i++;
 
-            }
+                }
 
-            if ($anexo->Condiciones_Comerciales != '' && $anexo->Condiciones_Comerciales != null) {
-                $files[$i] = public_path('documentos/' . $anexo->Condiciones_Comerciales);
-                $i++;
+                if ($anexo->Certificado_c != '' && $anexo->Certificado_c != null) {
+                    $files[$i] = public_path('documentos/' . $anexo->Certificado_c);
+                    $i++;
+
+                }
+
+                if ($anexo->Referencia_comercial2 != '' && $anexo->Referencia_comercial2 != null) {
+                    $files[$i] = public_path('documentos/' . $anexo->Referencia_comercial2);
+                    $i++;
+
+                }
+
+                if ($anexo->Listas_precios != '' && $anexo->Listas_precios != null) {
+                    $files[$i] = public_path('documentos/' . $anexo->Listas_precios);
+                    $i++;
+
+                }
+
+                if ($anexo->Condiciones_Comerciales != '' && $anexo->Condiciones_Comerciales != null) {
+                    $files[$i] = public_path('documentos/' . $anexo->Condiciones_Comerciales);
+                    $i++;
+
+                }
+
+
 
             }
 
@@ -1443,13 +1460,13 @@ class DocumentosController extends Controller
                     $i++;
 
                 }
-
             }
 
-
-           return redirect()->route('archivounido',['files' => $files]);
-
-
+            if (!empty($files)) {
+                return redirect()->route('archivounido',['files' => $files]);
+            }else {
+                return "No hay archivos registrados ";
+            }
 
 
 
@@ -1601,11 +1618,14 @@ class DocumentosController extends Controller
                 $pdf = PDF::loadView('myPDF', ['data'=>$data, 'cliente'=>$cliente,
                 'domicilio'=>$domicilio,'contacto'=>$contacto, 'representante'=>$representante,
                 'informaciont'=> $informaciont,'informacionb'=> $informacionb,'informacionf'=> $informacionf,
-                'pagare'=> $pagare,'socios'=> $socios,'autorizacion'=> $autorizacion]);
+                'pagare'=> $pagare,'socios'=> $socios,'autorizacion'=> $autorizacion,'user'=>$user]);
 
                 return $pdf->download('informePersona.pdf');
             } else {
-                $Proveedor = ProveedorModel::where('Mail',$user->email)->first();
+                $Proveedor = DB::table('proveedores')
+                ->where('Mail', $user->email)
+                ->first();
+
                 $contacto = ContactoModel::where('Cliente_id',$id)->first();
                 $representante = RepresentanteLegalModel::where('user_id',$id)->first();
                 $personae = personaExpuestaModel::where('user_id',$id)->first();
@@ -1617,6 +1637,8 @@ class DocumentosController extends Controller
                 $autorizacion = AutorizacionModel::where('user_id',$id)->first();
                 $socios = AccionistaModel::where('user_id',$id)->get();
 
+                //return $Proveedor;
+
                 $data = [
                     'title' => 'Welcome to CodeSolutionStuff.com',
                     'date' => date('m/d/Y')
@@ -1626,7 +1648,7 @@ class DocumentosController extends Controller
                 'contacto'=>$contacto, 'representante'=>$representante,
                 'informaciont'=> $informaciont,'informacionb'=> $informacionb,
                 'informacionf'=> $informacionf,
-                'pagare'=> $pagare,'socios'=> $socios,'autorizacion'=> $autorizacion]);
+                'pagare'=> $pagare,'socios'=> $socios,'autorizacion'=> $autorizacion,'user'=>$user]);
 
                 return $pdf->download('informePersona.pdf');
 
